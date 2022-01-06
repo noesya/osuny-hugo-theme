@@ -11,7 +11,7 @@
       <div class="col">
         <article class="card mb-4">
           <div class="card-body">
-            <p class="card-title">{{ .Params.first_name }} {{ .Params.last_name }}</p>
+            <p class="card-title">{{ .Params.person }}</p>
             {{ if .Params.biography }}
               <p class="small mb-2">{{ truncate 50 (plainify .Params.biography) }}</p>
             {{ end }}

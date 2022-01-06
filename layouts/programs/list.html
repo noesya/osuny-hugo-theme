@@ -35,6 +35,7 @@
                 )}}
         {{ end }}
         <div itemprop="articleBody">
+          <p class="lead"><em>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</em></p>
           <h2 id="page-informations">Informations</h2>
           {{ safeHTML (partial "CorrectPunctuation" .Params.opportunities) }}
           {{ safeHTML (partial "CorrectPunctuation" .Params.other) }}

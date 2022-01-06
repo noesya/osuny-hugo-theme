@@ -6,24 +6,41 @@
           "context" .
         ) -}}
   <div class="container">
-    <a href="/equipe/editoriale/">Équipe éditoriale</a>
-    <a href="/equipe/administrative/">Équipe administrative</a>
-    <a href="/equipe/recherche/">Équipe de recherche</a>
-    <a href="/equipe/pedagogique/">Équipe pédagogique</a>
-
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-    {{ range .Pages }}
-      <div class="col">
-        <article class="card mb-4">
-          <div class="card-body">
-            <p class="card-title">{{ .Params.first_name }} {{ .Params.last_name }}</p>
-            {{ if .Params.biography }}
-              <p class="small mb-2">{{ truncate 50 (plainify .Params.biography) }}</p>
-            {{ end }}
-            <a href="{{ .Permalink }}" class="stretched-link link link--more">En savoir plus</a>
+    <div class="row">
+      <div class="col-md-9">
+        <h2>Toute l'équipe</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        {{ range .Pages }}
+          <div class="col">
+            <article class="card mb-4">
+              <div class="card-body">
+                <p class="card-title">{{ .Params.first_name }} {{ .Params.last_name }}</p>
+                {{ if .Params.biography }}
+                  <p class="small mb-2">{{ truncate 50 (plainify .Params.biography) }}</p>
+                {{ end }}
+                <a href="{{ .Permalink }}" class="stretched-link link link--more">En savoir plus</a>
+              </div>
+            </article>
           </div>
-        </article>
+        {{ end }}
       </div>
-    {{ end }}
+    </div>
+    <div class="col-md-3">
+      <h2>Équipes spécifiques</h2>
+      <ul class="list-unstyled">
+        {{ if .Site.Taxonomies.authors }}
+        <li><a href="/equipe/editoriale/" class="link link--more">Équipe éditoriale</a></li>
+        {{ end }}
+        {{ if .Site.Taxonomies.administrators }}
+        <li><a href="/equipe/administrative/" class="link link--more">Équipe administrative</a></li>
+        {{ end }}
+        {{ if .Site.Taxonomies.researchers }}
+        <li><a href="/equipe/recherche/" class="link link--more">Équipe de recherche</a></li>
+        {{ end }}
+        {{ if .Site.Taxonomies.teachers }}
+        <li><a href="/equipe/pedagogique/" class="link link--more">Équipe pédagogique</a></li>
+        {{ end }}
+      </ul>
+    </div>
   </div>
 {{ end }}
