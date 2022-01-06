@@ -1,0 +1,2 @@
+{{ $directory := slicestr . 0 2 }}
+{{ return index (index site.Data.media $directory) . }}

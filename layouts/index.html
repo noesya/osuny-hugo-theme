@@ -1,0 +1,46 @@
+{{ define "main" }}
+  {{ partial "header/hero.html"
+        (dict
+          "title" .Content
+          "image" .Params.image
+          "context" .
+        )}}
+  <div class="container">
+    {{- range site.Data.menus.primary -}}
+      <section class="mb-6">
+        <div class="top">
+          <h2>
+            {{ if .target }}<a href="{{ .target }}">{{ end }}
+              {{ safeHTML .title }}
+            {{ if .target }}</a>{{ end }}
+          </h2>
+          {{ if or (eq .kind "news") (eq .kind "programs") }}
+            <a href="{{ .target }}" class="link link--more">En savoir plus</a>
+          {{ end }}
+        </div>
+        {{ if eq .kind "news" }}
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
+            {{ range (where site.RegularPages "Type" "posts" | first 6) }}
+              <div class="col">
+                {{ partial "posts/post.html" . }}
+              </div>
+            {{ end }}
+          </div>
+        {{ else }}
+          <div class="row row-cols-1 row-cols-md-2">
+            {{ range .children }}
+              {{ if and .target (not (eq .kind "url")) }}
+                {{ $page := partial "GetPageByUrl" .target }}
+                {{ if $page }}
+                  <div class="col">
+                    {{ partial "pages/page.html" $page }}
+                  </div>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
+      </section>
+    {{ end }}
+  </div>
+{{ end }}

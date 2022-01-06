@@ -1,0 +1,39 @@
+.card
+    &--article,
+    &--program
+        .link
+            font-size: px2rem(22)
+            text-decoration: none
+    &--program
+        .card-media
+            --bs-aspect-ratio: 70%
+    &-media
+        @extend .ratio
+        --bs-aspect-ratio: 50%
+        border: 1px solid $border-color
+        overflow: hidden
+        img
+            display: block
+            height: 100%
+            object-fit: cover
+            object-position: top
+            width: 100%
+    &-title
+        margin-top: 0
+    &-title + *
+        margin-top: .5rem
+    .stretched-link::after
+        transition: background .3s ease
+    .stretched-link:hover
+        &::after
+            background-color: rgba(white, .2)
+    time
+        color: $gray-600
+        display: block
+        font-family: $font-family-sans-serif
+        font-size: px2rem(14)
+
+    @include media-breakpoint-up(md)
+        &--program
+            .card-media
+                max-width: calc(50% - #{$grid-gutter-width}/2)

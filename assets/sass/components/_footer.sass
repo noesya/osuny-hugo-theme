@@ -1,0 +1,41 @@
+.footer
+    background-color: $light
+    padding-bottom: $grid-gutter-width * 2.5
+    padding-top: $grid-gutter-width * 2.5
+
+    address
+        font-size: px2rem(14)
+        line-height: px2rem(26)
+
+    ul
+        list-style: none
+        margin-left: 0
+        padding: 0
+
+    .nav-link
+        display: inline-block
+        font-size: px2rem(14)
+        line-height: px2rem(22)
+
+    .nav-level-1 > li
+        break-inside: avoid
+        margin-bottom: $grid-gutter-width * 2
+        & > a,
+        & > span
+            @extend .h2
+            border-bottom: 1px solid $border-color
+            color: $primary
+            margin-bottom:  $grid-gutter-width / 2
+            margin-top: 0
+            padding-bottom:  $grid-gutter-width / 2
+            text-decoration: none
+
+    .nav-level-2 > li
+        & > a,
+        & > span
+            color: $primary
+            font-size: px2rem(18)
+            line-height: px2rem(26)
+
+    .nav-level-3
+        margin-bottom: $grid-gutter-width

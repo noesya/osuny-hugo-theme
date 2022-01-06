@@ -1,0 +1,102 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "image" .Params.image
+          "context" .
+        ) -}}
+  <div class="container">
+    {{ if .Params.level }}
+    <div class="row">
+      <div class="col-md-4 col-lg-3">
+        <ul class="nav toc" id="nav-toc">
+          <li class="nav-item"><a class="nav-link" href="#page-informations">Informations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-contacts">Contacts</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-pedagogy">Pédagogie</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-candidates">Candidature</a></li>
+          {{ if .Pages }}
+          <li class="nav-item"><a class="nav-link" href="#page-programs">Formations</a></li>
+          {{ end }}
+          {{ range .GetTerms "categories" }}
+          <li class="nav-item"><a class="nav-link" href="#page-posts">Actualités</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="col-md-8 offset-lg-1">
+        {{ if .Params.image }}
+          {{ partial "commons/image.html"
+                (dict
+                  "image"    .Params.image
+                  "class"    "img-fluid mb-4"
+                  "mobile"   "351x168"
+                  "tablet"   "456x219"
+                  "desktop"  "856x410"
+                  "itemprop" true
+                )}}
+        {{ end }}
+        <div itemprop="articleBody">
+          <h2 id="page-informations">Informations</h2>
+          {{ safeHTML (partial "CorrectPunctuation" .Params.opportunities) }}
+          {{ safeHTML (partial "CorrectPunctuation" .Params.other) }}
+
+          <h2 id="page-contacts">Contacts</h2>
+          {{ safeHTML (partial "CorrectPunctuation" .Params.contacts) }}
+
+          <h2 id="page-pedagogy">Pédagogie</h2>
+          {{ safeHTML (partial "CorrectPunctuation" .Params.pricing) }}
+          {{ safeHTML (partial "CorrectPunctuation" .Params.registration) }}
+
+          <h2 id="page-candidates">Candidature</h2>
+          {{ safeHTML (partial "CorrectPunctuation" .Params.evaluation) }}
+          {{ safeHTML (partial "CorrectPunctuation" .Params.objectives) }}
+          {{ safeHTML (partial "CorrectPunctuation" .Params.prerequisites) }}
+
+          {{ if .Pages }}
+          <hr class="my-5">
+          <div class="top">
+            <h2 id="page-programs">Formations</h2>
+          </div>
+          <div class="row row-cols-md-2 g-3">
+            {{ range sort .Pages ".Params.position" }}
+            <div class="col">
+              {{ partial "programs/program.html" . }}
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+
+          {{ range .GetTerms "categories" }}
+            {{ partial "posts/related.html" . }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ else }}
+      {{ range sort .Pages ".Params.position" }}
+        <div class="row row-cols-1 row-cols-md-2 mb-4">
+          <div class="col-md-8">
+            <div class="card card--program">
+              <div class="card-body">
+                <h2 class="card-title ">
+                  <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+                </h2>
+              </div>
+            </div>
+          </div>
+          {{ range sort .Pages ".Params.position"  }}
+          <div class="col">
+            <div class="card card--program">
+              <div class="card-body">
+                <p class="card-title ">
+                  <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+                </p>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

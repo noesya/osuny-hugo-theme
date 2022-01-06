@@ -1,0 +1,57 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "image" .Params.image
+          "context" .
+        ) -}}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 mb-4">
+        <ul class="nav toc" id="nav-toc">
+          <li class="nav-item"><a class="nav-link" href="#page-informations">Informations</a></li>
+          {{ if .Params.child_pages }}
+          <li class="nav-item"><a class="nav-link" href="#page-children">En détail</a></li>
+          {{ end }}
+          {{ range .GetTerms "categories" }}
+          <li class="nav-item"><a class="nav-link" href="#page-posts">Actualités</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="col-md-8 offset-lg-1">
+        {{ if .Params.image }}
+          {{ partial "commons/image.html"
+                (dict
+                  "image"    .Params.image
+                  "class"    "img-fluid mb-4"
+                  "mobile"   "351x168"
+                  "tablet"   "456x219"
+                  "desktop"  "856x410"
+                  "itemprop" true
+                )}}
+        {{ end }}
+        <div itemprop="articleBody" id="page-informations">
+          {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+
+          {{ if .Pages }}
+            <hr class="my-5">
+            <div class="top">
+              <h2 id="page-children">En détail</h2>
+            </div>
+            <div class="row row-cols-md-2 g-3">
+              {{ range sort .Pages ".Params.position"  }}
+                <div class="col">
+                  <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ range .GetTerms "categories" }}
+            {{ partial "posts/related.html" .}}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

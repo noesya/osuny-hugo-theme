@@ -1,0 +1,29 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row mb-5" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+      <div class="col-md-4">
+        <a href="/"><img src="/assets/images/logo-glyph.svg" alt="{{site.Title}}" width="257" height="158" itemprop="logo"></a>
+      </div>
+      <div class="col-md-8">
+        {{ with site.Data.school }}
+        <address>
+          <span itemprop="name">{{ .name }}</span>
+          <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <span itemprop="streetAddress">{{ .address }}</span><br>
+            <span itemprop="postalCode">{{ .zipcode }}</span> <span itemprop="addressLocality">{{ .city }}</span><br>
+            <span itemprop="addressCountry">{{ .country }}</span>
+          </div>
+          <span itemprop="telephone">{{ .phone }}</span>
+        </address>
+        {{ end }}
+      </div>
+    </div>
+    {{ partial "commons/menu.html"
+          (dict
+            "items"       site.Data.menus.primary
+            "level"       1
+            "class"       "nav grid"
+            "show_legals" true
+          )}}
+  </div>
+</footer>

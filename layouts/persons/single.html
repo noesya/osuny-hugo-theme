@@ -1,0 +1,29 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "context" .
+        ) -}}
+  <div class="container">
+    {{ if .Content }}
+      <div class="row mb-5">
+        <div class="col-md-8">
+          {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+        </div>
+      </div>
+    {{ end }}
+
+    {{ if in .Params.roles "author" }}
+    <a href="actualites/">Actualités</a>
+    {{ end }}
+    {{ if in .Params.roles "teacher" }}
+    <a href="formations/">Missions pédagogiques</a>
+    {{ end }}
+    {{ if in .Params.roles "administrator" }}
+    <a href="administration/">Missions administratives</a>
+    {{ end }}
+    {{ if in .Params.roles "researcher" }}
+    <a href="publications/">Publications scientifiques</a>
+    {{ end }}
+  </div>
+{{ end }}

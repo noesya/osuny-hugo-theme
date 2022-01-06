@@ -1,0 +1,12 @@
+<div class="card card--article">
+  <div class="card-body">
+    <p class="card-title">
+      <a href="{{ .Permalink }}" class="stretched-link link link--more">
+        {{ safeHTML (partial "CorrectPunctuation" .Title) }}
+      </a>
+    </p>
+    {{ if .Params.description }}
+      <p class="card-text">{{ truncate 120 .Params.description }}</p>
+    {{ end }}
+  </div>
+</div>

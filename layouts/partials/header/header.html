@@ -1,0 +1,20 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg" id="navigation" aria-label="Menu principal">
+    <div class="container">
+      <a class="navbar-brand" href="/"><img src="/assets/images/logo.svg" alt="{{ site.Title }}" height="42" width="155"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-text">Menu</span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        {{ partial "commons/menu.html"
+              (dict
+                "items" site.Data.menus.primary
+                "class" "navbar-nav"
+                "dropdown" true
+                "level" 1
+              )}}
+      </div>
+    </div>
+  </nav>
+</header>

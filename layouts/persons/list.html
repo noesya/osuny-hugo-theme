@@ -1,0 +1,29 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "image" .Params.image
+          "context" .
+        ) -}}
+  <div class="container">
+    <a href="/equipe/editoriale/">Équipe éditoriale</a>
+    <a href="/equipe/administrative/">Équipe administrative</a>
+    <a href="/equipe/recherche/">Équipe de recherche</a>
+    <a href="/equipe/pedagogique/">Équipe pédagogiques</a>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    {{ range .Pages }}
+      <div class="col">
+        <article class="card mb-4">
+          <div class="card-body">
+            <p class="card-title">{{ .Params.first_name }} {{ .Params.last_name }}</p>
+            {{ if .Params.biography }}
+              <p class="small mb-2">{{ truncate 50 (plainify .Params.biography) }}</p>
+            {{ end }}
+            <a href="{{ .Permalink }}" class="stretched-link link link--more">En savoir plus</a>
+          </div>
+        </article>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

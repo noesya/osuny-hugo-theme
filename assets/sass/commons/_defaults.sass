@@ -1,0 +1,31 @@
+body
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+    font-variant-ligatures: discretionary-ligatures
+    text-rendering: optimizelegibility
+
+::selection
+    background: rgba(0, 0, 0, .7)
+    color: white
+    text-shadow: none
+
+::-moz-selection
+    background: rgba(0, 0, 0, .7)
+    color: white
+    text-shadow: none
+
+img
+    &::selection
+        background: transparent
+    &::-moz-selection
+        background: transparent
+
+*:focus-visible
+    outline-color: gray
+    outline-offset: 5px
+    outline-style: dashed
+    outline-width: 1px
+
+@media (prefers-reduced-motion: no-preference)
+    *:focus-visible
+        transition: outline-offset .3s ease

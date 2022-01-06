@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{- partial "head/css.html" -}}
+    {{- partial "head/seo.html" . -}}
+  </head>
+  <body class="{{ .Type }}__{{ .Kind }}">
+    {{- partial "header/accessibility.html" -}}
+    {{- partial "header/header.html" -}}
+    <main class="main" id="main" aria-label="Content">
+      {{- block "main" . }}{{- end }}
+    </main>
+    {{- partial "footer/footer.html" . -}}
+    {{- partial "footer/cookie-banner.html" . -}}
+    {{- partial "footer/js.html" . -}}
+  </body>
+</html>

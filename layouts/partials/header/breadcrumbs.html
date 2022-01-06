@@ -1,0 +1,23 @@
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    {{- $permalink := .context.RelPermalink -}}
+    {{- $path := strings.TrimSuffix "/" $permalink -}}
+    {{- $crumbs := split $path "/" -}}
+    {{- $currentPath := "" -}}
+    {{- range $index, $crumb := $crumbs -}}
+    {{- $currentPath = printf "%s%s/" $currentPath $crumb -}}
+    {{- $page := partial "GetPageByUrl" $currentPath -}}
+    {{- if $page -}}
+      {{- $title := or $page.Params.breadcrumb_title $page.Title -}}
+      {{- $linked := not (eq $page.RelPermalink $permalink) }}
+    <li class="breadcrumb-item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+      {{ if $linked }}<a href="{{ $page.Permalink}}" itemprop="item">{{ end }}
+        <span itemprop="name">{{ htmlUnescape $title }}</span>
+        <meta itemprop="position" content="{{ add $index 2 }}">
+      {{ if $linked }}</a>{{ end }}
+    </li>
+    {{- end -}}
+    {{- end }}
+  </ol>
+</nav>

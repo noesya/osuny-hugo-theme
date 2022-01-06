@@ -1,0 +1,13 @@
+.nav-accessibility
+    list-style: none
+    margin: 0
+    padding: $grid-gutter-width/2
+    position: absolute
+    transform: translateY(-100%)
+    z-index: $zindex-popover
+    li
+        display: inline-block
+        margin-right: 5px
+    &:focus-within
+        position: relative
+        transform: translateY(0)
