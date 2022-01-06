@@ -5,15 +5,27 @@
           "image" .Params.image
           "context" .
         ) -}}
+  {{- $informations := printf "%s%s%s" .Params.opportunities .Params.other .Params.results -}}
+  {{- $contacts := printf "%s" .Params.contacts -}}
+  {{- $pedagogy := printf "%s%s%s" .Params.pricing .Params.registration .Params.content -}}
+  {{- $candidates := printf "%s%s%s" .Params.evaluation .Params.objectives .Params.prerequisites -}}
   <div class="container">
     {{ if .Params.level }}
     <div class="row">
       <div class="col-md-4 col-lg-3">
         <ul class="nav toc" id="nav-toc">
+          {{ if $informations }}
           <li class="nav-item"><a class="nav-link" href="#page-informations">Informations</a></li>
+          {{ end }}
+          {{ if $contacts }}
           <li class="nav-item"><a class="nav-link" href="#page-contacts">Contacts</a></li>
+          {{ end }}
+          {{ if $pedagogy }}
           <li class="nav-item"><a class="nav-link" href="#page-pedagogy">Pédagogie</a></li>
+          {{ end }}
+          {{ if $candidates }}
           <li class="nav-item"><a class="nav-link" href="#page-candidates">Candidature</a></li>
+          {{ end }}
           {{ if .Pages }}
           <li class="nav-item"><a class="nav-link" href="#page-programs">Formations</a></li>
           {{ end }}
@@ -36,23 +48,25 @@
         {{ end }}
         <div itemprop="articleBody">
           <p class="lead"><em>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</em></p>
+          {{ if $informations }}
           <h2 id="page-informations">Informations</h2>
-          {{ safeHTML (partial "CorrectPunctuation" .Params.opportunities) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.other) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.results) }}
+          {{ safeHTML (partial "CorrectPunctuation" $informations) }}
+          {{ end }}
 
+          {{ if $contacts }}
           <h2 id="page-contacts">Contacts</h2>
-          {{ safeHTML (partial "CorrectPunctuation" .Params.contacts) }}
+          {{ safeHTML (partial "CorrectPunctuation" $contacts) }}
+          {{ end }}
 
+          {{ if $pedagogy }}
           <h2 id="page-pedagogy">Pédagogie</h2>
-          {{ safeHTML (partial "CorrectPunctuation" .Params.pricing) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.registration) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.content) }}
+          {{ safeHTML (partial "CorrectPunctuation" $pedagogy) }}
+          {{ end }}
 
+          {{ if $candidates }}
           <h2 id="page-candidates">Candidature</h2>
-          {{ safeHTML (partial "CorrectPunctuation" .Params.evaluation) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.objectives) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.prerequisites) }}
+          {{ safeHTML (partial "CorrectPunctuation" $candidates) }}
+          {{ end }}
 
           {{ if .Pages }}
           <hr class="my-5">
