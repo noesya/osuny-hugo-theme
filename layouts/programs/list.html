@@ -38,6 +38,7 @@
           <h2 id="page-informations">Informations</h2>
           {{ safeHTML (partial "CorrectPunctuation" .Params.opportunities) }}
           {{ safeHTML (partial "CorrectPunctuation" .Params.other) }}
+          {{ safeHTML (partial "CorrectPunctuation" .Params.results) }}
 
           <h2 id="page-contacts">Contacts</h2>
           {{ safeHTML (partial "CorrectPunctuation" .Params.contacts) }}
@@ -45,6 +46,7 @@
           <h2 id="page-pedagogy">Pédagogie</h2>
           {{ safeHTML (partial "CorrectPunctuation" .Params.pricing) }}
           {{ safeHTML (partial "CorrectPunctuation" .Params.registration) }}
+          {{ safeHTML (partial "CorrectPunctuation" .Params.content) }}
 
           <h2 id="page-candidates">Candidature</h2>
           {{ safeHTML (partial "CorrectPunctuation" .Params.evaluation) }}
