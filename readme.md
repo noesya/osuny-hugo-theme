@@ -1,5 +1,11 @@
 # Osuny School Theme
 
+## Installer le thème
+
+```
+git submodule add git@github.com:noesya/hugo-osuny.git themes/hugo-osuny
+```
+
 ## Home page
 
 Il faut un fichier _index.html à la racine du dossier content, qui sert de home page, avec la body class `page__home`.
