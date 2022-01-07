@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <tbody>
+    {{ range . }}
+      {{ $slug := .person }}
+      {{ $description := .description }}
+      {{ with site.GetPage "persons" }}
+        {{ with .GetPage $slug }}
+          <tr>
+            <td class="ps-0">
+              <a href="{{ .Permalink }}">
+                {{ safeHTML .Title }}
+              </a>
+            </td>
+            <td class="pe-0 text-end">
+              {{ safeHTML $description }}
+            </td>
+          </tr>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </tbody>
+</table>
