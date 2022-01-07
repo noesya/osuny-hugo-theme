@@ -30,12 +30,29 @@ img
     *:focus-visible
         transition: outline-offset .3s ease
 
-h2
-    margin-top: $grid-gutter-width * 3
+a
+    text-decoration-thickness: 1px
+    text-underline-offset: 3px
+    &.icon
+        text-decoration: none
+    &[target="_blank"]:not(.icon)
+        &::after
+            background: url('/assets/images/icons.svg#link-blank') no-repeat
+            content: ''
+            display: inline-block
+            height: 12px
+            margin-left: px2rem(5)
+            vertical-align: middle
+            width: 12px
+
+h1, h2
     a
         text-decoration: none
         &:hover
             text-decoration: underline
+
+h2
+    margin-top: $grid-gutter-width * 3
 
 [itemprop="articleBody"]
     overflow-wrap: break-word
