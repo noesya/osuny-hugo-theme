@@ -1,0 +1,23 @@
+<article class="card">
+  <div class="card-media">
+    {{- if .Params.image -}}
+      {{- partial "commons/image.html"
+            (dict
+              "image"    .Params.image
+              "alt"      .Title
+              "mobile"   "375x450"
+              "tablet"   "334x167"
+              "desktop"  "634x317"
+            ) -}}
+    {{- else -}}
+      <picture>
+        <img class="img-fluid" alt="" loading="lazy" src="/assets/images/default.jpg" width="1004" height="502">
+      </picture>
+    {{- end -}}
+  </div>
+  <div class="card-body">
+    <p class="card-subtitle">Volume {{ .Params.Number }}</p>
+    <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
+    <a href="{{ .Permalink }}" class="stretched-link link link--more">En savoir plus</a>
+  </div>
+</article>

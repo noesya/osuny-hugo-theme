@@ -1,12 +1,13 @@
 <footer class="footer">
   <div class="container">
-    <div class="row mb-5" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+    <div class="row mb-5">
       <div class="col-md-4">
-        <a href="/"><img src="/assets/images/logo-glyph.svg" alt="{{site.Title}}" width="257" height="158" itemprop="logo"></a>
+        <a href="/"><img src="/assets/images/logo.svg" alt="{{site.Title}}" height="42" width="155"></a>
       </div>
       <div class="col-md-8">
         {{ with site.Data.school }}
-        <address>
+        <address itemscope itemtype="https://schema.org/CollegeOrUniversity">
+          <meta itemprop="logo" content="/assets/images/logo.svg">
           <span itemprop="name">{{ .name }}</span>
           <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
             <span itemprop="streetAddress">{{ .address }}</span><br>
