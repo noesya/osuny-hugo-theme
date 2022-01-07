@@ -6,6 +6,11 @@
 git submodule add git@github.com:noesya/hugo-osuny.git themes/hugo-osuny
 ```
 
+Puis dans le config.yaml
+```
+theme: hugo-osuny
+```
+
 ## Home page
 
 Il faut un fichier _index.html à la racine du dossier content, qui sert de home page, avec la body class `page__home`.
