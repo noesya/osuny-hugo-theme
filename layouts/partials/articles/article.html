@@ -1,6 +1,6 @@
 <article class="card card--article">
   <div class="card-body">
     <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
-    <a href="{{ .Permalink }}" class="stretched-link link link--more">En savoir plus</a>
+    <a href="{{ .Permalink }}" class="stretched-link link link--more">{{ i18n "commons._more" }}</a>
   </div>
 </article>
