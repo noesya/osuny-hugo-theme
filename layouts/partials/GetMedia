@@ -1,2 +1,5 @@
-{{ $directory := slicestr . 0 2 }}
-{{ return index (index site.Data.media $directory) . }}
+{{ $directoryName := slicestr . 0 2 }}
+{{ $directory := index site.Data.media $directoryName }}
+{{ if $directory }}
+  {{ return index $directory . }}
+{{ end }}
