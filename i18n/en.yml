@@ -1,6 +1,6 @@
 commons:
-  _date: Date
-  _more: Read more
+  date: Date
+  more: Read more
 volumes:
-  _keywords: Keywords
-  _issn: ISSN
+  keywords: Keywords
+  issn: ISSN

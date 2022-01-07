@@ -1,6 +1,6 @@
 commons:
-  _date: Date
-  _more: En savoir plus
+  date: Date
+  more: En savoir plus
 programs:
   _accessibility: Accessibilité
   _contacts: Contacts
@@ -20,5 +20,5 @@ programs:
   _content: Contenus de la formation
   _results: Indicateurs de résultats
 volumes:
-  _keywords: Mots-clés
-  _issn: ISSN
+  keywords: Mots-clés
+  issn: ISSN
