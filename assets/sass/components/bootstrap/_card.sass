@@ -8,6 +8,10 @@
     &--program
         .card-media
             --bs-aspect-ratio: 70%
+    &--volume
+        .card-media
+            --bs-aspect-ratio: 118.77%
+
     &-media
         @extend .ratio
         --bs-aspect-ratio: 50%
@@ -31,6 +35,8 @@
         display: block
         font-family: $font-family-sans-serif
         font-size: px2rem(14)
+
+
 
     @include media-breakpoint-up(md)
         &--program

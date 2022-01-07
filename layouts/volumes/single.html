@@ -1,0 +1,38 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "image" .Params.image
+          "context" .
+        ) -}}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 mb-2">
+      </div>
+      <div class="col-md-5">
+        <div itemprop="articleBody">
+          {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+          {{ safeHTML (partial "CorrectPunctuation" .Params.text) }}
+        </div>
+      </div>
+      <div class="col-md-3 offset-lg-1">
+        <dl>
+          {%- if .Params.issn -%}
+            <dt>ISSN</dt>
+            <dd>{{ .Params.issn }}</dd>
+          {%- endif -%}
+
+          {%- if .Params.tags -%}
+            <dt>Keywords</dt>
+            <dd>{{ .Params.keywords }}</dd>
+          {%- endif -%}
+
+          {%- if .Params.date -%}
+            <dt>Date</dt>
+            <dd><time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02 Jan 2006" }}</time></dd>
+          {%- endif -%}
+        </dl>
+      </div>
+    </div>
+  </div>
+{{ end }}
