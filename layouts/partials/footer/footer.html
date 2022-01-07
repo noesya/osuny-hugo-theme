@@ -23,8 +23,13 @@
           (dict
             "items"       site.Data.menus.primary
             "level"       1
-            "class"       "nav grid"
-            "show_legals" true
+            "class"       "nav nav--levels grid"
+          )}}
+    {{ partial "commons/menu.html"
+          (dict
+            "items"       site.Data.menus.legal
+            "level"       1
+            "class"       "nav"
           )}}
   </div>
 </footer>
