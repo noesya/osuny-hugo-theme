@@ -1,0 +1,18 @@
+programs:
+  _accessibility: Accessibilité
+  _contacts: Contacts
+  _duration: Durée
+  _description: Description
+  _informations: Informations
+  _evaluation: Modalités d’évaluation
+  _objectives: Objectifs
+  _opportunities: Débouchés
+  _other: Autre
+  _pedagogy: Méthodes mobilisées
+  _prerequisites: Prérequis
+  _pricing: Tarifs
+  _registration: Modalités et délais d’accès
+  _teachers: Enseignants·es
+  _team: Équipe
+  _content: Contenus de la formation
+  _results: Indicateurs de résultats
