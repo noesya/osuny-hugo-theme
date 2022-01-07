@@ -6,17 +6,19 @@
       {{ with site.GetPage "persons" }}
         {{ with .GetPage $slug }}
           <div class="col-md-6">
-            <p>
-              <a href="{{ .Permalink }}">
-                {{ safeHTML .Title }}
-              </a><br>
-              <span class="small">
+            <div class="card">
+              <div class="card-title">
+                <a href="{{ .Permalink }}">
+                  {{ safeHTML .Title }}
+                </a>
+              </div>
+              <p class="small mb-1">
                 {{ safeHTML .Params.phone }}
                 {{ if .Params.email }}
-                  <a href="mailto:{{ .Params.email }}" rel="noreferrer" target="_blank">{{ .Params.email }}</a>
+                <a href="mailto:{{ .Params.email }}" rel="noreferrer" target="_blank">{{ .Params.email }}</a>
                 {{ end }}
-              </span>
-            </p>
+              </p>
+            </div>
           </div>
         {{ end }}
       {{ end }}

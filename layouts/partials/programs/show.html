@@ -1,5 +1,5 @@
-
 {{- $params := .Params -}}
+{{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
 {{- $chapters := slice
                 "objectives"
                 "opportunities"
@@ -33,7 +33,7 @@
           </li>
         {{ end }}
       {{ end }}
-      {{ range .GetTerms "categories" }}
+      {{ if $category }}
       <li class="nav-item"><a class="nav-link" href="#page-posts">Actualités</a></li>
       {{ end }}
     </ul>
@@ -78,10 +78,7 @@
         {{ end }}
       {{ end }}
 
-      {{ $category := index site.Taxonomies.categories .Params.category }}
-      {{ with $category }}
-        {{ partial "posts/related.html" . }}
-      {{ end }}
+      {{ partial "posts/related.html" $category }}
     </div>
   </div>
 </div>

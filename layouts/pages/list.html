@@ -5,15 +5,16 @@
           "image" .Params.image
           "context" .
         ) -}}
+  {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-lg-3 mb-4">
         <ul class="nav toc" id="nav-toc">
           <li class="nav-item"><a class="nav-link" href="#page-informations">Informations</a></li>
-          {{ if .Params.child_pages }}
+          {{ if .Pages }}
           <li class="nav-item"><a class="nav-link" href="#page-children">En détail</a></li>
           {{ end }}
-          {{ range .GetTerms "categories" }}
+          {{ if $category }}
           <li class="nav-item"><a class="nav-link" href="#page-posts">Actualités</a></li>
           {{ end }}
         </ul>
@@ -47,9 +48,7 @@
             </div>
           {{ end }}
 
-          {{ range .GetTerms "categories" }}
-            {{ partial "posts/related.html" .}}
-          {{ end }}
+          {{ partial "posts/related.html" $category }}
         </div>
       </div>
     </div>
