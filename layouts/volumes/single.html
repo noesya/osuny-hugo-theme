@@ -8,6 +8,17 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-lg-3 mb-2">
+        {{- if .Params.image -}}
+          {{- partial "commons/image.html"
+                (dict
+                  "image"    .Params.image
+                  "alt"      .Title
+                  "mobile"   "327x388"
+                  "tablet"   "208x247"
+                  "desktop"  "300x356"
+                  "class"    "img-fluid"
+                ) -}}
+        {{- end -}}
       </div>
       <div class="col-md-5">
         <div itemprop="articleBody">
@@ -17,20 +28,20 @@
       </div>
       <div class="col-md-3 offset-lg-1">
         <dl>
-          {%- if .Params.issn -%}
+          {{ if .Params.issn }}
             <dt>ISSN</dt>
             <dd>{{ .Params.issn }}</dd>
-          {%- endif -%}
+          {{ end }}
 
-          {%- if .Params.tags -%}
+          {{ if .Params.tags }}
             <dt>Keywords</dt>
             <dd>{{ .Params.keywords }}</dd>
-          {%- endif -%}
+          {{ end }}
 
-          {%- if .Params.date -%}
+          {{ if .Params.date }}
             <dt>Date</dt>
-            <dd><time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02 Jan 2006" }}</time></dd>
-          {%- endif -%}
+            <dd><time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02/01/2006" }}</time></dd>
+          {{ end }}
         </dl>
       </div>
     </div>
