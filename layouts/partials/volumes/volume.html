@@ -16,7 +16,7 @@
     {{- end -}}
   </div>
   <div class="card-body">
-    <p class="card-subtitle">Volume {{ .Number }}</p>
+    <p class="card-subtitle">Volume {{ .Params.Number }}</p>
     <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
     <a href="{{ .Permalink }}" class="stretched-link link link--more">En savoir plus</a>
   </div>
