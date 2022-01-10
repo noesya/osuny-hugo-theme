@@ -5,12 +5,14 @@
           "image" .Params.image
           "context" .
         ) -}}
+<article itemscope itemtype="">
+  <meta itemprop="name" content="{{ .Title }}">
   <div class="container">
 
     <div class="row mb-5">
       <div class="col-md-8">
         <section class="mb-5">
-          <p>{{ .Params.Abstract }}</p>
+          <p>{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
         <section class="mb-5">
           <h2>Authors</h2>
@@ -32,7 +34,7 @@
         </section>
         <section class="mb-5" id="full-text">
           <h2>Full text</h2>
-          {{ .Content | markdownify }}
+          {{ safeHTML (partial "CorrectPunctuation" .Content) | markdownify }}
         </section>
         {{ if isset .Params "references" }}
           <section class="mb-5">
@@ -54,12 +56,12 @@
 
           {{ if isset .Params "type" }}
             <dt>Nature</dt>
-            <dd>{{ .Params.Type }}</dd>
+            <dd>{{ safeHTML (partial "CorrectPunctuation" .Params.Type) }}</dd>
           {{ end }}
 
           {{ if isset .Params "keywords" }}
             <dt>Mot-clés</dt>
-            <dd>{{ .Params.Keywords }}</dd>
+            <dd>{{ delimit .Params.Keywords " " }}</dd>
           {{ end }}
 
           {{ if isset .Params "lang" }}
@@ -78,5 +80,6 @@
     </div>
 
   </div>
+</article>
 
 {{ end }}

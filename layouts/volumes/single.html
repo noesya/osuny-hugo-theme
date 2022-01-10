@@ -5,6 +5,8 @@
           "image" .Params.image
           "context" .
         ) -}}
+<article itemscope itemtype="">
+  <meta itemprop="name" content="{{ .Title }}">
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-lg-3 mb-2">
@@ -78,6 +80,6 @@
     </div>
 
   </div>
-
+</article>
 
 {{ end }}
