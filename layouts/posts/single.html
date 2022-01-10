@@ -6,11 +6,11 @@
           "context" .
         ) -}}
 
-  <article itemscope itemtype="">
-    <meta itemprop="headline" content="{{page.title}}">
-    <meta itemprop="url" content="{{ page.url | absolute_url }}">
+  <article itemscope itemtype="NewsArticle">
+    <meta itemprop="headline" content="{{ .Title }}">
+    <meta itemprop="url" content="{{ .Permalink }}">
     {{ if .Date }}<meta itemprop="datePublished" content="{{ .Date }}">{{ end }}
-    {{ if .Params.Excerpt }}<meta itemprop="description" content="{{ .Params.Excerpt }}">{{ end }}
+    {{ if .Summary }}<meta itemprop="description" content="{{ .Summary }}">{{ end }}
 
     <div class="container">
       <div class="row">
