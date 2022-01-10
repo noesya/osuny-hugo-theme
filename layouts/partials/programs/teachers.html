@@ -1,18 +1,22 @@
 <table class="table table-hover">
   <tbody>
-    {{ range . }}
-      {{ $slug := .person }}
-      {{ $description := .description }}
-      {{ with site.GetPage "persons" }}
+    {{ $descriptions := .descriptions }}
+    {{ range .teachers }}
+      {{ $slug := . }}
+      {{ with site.GetPage "teachers" }}
         {{ with .GetPage $slug }}
           <tr>
             <td class="ps-0">
               <a href="{{ .Permalink }}">
-                {{ safeHTML .Title }}
+                {{ safeHTML .Params.person }}
               </a>
             </td>
             <td class="pe-0 text-end">
-              {{ safeHTML $description }}
+              {{ range $key, $value := $descriptions }}
+                {{ if eq $key $slug }}
+                  {{ safeHTML $value}}
+                {{ end }}
+              {{ end }}
             </td>
           </tr>
         {{ end }}
