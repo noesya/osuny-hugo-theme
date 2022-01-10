@@ -1,0 +1,80 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "image" .Params.image
+          "context" .
+        ) -}}
+  <div class="container">
+
+    <div class="row mb-5">
+      <div class="col-md-8">
+        <section class="mb-5">
+          <p>{{ .Params.Abstract }}</p>
+        </section>
+        <section class="mb-5">
+          <h2>Authors</h2>
+          <div class="row">
+            {{ range .Params.Researchers }}
+              {{ $slug := . }}
+
+              <div class="col-md-6 mb-3">
+                <p class="mb-0">
+                  <a href="">
+                    {{ $slug }}
+                  </a>
+                </p>
+                <p class="small"></p>
+              </div>
+            {{ end }}
+
+          </div>
+        </section>
+        <section class="mb-5" id="full-text">
+          <h2>Full text</h2>
+          {{ .Content | markdownify }}
+        </section>
+        {{ if isset .Params "references" }}
+          <section class="mb-5">
+            <h2>References</h2>
+            <p>
+              {{ .Params.References }}
+            </p>
+          </section>
+        {{ end }}
+      </div>
+      <div class="col-md-3 offset-md-1">
+        <dl>
+          <dd>
+            {{ if isset .Params "pdf" }}
+              <a href="{{ .Params.pdf }}" target="_blank" class="btn btn--download btn-secondary mb-1" download>Download PDF</a><br>
+            {{ end }}
+            <a href="#full-text" class="btn btn--eye btn-secondary">Read online</a>
+          </dd>
+
+          {{ if isset .Params "type" }}
+            <dt>Nature</dt>
+            <dd>{{ .Params.Type }}</dd>
+          {{ end }}
+
+          {{ if isset .Params "keywords" }}
+            <dt>Mot-clés</dt>
+            <dd>{{ .Params.Keywords }}</dd>
+          {{ end }}
+
+          {{ if isset .Params "lang" }}
+            <dt>Langue</dt>
+            <dd>{{ .Params.Lang }}</dd>
+          {{ end }}
+
+          {{ if isset .Params "publication" }}
+            <dt>Date</dt>
+            <dd>{{ .Params.Publication }}</dd>
+          {{ end }}
+        </dl>
+      </div>
+    </div>
+
+  </div>
+
+{{ end }}
