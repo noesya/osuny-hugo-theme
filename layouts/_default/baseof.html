@@ -6,7 +6,7 @@
     {{- partial "head/css.html" -}}
     {{- partial "head/seo.html" . -}}
   </head>
-  <body class="{{ .Type }}__{{ .Kind }}">
+  <body class="{{ .Type }}__{{ .Kind }}"{{ if eq .Kind "section" }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="0"{{ end }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
     <main class="main" id="main" aria-label="Content">
