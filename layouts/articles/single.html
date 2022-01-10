@@ -69,6 +69,11 @@
             <dd>{{ .Params.Lang }}</dd>
           {{ end }}
 
+          {{ range .GetTerms "volumes" }}
+            <dt>Volume</dt>
+            <dd><a href="{{ .Permalink }}">{{ .Title }}</a></dd>
+          {{ end }}
+
           {{ if isset .Params "publication" }}
             <dt>Date</dt>
             <dd>

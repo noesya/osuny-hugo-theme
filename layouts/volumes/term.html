@@ -52,7 +52,7 @@
         <div class="col-md-8">
           <h2>Table</h2>
           <ol class="list-unstyled">
-            {{ range $index, $s := (where .Site.Pages "Section" "articles") }}
+            {{ range $index, $s := .Pages }}
               {{ $modalId := "modalID_temp" }}
               <li class="row flex-md-row-reverse mt-4">
                 <div class="col-md-4 text-md-end">
