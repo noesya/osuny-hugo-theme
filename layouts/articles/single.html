@@ -69,7 +69,9 @@
 
           {{ if isset .Params "publication" }}
             <dt>Date</dt>
-            <dd>{{ .Params.Publication }}</dd>
+            <dd>
+              <time datetime="{{ .Params.Publication | time.Format "2006-01-02T15:04" }}">{{ .Params.Publication | time.Format ":date_long" }}</time>
+            </dd>
           {{ end }}
         </dl>
       </div>

@@ -40,7 +40,7 @@
 
           {{ if .Params.date }}
             <dt>Date</dt>
-            <dd><time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02/01/2006" }}</time></dd>
+            <dd><time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
           {{ end }}
         </dl>
       </div>
@@ -67,7 +67,7 @@
                   <div class="d-grid gap-2 d-lg-block">
                     <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}">Read</a>
                     <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Abstract</button>
-                    <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary">PDF</a>
+                    <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>PDF</a>
                   </div>
                   {{ partial "volumes/modal.html" (dict "modalId" $modalId) }}
                 </div>
