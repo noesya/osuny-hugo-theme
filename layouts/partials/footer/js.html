@@ -1,2 +1,2 @@
-<script src="/assets/js/js.cookie-2.2.1.min.js"></script>
-<script src="/assets/js/main.js"></script>
+{{ $js := resources.Get "js/main.js" | js.Build (dict "minify" hugo.IsProduction) }}
+<script src="{{ $js.RelPermalink }}"></script>
