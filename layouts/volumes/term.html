@@ -5,8 +5,10 @@
           "image" .Params.image
           "context" .
         ) -}}
-<article itemscope itemtype="">
+<article itemscope itemtype="https://schema.org/PublicationVolume">
   <meta itemprop="name" content="{{ .Title }}">
+  <meta itemprop="image" content="{{ .Params.image }}">
+
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-lg-3 mb-2">
@@ -25,24 +27,23 @@
       <div class="col-md-5">
         <div itemprop="articleBody">
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.text) }}
         </div>
       </div>
       <div class="col-md-3 offset-lg-1">
         <dl>
           {{ if .Params.issn }}
             <dt>ISSN</dt>
-            <dd>{{ .Params.issn }}</dd>
+            <dd itemprop="issn">{{ .Params.issn }}</dd>
           {{ end }}
 
           {{ if .Params.keywords }}
             <dt>Keywords</dt>
-            <dd>{{ .Params.keywords }}</dd>
+            <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
           {{ end }}
 
           {{ if .Params.date }}
             <dt>Date</dt>
-            <dd><time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
+            <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
           {{ end }}
         </dl>
       </div>
@@ -54,20 +55,20 @@
           <ol class="list-unstyled">
             {{ range $index, $s := .Pages }}
               {{ $modalId := "modalID_temp" }}
-              <li class="row flex-md-row-reverse mt-4">
+              <li class="row flex-md-row-reverse mt-4" itemprop="hasPart" itemscope itemtype="https://schema.org/PublicationIssue">
                 <div class="col-md-4 text-md-end">
                   <small class="text-uppercase">Article</small>
                 </div>
                 <div class="col-md-8">
-                  <h3><a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></h3>
+                  <h3><a href="{{ .Permalink }}" itemprop="name">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></h3>
                   <p>
                     {{ range .Params.Researchers }}
-                      {{ $slug := . }}
-                      {{ $slug }}
+                      {{ $author := site.GetPage (printf "/persons/%s" .) }}
+                      <a href="{{ $author.Permalink }}" itemprop="author">{{ trim $author.Title "\n" }}</a>
                     {{ end }}
                   </p>
                   <div class="d-grid gap-2 d-lg-block">
-                    <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}">Read</a>
+                    <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}" itemprop="url">Read</a>
                     <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Abstract</button>
                     <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>PDF</a>
                   </div>

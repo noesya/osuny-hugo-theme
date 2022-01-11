@@ -5,28 +5,29 @@
           "image" .Params.image
           "context" .
         ) -}}
-<article itemscope itemtype="">
+<article itemscope itemtype="PublicationIssue">
   <meta itemprop="name" content="{{ .Title }}">
-  <div class="container">
 
+  <div class="container">
     <div class="row mb-5">
       <div class="col-md-8">
         <section class="mb-5">
-          <p>{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
+          <p itemprop="description">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
         <section class="mb-5">
           <h2>Authors</h2>
           <div class="row">
+
             {{ range .Params.Researchers }}
-              {{ $slug := . }}
+              {{ $author := site.GetPage (printf "/persons/%s" .) }}
 
               <div class="col-md-6 mb-3">
                 <p class="mb-0">
-                  <a href="">
-                    {{ $slug }}
+                  <a href="{{ $author.Permalink }}" itemprop="author">
+                    {{ $author.Title }}
                   </a>
                 </p>
-                <p class="small"></p>
+                <p class="small">Biography…</p>
               </div>
             {{ end }}
 
@@ -49,7 +50,7 @@
         <dl>
           <dd>
             {{ if isset .Params "pdf" }}
-              <a href="{{ .Params.pdf }}" target="_blank" class="btn btn--download btn-secondary mb-1" download>Download PDF</a><br>
+              <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary mb-1" download>Download PDF</a><br>
             {{ end }}
             <a href="#full-text" class="btn btn--eye btn-secondary">Read online</a>
           </dd>
@@ -61,23 +62,25 @@
 
           {{ if isset .Params "keywords" }}
             <dt>Mot-clés</dt>
-            <dd>{{ delimit .Params.Keywords " " }}</dd>
+            <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
           {{ end }}
 
           {{ if isset .Params "lang" }}
             <dt>Langue</dt>
-            <dd>{{ .Params.Lang }}</dd>
+            <dd itemprop="inLanguage" content="{{ .Params.Lang_iso }}">{{ .Params.Lang }}</dd>
           {{ end }}
 
           {{ range .GetTerms "volumes" }}
             <dt>Volume</dt>
-            <dd><a href="{{ .Permalink }}">{{ .Title }}</a></dd>
+            <dd itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationVolume">
+              <a href="{{ .Permalink }}" itemprop="name">{{ .Title }}</a>
+            </dd>
           {{ end }}
 
           {{ if isset .Params "publication" }}
             <dt>Date</dt>
             <dd>
-              <time datetime="{{ .Params.Publication | time.Format "2006-01-02T15:04" }}">{{ .Params.Publication | time.Format ":date_long" }}</time>
+              <time itemprop="datePublished" datetime="{{ .Params.Publication | time.Format "2006-01-02T15:04" }}">{{ .Params.Publication | time.Format ":date_long" }}</time>
             </dd>
           {{ end }}
         </dl>
