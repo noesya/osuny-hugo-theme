@@ -12,7 +12,7 @@
     <div class="row mb-5">
       <div class="col-md-8">
         <section class="mb-5">
-          <p itemprop="description">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
+          <p itemprop="abstract">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
         <section class="mb-5">
           <h2>Authors</h2>
@@ -20,14 +20,13 @@
 
             {{ range .Params.Researchers }}
               {{ $author := site.GetPage (printf "/persons/%s" .) }}
-
-              <div class="col-md-6 mb-3">
+              <div class="col-md-6 mb-3" itemprop="author" itemscope itemtype="https://schema.org/Person">
                 <p class="mb-0">
-                  <a href="{{ $author.Permalink }}" itemprop="author">
-                    {{ $author.Title }}
+                  <a href="{{ $author.Permalink }}" itemprop="url">
+                    <span itemprop="name">{{ $author.Title }}</span>
                   </a>
                 </p>
-                <p class="small">Biography…</p>
+                <p class="small" itemprop="description">Biography…</p>
               </div>
             {{ end }}
 
@@ -35,7 +34,9 @@
         </section>
         <section class="mb-5" id="full-text">
           <h2>Full text</h2>
-          {{ safeHTML (partial "CorrectPunctuation" .Content) | markdownify }}
+          <div class="description">
+            {{ safeHTML (partial "CorrectPunctuation" .Content) | markdownify }}
+          </div>
         </section>
         {{ if isset .Params "references" }}
           <section class="mb-5">
