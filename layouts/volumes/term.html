@@ -7,6 +7,8 @@
         ) -}}
 <article itemscope itemtype="https://schema.org/PublicationVolume">
   <meta itemprop="name" content="{{ .Title }}">
+  <meta itemprop="image" content="{{ .Params.image }}">
+
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-lg-3 mb-2">
@@ -62,7 +64,7 @@
                   <p>
                     {{ range .Params.Researchers }}
                       {{ $author := site.GetPage (printf "/persons/%s" .) }}
-                      <a href="{{ $author.Permalink }}" itemprop="author">{{- $author.Title -}}</a>
+                      <a href="{{ $author.Permalink }}" itemprop="author">{{ trim $author.Title "\n" }}</a>
                     {{ end }}
                   </p>
                   <div class="d-grid gap-2 d-lg-block">
