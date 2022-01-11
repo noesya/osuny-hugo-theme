@@ -10,9 +10,5 @@
     "js-cookie": "^3.0.1",
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0"
-  },
-  "scripts": {
-    "watch": "hugo server",
-    "build": "hugo --minify"
   }
 }
