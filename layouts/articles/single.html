@@ -5,7 +5,7 @@
           "image" .Params.image
           "context" .
         ) -}}
-<article itemscope itemtype="PublicationIssue">
+<article itemscope itemtype="ScholarlyArticle">
   <meta itemprop="name" content="{{ .Title }}">
 
   <div class="container">
@@ -34,7 +34,7 @@
         </section>
         <section class="mb-5" id="full-text">
           <h2>Full text</h2>
-          <div class="description">
+          <div class="articleBody">
             {{ safeHTML (partial "CorrectPunctuation" .Content) | markdownify }}
           </div>
         </section>

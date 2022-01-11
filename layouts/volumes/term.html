@@ -29,17 +29,12 @@
         {{- end -}}
       </div>
       <div class="col-md-5">
-        <div itemprop="abstract">
+        <div itemprop="description">
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
         </div>
       </div>
       <div class="col-md-3 offset-lg-1">
         <dl>
-          {{ if .Params.issn }}
-            <dt>ISSN</dt>
-            <dd itemprop="issn">{{ .Params.issn }}</dd>
-          {{ end }}
-
           {{ if .Params.keywords }}
             <dt>Keywords</dt>
             <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
@@ -59,9 +54,9 @@
           <ol class="list-unstyled">
             {{ range $index, $s := .Pages }}
               {{ $modalId := "modalID_temp" }}
-              <li class="row flex-md-row-reverse mt-4" itemprop="hasPart" itemscope itemtype="https://schema.org/PublicationIssue">
+              <li class="row flex-md-row-reverse mt-4" itemprop="hasPart" itemscope itemtype="https://schema.org/ScholarlyArticle">
                 <div class="col-md-4 text-md-end">
-                  <small class="text-uppercase">Article</small>
+                  <small class="text-uppercase" itemprop="articleSection">Article</small>
                 </div>
                 <div class="col-md-8">
                   <h3><a href="{{ .Permalink }}" itemprop="name">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></h3>

@@ -4,7 +4,9 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="modal-body">
         <h5 class="modal-title h5 mb-2" id="{{ .modalId }}Label">{{ .Title }}</h5>
-        {{ .Params.abstract }}
+        <div itemprop="abstract">
+          {{ .Params.abstract }}
+        </div>
       </div>
     </div>
   </div>
