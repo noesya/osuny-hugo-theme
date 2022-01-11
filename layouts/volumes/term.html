@@ -5,7 +5,7 @@
           "image" .Params.image
           "context" .
         ) -}}
-<article itemscope itemtype="">
+<article itemscope itemtype="https://schema.org/PublicationVolume">
   <meta itemprop="name" content="{{ .Title }}">
   <div class="container">
     <div class="row">
@@ -25,24 +25,23 @@
       <div class="col-md-5">
         <div itemprop="articleBody">
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-          {{ safeHTML (partial "CorrectPunctuation" .Params.text) }}
         </div>
       </div>
       <div class="col-md-3 offset-lg-1">
         <dl>
           {{ if .Params.issn }}
             <dt>ISSN</dt>
-            <dd>{{ .Params.issn }}</dd>
+            <dd itemprop="issn">{{ .Params.issn }}</dd>
           {{ end }}
 
           {{ if .Params.keywords }}
             <dt>Keywords</dt>
-            <dd>{{ .Params.keywords }}</dd>
+            <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
           {{ end }}
 
           {{ if .Params.date }}
             <dt>Date</dt>
-            <dd><time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
+            <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
           {{ end }}
         </dl>
       </div>
@@ -62,8 +61,8 @@
                   <h3><a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></h3>
                   <p>
                     {{ range .Params.Researchers }}
-                      {{ $slug := . }}
-                      {{ $slug }}
+                      {{ $author := site.GetPage (printf "/persons/%s" .) }}
+                      <a href="{{ $author.Permalink }}" itemprop="author">{{- $author.Title -}}</a>
                     {{ end }}
                   </p>
                   <div class="d-grid gap-2 d-lg-block">

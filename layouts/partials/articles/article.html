@@ -1,6 +1,11 @@
 <article class="card card--article">
   <div class="card-body">
-    <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
-    <a href="{{ .Permalink }}" class="stretched-link link link--more">{{ i18n "commons.more" }}</a>
+    <p class="card-title">
+      <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+    </p>
+    {{ range .Params.Volumes }}
+      {{ $volume := site.GetPage (printf "/volumes/%s" .) }}
+      <p class="card-text">In “<a href="{{ $volume.Permalink }}">{{ $volume.Title }}</a>”</p>
+    {{ end }}
   </div>
 </article>
