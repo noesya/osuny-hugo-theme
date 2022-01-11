@@ -12,11 +12,7 @@
               </a>
             </td>
             <td class="pe-0 text-end">
-              {{ range $key, $value := $descriptions }}
-                {{ if eq $key $slug }}
-                  {{ safeHTML $value}}
-                {{ end }}
-              {{ end }}
+              {{ safeHTML (index $descriptions $slug) }}
             </td>
           </tr>
         {{ end }}

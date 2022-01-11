@@ -73,7 +73,11 @@
               {{ safeHTML (partial "CorrectPunctuation" $content) }}
               {{ partial "programs/roles.html" $params.roles }}
             {{ else if eq . "teachers" }}
-              {{ partial "programs/teachers.html" (dict "context" . "teachers" $params.teachers "descriptions" $params.teachers_description) }}
+              {{ partial "programs/teachers.html"
+                            (dict
+                              "teachers" $params.teachers
+                              "descriptions" $params.teachers_description
+                            ) }}
             {{ else }}
               {{ safeHTML (partial "CorrectPunctuation" $content) }}
             {{ end }}
