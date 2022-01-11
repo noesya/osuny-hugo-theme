@@ -53,12 +53,12 @@
           <ol class="list-unstyled">
             {{ range $index, $s := .Pages }}
               {{ $modalId := "modalID_temp" }}
-              <li class="row flex-md-row-reverse mt-4">
+              <li class="row flex-md-row-reverse mt-4" itemprop="hasPart" itemscope itemtype="https://schema.org/PublicationIssue">
                 <div class="col-md-4 text-md-end">
                   <small class="text-uppercase">Article</small>
                 </div>
                 <div class="col-md-8">
-                  <h3><a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></h3>
+                  <h3><a href="{{ .Permalink }}" itemprop="name">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></h3>
                   <p>
                     {{ range .Params.Researchers }}
                       {{ $author := site.GetPage (printf "/persons/%s" .) }}
@@ -66,7 +66,7 @@
                     {{ end }}
                   </p>
                   <div class="d-grid gap-2 d-lg-block">
-                    <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}">Read</a>
+                    <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}" itemprop="url">Read</a>
                     <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Abstract</button>
                     <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>PDF</a>
                   </div>

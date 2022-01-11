@@ -5,14 +5,14 @@
           "image" .Params.image
           "context" .
         ) -}}
-<article itemscope itemtype="">
+<article itemscope itemtype="PublicationIssue">
   <meta itemprop="name" content="{{ .Title }}">
   <div class="container">
 
     <div class="row mb-5">
       <div class="col-md-8">
         <section class="mb-5">
-          <p>{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
+          <p itemprop="description">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
         <section class="mb-5">
           <h2>Authors</h2>
