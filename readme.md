@@ -6,9 +6,21 @@
 git submodule add https://github.com/noesya/hugo-osuny.git themes/hugo-osuny
 ```
 
-Puis dans le config.yaml
+Dans le config.yaml
 ```
 theme: hugo-osuny
+```
+
+Puis il faut créer un package.json avec ```yarn init``` et y ajouter : 
+
+```
+"dependencies": {
+  "hugo-osuny": "./themes/hugo-osuny"
+},
+"scripts": {
+  "watch": "hugo server",
+  "build": "hugo --minify"
+}
 ```
 
 ## Home page
