@@ -59,7 +59,11 @@
                   <small class="text-uppercase" itemprop="articleSection">Article</small>
                 </div>
                 <div class="col-md-8">
-                  <h3><a href="{{ .Permalink }}" itemprop="name">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></h3>
+                  <h3>
+                    <a href="{{ .Permalink }}" itemprop="url">
+                      <span itemprop="name">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</span>
+                    </a>
+                  </h3>
                   <p>
                     {{ range .Params.Researchers }}
                       {{ $author := site.GetPage (printf "/persons/%s" .) }}

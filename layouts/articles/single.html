@@ -74,7 +74,9 @@
           {{ range .GetTerms "volumes" }}
             <dt>Volume</dt>
             <dd itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationVolume">
-              <a href="{{ .Permalink }}" itemprop="name">{{ .Title }}</a>
+              <a href="{{ .Permalink }}" itemprop="url">
+                <span itemprop="name">{{ .Title }}</span>
+              </a>
             </dd>
           {{ end }}
 
