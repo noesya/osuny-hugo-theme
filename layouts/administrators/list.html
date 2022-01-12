@@ -11,7 +11,7 @@
       <div class="col">
         <article class="card mb-4">
           <div class="card-body">
-            <p class="card-title">{{ .Title }}</p>
+            <p class="card-title">{{ safeHTML .Params.person }}</p>
             {{ if .Content }}
               <p class="small mb-2">{{ truncate 50 (plainify .Content) }}</p>
             {{ end }}

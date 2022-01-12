@@ -4,21 +4,43 @@
           "title" .Title
           "context" .
         ) -}}
+  {{ $slug := .Slug }}
   <div class="container">
     {{ if .Content }}
       <div class="row mb-5">
         <div class="col-md-8">
-          {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+          <p class="lead">
+            <em>
+              {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+            </em>
+          </p>
+        </div>
+        <div class="col-md-4">
+          {{ $slug := .Slug }}
+          {{ range (index site.Taxonomies.teachers $slug) }}
+            <p>
+              {{ safeHTML (index .Params.teachers_description $slug)}}
+            </p>
+            <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a>
+          {{ end }}
         </div>
       </div>
+    {{ end }}
+
+    {{ if in .Params.roles "teacher" }}
+      <h2>Enseignements</h2>
+      {{ range (index site.Taxonomies.teachers $slug) }}
+        <p>
+          {{ safeHTML (index .Params.teachers_description $slug)}}
+        </p>
+        <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a>
+      {{ end }}
     {{ end }}
 
     {{ if in .Params.roles "author" }}
     <a href="actualites/">Actualités</a>
     {{ end }}
-    {{ if in .Params.roles "teacher" }}
-    <a href="formations/">Enseignements</a>
-    {{ end }}
+
     {{ if in .Params.roles "administrator" }}
     <a href="administration/">Charges administratives</a>
     {{ end }}

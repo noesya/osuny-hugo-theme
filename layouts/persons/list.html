@@ -10,7 +10,11 @@
       {{ range $name, $t := .Site.Taxonomies }}
         {{ if ne $name "categories" }}
           {{- with $.Site.GetPage "taxonomyTerm" $name}}
-            <li class="list-inline-item"><a href="{{ .Permalink }}" class="link link--more">{{ .Title }}</a></li>
+            {{ if .Pages }}
+              <li class="list-inline-item">
+                <a href="{{ .Permalink }}" class="link link--more">{{ .Title }}</a>
+              </li>
+            {{ end }}
           {{ end -}}
         {{ end }}
       {{ end }}
