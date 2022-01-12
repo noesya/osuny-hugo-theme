@@ -5,19 +5,51 @@
           "context" .
         ) -}}
   <div class="container">
-    {{ if .Content }}
-      <div class="row mb-5">
+
+    {{ $slug := .Slug }}
+
+    <div class="row mb-6">
+      {{ if .Content }}
         <div class="col-md-8">
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
         </div>
-      </div>
-    {{ end }}
+        {{ end }}
+        <div class="col-md-4">
+          Cheffe de département
+          <a href="#" class="link link--more">BUT Métiers du Multimédia et de l'Internet</a>
+        </div>
+    </div>
 
+    <section class="mb-6">
+      <div class="top">
+        <h2>Enseignements</h2>
+      </div>
+      <ul class="list">
+        <li>
+          <div>
+            <p>Théories de l'information, cyber-sécurité</p>
+          </div>
+          <div>
+            <a href="#" class="link link--more">BUT Métiers du Multimédia et de l'Internet</a>
+          </div>
+        </li>
+        <li>
+          <div>
+            <p>La transition numérique à l’épreuve du cyberharcèlement : des violences en ligne aux stratégies de résilience</p>
+          </div>
+          <div>
+            <a href="#" class="link link--more">BUT Métiers du Multimédia et de l'Internet</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+
+    {{ if in .Params.roles "teacher" }}
+    <a href="teachers/">Teachers</a>
+    {{ end }}
     {{ if in .Params.roles "author" }}
     <a href="actualites/">Actualités</a>
-    {{ end }}
-    {{ if in .Params.roles "teacher" }}
-    <a href="formations/">Enseignements</a>
     {{ end }}
     {{ if in .Params.roles "administrator" }}
     <a href="administration/">Charges administratives</a>
