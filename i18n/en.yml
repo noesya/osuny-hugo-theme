@@ -23,4 +23,6 @@ volumes:
   issn: ISSN
   keywords: Keywords
   nature: Nature
+  plural_name: Volumes
+  singular_name: Volume
   table: Table

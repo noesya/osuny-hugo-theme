@@ -72,7 +72,7 @@
           {{ end }}
 
           {{ range .GetTerms "volumes" }}
-            <dt>{{ i18n "volumes.volume" }}</dt>
+            <dt>{{ i18n "volumes.singular_name" }}</dt>
             <dd itemprop="isPartOf" itemscope itemtype="https://schema.org/PublicationVolume">
               <a href="{{ .Permalink }}" itemprop="url">
                 <span itemprop="name">{{ .Title }}</span>

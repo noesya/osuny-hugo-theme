@@ -41,4 +41,6 @@ volumes:
   issn: ISSN
   keywords: Mots-clés
   nature: Nature
+  plural_name: Volumes
+  singular_name: Volume
   table: Table
