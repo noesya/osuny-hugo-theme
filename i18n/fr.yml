@@ -1,6 +1,11 @@
 commons:
   date: Date
   more: En savoir plus
+cookie:
+  accept: Accepter
+  more: En savoir plus
+  refuse: Refuser
+  text: Ce site utilise des cookies pour améliorer l’expérience de navigation et fournir des fonctionnalités supplémentaires.
 programs:
   _accessibility: Accessibilité
   _contacts: Contacts

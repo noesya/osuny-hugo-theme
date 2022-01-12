@@ -1,6 +1,11 @@
 commons:
   date: Date
   more: Read more
+cookie:
+  accept: Accept
+  more: Read more
+  refuse: Refuse
+  text: This site uses cookies to improve the browsing experience and provide additional functionality.
 volumes:
   keywords: Keywords
   issn: ISSN

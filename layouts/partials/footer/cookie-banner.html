@@ -1,10 +1,10 @@
 <div class="gdpr-cookie-consent js-gdpr-cookie-consent">
   <div class="gdpr-cookie-consent__text">
-    Ce site utilise des cookies pour améliorer l'expérience de navigation et fournir des fonctionnalités supplémentaires.
-    <a href="/gestion-des-cookies">En savoir plus</a>
+    {{ i18n "cookie.text" }}
+    <a href="/gestion-des-cookies">{{ i18n "cookie.more" }}</a>
   </div>
   <div class="gdpr-cookie-consent__buttons">
-    <button class="js-gdpr-cookie-consent-btn-ok btn btn-primary me-1">Accepter</button>
-    <button class="js-gdpr-cookie-consent-btn-ko btn btn-danger">Refuser</button>
+    <button class="js-gdpr-cookie-consent-btn-ok btn btn-primary me-1">{{ i18n "cookie.accept" }}</button>
+    <button class="js-gdpr-cookie-consent-btn-ko btn btn-primary">{{ i18n "cookie.refuse" }}</button>
   </div>
 </div>
