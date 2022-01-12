@@ -36,12 +36,12 @@
       <div class="col-md-3 offset-lg-1">
         <dl>
           {{ if .Params.keywords }}
-            <dt>Keywords</dt>
+            <dt>{{ i18n "volumes.keywords" }}</dt>
             <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
           {{ end }}
 
           {{ if .Params.date }}
-            <dt>Date</dt>
+            <dt>{{ i18n "commons.date" }}</dt>
             <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
           {{ end }}
         </dl>
@@ -50,13 +50,13 @@
 
     <div class="row">
         <div class="col-md-8">
-          <h2>Table</h2>
+          <h2>{{ i18n "volumes.table" }}</h2>
           <ol class="list-unstyled">
             {{ range $index, $s := .Pages }}
               {{ $modalId := "modalID_temp" }}
               <li class="row flex-md-row-reverse mt-4" itemprop="hasPart" itemscope itemtype="https://schema.org/ScholarlyArticle">
                 <div class="col-md-4 text-md-end">
-                  <small class="text-uppercase" itemprop="articleSection">Article</small>
+                  <small class="text-uppercase" itemprop="articleSection">{{ i18n "volumes.article.singular_name" }}</small>
                 </div>
                 <div class="col-md-8">
                   <h3>
@@ -75,9 +75,9 @@
                     {{ end }}
                   </p>
                   <div class="d-grid gap-2 d-lg-block">
-                    <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}" itemprop="url">Read</a>
-                    <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">Abstract</button>
-                    <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>PDF</a>
+                    <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}" itemprop="url">{{ i18n "commons.read" }}</a>
+                    <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">{{ i18n "volumes.abstract" }}</button>
+                    <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>{{ i18n "commons.pdf" }}</a>
                   </div>
                   {{ partial "volumes/modal.html" (dict "modalId" $modalId) }}
                 </div>
