@@ -22,15 +22,7 @@
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
       {{ range .Pages }}
         <div class="col">
-          <article class="card mb-4">
-            <div class="card-body">
-              <p class="card-title">{{ safeHTML .Title }}</p>
-              {{ if .Params.biography }}
-                <p class="small mb-2">{{ truncate 50 (plainify .Params.biography) }}</p>
-              {{ end }}
-              <a href="{{ .Permalink }}" class="stretched-link link link--more">{{ i18n "commons.more" }}</a>
-            </div>
-          </article>
+          {{ partial "persons/person.html" . }}
         </div>
       {{ end }}
     </div>
