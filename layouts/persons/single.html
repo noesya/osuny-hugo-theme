@@ -1,14 +1,33 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "context" .
-        ) -}}
   {{ $slug := .Slug }}
   {{ $programsForTeacher := index site.Taxonomies.teachers $slug}}
   {{ $programsForAdministrator := index site.Taxonomies.administrators $slug}}
   {{ $programsForTeacherAndAdministrator := union $programsForTeacher $programsForAdministrator }}
   {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
+  <header class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <h1>{{ safeHTML (partial "CorrectPunctuation" .Title) }}</h1>
+        </div>
+        <div class="col-md-2 person__image">
+          {{ if .Params.image }}
+            {{ partial "commons/image.html"
+                  (dict
+                    "image"    .Params.image
+                    "class"    "img-fluid"
+                    "mobile"   "100x100"
+                    "tablet"   "152x152"
+                    "desktop"  "152x152"
+                  )}}
+          {{ end }}
+        </div>
+      </div>
+      <div class="hero__nav">
+        {{ partial "header/breadcrumbs.html" (dict "context" .) }}
+      </div>
+    </div>
+  </header>
   <div class="container">
     <div class="row mb-6">
       {{ if .Content }}
@@ -20,16 +39,6 @@
           </p>
         </div>
         <div class="col-md-4">
-          {{ if .Params.image }}
-            {{ partial "commons/image.html"
-                  (dict
-                    "image"    .Params.image
-                    "class"    "img-fluid"
-                    "mobile"   "100x100"
-                    "tablet"   "152x152"
-                    "desktop"  "152x152"
-                  )}}
-          {{ end }}
           {{ range $programsForTeacherAndAdministrator }}
             {{ $program := . }}
             {{ range .Params.roles }}
