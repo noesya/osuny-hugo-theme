@@ -14,6 +14,9 @@
         {{- $linkClass = printf "%s dropdown-toggle" $linkClass -}}
         {{- $attr = printf "id=\"dropdown-%s\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"" $slug -}}
       {{- end -}}
+      {{- if eq .kind "url" -}}
+        {{- $attr = " target=\"_blank\" rel=\"noreferrer\"" -}}
+      {{- end -}}
       <li class="{{ $itemClass }}">
         {{- if .target -}}
           <a href="{{ .target }}" class="{{ $linkClass }}" {{ safeHTMLAttr $attr }}>{{ .title }}</a>
