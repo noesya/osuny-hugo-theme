@@ -14,7 +14,7 @@ commons:
   pdf: PDF
   read: Lire
   read_online: Lire en ligne
-cookie:
+cookie_banner:
   accept: Accepter
   more: En savoir plus
   refuse: Refuser
