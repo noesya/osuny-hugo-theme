@@ -11,13 +11,13 @@
       <div class="col-md-4 col-lg-3 mb-4">
         <ul class="nav toc" id="nav-toc">
           {{ if or $category .Pages }}
-          <li class="nav-item"><a class="nav-link" href="#page-informations">Informations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
           {{ end }}
           {{ if .Pages }}
-          <li class="nav-item"><a class="nav-link" href="#page-children">En détail</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a></li>
           {{ end }}
           {{ if $category }}
-          <li class="nav-item"><a class="nav-link" href="#page-posts">Actualités</a></li>
+          <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a></li>
           {{ end }}
         </ul>
       </div>
@@ -39,7 +39,7 @@
           {{ if .Pages }}
             <hr class="my-5">
             <div class="top">
-              <h2 id="page-children">En détail</h2>
+              <h2 id="page-children">{{ i18n "pages.details" }}</h2>
             </div>
             <div class="row row-cols-md-2 g-3">
               {{ range sort .Pages ".Params.position"  }}

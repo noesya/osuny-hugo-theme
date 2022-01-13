@@ -1,4 +1,10 @@
+categories:
+  no_post: Aucun article dans cette catégorie
+  see_more:
+    one: Voir l'article
+    other: Voir les {{ .Count }} articles
 commons:
+  biography: Biographie
   date: Date
   download:
     singular_name: Télécharger
@@ -13,6 +19,22 @@ cookie:
   more: En savoir plus
   refuse: Refuser
   text: Ce site utilise des cookies pour améliorer l’expérience de navigation et fournir des fonctionnalités supplémentaires.
+page_not_found: 404 page non trouvée
+pages:
+  details: En détail
+  informations: Informations
+  posts: Actualités
+persons:
+  posts: Actualités
+  programs: Enseignements
+  publications: Publications
+posts:
+  author: Auteur·rice
+  category: Catégorie
+  date: Date
+  informations: Informations
+  see_all: Voir toutes les actualités
+  share: Partager sur
 programs:
   _accessibility: Accessibilité
   _contacts: Contacts
