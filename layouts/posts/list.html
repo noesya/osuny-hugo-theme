@@ -13,6 +13,8 @@
         </div>
       {{ end }}
     </div>
+    {{ partial "commons/pagination.html" . }}
+    
     {{ template "_internal/pagination.html" . }}
   </div>
 {{ end }}

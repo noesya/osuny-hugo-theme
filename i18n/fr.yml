@@ -10,7 +10,16 @@ commons:
     singular_name: Télécharger
     pdf: Télécharger le PDF
   language: Langue
+  menu:
+    label: Ouvrir le menu
+    title: Menu
   more: En savoir plus
+  pagination:
+    first: Première page
+    label: Pagination
+    last: Dernière page
+    next: Page suivante
+    previous: Page précédente
   pdf: PDF
   read: Lire
   read_online: Lire en ligne
