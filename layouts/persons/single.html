@@ -59,7 +59,7 @@
     {{ if $programsForTeacher }}
       <section class="mb-6">
         <div class="top">
-          <h2>Enseignements</h2>
+          <h2>{{ i18n "persons.programs" }}</h2>
         </div>
         <ul class="list">
           {{ range $programsForTeacher }}
@@ -80,10 +80,10 @@
       <section class="mb-6">
         <div class="row">
           <div class="col-md-8">
-            <h2>Actualités</h2>
+            <h2>{{ i18n "persons.posts" }}</h2>
           </div>
           <div class="col-md-4">
-            <a href="actualites/" class="link link--more">Voir toutes les actualités</a>
+            <a href="actualites/" class="link link--more">{{ i18n "posts.see_all" }}</a>
           </div>
         </div>
         <div class="row row-cols-1 row-cols-md-3 gy-5">
@@ -97,7 +97,7 @@
     {{ end }}
 
     {{ if in .Params.roles "researcher" }}
-    <a href="publications/">Publications scientifiques</a>
+      <a href="publications/">{{ i18n "persons.publications" }}</a>
     {{ end }}
   </div>
 {{ end }}

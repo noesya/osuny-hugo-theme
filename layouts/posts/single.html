@@ -15,17 +15,17 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-lg-3">
-          <table class="table table--info mb-4" aria-label="Informations">
+          <table class="table table--info mb-4" aria-label="{{ i18n "posts.informations" }}">
             <tbody class="border-top">
               <tr>
-                <th scope="row" class="ps-0">Date</th>
+                <th scope="row" class="ps-0">{{ i18n "posts.date" }}</th>
                 <td class="pe-0">
                   <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02 Jan 2006" }}</time>
                 </td>
               </tr>
               {{ range .GetTerms "authors" }}
                 <tr>
-                  <th scope="row" class="ps-0">Auteur·rice</th>
+                  <th scope="row" class="ps-0">{{ i18n "posts.author" }}</th>
                   <td class="p-author pe-0" itemscope itemtype="https://schema.org/Person" itemprop="author">
                     <a href="{{ .Permalink }}" itemprop="url">
                       <span itemprop="name">{{ safeHTML .Params.person }}</span>
@@ -35,7 +35,7 @@
               {{ end }}
               {{ range .GetTerms "categories" }}
                 <tr>
-                  <th scope="row" class="ps-0">Catégorie</th>
+                  <th scope="row" class="ps-0">{{ i18n "posts.category" }}</th>
                   <td class="p-category pe-0">
                     <a href="{{ .Permalink }}" itemtype="https://schema.org/articleSection">
                       {{ safeHTML .Title }}
@@ -44,7 +44,7 @@
                 </tr>
               {{ end }}
               <tr>
-                <th scope="row" class="ps-0">Partager sur</th>
+                <th scope="row" class="ps-0">{{ i18n "posts.share" }}</th>
                 <td class="pe-0">
                   <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noreferrer" aria-label="Facebook" class="icon">
                     <svg aria-hidden="true" width="20" height="20">

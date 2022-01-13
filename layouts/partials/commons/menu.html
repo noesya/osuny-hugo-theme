@@ -2,37 +2,39 @@
 {{- $dropdown := .dropdown }}
 <ul class="{{ .class }}{{ if $level }} nav-level-{{ $level }}{{ end }}">
   {{ range .items -}}
-    {{- $slug := urlize .title -}}
-    {{- $itemClass := "nav-item" -}}
-    {{- $linkClass := "nav-link" -}}
-    {{- $attr := "" -}}
-    {{- $hasDropdown := false -}}
-    {{- if and (gt (len .children) 0) $dropdown (eq $level 1) -}}
-      {{- $hasDropdown = true -}}
-      {{- $itemClass = printf "%s dropdown" $itemClass -}}
-      {{- $linkClass = printf "%s dropdown-toggle" $linkClass -}}
-      {{- $attr = printf "id=\"dropdown-%s\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"" $slug -}}
+    {{- if or (ne .kind "news") (ne (len (where site.RegularPages "Type" "posts")) 0) -}}
+      {{- $slug := urlize .title -}}
+      {{- $itemClass := "nav-item" -}}
+      {{- $linkClass := "nav-link" -}}
+      {{- $attr := "" -}}
+      {{- $hasDropdown := false -}}
+      {{- if and (gt (len .children) 0) $dropdown (eq $level 1) -}}
+        {{- $hasDropdown = true -}}
+        {{- $itemClass = printf "%s dropdown" $itemClass -}}
+        {{- $linkClass = printf "%s dropdown-toggle" $linkClass -}}
+        {{- $attr = printf "id=\"dropdown-%s\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"" $slug -}}
+      {{- end -}}
+      <li class="{{ $itemClass }}">
+        {{- if .target -}}
+          <a href="{{ .target }}" class="{{ $linkClass }}" {{ safeHTMLAttr $attr }}>{{ .title }}</a>
+        {{- else -}}
+          <span class="{{ $linkClass }}{{ if gt .level 1 }} disabled{{ end }}"{{ safeHTMLAttr $attr }}>{{ .title }}</span>
+        {{- end -}}
+        {{- if $hasDropdown }}
+          <div class="dropdown-menu" aria-labelledby="dropdown-{{ $slug }}">
+        {{- end -}}
+        {{- if gt (len .children) 0 -}}
+          {{- $nextLevel := add $level 1 -}}
+          {{- partial "commons/menu.html"
+                (dict
+                  "items" .children
+                  "level" $nextLevel
+                ) -}}
+        {{- end -}}
+        {{- if $hasDropdown -}}
+          </div>
+        {{ end -}}
+      </li>
     {{- end -}}
-    <li class="{{ $itemClass }}">
-      {{- if .target -}}
-        <a href="{{ .target }}" class="{{ $linkClass }}" {{ safeHTMLAttr $attr }}>{{ .title }}</a>
-      {{- else -}}
-        <span class="{{ $linkClass }}{{ if gt .level 1 }} disabled{{ end }}"{{ safeHTMLAttr $attr }}>{{ .title }}</span>
-      {{- end -}}
-      {{- if $hasDropdown }}
-        <div class="dropdown-menu" aria-labelledby="dropdown-{{ $slug }}">
-      {{- end -}}
-      {{- if gt (len .children) 0 -}}
-        {{- $nextLevel := add $level 1 -}}
-        {{- partial "commons/menu.html"
-              (dict
-                "items" .children
-                "level" $nextLevel
-              ) -}}
-      {{- end -}}
-      {{- if $hasDropdown -}}
-        </div>
-      {{ end -}}
-    </li>
   {{ end -}}
 </ul>
