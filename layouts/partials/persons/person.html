@@ -1,19 +1,17 @@
-<article class="card card--person person">
-  <div class="card-body pb-0">
-    <div class="person__image">
-      {{ if .Params.image }}
-        {{ partial "commons/image.html"
-              (dict
-                "image"    .Params.image
-                "class"    "img-fluid"
-                "mobile"   "100x100"
-                "tablet"   "152x152"
-                "desktop"  "152x152"
-              )}}
-      {{ else }}
-        <div class="person__image__placeholder"></div>
-      {{ end }}
-    </div>
+<article class="card card--person">
+  <div class="card-avatar">
+    {{ if .Params.image }}
+      {{ partial "commons/image.html"
+            (dict
+              "image"    .Params.image
+              "class"    "img-fluid"
+              "mobile"   "100x100"
+              "tablet"   "152x152"
+              "desktop"  "152x152"
+            )}}
+    {{ end }}
+  </div>
+  <div class="card-body">
     <p class="card-title">{{ safeHTML .Title }}</p>
     {{ if .Content }}
       <p class="mb-0"><em>{{ plainify .Content }}</em></p>

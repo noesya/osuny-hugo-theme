@@ -6,7 +6,7 @@
           "context" .
         ) -}}
   <div class="container">
-    <ul class="list-inline text-end mb-4">
+    <ul class="list-inline text-end mb-5">
       {{ range $name, $t := .Site.Taxonomies }}
         {{ if ne $name "categories" }}
           {{- with $.Site.GetPage "taxonomyTerm" $name}}
@@ -19,7 +19,7 @@
         {{ end }}
       {{ end }}
     </ul>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
       {{ range .Paginator.Pages.ByParam "last_name" }}
         <div class="col">
           {{ partial "persons/person.html" . }}
