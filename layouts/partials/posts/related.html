@@ -1,15 +1,16 @@
 {{ if .Pages }}
   <div class="top">
-    <h2 id="page-posts">Actualités</h2>
+    <h2 id="page-posts">{{ i18n "posts.title" }}</h2>
     <a href="{{ .Permalink }}" class="link link--more">
-      Voir toutes les actualités «&nbsp;{{ safeHTML .Title | truncate 30 }}&nbsp;»</a>
-    </div>
-    <div class="row row-cols-1 row-cols-md-2 gy-5">
-      {{ range first 2 .Pages }}
-        <div class="col">
-          {{ partial "posts/post.html" . }}
-        </div>
-      {{ end }}
-    </div>
+      {{ $category_name := safeHTML .Title | truncate 30 }}
+      {{ i18n "posts.see_all_in_category" (dict "Title" $category_name) }}
+    </a>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 gy-5">
+    {{ range first 2 .Pages }}
+      <div class="col">
+        {{ partial "posts/post.html" . }}
+      </div>
+    {{ end }}
   </div>
 {{ end }}

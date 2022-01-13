@@ -3,14 +3,14 @@
     {{with .Site.RegularPages.Prev . }}
       <li class="page-item">
         <a class="page-link" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
-          Article précédent
+          {{ i18n "posts.previous" }}
         </a>
       </li>
     {{end}}
     {{with .Site.RegularPages.Next . }}
       <li class="page-item">
         <a class="page-link" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
-          Article suivant
+          {{ i18n "posts.next" }}
         </a>
       </li>
     {{end}}

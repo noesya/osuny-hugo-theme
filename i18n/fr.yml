@@ -4,7 +4,11 @@ categories:
     one: Voir l'article
     other: Voir les {{ .Count }} articles
 commons:
+  accessibility:
+    main_content: Accéder au contenu principal
+    menu: Accéder au menu
   biography: Biographie
+  close: Fermer
   date: Date
   download:
     singular_name: Télécharger
@@ -42,8 +46,12 @@ posts:
   category: Catégorie
   date: Date
   informations: Informations
+  next: Article suivant
+  previous: Article précédent
   see_all: Voir toutes les actualités
+  see_all_in_category: Voir toutes les actualités « {{ .Title }} »
   share: Partager sur
+  title: Actualités
 programs:
   _accessibility: Accessibilité
   _contacts: Contacts
@@ -62,6 +70,7 @@ programs:
   _team: Équipe
   _content: Contenus de la formation
   _results: Indicateurs de résultats
+  posts: Actualités
 volumes:
   abstract: Résumé
   article:
@@ -75,3 +84,4 @@ volumes:
   plural_name: Volumes
   singular_name: Volume
   table: Table
+  volume_number: Volume {{ .Number }}
