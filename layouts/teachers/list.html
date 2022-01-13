@@ -7,18 +7,13 @@
         ) -}}
   <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-    {{ range .Pages }}
-      <div class="col">
-        <article class="card mb-4">
-          <div class="card-body">
-            <p class="card-title">{{ safeHTML .Params.person }}</p>
-            {{ if .Content }}
-              <p class="small mb-2">{{ truncate 50 (plainify .Content) }}</p>
-            {{ end }}
-            <a href="{{ .Permalink }}" class="stretched-link link link--more">Voir les {{ len .Pages }} articles</a>
-          </div>
-        </article>
-      </div>
-    {{ end }}
+      {{ range .Paginator.Pages }}
+        {{ $person := site.GetPage (printf "/persons/%s" .Slug) }}
+        <div class="col">
+          {{ partial "persons/person.html" $person }}
+        </div>
+      {{ end }}
+      {{ template "_internal/pagination.html" . }}
+    </div>
   </div>
 {{ end }}
