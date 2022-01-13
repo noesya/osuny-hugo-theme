@@ -10,20 +10,20 @@
         <div class="col-md-10">
           <h1>{{ safeHTML (partial "CorrectPunctuation" .Title) }}</h1>
         </div>
-        <div class="col-md-2">
-          <div class="avatar">
-            {{ if .Params.image }}
+        <div class="col-4 col-md-2 mb-4 mb-md-0">
+          {{ if .Params.image }}
+            <div class="avatar">
               {{ partial "commons/image.html"
                     (dict
                       "alt"    .Title
                       "image"    .Params.image
                       "class"    "img-fluid"
-                      "mobile"   "100x100"
-                      "tablet"   "152x152"
-                      "desktop"  "152x152"
+                      "mobile"   "202x202"
+                      "tablet"   "192x192"
+                      "desktop"  "196x196"
                     )}}
-            {{ end }}
-          </div>
+            </div>
+          {{ end }}
         </div>
       </div>
       <div class="hero__nav">
@@ -41,7 +41,7 @@
             </em>
           </p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 text-md-end">
           {{ range $programsForTeacherAndAdministrator }}
             {{ $program := . }}
             {{ range .Params.roles }}
@@ -78,13 +78,9 @@
 
     {{ if $author.Pages }}
       <section class="mb-6">
-        <div class="row">
-          <div class="col-md-8">
-            <h2>{{ i18n "persons.posts" }}</h2>
-          </div>
-          <div class="col-md-4">
-            <a href="actualites/" class="link link--more">{{ i18n "posts.see_all" }}</a>
-          </div>
+        <div class="top">
+          <h2>{{ i18n "persons.posts" }}</h2>
+          <a href="actualites/" class="link link--more">{{ i18n "posts.see_all" }}</a>
         </div>
         <div class="row row-cols-1 row-cols-md-3 gy-5">
           {{ range first 3 $author.Pages }}

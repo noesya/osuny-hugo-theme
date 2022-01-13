@@ -6,15 +6,19 @@
     li
         border-bottom: 1px solid $border-color
         display: flex
-        justify-content: space-between
+        flex-direction: column
         padding: px2rem(10) 0
     p:last-of-type
         margin-bottom: 0
 
     @include media-breakpoint-up(md)
+        li
+            flex-direction: row
+            justify-content: space-between
         div:first-of-type
             flex: 0 0 66.66666667%
             padding-right: $grid-gutter-width / 2
         div:last-of-type
             flex: 0 0 33.33333333%
             padding-left: $grid-gutter-width / 2
+            text-align: right
