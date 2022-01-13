@@ -1,4 +1,14 @@
+categories:
+  no_post: No post in this category
+  see_more:
+    one: See the post
+    other: See the {{ .Count }} posts
 commons:
+  accessibility:
+    main_content: Access main content
+    menu: Access menu
+  biography: Biography
+  close: Close
   date: Date
   download:
     singular_name: Download
@@ -9,17 +19,58 @@ commons:
     title: Menu
   more: Read more
   pagination:
-    label: Pagination
     first: First page
+    label: Pagination
     last: Last page
+    next: Next page
+    previous: Previous page
   pdf: PDF
   read: Read
   read_online: Read online
-cookie:
+cookie_banner:
   accept: Accept
   more: Read more
   refuse: Refuse
   text: This site uses cookies to improve the browsing experience and provide additional functionality.
+page_not_found: 404 page not found
+pages:
+  details: Details
+  informations: Informations
+  posts: News
+persons:
+  posts: News
+  programs: Programs
+  publications: Publications
+posts:
+  author: Author
+  category: Category
+  date: Date
+  informations: Informations
+  next: Next article
+  previous: Previous article
+  see_all: See all posts
+  see_all_in_category: See all posts in « {{ .Title }} »
+  share: Share on
+  title: News
+programs:
+  _accessibility: Accessibility
+  _contacts: Contacts
+  _duration: Duration
+  _description: Description
+  _informations: Informations
+  _evaluation: Evaluation
+  _objectives: Objectives
+  _opportunities: Opportunities
+  _other: Other
+  _pedagogy: Pedagogy
+  _prerequisites: Prerequisites
+  _pricing: Pricing
+  _registration: Registration
+  _teachers: Teachers
+  _team: Team
+  _content: Content
+  _results: Results
+  posts: News
 volumes:
   abstract: Abstract
   article:
@@ -33,3 +84,4 @@ volumes:
   plural_name: Volumes
   singular_name: Volume
   table: Table
+  volume_number: Volume {{ .Number }}
