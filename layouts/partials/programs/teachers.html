@@ -3,12 +3,12 @@
     {{ $descriptions := .descriptions }}
     {{ range .teachers }}
       {{ $slug := . }}
-      {{ with site.GetPage "teachers" }}
+      {{ with site.GetPage "persons" }}
         {{ with .GetPage $slug }}
           <tr>
             <td class="ps-0">
               <a href="{{ .Permalink }}">
-                {{ safeHTML .Params.person }}
+                {{ safeHTML .Title }}
               </a>
             </td>
             <td class="pe-0 text-end">

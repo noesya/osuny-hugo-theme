@@ -5,10 +5,11 @@
           "context" .
         ) -}}
   {{ $slug := .Slug }}
+  {{ $programsForTeacher := index site.Taxonomies.teachers $slug}}
+  {{ $programsForAdministrator := index site.Taxonomies.administrators $slug}}
+  {{ $programsForTeacherAndAdministrator := union $programsForTeacher $programsForAdministrator }}
+  {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
   <div class="container">
-
-    {{ $slug := .Slug }}
-
     <div class="row mb-6">
       {{ if .Content }}
         <div class="col-md-8">
@@ -19,62 +20,60 @@
           </p>
         </div>
         <div class="col-md-4">
-          {{ $slug := .Slug }}
-          {{ range (index site.Taxonomies.teachers $slug) }}
-            <p>
-              {{ safeHTML (index .Params.teachers_description $slug)}}
-            </p>
-            <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a>
+          {{ range $programsForTeacherAndAdministrator }}
+            {{ $program := . }}
+            {{ range .Params.roles }}
+              {{ $role := .title }}
+              {{ if in .persons $slug }}
+                {{ safeHTML $role }}
+                <a href="{{ $program.Permalink }}" class="link link--more">{{ safeHTML $program.Title }}</a>
+              {{ end }}
+            {{ end }}
           {{ end }}
         </div>
         {{ end }}
-        <div class="col-md-4">
-          Cheffe de département
-          <a href="#" class="link link--more">BUT Métiers du Multimédia et de l'Internet</a>
-        </div>
     </div>
 
-    <section class="mb-6">
-      <div class="top">
-        <h2>Enseignements</h2>
-      </div>
-      <ul class="list">
-        <li>
-          <div>
-            <p>Théories de l'information, cyber-sécurité</p>
-          </div>
-          <div>
-            <a href="#" class="link link--more">BUT Métiers du Multimédia et de l'Internet</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <p>La transition numérique à l’épreuve du cyberharcèlement : des violences en ligne aux stratégies de résilience</p>
-          </div>
-          <div>
-            <a href="#" class="link link--more">BUT Métiers du Multimédia et de l'Internet</a>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    {{ if in .Params.roles "teacher" }}
-      <h2>Enseignements</h2>
-      {{ range (index site.Taxonomies.teachers $slug) }}
-        <p>
-          {{ safeHTML (index .Params.teachers_description $slug)}}
-        </p>
-        <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a>
-      {{ end }}
+    {{ if $programsForTeacher }}
+      <section class="mb-6">
+        <div class="top">
+          <h2>Enseignements</h2>
+        </div>
+        <ul class="list">
+          {{ range $programsForTeacher }}
+          <li>
+            <div>
+              <p>{{ safeHTML (index .Params.teachers_description $slug) }}</p>
+            </div>
+            <div>
+              <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a>
+            </div>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
     {{ end }}
 
-    {{ if in .Params.roles "author" }}
-    <a href="actualites/">Actualités</a>
+    {{ if $author.Pages }}
+      <section class="mb-6">
+        <div class="row">
+          <div class="col-md-8">
+            <h2>Actualités</h2>
+          </div>
+          <div class="col-md-4">
+            <a href="actualites/" class="link link--more">Voir toutes les actualités</a>
+          </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 gy-5">
+          {{ range first 2 $author.Pages }}
+            <div class="col">
+              {{ partial "posts/post.html" . }}
+            </div>
+          {{ end }}
+        </div>
+      </section>
     {{ end }}
 
-    {{ if in .Params.roles "administrator" }}
-    <a href="administration/">Charges administratives</a>
-    {{ end }}
     {{ if in .Params.roles "researcher" }}
     <a href="publications/">Publications scientifiques</a>
     {{ end }}
