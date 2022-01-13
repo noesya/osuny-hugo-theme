@@ -4,7 +4,14 @@ commons:
     singular_name: Download
     pdf: Download PDF
   language: Language
+  menu:
+    label: Toggle navigation
+    title: Menu
   more: Read more
+  pagination:
+    label: Pagination
+    first: First page
+    last: Last page
   pdf: PDF
   read: Read
   read_online: Read online
