@@ -2,15 +2,21 @@
   <ul class="pagination justify-content-between">
     {{with .Site.RegularPages.Prev . }}
       <li class="page-item">
-        <a class="page-link" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
-          {{ i18n "posts.previous" }}
+        <a class="page-link page-link--previous ps-0" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
+          <span>
+            {{ i18n "posts.previous" }}
+          </span><br>
+          {{ safeHTML .Title }}
         </a>
       </li>
     {{end}}
     {{with .Site.RegularPages.Next . }}
-      <li class="page-item">
-        <a class="page-link" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
-          {{ i18n "posts.next" }}
+      <li class="page-item text-end">
+        <a class="page-link page-link--next pe-0" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
+          <span>
+            {{ i18n "posts.next" }}
+          </span><br>
+          {{ safeHTML .Title }}
         </a>
       </li>
     {{end}}

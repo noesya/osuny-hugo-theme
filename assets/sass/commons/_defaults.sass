@@ -64,3 +64,28 @@ h1, h2
 
 ul
     padding-left: 15px
+
+.page-link
+    &--previous
+        span
+            color: #666666
+            &::before
+                background: url('/assets/images/icons.svg#arrow-left') no-repeat
+                content: ''
+                color: #999999
+                display: inline-block
+                height: 12px
+                margin-left: px2rem(5)
+                vertical-align: middle
+                width: 12px
+    &--next
+        span
+            color: #666666
+            &::after
+                background: url('/assets/images/icons.svg#arrow') no-repeat
+                content: ''
+                display: inline-block
+                height: 12px
+                margin-left: px2rem(5)
+                vertical-align: middle
+                width: 12px
