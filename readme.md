@@ -3,19 +3,19 @@
 ## Installer le thème
 
 ```
-git submodule add https://github.com/noesya/hugo-osuny.git themes/hugo-osuny
+git submodule add https://github.com/noesya/osuny-hugo-theme.git themes/osuny-hugo-theme
 ```
 
 Dans le config.yaml
 ```
-theme: hugo-osuny
+theme: osuny-hugo-theme
 ```
 
-Puis il faut créer un package.json avec ```yarn init``` et y ajouter : 
+Puis il faut créer un package.json avec ```yarn init``` et y ajouter :
 
 ```
 "dependencies": {
-  "hugo-osuny": "./themes/hugo-osuny"
+  "osuny-hugo-theme": "./themes/osuny-hugo-theme"
 },
 "scripts": {
   "watch": "hugo server",
