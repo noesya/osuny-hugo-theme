@@ -3,7 +3,7 @@
   {{ $programsForTeacher := index site.Taxonomies.teachers $slug}}
   {{ $programsForAdministrator := index site.Taxonomies.administrators $slug}}
   {{ $programsForTeacherAndAdministrator := union $programsForTeacher $programsForAdministrator }}
-  {{ $programsForResearcher := index site.Taxonomies.researchers $slug}}
+  {{ $articlesForResearcher := index site.Taxonomies.researchers $slug}}
   {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
   <header class="hero">
     <div class="container">
@@ -93,14 +93,14 @@
       </section>
     {{ end }}
 
-    {{ if $programsForResearcher }}
+    {{ if $articlesForResearcher }}
       <section class="mb-6">
         <div class="top">
           <h2>{{ i18n "persons.publications" }}</h2>
           <a href="publications/" class="link link--more">{{ i18n "persons.publications" }}</a>
         </div>
         <div class="row row-cols-1 row-cols-md-3 mb-5">
-          {{ range $programsForResearcher }}
+          {{ range $articlesForResearcher }}
             <div class="col">
               {{ partial "articles/article.html" . }}
             </div>
