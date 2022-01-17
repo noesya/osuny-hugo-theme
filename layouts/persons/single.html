@@ -1,9 +1,18 @@
 {{ define "main" }}
   {{ $slug := .Slug }}
-  {{ $programsForTeacher := index site.Taxonomies.teachers $slug}}
-  {{ $programsForAdministrator := index site.Taxonomies.administrators $slug}}
+  {{ $programsForTeacher := slice }}
+  {{ if isset site.Taxonomies "teachers" }}
+    {{ $programsForTeacher := index site.Taxonomies.teachers $slug}}
+  {{ end }}
+  {{ $programsForAdministrator := slice }}
+  {{ if isset site.Taxonomies "administrators" }}
+    {{ $programsForAdministrator := index site.Taxonomies.administrators $slug}}
+  {{ end }}
   {{ $programsForTeacherAndAdministrator := union $programsForTeacher $programsForAdministrator }}
-  {{ $articlesForResearcher := index site.Taxonomies.researchers $slug}}
+  {{ $articlesForResearcher := slice }}
+  {{ if isset site.Taxonomies "researchers" }}
+    {{ $articlesForResearcher := index site.Taxonomies.researchers $slug}}
+  {{ end }}
   {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
   <header class="hero">
     <div class="container">
