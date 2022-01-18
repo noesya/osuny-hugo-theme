@@ -21,7 +21,7 @@
         <div itemscope itemtype="https://schema.org/Periodical">
           <meta itemprop="logo" content="{{ site.Params.logo }}">
           <span itemprop="name">{{ .name }}</span><br>
-          <span itemprop="issn">{{ .issn }}</span>
+          <span itemprop="issn">{{ trim .issn "\n" }}</span>
         </div>
         {{ end }}
       </div>
