@@ -9,9 +9,9 @@
               "tablet"   "334x167"
               "desktop"  "634x317"
             ) -}}
-    {{- else if os.FileExists "assets/images/default.jpg" }} -}}
+    {{- else if site.Params.default_image -}}
       <picture>
-        <img class="img-fluid" alt="" loading="lazy" src="/assets/images/default.jpg" width="1004" height="502">
+        <img class="img-fluid" alt="" loading="lazy" src="{{ site.Params.default_image }}" width="1004" height="502">
       </picture>
     {{- end -}}
   </div>
