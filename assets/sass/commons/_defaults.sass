@@ -40,7 +40,7 @@ a
         text-decoration: none
     &[target="_blank"]:not(.icon)
         &::after
-            background: url('/assets/images/icons.svg#link-blank') no-repeat
+            background: url('/assets/images/icons/icons.svg#link-blank') no-repeat
             content: ''
             display: inline-block
             height: 12px
@@ -66,13 +66,17 @@ ul
     padding-left: 15px
 
 .page-link
+    &--previous,
+    &--next
+        span
+            color: $gray-600
+
     &--previous
         span
-            color: #666666
             &::before
-                background: url('/assets/images/icons.svg#arrow-left') no-repeat
+                background: url('/assets/images/icons/icons.svg#arrow-left') no-repeat
+                color: $gray-400
                 content: ''
-                color: #999999
                 display: inline-block
                 height: 12px
                 margin-left: px2rem(5)
@@ -80,9 +84,8 @@ ul
                 width: 12px
     &--next
         span
-            color: #666666
             &::after
-                background: url('/assets/images/icons.svg#arrow') no-repeat
+                background: url('/assets/images/icons/icons.svg#arrow-right') no-repeat
                 content: ''
                 display: inline-block
                 height: 12px
