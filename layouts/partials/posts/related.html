@@ -6,7 +6,7 @@
       {{ i18n "posts.see_all_in_category" (dict "Title" $category_name) }}
     </a>
   </div>
-  <div class="row row-cols-1 row-cols-md-2 gy-5">
+  <div class="row row-cols-1 row-cols-md-2 gy-4">
     {{ range first 2 .Pages }}
       <div class="col">
         {{ partial "posts/post.html" . }}
