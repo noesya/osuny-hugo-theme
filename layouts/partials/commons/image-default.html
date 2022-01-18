@@ -1,0 +1,5 @@
+{{- $lazy := default true .lazy -}}
+<img alt="" src="{{site.Params.default_image.url}}" width="{{site.Params.default_image.width}}" height="{{site.Params.default_image.height}}"
+  {{- if .class }} class="{{ .class }}"{{- end -}}
+  {{- if $lazy }} loading="lazy"{{- end -}}
+  >
