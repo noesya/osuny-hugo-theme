@@ -19,7 +19,7 @@
 
     <!-- First page. -->
     <li class="page-item{{ if eq $paginator.PageNumber 1 }} disabled{{ end }}">
-      <a class="page-link" href="{{ $paginator.First.URL }}" aria-label="{{ i18n "commons.pagination.label" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
+      <a class="page-link" href="{{ $paginator.First.URL }}" aria-label="{{ i18n "commons.pagination.first" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
         <svg aria-hidden="true" width="11" height="8">
           <use xlink:href="/assets/images/icons/icons.svg#arrow-first"></use>
         </svg>
@@ -104,7 +104,7 @@
 
     <!-- Last page. -->
     <li class="page-item{{ if eq $paginator.PageNumber $paginator.TotalPages }} disabled{{ end }}">
-      <a class="page-link" href="{{ $paginator.Last.URL }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
+      <a class="page-link" href="{{ $paginator.Last.URL }}" aria-label="{{ i18n "commons.pagination.last" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
         <svg aria-hidden="true" width="11" height="8">
           <use xlink:href="/assets/images/icons/icons.svg#arrow-last"></use>
         </svg>
