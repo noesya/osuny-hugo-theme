@@ -20,13 +20,14 @@
 
             {{ range .Params.Researchers }}
               {{ $author := site.GetPage (printf "/persons/%s" .) }}
+              {{ $content := trim $author.Content "\n" }}
               <div class="col-md-6 mb-3" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <p class="mb-0">
-                  <a href="{{ $author.Permalink }}" itemprop="url">
-                    <span itemprop="name">{{ $author.Title }}</span>
-                  </a>
-                </p>
-                <p class="small" itemprop="description">{{ i18n "biography" }}</p>
+                  <p class="mb-0">
+                    <a href="{{ $author.Permalink }}" itemprop="url"><span itemprop="name">{{ $author.Title }}</span></a>
+                  </p>
+                  {{ if ne $content " " }}
+                    <p class="small" itemprop="description">{{ truncate 120 (plainify $content) }}</p>
+                  {{ end }}
               </div>
             {{ end }}
 

@@ -11,6 +11,11 @@
     &--volume
         .card-media
             --bs-aspect-ratio: 118.77%
+    &--article
+        a:not(.stretched-link)
+            display: block
+        .card-body
+            padding-top: 0
 
     &-media
         @extend .ratio
@@ -28,11 +33,13 @@
         margin-top: 0
     &-text
         margin-bottom: 0
-    .stretched-link::after
-        transition: background .3s ease
-    .stretched-link:hover
+
+    .stretched-link
         &::after
-            background-color: rgba(white, .2)
+        transition: background .3s ease
+        &:hover
+            &::after
+                background-color: rgba(white, .2)
     time
         color: $gray-600
         display: block

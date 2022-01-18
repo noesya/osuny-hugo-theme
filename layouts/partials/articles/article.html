@@ -5,7 +5,9 @@
     </p>
     {{ range .Params.Volumes }}
       {{ $volume := site.GetPage (printf "/volumes/%s" .) }}
-      <p class="card-text">In “<a href="{{ $volume.Permalink }}">{{ $volume.Title }}</a>”</p>
+      {{ if $volume }}
+        <p class="card-text">In “<a href="{{ $volume.Permalink }}">{{ $volume.Title }}</a>”</p>
+      {{ end }}
     {{ end }}
   </div>
 </article>
