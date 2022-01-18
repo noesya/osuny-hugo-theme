@@ -9,7 +9,7 @@
               "tablet"   "334x167"
               "desktop"  "634x317"
             ) -}}
-    {{- else -}}
+    {{- else if os.FileExists "assets/images/default.jpg" }} -}}
       <picture>
         <img class="img-fluid" alt="" loading="lazy" src="/assets/images/default.jpg" width="1004" height="502">
       </picture>
