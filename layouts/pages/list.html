@@ -8,11 +8,11 @@
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
     <div class="row">
+
+      {{ if or $category .Pages }}
       <div class="col-md-4 col-lg-3 mb-4">
         <ul class="nav toc" id="nav-toc">
-          {{ if or $category .Pages }}
           <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
-          {{ end }}
           {{ if .Pages }}
           <li class="nav-item"><a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a></li>
           {{ end }}
@@ -21,7 +21,9 @@
           {{ end }}
         </ul>
       </div>
-      <div class="col-md-8 offset-lg-1">
+      {{ end }}
+
+      <div class="col-md-8{{ if or $category .Pages }} offset-lg-1{{ end }}">
         {{ if .Params.image }}
           {{ partial "commons/image.html"
                 (dict
