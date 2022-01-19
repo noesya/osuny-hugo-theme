@@ -15,18 +15,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-lg-3">
-          <table class="table table--info mb-4" aria-label="{{ i18n "posts.informations" }}">
-            <tbody class="border-top">
+          <table class="table table--infos mb-4" aria-label="{{ i18n "posts.informations" }}">
+            <tbody>
               <tr>
-                <th scope="row" class="ps-0">{{ i18n "posts.date" }}</th>
-                <td class="pe-0">
+                <th scope="row">{{ i18n "posts.date" }}</th>
+                <td>
                   <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02 Jan 2006" }}</time>
                 </td>
               </tr>
               {{ range .GetTerms "authors" }}
                 <tr>
-                  <th scope="row" class="ps-0">{{ i18n "posts.author" }}</th>
-                  <td class="p-author pe-0" itemscope itemtype="https://schema.org/Person" itemprop="author">
+                  <th scope="row">{{ i18n "posts.author" }}</th>
+                  <td itemscope itemtype="https://schema.org/Person" itemprop="author">
                     <a href="{{ .Permalink }}" itemprop="url">
                       <span itemprop="name">{{ safeHTML .Params.person }}</span>
                     </a>
@@ -35,8 +35,8 @@
               {{ end }}
               {{ range .GetTerms "categories" }}
                 <tr>
-                  <th scope="row" class="ps-0">{{ i18n "posts.category" }}</th>
-                  <td class="p-category pe-0">
+                  <th scope="row">{{ i18n "posts.category" }}</th>
+                  <td>
                     <a href="{{ .Permalink }}" itemtype="https://schema.org/articleSection">
                       {{ safeHTML .Title }}
                     </a>
@@ -44,19 +44,19 @@
                 </tr>
               {{ end }}
               <tr>
-                <th scope="row" class="ps-0">{{ i18n "posts.share" }}</th>
-                <td class="pe-0">
+                <th scope="row">{{ i18n "posts.share" }}</th>
+                <td>
                   <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noreferrer" aria-label="Facebook" class="icon">
                     <svg aria-hidden="true" width="20" height="20">
                       <use xlink:href="/assets/images/icons/icons.svg#facebook"></use>
                     </svg>
                   </a>
-                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noreferrer" aria-label="Linkedin" class="icon ms-3">
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noreferrer" aria-label="Linkedin" class="icon">
                     <svg aria-hidden="true" width="18" height="18">
                       <use xlink:href="/assets/images/icons/icons.svg#linkedin"></use>
                     </svg>
                   </a>
-                  <a href="https://twitter.com/intent/tweet?text={{ .Title }} {{ .Permalink | absURL }}" target="_blank" rel="noreferrer" aria-label="Twitter" class="icon ms-3">
+                  <a href="https://twitter.com/intent/tweet?text={{ .Title }} {{ .Permalink | absURL }}" target="_blank" rel="noreferrer" aria-label="Twitter" class="icon">
                     <svg aria-hidden="true" width="21" height="17">
                       <use xlink:href="/assets/images/icons/icons.svg#twitter"></use>
                     </svg>
