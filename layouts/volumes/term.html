@@ -52,8 +52,8 @@
         <div class="col-md-9 col-lg-8">
           <h2>{{ i18n "volumes.table" }}</h2>
           <ol class="list-unstyled">
-            {{ range $index, $s := .Pages }}
-              {{ $modalId := "modalID_temp" }}
+            {{ range $index, $articles := .Pages }}
+              {{ $modalId := print "modalID_" $index }}
               <li class="row flex-md-row-reverse mt-4" itemprop="hasPart" itemscope itemtype="https://schema.org/ScholarlyArticle">
                 <div class="col-md-4 text-md-end">
                   <small class="text-uppercase" itemprop="articleSection">{{ i18n "volumes.article.singular_name" }}</small>
@@ -75,9 +75,16 @@
                   <div class="d-grid gap-2 d-lg-block">
                     <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}" itemprop="url">{{ i18n "commons.read" }}</a>
                     <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">{{ i18n "volumes.abstract" }}</button>
-                    <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>{{ i18n "commons.pdf" }}</a>
+                    {{ if .Params.pdf }}
+                      <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>{{ i18n "commons.pdf" }}</a>
+                    {{ end }}
                   </div>
-                  {{ partial "volumes/modal.html" (dict "modalId" $modalId) }}
+                  {{ partial "volumes/modal.html"
+                        (dict
+                          "modalId" $modalId
+                          "title" .Title
+                          "abstract" .Params.abstract
+                        ) }}
                 </div>
               </li>
             {{ end }}

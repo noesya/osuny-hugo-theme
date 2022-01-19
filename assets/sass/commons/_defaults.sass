@@ -5,12 +5,12 @@ body
     text-rendering: optimizelegibility
 
 ::selection
-    background: rgba(0, 0, 0, .7)
+    background: rgba($primary, .7)
     color: white
     text-shadow: none
 
 ::-moz-selection
-    background: rgba(0, 0, 0, .7)
+    background: rgba($primary, .7)
     color: white
     text-shadow: none
 
@@ -31,11 +31,12 @@ img
         transition: outline-offset .3s ease
 
 a
-    text-decoration-color: rgba(black, 0.3)
+    color: $primary
+    text-decoration-color: rgba($primary, 0.3)
     text-decoration-thickness: 1px
     text-underline-offset: 3px
     &:hover
-        text-decoration-color: rgba(black, 1)
+        text-decoration-color: rgba($primary, 1)
     &.icon
         text-decoration: none
     &[target="_blank"]:not(.icon)

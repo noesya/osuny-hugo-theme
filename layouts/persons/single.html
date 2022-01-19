@@ -109,7 +109,7 @@
           <a href="publications/" class="link link--more">{{ i18n "persons.publications" }}</a>
         </div>
         <div class="row row-cols-1 row-cols-md-3 gy-4">
-          {{ range $articlesForResearcher }}
+          {{ range first 3 $articlesForResearcher }}
             <div class="col">
               {{ partial "articles/article.html" . }}
             </div>
