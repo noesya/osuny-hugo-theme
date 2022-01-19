@@ -7,7 +7,7 @@
       <div class="col-md-8">
         {{ with site.Data.school }}
         <address itemscope itemtype="https://schema.org/CollegeOrUniversity">
-          <meta itemprop="logo" content="{{ site.Params.logo }}">
+          <meta itemprop="image" content="{{ site.Params.logo }}">
           <span itemprop="name">{{ .name }}</span>
           <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
             <span itemprop="streetAddress">{{ .address }}</span><br>
@@ -19,7 +19,7 @@
         {{ end }}
         {{ with site.Data.journal }}
         <div itemscope itemtype="https://schema.org/Periodical">
-          <meta itemprop="logo" content="{{ site.Params.logo }}">
+          <meta itemprop="image" content="{{ site.Params.logo }}">
           <span itemprop="name">{{ .name }}</span><br>
           <span itemprop="issn">{{ trim .issn "\n" }}</span>
         </div>
