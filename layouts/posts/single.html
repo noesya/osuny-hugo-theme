@@ -6,7 +6,7 @@
           "context" .
         ) -}}
 
-  <article itemscope itemtype="NewsArticle">
+  <article itemscope itemtype="https://schema.org/NewsArticle">
     <meta itemprop="headline" content="{{ .Title }}">
     <meta itemprop="url" content="{{ .Permalink }}">
     {{ if .Date }}<meta itemprop="datePublished" content="{{ .Date }}">{{ end }}
