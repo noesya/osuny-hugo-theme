@@ -43,11 +43,13 @@
   </header>
   <div class="container">
     <article itemscope itemtype="https://schema.org/Person">
-      <meta itemprop="name" content="{{ .Title }}">
+      <meta itemprop="name" content="{{ chomp .Title }}">
       <meta itemprop="url" content="{{ .Permalink }}">
-      {{- $image := partial "GetMedia" .Params.image -}}
-      {{- if $image -}}
-        <meta itemprop="image" content="{{ $image.url }}">
+      {{- if .Params.image -}}
+        {{- $image := partial "GetMedia" .Params.image -}}
+        {{- if $image -}}
+          <meta itemprop="image" content="{{ $image.url }}">
+          {{- end -}}
       {{- end -}}
       <div class="row mb-5">
         {{ if .Content }}
