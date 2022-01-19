@@ -42,29 +42,37 @@
     </div>
   </header>
   <div class="container">
-    <div class="row mb-5">
-      {{ if .Content }}
-        <div class="col-md-8">
-          <p class="lead">
-            <em>
-              {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-            </em>
-          </p>
-        </div>
-        <div class="col-md-4 text-md-end">
-          {{ range $programsForTeacherAndAdministrator }}
-            {{ $program := . }}
-            {{ range .Params.roles }}
-              {{ $role := .title }}
-              {{ if in .persons $slug }}
-                {{ safeHTML $role }}
-                <a href="{{ $program.Permalink }}" class="link link--more">{{ safeHTML $program.Title }}</a>
+    <article itemscope itemtype="https://schema.org/Person">
+      <meta itemprop="name" content="{{ .Title }}">
+      <meta itemprop="url" content="{{ .Permalink }}">
+      {{- $image := partial "GetMedia" .Params.image -}}
+      {{- if $image -}}
+        <meta itemprop="image" content="{{ $image.url }}">
+      {{- end -}}
+      <div class="row mb-5">
+        {{ if .Content }}
+          <div class="col-md-8">
+            <p class="lead" itemprop="description">
+              <em>
+                {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+              </em>
+            </p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            {{ range $programsForTeacherAndAdministrator }}
+              {{ $program := . }}
+              {{ range .Params.roles }}
+                {{ $role := .title }}
+                {{ if in .persons $slug }}
+                  {{ safeHTML $role }}
+                  <a href="{{ $program.Permalink }}" class="link link--more">{{ safeHTML $program.Title }}</a>
+                {{ end }}
               {{ end }}
             {{ end }}
+          </div>
           {{ end }}
-        </div>
-        {{ end }}
-    </div>
+      </div>
+    </article>
 
     {{ if $programsForTeacher }}
       <section class="mb-5">
