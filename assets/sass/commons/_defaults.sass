@@ -39,7 +39,7 @@ a
         text-decoration-color: rgba($primary, 1)
     &.icon
         text-decoration: none
-    &[target="_blank"]:not(.icon)
+    &[target="_blank"]
         &::after
             background: url('/assets/images/icons/icons.svg#link-blank') no-repeat
             content: ''
@@ -48,6 +48,10 @@ a
             margin-left: px2rem(5)
             vertical-align: middle
             width: 12px
+    &.icon,
+    &[href^="mailto"]
+        &::after
+            content: none
 
 h1, h2
     a
