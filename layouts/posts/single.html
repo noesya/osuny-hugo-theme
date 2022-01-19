@@ -45,7 +45,7 @@
                   <td>
                     {{ range $index, $s := .GetTerms "categories" -}}
                       {{ if ne $index 0 }},{{ end }}
-                      <a href="{{ .Permalink }}">
+                      <a href="{{ .Permalink }}" itemtype="https://schema.org/articleSection">
                         {{- safeHTML .Title -}}
                       </a>
                     {{- end }}
