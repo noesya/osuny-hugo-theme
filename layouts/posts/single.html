@@ -36,16 +36,16 @@
               {{ if .Params.Categories }}
                 <tr>
                   <th scope="row">
-                    {{ if gt (len .Params.Categories) 1 }}
+                    {{- if gt (len .Params.Categories) 1 -}}
                       {{ i18n "posts.categories" }}
-                    {{ else }}
+                    {{- else -}}
                       {{ i18n "posts.category" }}
-                    {{ end }}
+                    {{- end -}}
                   </th>
-                  <td>
-                    {{ range $index, $s := .GetTerms "categories" -}}
+                  <td itemprop="articleSection">
+                    {{- range $index, $s := .GetTerms "categories" -}}
                       {{ if ne $index 0 }},{{ end }}
-                      <a href="{{ .Permalink }}" itemtype="https://schema.org/articleSection">
+                      <a href="{{ .Permalink }}" >
                         {{- safeHTML .Title -}}
                       </a>
                     {{- end }}
