@@ -33,13 +33,22 @@
                   </td>
                 </tr>
               {{ end }}
-              {{ range .GetTerms "categories" }}
+              {{ if .Params.Categories }}
                 <tr>
-                  <th scope="row">{{ i18n "posts.category" }}</th>
+                  <th scope="row">
+                    {{ if gt (len .Params.Categories) 1 }}
+                      {{ i18n "posts.categories" }}
+                    {{ else }}
+                      {{ i18n "posts.category" }}
+                    {{ end }}
+                  </th>
                   <td>
-                    <a href="{{ .Permalink }}" itemtype="https://schema.org/articleSection">
-                      {{ safeHTML .Title }}
-                    </a>
+                    {{ range $index, $s := .GetTerms "categories" -}}
+                      {{ if ne $index 0 }},{{ end }}
+                      <a href="{{ .Permalink }}">
+                        {{- safeHTML .Title -}}
+                      </a>
+                    {{- end }}
                   </td>
                 </tr>
               {{ end }}
