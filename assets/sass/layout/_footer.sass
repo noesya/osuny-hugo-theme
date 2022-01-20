@@ -15,7 +15,7 @@
     .nav-link
         display: inline-block
         font-size: px2rem(14)
-        line-height: px2rem(22)
+        line-height: 1.4
         padding-left: 0
         padding-right: 0
 
@@ -24,9 +24,8 @@
         margin-bottom: $grid-gutter-width * 2
         & > a,
         & > span
-            @extend .h2
-            border-bottom: 1px solid $border-color
             color: $primary
+            font-size: px2rem(18)
             margin-bottom:  $grid-gutter-width / 2
             margin-top: 0
             padding-bottom:  $grid-gutter-width / 2
@@ -36,8 +35,7 @@
             & > a,
             & > span
                 color: $primary
-                font-size: px2rem(18)
-                line-height: px2rem(26)
+                font-size: px2rem(16)
 
         .nav-level-3
             margin-bottom: $grid-gutter-width
