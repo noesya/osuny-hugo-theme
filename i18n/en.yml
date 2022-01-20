@@ -43,6 +43,7 @@ persons:
   publications: Publications
 posts:
   author: Author
+  categories: Categories
   category: Category
   date: Date
   informations: Informations

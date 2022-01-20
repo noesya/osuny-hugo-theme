@@ -7,8 +7,12 @@
         ) -}}
   <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4 mb-5">
-      {{ range .Paginator.Pages }}
+      {{ range $index, $list := .Paginator.Pages }}
         <div class="col">
+          {{ $lazy := true }}
+          {{ if (eq $index 0) }}
+            {{ $lazy = false }}
+          {{ end }}
           {{ partial "posts/post.html" . }}
         </div>
       {{ end }}

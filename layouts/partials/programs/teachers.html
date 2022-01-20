@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table--infos table-hover">
   <tbody>
     {{ $descriptions := .descriptions }}
     {{ range .teachers }}
@@ -6,12 +6,12 @@
       {{ with site.GetPage "persons" }}
         {{ with .GetPage $slug }}
           <tr>
-            <td class="ps-0">
+            <th>
               <a href="{{ .Permalink }}">
                 {{ safeHTML .Title }}
               </a>
-            </td>
-            <td class="pe-0 text-end">
+            </th>
+            <td>
               {{ safeHTML (index $descriptions $slug) }}
             </td>
           </tr>
