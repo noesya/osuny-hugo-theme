@@ -50,16 +50,18 @@
           }}
 
           {{ if .Pages }}
-            <div class="top">
-              <h2 id="page-children">{{ i18n "pages.details" }}</h2>
-            </div>
-            <div class="row row-cols-md-2 g-3">
-              {{ range sort .Pages ".Params.position"  }}
-                <div class="col">
-                  <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
-                </div>
-              {{ end }}
-            </div>
+            <section>
+              <div class="top">
+                <h2 id="page-children">{{ i18n "pages.details" }}</h2>
+              </div>
+              <div class="pages">
+                {{ range sort .Pages ".Params.position"  }}
+                  <div>
+                    {{ partial "pages/page.html" . }}
+                  </div>
+                {{ end }}
+              </div>
+            </section>
           {{ end }}
 
           {{ partial "posts/related.html" $category }}
