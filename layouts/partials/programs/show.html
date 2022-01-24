@@ -21,7 +21,7 @@
 <article itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
   <meta itemprop="name" content="{{ .Title }}">
   <div class="row">
-    <div class="col-md-4 col-lg-3">
+    <aside class="col-md-4 col-lg-3">
       <ul class="nav toc" id="nav-toc">
         {{ range $chapters }}
           {{ $content := index $params . }}
@@ -41,7 +41,7 @@
         <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "programs.posts" }}</a></li>
         {{ end }}
       </ul>
-    </div>
+    </aside>
     <div class="col-md-8 offset-lg-1">
       {{ if .Params.image }}
         {{ partial "commons/image.html"
@@ -61,13 +61,15 @@
         {{ end }}
 
         {{ if .Pages }}
-        <div class="row row-cols-md-2 g-3">
-          {{ range sort .Pages ".Params.position" }}
-          <div class="col">
-            {{ partial "programs/program.html" . }}
+        <section class="sub-programs">
+          <div class="row row-cols-md-2 g-3">
+            {{ range sort .Pages ".Params.position" }}
+            <div class="col">
+              {{ partial "programs/program.html" . }}
+            </div>
+            {{ end }}
           </div>
-          {{ end }}
-        </div>
+        </section>
         {{ end }}
 
         {{ range $chapters }}
@@ -92,9 +94,8 @@
             {{ end }}
           {{ end }}
         {{ end }}
-
-        {{ partial "posts/related.html" $category }}
       </div>
+      {{ partial "posts/related.html" $category }}
     </div>
   </div>
 </article>

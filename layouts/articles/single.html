@@ -48,11 +48,12 @@
           </section>
         {{ end }}
       </div>
-      <div class="col-md-3 offset-md-1">
+      <aside class="col-md-3 offset-md-1">
         <dl>
           <dd>
             {{ if isset .Params "pdf" }}
-              <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary mb-1" download>{{ i18n "commons.download.pdf" }}</a><br>
+              {{- $pdf := partial "GetMedia" .Params.pdf -}}
+              <a href="{{ $pdf.url }}" class="btn btn--download btn-secondary mb-1" download>{{ i18n "commons.download.pdf" }}</a><br>
             {{ end }}
             <a href="#full-text" class="btn btn--eye btn-secondary">{{ i18n "commons.read_online" }}</a>
           </dd>
@@ -81,14 +82,14 @@
             </dd>
           {{ end }}
 
-          {{ if isset .Params "publication" }}
+          {{ if isset .Params "date" }}
             <dt>{{ i18n "commons.date" }}</dt>
             <dd>
-              <time itemprop="datePublished" datetime="{{ .Params.Publication | time.Format "2006-01-02T15:04" }}">{{ .Params.Publication | time.Format ":date_long" }}</time>
+              <time itemprop="datePublished" datetime="{{ .Params.Date | time.Format "2006-01-02T15:04" }}">{{ .Params.Date | time.Format ":date_long" }}</time>
             </dd>
           {{ end }}
         </dl>
-      </div>
+      </aside>
     </div>
 
   </div>

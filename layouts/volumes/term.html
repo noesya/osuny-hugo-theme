@@ -33,7 +33,7 @@
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
         </div>
       </div>
-      <div class="col-md-3 offset-lg-1">
+      <aside class="col-md-3 offset-lg-1">
         <dl>
           {{ if .Params.keywords }}
             <dt>{{ i18n "volumes.keywords" }}</dt>
@@ -45,7 +45,7 @@
             <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
           {{ end }}
         </dl>
-      </div>
+      </aside>
     </div>
 
     <div class="row">
@@ -76,7 +76,8 @@
                     <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}" itemprop="url">{{ i18n "commons.read" }}</a>
                     <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">{{ i18n "volumes.abstract" }}</button>
                     {{ if .Params.pdf }}
-                      <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>{{ i18n "commons.pdf" }}</a>
+                      {{- $pdf := partial "GetMedia" .Params.pdf -}}
+                      <a href="{{ $pdf.url }}" class="btn btn--download btn-secondary" download>{{ i18n "commons.pdf" }}</a>
                     {{ end }}
                   </div>
                   {{ partial "volumes/modal.html"

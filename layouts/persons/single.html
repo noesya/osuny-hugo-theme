@@ -81,18 +81,16 @@
         <div class="top">
           <h2>{{ i18n "persons.programs" }}</h2>
         </div>
-        <ul class="list">
-          {{ range $programsForTeacher }}
-          <li>
-            <div>
-              <p>{{ safeHTML (index .Params.teachers_description $slug) }}</p>
-            </div>
-            <div>
-              <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a>
-            </div>
-          </li>
-          {{ end }}
-        </ul>
+        <table class="table table--resume">
+          <tbody>
+            {{ range $programsForTeacher }}
+            <tr>
+              <th><p>{{ safeHTML (index .Params.teachers_description $slug) }}</p></th>
+              <td><a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a></td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
       </section>
     {{ end }}
 
