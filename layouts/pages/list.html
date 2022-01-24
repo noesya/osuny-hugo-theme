@@ -8,16 +8,21 @@
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
     <div class="row">
-
-      {{ if or $category .Pages }}
+      {{ $h2s := partial "H2Extract" .Content }}
+      {{ if or (or $category .Pages) $h2s }}
       <aside class="col-md-4 col-lg-3 mb-4">
         <ul class="nav toc" id="nav-toc">
-          <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
+          {{ if not $h2s }}
+            <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
+          {{ end }}
+          {{ range $index, $h2 := $h2s }}
+            <li class="nav-item"><a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a></li>
+          {{ end }}
           {{ if .Pages }}
-          <li class="nav-item"><a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a></li>
           {{ end }}
           {{ if $category }}
-          <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a></li>
           {{ end }}
         </ul>
       </aside>
@@ -36,10 +41,15 @@
                 )}}
         {{ end }}
         <div itemprop="articleBody" id="page-informations">
-          {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+          {{
+            safeHTML (
+              partial "CorrectPunctuation" (
+                partial "H2AddId" .Content
+              )
+            )
+          }}
 
           {{ if .Pages }}
-            <hr class="my-5">
             <div class="top">
               <h2 id="page-children">{{ i18n "pages.details" }}</h2>
             </div>

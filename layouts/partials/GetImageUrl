@@ -47,7 +47,12 @@
   {{ $fileExtension = path.Ext $filename }}
 {{ end }}
 
-{{ $resultSlice := slice $parsedUrl.Scheme "://" $parsedUrl.Host "/" $joinedPath $fileExtension }}
+{{ $domain := printf "%s://%s/" $parsedUrl.Scheme $parsedUrl.Host }}
+{{ with site.Params.cdnURL }}
+  {{ $domain = . }}
+{{ end }}
+
+{{ $resultSlice := slice $domain $joinedPath $fileExtension }}
 {{ $result := delimit $resultSlice "" }}
 
 {{ return $result }}
