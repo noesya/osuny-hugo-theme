@@ -61,13 +61,15 @@
         {{ end }}
 
         {{ if .Pages }}
-        <div class="row row-cols-md-2 g-3">
-          {{ range sort .Pages ".Params.position" }}
-          <div class="col">
-            {{ partial "programs/program.html" . }}
+        <section class="sub-programs">
+          <div class="row row-cols-md-2 g-3">
+            {{ range sort .Pages ".Params.position" }}
+            <div class="col">
+              {{ partial "programs/program.html" . }}
+            </div>
+            {{ end }}
           </div>
-          {{ end }}
-        </div>
+        </section>
         {{ end }}
 
         {{ range $chapters }}
@@ -92,9 +94,8 @@
             {{ end }}
           {{ end }}
         {{ end }}
-
-        {{ partial "posts/related.html" $category }}
       </div>
+      {{ partial "posts/related.html" $category }}
     </div>
   </div>
 </article>
