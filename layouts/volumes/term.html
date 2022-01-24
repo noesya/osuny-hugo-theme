@@ -33,7 +33,7 @@
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
         </div>
       </div>
-      <div class="col-md-3 offset-lg-1">
+      <aside class="col-md-3 offset-lg-1">
         <dl>
           {{ if .Params.keywords }}
             <dt>{{ i18n "volumes.keywords" }}</dt>
@@ -45,7 +45,7 @@
             <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
           {{ end }}
         </dl>
-      </div>
+      </aside>
     </div>
 
     <div class="row">
