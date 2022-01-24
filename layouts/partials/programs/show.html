@@ -19,7 +19,8 @@
                 -}}
 {{- $contactsExist := or $params.contacts $params.roles -}}
 <article itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
-  <meta itemprop="name" content="{{ .Title }}">
+  <meta itemprop="name" content="{{ trim .Title "\n" }}">
+  <meta itemprop="url" content="{{ .Permalink }}">
   <div class="row">
     <aside class="col-md-4 col-lg-3">
       <ul class="nav toc" id="nav-toc">
@@ -55,22 +56,23 @@
               )}}
       {{ end }}
 
-      <div itemprop="articleBody">
-        {{ if .Params.description }}
-        <p class="lead"><em>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</em></p>
-        {{ end }}
+      {{ if .Params.description }}
+      <p class="lead" itemprop="abstract">
+          {{ safeHTML (partial "CorrectPunctuation" .Params.description) }}
+      </p>
+      {{ end }}
 
-        {{ if .Pages }}
-        <section class="sub-programs">
-          <div class="row row-cols-md-2 g-3">
-            {{ range sort .Pages ".Params.position" }}
-            <div class="col">
-              {{ partial "programs/program.html" . }}
-            </div>
-            {{ end }}
+      {{ if .Pages }}
+      <section class="programs">
+        {{ range sort .Pages ".Params.position" }}
+          <div>
+            {{ partial "programs/program.html" . }}
           </div>
-        </section>
         {{ end }}
+      </section>
+      {{ end }}
+
+      <div itemprop="articleBody">
 
         {{ range $chapters }}
           {{ $content := index $params . }}
