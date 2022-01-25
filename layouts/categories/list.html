@@ -5,20 +5,10 @@
           "context" .
         ) -}}
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4 mb-5">
+    <div class="posts">
       {{ range .Paginator.Pages }}
-        <div class="col">
-          <article class="card">
-            <div class="card-body">
-              <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
-              {{ $count := len .Pages }}
-              {{ if gt $count 0 }}
-                <a href="{{ .Permalink }}" class="stretched-link link link--more"> {{ i18n "categories.see_more" $count }}</a>
-              {{ else }}
-                <span class="stretched-link link link--more">{{ i18n "categories.no_post" }}</span>
-              {{ end }}
-            </div>
-          </article>
+        <div>
+          {{ partial "posts/post.html" . }}
         </div>
       {{ end }}
     </div>

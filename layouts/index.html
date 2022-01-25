@@ -7,7 +7,7 @@
         )}}
   <div class="container">
     {{- range site.Data.menus.primary -}}
-      <section class="mb-5">
+      <section>
         <div class="top">
           <h2>
             {{ if .target }}<a href="{{ .target }}">{{ end }}
@@ -19,20 +19,20 @@
           {{ end }}
         </div>
         {{ if eq .kind "news" }}
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
+          <div class="posts">
             {{ range (where site.RegularPages "Type" "posts" | first 6) }}
-              <div class="col">
+              <div>
                 {{ partial "posts/post.html" . }}
               </div>
             {{ end }}
           </div>
         {{ else }}
-          <div class="row row-cols-1 row-cols-md-2">
+          <div class="pages">
             {{ range .children }}
               {{ if and .target (not (eq .kind "url")) }}
                 {{ $page := partial "GetPageByUrl" .target }}
                 {{ if $page }}
-                  <div class="col">
+                  <div>
                     {{ partial "pages/page.html" $page }}
                   </div>
                 {{ end }}

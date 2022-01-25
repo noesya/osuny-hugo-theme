@@ -1,9 +1,10 @@
+<div class="container">
 {{ range sort .Pages ".Params.position" }}
-  <div class="row row-cols-1 row-cols-md-2 mb-5">
-    <div class="col-md-8">
+  <div class="programs">
+    <div class="highlighted">
       <div class="card card--program">
         <div class="card-body">
-          <h2 class="card-title mb-2">
+          <h2 class="card-title">
             <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
           </h2>
           <p>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</p>
@@ -11,7 +12,7 @@
       </div>
     </div>
     {{ range sort .Pages ".Params.position"  }}
-    <div class="col mb-4">
+    <div>
       <div class="card card--program">
         {{ if .Params.image }}
           <div class="row">
@@ -44,3 +45,4 @@
   </div>
   <hr class="my-5">
 {{ end }}
+</div>

@@ -19,83 +19,87 @@
                 -}}
 {{- $contactsExist := or $params.contacts $params.roles -}}
 <article itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
-  <meta itemprop="name" content="{{ .Title }}">
-  <div class="row">
-    <aside class="col-md-4 col-lg-3">
-      <ul class="nav toc" id="nav-toc">
-        {{ range $chapters }}
-          {{ $content := index $params . }}
-          {{ $chapterExists := $content }}
-          {{ if eq "contacts" . }}
-            {{ $chapterExists = $contactsExist }}
+  <meta itemprop="name" content="{{ trim .Title "\n" }}">
+  <meta itemprop="url" content="{{ .Permalink }}">
+  <div class="container">
+    <div class="content">
+      <aside>
+        <ul class="nav toc" id="nav-toc">
+          {{ range $chapters }}
+            {{ $content := index $params . }}
+            {{ $chapterExists := $content }}
+            {{ if eq "contacts" . }}
+              {{ $chapterExists = $contactsExist }}
+            {{ end }}
+            {{ if $chapterExists }}
+            <li class="nav-item">
+              <a class="nav-link" href="#page-{{ . }}">
+                {{ i18n (printf "programs._%s" .) }}
+              </a>
+            </li>
+            {{ end }}
           {{ end }}
-          {{ if $chapterExists }}
-          <li class="nav-item">
-            <a class="nav-link" href="#page-{{ . }}">
-              {{ i18n (printf "programs._%s" .) }}
-            </a>
-          </li>
+          {{ if $category.Pages }}
+          <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "programs.posts" }}</a></li>
           {{ end }}
+        </ul>
+      </aside>
+      <div>
+        {{ if .Params.image }}
+          {{ partial "commons/image.html"
+                (dict
+                  "image"    .Params.image
+                  "class"    "img-fluid mb-4"
+                  "mobile"   "351x168"
+                  "tablet"   "456x219"
+                  "desktop"  "856x410"
+                  "itemprop" true
+                )}}
         {{ end }}
-        {{ if $category.Pages }}
-        <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "programs.posts" }}</a></li>
-        {{ end }}
-      </ul>
-    </aside>
-    <div class="col-md-8 offset-lg-1">
-      {{ if .Params.image }}
-        {{ partial "commons/image.html"
-              (dict
-                "image"    .Params.image
-                "class"    "img-fluid mb-4"
-                "mobile"   "351x168"
-                "tablet"   "456x219"
-                "desktop"  "856x410"
-                "itemprop" true
-              )}}
-      {{ end }}
 
-      <div itemprop="articleBody">
         {{ if .Params.description }}
-        <p class="lead"><em>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</em></p>
+        <p class="lead" itemprop="abstract">
+            {{ safeHTML (partial "CorrectPunctuation" .Params.description) }}
+        </p>
         {{ end }}
 
         {{ if .Pages }}
-        <section class="sub-programs">
-          <div class="row row-cols-md-2 g-3">
-            {{ range sort .Pages ".Params.position" }}
-            <div class="col">
+        <section class="programs">
+          {{ range sort .Pages ".Params.position" }}
+            <div>
               {{ partial "programs/program.html" . }}
             </div>
-            {{ end }}
-          </div>
+          {{ end }}
         </section>
         {{ end }}
 
-        {{ range $chapters }}
-          {{ $content := index $params . }}
-          {{ $chapterExists := $content }}
-          {{ if eq "contacts" . }}
-            {{ $chapterExists = $contactsExist }}
-          {{ end }}
-          {{ if $chapterExists }}
-            <h2 id="page-{{ . }}">{{ i18n (printf "programs._%s" .) }}</h2>
-            {{ if eq . "contacts" }}
-              {{ safeHTML (partial "CorrectPunctuation" $content) }}
-              {{ partial "programs/roles.html" $params.roles }}
-            {{ else if eq . "teachers" }}
-              {{ partial "programs/teachers.html"
-                            (dict
-                              "teachers" $params.teachers
-                              "descriptions" $params.teachers_description
-                            ) }}
-            {{ else }}
-              {{ safeHTML (partial "CorrectPunctuation" $content) }}
+        <div itemprop="articleBody">
+          {{ range $chapters }}
+            {{ $content := index $params . }}
+            {{ $chapterExists := $content }}
+            {{ if eq "contacts" . }}
+              {{ $chapterExists = $contactsExist }}
+            {{ end }}
+            {{ if $chapterExists }}
+              <h2 id="page-{{ . }}">{{ i18n (printf "programs._%s" .) }}</h2>
+              {{ if eq . "contacts" }}
+                {{ safeHTML (partial "CorrectPunctuation" $content) }}
+                {{ partial "programs/roles.html" $params.roles }}
+              {{ else if eq . "teachers" }}
+                {{ partial "programs/teachers.html"
+                              (dict
+                                "teachers" $params.teachers
+                                "descriptions" $params.teachers_description
+                              ) }}
+              {{ else }}
+                {{ safeHTML (partial "CorrectPunctuation" $content) }}
+              {{ end }}
             {{ end }}
           {{ end }}
-        {{ end }}
+        </div>
+
+        {{ partial "posts/related.html" $category }}
       </div>
-      {{ partial "posts/related.html" $category }}
     </div>
   </div>
 </article>

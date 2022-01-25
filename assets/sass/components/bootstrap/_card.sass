@@ -1,17 +1,22 @@
 .card
     &--article,
+    &--page,
     &--program
         .link
             font-size: px2rem(22)
             line-height: px2rem(30)
             text-decoration: none
     &--program
+        .highlighted &
+            .card-title
+                margin-bottom: 1rem
         .card-media
             --bs-aspect-ratio: 70%
     &--volume
         .card-media
             --bs-aspect-ratio: 118.77%
-    &--article
+    &--article,
+    &--page
         .card-title a
             display: block
         .card-body

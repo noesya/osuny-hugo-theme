@@ -7,10 +7,10 @@
         ) -}}
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
-    <div class="row">
+    <div class="content">
       {{ $h2s := partial "H2Extract" .Content }}
       {{ if or (or $category .Pages) $h2s }}
-      <aside class="col-md-4 col-lg-3 mb-4">
+      <aside>
         <ul class="nav toc" id="nav-toc">
           {{ if not $h2s }}
             <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
@@ -28,7 +28,7 @@
       </aside>
       {{ end }}
 
-      <div class="col-md-8{{ if or $category .Pages }} offset-lg-1{{ end }}">
+      <div>
         {{ if .Params.image }}
           {{ partial "commons/image.html"
                 (dict
@@ -50,16 +50,18 @@
           }}
 
           {{ if .Pages }}
-            <div class="top">
-              <h2 id="page-children">{{ i18n "pages.details" }}</h2>
-            </div>
-            <div class="row row-cols-md-2 g-3">
-              {{ range sort .Pages ".Params.position"  }}
-                <div class="col">
-                  <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
-                </div>
-              {{ end }}
-            </div>
+            <section>
+              <div class="top">
+                <h2 id="page-children">{{ i18n "pages.details" }}</h2>
+              </div>
+              <div class="pages">
+                {{ range sort .Pages ".Params.position"  }}
+                  <div>
+                    {{ partial "pages/page.html" . }}
+                  </div>
+                {{ end }}
+              </div>
+            </section>
           {{ end }}
 
           {{ partial "posts/related.html" $category }}
