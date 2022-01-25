@@ -1,5 +1,5 @@
 {{- $lazy := default true .lazy -}}
-<img alt="" src="{{site.Data.website.default_image}}" width="1024" height="502"
+<img alt="" src="{{site.Data.theme.default_image}}" width="1024" height="502"
   {{- if .class }} class="{{ .class }}"{{- end -}}
   {{- if $lazy }} loading="lazy"{{- end -}}
   >

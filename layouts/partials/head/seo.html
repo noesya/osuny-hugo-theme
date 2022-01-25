@@ -3,7 +3,7 @@
   {{- $seoTitle = printf "%s | %s" (chomp (htmlUnescape .Title)) $seoTitle -}}
 {{- end -}}
 {{- $seoDescription := .Params.description | chomp -}}
-{{- $seoImage := site.Data.website.seo.image -}}
+{{- $seoImage := site.Data.theme.seo.image -}}
 {{- if .Params.image }}
   {{- $image := partial "GetMedia" .Params.image -}}
   {{- $seoImage = $image.url -}}
