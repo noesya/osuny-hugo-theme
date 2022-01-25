@@ -82,10 +82,10 @@
             </dd>
           {{ end }}
 
-          {{ if isset .Params "date" }}
+          {{ if .Date }}
             <dt>{{ i18n "commons.date" }}</dt>
             <dd>
-              <time itemprop="datePublished" datetime="{{ .Params.Date | time.Format "2006-01-02T15:04" }}">{{ .Params.Date | time.Format ":date_long" }}</time>
+              <time itemprop="datePublished" datetime="{{ .Date | time.Format "2006-01-02T15:04" }}">{{ .Params.Date | time.Format ":date_long" }}</time>
             </dd>
           {{ end }}
         </dl>
