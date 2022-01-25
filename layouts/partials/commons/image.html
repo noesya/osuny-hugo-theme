@@ -2,6 +2,9 @@
   {{- $image := partial "GetMedia" .image -}}
   {{- if $image -}}
     {{- $url := $image.url -}}
+    {{- if site.Params.cdnkey -}}
+      {{- $url = $image.direct_url -}}
+    {{- end -}}
     {{- $lazy := default true .lazy -}}
     {{- $alt := or .alt "" -}}
     {{- $width := $image.width -}}
