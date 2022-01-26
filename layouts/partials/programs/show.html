@@ -24,7 +24,8 @@
   <div class="container">
     <div class="content">
       <aside>
-        <ul class="nav toc" id="nav-toc">
+        {{/* nav-link required for active toggle */}}
+        <ul class="toc" id="nav-toc">
           {{ range $chapters }}
             {{ $content := index $params . }}
             {{ $chapterExists := $content }}
@@ -32,7 +33,7 @@
               {{ $chapterExists = $contactsExist }}
             {{ end }}
             {{ if $chapterExists }}
-            <li class="nav-item">
+            <li>
               <a class="nav-link" href="#page-{{ . }}">
                 {{ i18n (printf "programs._%s" .) }}
               </a>
@@ -40,7 +41,11 @@
             {{ end }}
           {{ end }}
           {{ if $category.Pages }}
-          <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "programs.posts" }}</a></li>
+            <li>
+              <a class="nav-link" href="#page-posts">
+                {{ i18n "programs.posts" }}
+              </a>
+            </li>
           {{ end }}
         </ul>
       </aside>
