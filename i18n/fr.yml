@@ -8,6 +8,7 @@ commons:
     main_content: Accéder au contenu principal
     menu: Accéder au menu
   biography: Biographie
+  breadcrumb: Fil d’arianne
   close: Fermer
   date: Date
   download:

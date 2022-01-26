@@ -8,6 +8,7 @@ commons:
     main_content: Access main content
     menu: Access menu
   biography: Biography
+  breadcrumb: Breadcrumb
   close: Close
   date: Date
   download:
