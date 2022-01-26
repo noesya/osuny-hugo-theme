@@ -1,12 +1,17 @@
 <header role="banner">
-  <nav class="navbar navbar-expand-lg" id="navigation" aria-label="Menu principal">
+  <nav role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
     <div class="container">
       {{ partial "header/logo.html" }}
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="{{ i18n "commons.menu.toggle" }}">
-        <span class="navbar-toggler-text">{{ i18n "commons.menu.title" }}</span>
-        <span class="navbar-toggler-icon"></span>
+      <button type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="{{ i18n "commons.menu.toggle" }}">
+        <span>{{ i18n "commons.menu.title" }}</span>
+        <span></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="menu" id="navbarNavDropdown">
         {{ partial "commons/menu.html"
               (dict
                 "items" site.Data.menus.primary

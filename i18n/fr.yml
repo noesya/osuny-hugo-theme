@@ -16,6 +16,7 @@ commons:
   language: Langue
   menu:
     label: Ouvrir le menu
+    main: Menu principal
     title: Menu
   more: En savoir plus
   pagination:

@@ -1,4 +1,18 @@
 header[role="banner"]
+    nav[role="navigation"]
+        @extend .navbar
+        @extend .navbar-expand-lg
+        .logo
+            @extend .navbar-brand
+        button[type="button"]
+            @extend .navbar-toggler
+            span:first-of-type
+                @extend .navbar-toggler-text
+            span:last-of-type
+                @extend .navbar-toggler-icon
+        .menu
+            @extend .collapse
+            @extend .navbar-collapse
     .nav-item
         @include media-breakpoint-down(lg)
             border-bottom: 1px solid $black
