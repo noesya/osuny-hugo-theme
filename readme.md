@@ -371,3 +371,63 @@ Il faudrait peut-être le renommer GetOsunyImageUrl.
 
 
 Le partial commons/image génère une balise picture et des src-set, équivalent à [Kamifusen](https://rubygems.org/gems/kamifusen), mais sur la base d'un media. Il faudrait peut-être le renommer imageFromOsuny.
+
+data/media/me/media-id.md
+
+```
+---
+name: Mon image.jpg
+size: 2450
+width: 2300
+height: 1599
+ratio: 1.438
+url: https://demo.osuny.org/media/media-id/mon_image.jpg
+---
+```
+
+content/pages/page-test/_index.html
+
+```
+---
+title: Page test
+image: media-id
+---
+```
+
+On l'utilise avec :
+
+```
+{% include media.html id=page.image size="1920x1080" %}
+```
+
+Cela génère :
+
+```html
+<picture>
+    <source>
+    <img>
+</picture>
+```
+
+Syntaxe de transformation type Shopify (à revoir)
+
+```
+{{ partial  "commons/image.html"
+            (dict
+              "alt"    .Title
+              "image"    .Params.image
+              "class"    "img-fluid"
+              "mobile"   "202x202"
+              "tablet"   "192x192"
+              "desktop"  "196x196"
+            ) }}
+```
+
+- `https://demo.osuny.org/media/media-id/mon_image.jpg`
+- `https://demo.osuny.org/media/media-id/mon_image_500x.jpg`
+- `https://demo.osuny.org/media/media-id/mon_image_500x500.jpg`
+- `https://demo.osuny.org/media/media-id/mon_image_500x500_crop_center.jpg`
+- `https://demo.osuny.org/media/media-id/mon_image.webp`
+- `https://demo.osuny.org/media/media-id/mon_image_500x.webp`
+- `https://demo.osuny.org/media/media-id/mon_image_500x500.webp`
+- `https://demo.osuny.org/media/media-id/mon_image_500x500_crop_center.webp`
