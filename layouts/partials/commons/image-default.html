@@ -1,6 +1,16 @@
-{{ if os.FileExists "static/assets/images/default.jpg" }}
+{{ if os.FileExists "static/assets/images/default.png" }}
+  {{ $file := "/assets/images/default.png" }}
+  {{ $fileDimensions := partial "GetImageSize" (dict "context" . "file" $file "static" true) }}
   {{- $lazy := default true .lazy -}}
-  <img alt="" src="/assets/images/default.jpg" width="1024" height="502"
+  <img alt="" src="{{ $file }}" width="{{ index $fileDimensions 1 }}" height="{{ index $fileDimensions 0 }}"
+    {{- if .class }} class="{{ .class }}"{{- end -}}
+    {{- if $lazy }} loading="lazy"{{- end -}}
+    >
+{{ else if os.FileExists "static/assets/images/default.jpg" }}
+  {{ $file := "/assets/images/default.jpg" }}
+  {{ $fileDimensions := partial "GetImageSize" (dict "context" . "file" $file "static" true) }}
+  {{- $lazy := default true .lazy -}}
+  <img alt="" src="{{ $file }}" width="{{ index $fileDimensions 1 }}" height="{{ index $fileDimensions 0 }}"
     {{- if .class }} class="{{ .class }}"{{- end -}}
     {{- if $lazy }} loading="lazy"{{- end -}}
     >
