@@ -1,5 +1,6 @@
 <header role="banner">
-  <nav role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
+  {{/* navbar class is required for dropdown */}}
+  <nav class="navbar" role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
     <div class="container">
       {{ partial "header/logo.html" }}
       <button type="button"
