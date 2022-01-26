@@ -3,6 +3,15 @@ footer[role="contentinfo"]
     padding-bottom: $grid-gutter-width * 2.5
     padding-top: $grid-gutter-width * 2.5
 
+    .content
+        @extend .mb-5
+        > div:first-of-type
+            @include media-breakpoint-up(md)
+                @include make-col(4)
+        > div:last-of-type
+            @include media-breakpoint-up(md)
+                @include make-col(8)
+
     address
         font-size: px2rem(14)
         line-height: px2rem(26)
