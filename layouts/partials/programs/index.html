@@ -1,5 +1,6 @@
 <div class="container">
-{{ range sort .Pages ".Params.position" }}
+{{ $len := (len .Pages) }}
+{{ range $index, $programs := sort .Pages ".Params.position" }}
   <div class="programs">
     <div class="highlighted">
       <div class="card card--program">
@@ -41,6 +42,6 @@
     </div>
     {{ end }}
   </div>
-  <hr class="my-5">
+  {{ if ne (add $index 1) $len }}<hr>{{ end }}
 {{ end }}
 </div>
