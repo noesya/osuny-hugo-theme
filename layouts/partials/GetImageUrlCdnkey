@@ -13,6 +13,9 @@
     {{ $width = mul $width $scale }}
     {{ $height = mul $height $scale }}
   {{ end }}
-  {{ $result = printf "%scrop=smart&width=%d&height=%d&" $result $width $height }}
+  {{ $result = printf "%sfit=inside&width=%d&height=%d&" $result $width $height }}
+{{ end }}
+{{ with .crop }}
+  {{ $result = printf "%scrop=smart" $result }}
 {{ end }}
 {{ return $result }}
