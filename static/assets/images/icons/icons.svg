@@ -50,6 +50,20 @@
     </g>
   </svg>
 
+  <svg viewBox="0 0 24 24">
+    <g id="download" class="i" fill="none">
+      <path fill="none" d="M0 0h24v24H0z" stroke="currentColor"/>
+      <path stroke="currentColor" d="M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zm-1-4-1.41-1.41L13 12.17V4h-2v8.17L8.41 9.59 7 11l5 5 5-5z"/>
+    </g>
+  </svg>
+
+  <svg viewBox="0 0 24 24">
+    <g id="eye" class="i" fill="none">
+      <path stroke="currentColor" d="M0 0h24v24H0V0z" fill="none"/>
+      <path stroke="currentColor" d="M12 6a9.77 9.77 0 0 1 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5A9.77 9.77 0 0 1 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5a2.5 2.5 0 0 1 0 5 2.5 2.5 0 0 1 0-5m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"/>
+    </g>
+  </svg>
+
   <svg viewBox="0 0 11.7 11.7">
     <g id="link-blank" class="i">
       <path fill="currentColor" d="m7 8-2 2c-.9.9-2.4.9-3.3 0-.9-.9-.9-2.4 0-3.3l2-2c.2-.2.2-.5 0-.7s-.5-.2-.7 0L1 6a3.32 3.32 0 0 0 0 4.7c.6.6 1.5 1 2.4 1s1.7-.3 2.4-1l2-2c.2-.2.2-.5 0-.7s-.6-.2-.8 0z"/>

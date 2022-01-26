@@ -14,23 +14,23 @@
         <section>
           <p itemprop="abstract">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
-        <section>
+        <section class="article-authors">
           <h2>{{ i18n "volumes.authors" }}</h2>
-          <div class="row">
-
+          <div>
             {{ range .Params.Researchers }}
               {{ $author := site.GetPage (printf "/persons/%s" .) }}
               {{ $content := trim $author.Content "\n" }}
-              <div class="col-md-6 mb-3" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <p class="mb-0">
-                    <a href="{{ $author.Permalink }}" itemprop="url"><span itemprop="name">{{ $author.Title }}</span></a>
+              <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <p>
+                    <a href="{{ $author.Permalink }}" itemprop="url">
+                      <span itemprop="name">{{ $author.Title }}</span>
+                    </a>
                   </p>
                   {{ if ne $content " " }}
-                    <p class="small" itemprop="description">{{ truncate 120 (plainify $content) }}</p>
+                    <p itemprop="description">{{ truncate 120 (plainify $content) }}</p>
                   {{ end }}
               </div>
             {{ end }}
-
           </div>
         </section>
         <section id="full-text">
@@ -50,12 +50,12 @@
       </div>
       <aside>
         <dl>
-          <dd>
+          <dd role="group">
             {{ if isset .Params "pdf" }}
               {{- $pdf := partial "GetMedia" .Params.pdf -}}
-              <a href="{{ $pdf.url }}" class="btn btn--download btn-secondary mb-1" download>{{ i18n "commons.download.pdf" }}</a><br>
+              <a href="{{ $pdf.url }}" download>{{ i18n "commons.download.pdf" }}</a><br>
             {{ end }}
-            <a href="#full-text" class="btn btn--eye btn-secondary">{{ i18n "commons.read_online" }}</a>
+            <a href="#full-text" class="btn-eye">{{ i18n "commons.read_online" }}</a>
           </dd>
 
           {{ if isset .Params "type" }}
