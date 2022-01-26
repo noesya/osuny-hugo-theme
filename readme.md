@@ -394,10 +394,18 @@ image: media-id
 ---
 ```
 
-On l'utilise avec :
+On l'utilise avec (à revoir) :
 
 ```
-{% include media.html id=page.image size="1920x1080" %}
+{{ partial  "commons/image.html"
+            (dict
+              "alt"    .Title
+              "image"    .Params.image
+              "class"    "img-fluid"
+              "mobile"   "202x202"
+              "tablet"   "192x192"
+              "desktop"  "196x196"
+            ) }}
 ```
 
 Cela génère :
@@ -412,15 +420,7 @@ Cela génère :
 Syntaxe de transformation type Shopify (à revoir)
 
 ```
-{{ partial  "commons/image.html"
-            (dict
-              "alt"    .Title
-              "image"    .Params.image
-              "class"    "img-fluid"
-              "mobile"   "202x202"
-              "tablet"   "192x192"
-              "desktop"  "196x196"
-            ) }}
+{{ partial "GetImageUrlOsuny" (dict "url" $url "size" "500x500" "crop" "center" "scale" 2 "format" "webp") }}
 ```
 
 - `https://demo.osuny.org/media/media-id/mon_image.jpg`
