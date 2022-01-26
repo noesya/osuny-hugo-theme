@@ -1,5 +1,7 @@
-{{- $lazy := default true .lazy -}}
-<img alt="" src="/assets/images/default.jpg" width="1024" height="502"
-  {{- if .class }} class="{{ .class }}"{{- end -}}
-  {{- if $lazy }} loading="lazy"{{- end -}}
-  >
+{{ if os.FileExists "static/assets/images/default.jpg" }}
+  {{- $lazy := default true .lazy -}}
+  <img alt="" src="/assets/images/default.jpg" width="1024" height="502"
+    {{- if .class }} class="{{ .class }}"{{- end -}}
+    {{- if $lazy }} loading="lazy"{{- end -}}
+    >
+{{ end }}
