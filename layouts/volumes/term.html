@@ -14,8 +14,8 @@
   {{- end -}}
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-lg-3 mb-2">
+    <div class="content">
+      <div>
         {{- if .Params.image -}}
           {{- partial "commons/image.html"
                 (dict
@@ -28,12 +28,12 @@
                 ) -}}
         {{- end -}}
       </div>
-      <div class="col-md-5">
+      <div>
         <div itemprop="description">
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
         </div>
       </div>
-      <aside class="col-md-3 offset-lg-1">
+      <aside>
         <dl>
           {{ if .Params.keywords }}
             <dt>{{ i18n "volumes.keywords" }}</dt>
@@ -48,7 +48,7 @@
       </aside>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-9 col-lg-8">
           <h2>{{ i18n "volumes.table" }}</h2>
           <ol class="list-unstyled">

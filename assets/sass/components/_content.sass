@@ -14,3 +14,6 @@
     > div
         @include media-breakpoint-up(md)
             @include make-col(8)
+        & + aside
+            @include media-breakpoint-up(lg)
+                @include make-col-offset(1)

@@ -1,7 +1,7 @@
 .authors
     @include make-row()
     --bs-gutter-y: 3rem
-    @extend .mb-5
+    margin-bottom: map-get($spacers, 5)
     > div
         @include make-col-ready()
         @include media-breakpoint-up(md)
