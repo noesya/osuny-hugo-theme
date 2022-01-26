@@ -1,10 +1,9 @@
 .programs
-    @include make-row()
     --bs-gutter-y: 3rem
+    @include row-cols(1)
+    @extend .row
     @extend .mb-5
-    > div
-        @include make-col-ready()
-        @include media-breakpoint-up(lg)
-            @include make-col(6)
-        &.highlighted
-            @include make-col(8)
+    @include media-breakpoint-up(lg)
+        @include row-cols(2)
+    .highlighted
+        @include make-col(8)

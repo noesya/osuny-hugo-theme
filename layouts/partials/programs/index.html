@@ -15,23 +15,21 @@
     <div>
       <div class="card card--program">
         {{ if .Params.image }}
-          <div class="row">
-            <div class="col-md-6">
-              {{ partial "commons/image.html"
-                    (dict
-                      "image"    .Params.image
-                      "class"    "img-fluid"
-                      "mobile"   "351x168"
-                      "tablet"   "456x219"
-                      "desktop"  "856x410"
-                      "itemprop" true
-                    )}}
-            </div>
+          <div class="card-media">
+            {{ partial "commons/image.html"
+                  (dict
+                    "image"    .Params.image
+                    "class"    "img-fluid"
+                    "mobile"   "351x168"
+                    "tablet"   "456x219"
+                    "desktop"  "856x410"
+                    "itemprop" true
+                  )}}
           </div>
         {{ end }}
         <div class="card-body">
           <p class="card-title ">
-            <a href="{{ .Permalink }}" class="link link--more stretched-link">
+            <a href="{{ .Permalink }}" class="link stretched-link">
               {{ safeHTML (partial "CorrectPunctuation" .Title) }}
             </a>
           </p>

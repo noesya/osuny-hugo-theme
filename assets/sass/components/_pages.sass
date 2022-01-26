@@ -1,7 +1,6 @@
 .pages
-    @include make-row()
     --bs-gutter-y: 1rem
-    > div
-        @include make-col-ready()
-        @include media-breakpoint-up(md)
-            @include make-col(6)
+    @include row-cols(1)
+    @extend .row
+    @include media-breakpoint-up(md)
+        @include row-cols(2)

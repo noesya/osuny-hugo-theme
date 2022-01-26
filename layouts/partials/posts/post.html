@@ -5,7 +5,7 @@
             (dict
               "image"    .Params.image
               "alt"      .Title
-              "mobile"   "375x450"
+              "mobile"   "351x291"
               "tablet"   "334x167"
               "desktop"  "634x317"
             ) -}}
@@ -16,6 +16,6 @@
   <div class="card-body">
     <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
     <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-    <a href="{{ .Permalink }}" class="stretched-link link link--more">{{ i18n "commons.more" }}</a>
+    <a href="{{ .Permalink }}" class="stretched-link link">{{ i18n "commons.more" }}</a>
   </div>
 </article>
