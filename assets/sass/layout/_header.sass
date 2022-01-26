@@ -2,17 +2,24 @@ header[role="banner"]
     nav[role="navigation"]
         @extend .navbar
         @extend .navbar-expand-lg
-        .logo
-            @extend .navbar-brand
         button[type="button"]
             @extend .navbar-toggler
+            border: 0
+            position: relative
             span:first-of-type
-                @extend .navbar-toggler-text
+                font-family: $font-family-sans-serif
+                font-size: px2rem(14)
+                text-transform: uppercase
             span:last-of-type
                 @extend .navbar-toggler-icon
-        .menu
-            @extend .collapse
-            @extend .navbar-collapse
+                background-image: url('/assets/images/icons/icons.svg#burger')
+                background-position: center
+                background-repeat: no-repeat
+                background-size: 20px 17px
+                height: px2rem(32)
+                width: px2rem(32)
+    .logo
+        @extend .navbar-brand
     .nav-item
         @include media-breakpoint-down(lg)
             border-bottom: 1px solid $black
@@ -29,29 +36,31 @@ header[role="banner"]
                 justify-content: space-between
             &:hover
                 text-decoration: none
-    .navbar-collapse
+    .menu
+        @extend .collapse
+        @extend .navbar-collapse
+        flex-grow: initial
         @include media-breakpoint-down(lg)
             background: white
-            padding-top: $grid-gutter-width / 2
+            padding-top: calc(#{$grid-gutter-width} / 2)
     .dropdown
         position: static
         &-menu
-            left: 0
+            inset: 100% 0 auto 0 !important
             margin-top: 0
-            right: 0
-            top: 100%
+            transform: none !important
             @include media-breakpoint-down(lg)
                 border-top: 1px solid $border-color
             > ul
                 @extend .container
                 @extend .grid
-                padding-bottom: $grid-gutter-width / 2
-                padding-top: $grid-gutter-width / 2
+                padding-bottom: calc(#{$grid-gutter-width} / 2)
+                padding-top: calc(#{$grid-gutter-width} / 2)
                 @include media-breakpoint-down(lg)
                     padding-left: 0
                     padding-right: 0
                 @include media-breakpoint-up(lg)
-                    padding-bottom: $grid-gutter-width * 2
+                    padding-bottom: calc(#{$grid-gutter-width} * 2)
                     padding-top: $grid-gutter-width
                     position: relative
                 > li
