@@ -420,7 +420,14 @@ Cela génère :
 Syntaxe de transformation type Shopify (à revoir)
 
 ```
-{{ partial "GetImageUrlOsuny" (dict "url" $url "size" "500x500" "crop" "center" "scale" 2 "format" "webp") }}
+{{ partial  "GetImageUrlOsuny" 
+            (dict 
+              "url" $url
+              "size" "500x500"
+              "crop" "center"
+              "scale" 2
+              "format" "webp"
+            ) }}
 ```
 
 - `https://demo.osuny.org/media/media-id/mon_image.jpg`
