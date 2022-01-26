@@ -16,7 +16,7 @@ commons:
     pdf: Télécharger le PDF
   language: Langue
   menu:
-    label: Ouvrir le menu
+    label: Ouvrir / Fermer le menu
     main: Menu principal
     title: Menu
   more: En savoir plus

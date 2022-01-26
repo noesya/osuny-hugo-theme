@@ -9,12 +9,12 @@
   <meta itemprop="name" content="{{ .Title }}">
 
   <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-8">
-        <section class="mb-5">
+    <div class="content">
+      <div>
+        <section>
           <p itemprop="abstract">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
-        <section class="mb-5">
+        <section>
           <h2>{{ i18n "volumes.authors" }}</h2>
           <div class="row">
 
@@ -33,14 +33,14 @@
 
           </div>
         </section>
-        <section class="mb-5" id="full-text">
+        <section id="full-text">
           <h2>{{ i18n "volumes.full_text" }}</h2>
           <div class="articleBody">
             {{ safeHTML (partial "CorrectPunctuation" .Content) | markdownify }}
           </div>
         </section>
         {{ if isset .Params "references" }}
-          <section class="mb-5">
+          <section>
             <h2>{{ i18n "volumes.references" }}</h2>
             <p>
               {{ .Params.References }}
@@ -48,7 +48,7 @@
           </section>
         {{ end }}
       </div>
-      <aside class="col-md-3 offset-md-1">
+      <aside>
         <dl>
           <dd>
             {{ if isset .Params "pdf" }}
@@ -91,8 +91,8 @@
         </dl>
       </aside>
     </div>
-
   </div>
+
 </article>
 
 {{ end }}
