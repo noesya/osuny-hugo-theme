@@ -5,10 +5,10 @@
           "context" .
         ) -}}
   <div class="container">
-    <div class="posts">
+    <div class="categories">
       {{ range .Paginator.Pages }}
         <div>
-          {{ partial "posts/post.html" . }}
+          {{ partial "categories/category.html" . }}
         </div>
       {{ end }}
     </div>
