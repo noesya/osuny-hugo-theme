@@ -62,8 +62,8 @@
               {{ range .Params.roles }}
                 {{ $role := .title }}
                 {{ if in .persons $slug }}
-                  {{ safeHTML $role }}
-                  <a href="{{ $program.Permalink }}" class="link link--more">{{ safeHTML $program.Title }}</a>
+                  {{ safeHTML $role }}<br>
+                  <a href="{{ $program.Permalink }}" class="link link-more">{{ safeHTML $program.Title }}</a>
                 {{ end }}
               {{ end }}
             {{ end }}
@@ -82,7 +82,7 @@
             {{ range $programsForTeacher }}
             <tr>
               <th><p>{{ safeHTML (index .Params.teachers_description $slug) }}</p></th>
-              <td><a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a></td>
+              <td><a href="{{ .Permalink }}" class="link link-more">{{ safeHTML .Title }}</a></td>
             </tr>
             {{ end }}
           </tbody>
@@ -94,7 +94,7 @@
       <section class="mb-5">
         <div class="top">
           <h2>{{ i18n "persons.posts" }}</h2>
-          <a href="actualites/" class="link link--more">{{ i18n "posts.see_all" }}</a>
+          <a href="actualites/" class="link link-more">{{ i18n "posts.see_all" }}</a>
         </div>
         <div class="row row-cols-1 row-cols-md-3 gy-4">
           {{ range first 3 $author.Pages }}
@@ -110,7 +110,7 @@
       <section class="mb-5">
         <div class="top">
           <h2>{{ i18n "persons.publications" }}</h2>
-          <a href="publications/" class="link link--more">{{ i18n "persons.publications" }}</a>
+          <a href="publications/" class="link link-more">{{ i18n "persons.publications" }}</a>
         </div>
         <div class="row row-cols-1 row-cols-md-3 gy-4">
           {{ range first 3 $articlesForResearcher }}
