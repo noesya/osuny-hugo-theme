@@ -2,7 +2,12 @@
 {{- if .Title -}}
   {{- $seoTitle = printf "%s | %s" (chomp (htmlUnescape .Title)) $seoTitle -}}
 {{- end -}}
-{{- $seoDescription := .Params.description | chomp -}}
+{{- $seoDescription := "" -}}
+{{- if .Params.description -}}
+  {{- $seoDescription = .Params.description | chomp -}}
+{{- else -}}
+  {{- $seoDescription = .Summary -}}
+{{- end -}}
 {{- $seoImage := "/assets/images/share.png" -}}
 {{- if .Params.image }}
   {{- $image := partial "GetMedia" .Params.image -}}
