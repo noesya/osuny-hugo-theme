@@ -3,14 +3,15 @@
     background-color: $primary
     color: $white
     display: flex
-    margin-bottom: $grid-gutter-width * 1.5
+    margin-bottom: map-get($spacers, 4)
     min-height: 300px
     overflow: hidden
-    padding-bottom: $grid-gutter-width * 1.5
-    padding-top: $grid-gutter-width * 1.5
+    padding-bottom: map-get($spacers, 3)
+    padding-top: map-get($spacers, 3)
     position: relative
     @include media-breakpoint-up(md)
         min-height: 450px
+
     &__image
         filter: blur(16px) grayscale(100%)
         height: 100%
@@ -23,22 +24,26 @@
         width: 100%
         .layout-home &
             filter: none
-    &__nav
-        align-items: flex-start
-        display: flex
-        flex-direction: column
-        @include media-breakpoint-down(md)
-            nav
-                margin-left: -$grid-gutter-width/2
-                width: calc(100% + #{$grid-gutter-width})
-            .btn
-                margin-top: $grid-gutter-width
-        @include media-breakpoint-up(md)
-            align-items: baseline
-            flex-direction: row
-            justify-content: space-between
+
     .container
         position: relative
+        > div:first-of-type
+            max-width: 76.666666667%
+            & + div
+                align-items: flex-start
+                display: flex
+                flex-direction: column
+                @include media-breakpoint-up(md)
+                    align-items: baseline
+                    flex-direction: row
+                    justify-content: space-between
+    nav
+        @include media-breakpoint-down(md)
+            margin-left: calc(#{$grid-gutter-width} / -2)
+            width: calc(100% + #{$grid-gutter-width})
+    .btn
+        @include media-breakpoint-down(md)
+            margin-top: $grid-gutter-width
     .breadcrumb
         a
             color: $white

@@ -3,6 +3,8 @@
     > *
         @include make-col-ready()
     > aside
+        @include media-breakpoint-down(md)
+            margin-bottom: map-get($spacers, 4)
         @include media-breakpoint-up(md)
             @include make-col(4)
         @include media-breakpoint-up(lg)
@@ -10,10 +12,11 @@
         & + div
             @include media-breakpoint-up(lg)
                 @include make-col-offset(1)
-
     > div
         @include media-breakpoint-up(md)
             @include make-col(8)
         & + aside
+            @include media-breakpoint-down(md)
+                margin-bottom: 0
             @include media-breakpoint-up(lg)
                 @include make-col-offset(1)
