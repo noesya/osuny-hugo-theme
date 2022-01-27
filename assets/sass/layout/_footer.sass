@@ -1,0 +1,69 @@
+footer[role="contentinfo"]
+    background-color: $light
+    padding-bottom: calc(#{$grid-gutter-width} * 2.5)
+    padding-top: calc(#{$grid-gutter-width} * 2.5)
+
+    .logo
+        img
+            height: 60px
+            width: auto
+
+    .content
+        margin-bottom: map-get($spacers, 5)
+        > div:first-of-type
+            @include media-breakpoint-up(md)
+                @include make-col(4)
+        > div:last-of-type
+            @include media-breakpoint-up(md)
+                @include make-col(8)
+
+    address
+        font-size: px2rem(14)
+        line-height: px2rem(26)
+
+    ul
+        list-style: none
+        margin-left: 0
+        padding: 0
+
+    nav
+        > ul
+            @extend .nav
+        li
+            @extend .nav-item
+        a,
+        span
+            @extend .nav-link
+            display: inline-block
+            font-size: px2rem(14)
+            line-height: 1.4
+            padding-left: 0
+            padding-right: 0
+
+        .nav-levels
+            @extend .grid
+            margin-bottom: map-get($spacers, 3)
+            > li
+                break-inside: avoid
+                margin-bottom: calc(#{$grid-gutter-width} * 2)
+                & > a,
+                & > span
+                    color: $primary
+                    font-size: px2rem(18)
+                    margin-bottom: calc(#{$grid-gutter-width} / 2)
+                    margin-top: 0
+                    padding-bottom: calc(#{$grid-gutter-width} / 2)
+                    text-decoration: none
+
+                .nav-level-2 > li
+                    & > a,
+                    & > span
+                        color: $primary
+                        font-size: px2rem(16)
+
+                .nav-level-3
+                    margin-bottom: $grid-gutter-width
+
+        .nav-legal
+            li
+                margin-right: $spacer * 2

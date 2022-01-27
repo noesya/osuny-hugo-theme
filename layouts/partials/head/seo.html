@@ -22,26 +22,44 @@
 <!-- Facebook Meta Tags -->
 <meta property="og:title" content="{{ $seoTitle }}">
 <meta property="og:description" content="{{ $seoDescription }}">
-<meta property="og:image" content="{{ $seoImage }}">
+{{- if os.FileExists "static/assets/images/share.png" }}
+    <meta property="og:image" content="{{ $seoImage }}">
+{{ end }}
 <meta property="og:url" content="{{ $seoUrl }}">
 <meta property="og:type" content="website">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:title" content="{{ $seoTitle }}">
 <meta name="twitter:description" content="{{ $seoDescription }}">
-<meta name="twitter:image" content="{{ $seoImage }}">
+{{- if os.FileExists "static/assets/images/share.png" }}
+    <meta name="twitter:image" content="{{ $seoImage }}">
+{{ end }}
 <meta name="twitter:card" content="summary_large_image">
 {{- if site.Data.school.twitter }}
-<meta name="twitter:site" content="@{{ site.Data.school.twitter }}" />
-{{ end }}
+    <meta name="twitter:site" content="@{{ site.Data.school.twitter }}" />
+{{ else if site.Data.journal.twitter }}
+    <meta name="twitter:site" content="@{{ site.Data.journal.twitter }}" />
+{{ end -}}
 
 <!-- Icons -->
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
-<link rel="icon" type="image/png" href="/assets/images/favicons/favicon.ico">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#002539">
+{{- if os.FileExists "static/images/favicons/apple-touch-icon.png" }}
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
+{{ end -}}
+{{- if os.FileExists "static/images/favicons/favicon-32x32.png" }}
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
+{{ end -}}
+{{- if os.FileExists "static/images/favicons/favicon-16x16.png" }}
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
+{{ end -}}
+{{- if os.FileExists "static/images/favicons/favicon.ico" }}
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon.ico">
+{{ end -}}
+{{- if os.FileExists "static/site.webmanifest" }}
+  <link rel="manifest" href="/site.webmanifest">
+{{ end -}}
+{{- if os.FileExists "static/images/favicons/safari-pinned-tab.svg" }}
+  <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#000000">
+{{ end -}}
 
 <!-- App -->
 <meta name="apple-mobile-web-app-title" content="{{ site.Title }}">

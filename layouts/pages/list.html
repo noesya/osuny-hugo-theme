@@ -7,21 +7,28 @@
         ) -}}
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-lg-3 mb-4">
+    <div class="content">
+      {{ $h2s := partial "H2Extract" .Content }}
+      {{ if or (or $category .Pages) $h2s }}
+      <aside>
         <ul class="nav toc" id="nav-toc">
-          {{ if or $category .Pages }}
-          <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
+          {{ if not $h2s }}
+            <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
+          {{ end }}
+          {{ range $index, $h2 := $h2s }}
+            <li class="nav-item"><a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a></li>
           {{ end }}
           {{ if .Pages }}
-          <li class="nav-item"><a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a></li>
           {{ end }}
           {{ if $category }}
-          <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a></li>
           {{ end }}
         </ul>
-      </div>
-      <div class="col-md-8 offset-lg-1">
+      </aside>
+      {{ end }}
+
+      <div>
         {{ if .Params.image }}
           {{ partial "commons/image.html"
                 (dict
@@ -34,20 +41,27 @@
                 )}}
         {{ end }}
         <div itemprop="articleBody" id="page-informations">
-          {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+          {{
+            safeHTML (
+              partial "CorrectPunctuation" (
+                partial "H2AddId" .Content
+              )
+            )
+          }}
 
           {{ if .Pages }}
-            <hr class="my-5">
-            <div class="top">
-              <h2 id="page-children">{{ i18n "pages.details" }}</h2>
-            </div>
-            <div class="row row-cols-md-2 g-3">
-              {{ range sort .Pages ".Params.position"  }}
-                <div class="col">
-                  <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
-                </div>
-              {{ end }}
-            </div>
+            <section>
+              <div class="top">
+                <h2 id="page-children">{{ i18n "pages.details" }}</h2>
+              </div>
+              <div class="pages">
+                {{ range sort .Pages ".Params.position"  }}
+                  <div>
+                    {{ partial "pages/page.html" . }}
+                  </div>
+                {{ end }}
+              </div>
+            </section>
           {{ end }}
 
           {{ partial "posts/related.html" $category }}

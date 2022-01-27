@@ -1,21 +1,32 @@
 .card
     &--article,
+    &--page,
     &--program
-        .link
-            font-size: px2rem(22)
-            line-height: px2rem(30)
-            text-decoration: none
+        .card-title
+            .link
+                font-size: px2rem(22)
+                line-height: px2rem(30)
+                text-decoration: none
     &--program
+        .highlighted &
+            .card-title
+                margin-bottom: 1rem
         .card-media
             --bs-aspect-ratio: 70%
     &--volume
         .card-media
             --bs-aspect-ratio: 118.77%
+    &--article,
+    &--page
+        .card-title a
+            display: block
+        .card-body
+            padding-top: 0
 
     &-media
         @extend .ratio
         --bs-aspect-ratio: 50%
-        border: 1px solid $border-color
+        background-color: $light
         overflow: hidden
         img
             display: block
@@ -26,16 +37,24 @@
             width: 100%
     &-title
         margin-top: 0
-    .stretched-link::after
-        transition: background .3s ease
-    .stretched-link:hover
+    &-text
+        margin-bottom: 0
+
+    .stretched-link
         &::after
-            background-color: rgba(white, .2)
+            transition: background .3s ease
+        &:hover
+            &::after
+                background-color: rgba(white, .2)
     time
         color: $gray-600
         display: block
         font-family: $font-family-sans-serif
         font-size: px2rem(14)
+
+    .link
+        @extend .link--more
+
     .avatar
         padding-top: px2rem(76)
         width: px2rem(76)

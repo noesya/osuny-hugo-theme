@@ -19,19 +19,15 @@
 
     <!-- First page. -->
     <li class="page-item{{ if eq $paginator.PageNumber 1 }} disabled{{ end }}">
-      <a class="page-link" href="{{ $paginator.First.URL }}" aria-label="{{ i18n "commons.pagination.label" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        <svg aria-hidden="true" width="11" height="8">
-          <use xlink:href="/assets/images/icons.svg#arrow-first"></use>
-        </svg>
+      <a class="page-link" href="{{ $paginator.First.URL }}" aria-label="{{ i18n "commons.pagination.first" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
+        {{ partial "icons/arrow-first.html" }}
       </a>
     </li>
 
     <!-- Previous page. -->
     <li class="page-item{{ if eq $paginator.HasPrev false }} disabled{{ end }}">
       <a class="page-link" href="{{ if $paginator.HasPrev }}{{ $paginator.Prev.URL }}{{ else }}{{ $paginator.First.URL }}{{ end }}" aria-label="{{ i18n "commons.pagination.previous" }}"{{ if eq $paginator.HasPrev false }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        <svg aria-hidden="true" width="11" height="8">
-          <use xlink:href="/assets/images/icons.svg#arrow-left"></use>
-        </svg>
+        {{ partial "icons/arrow-left.html" }}
       </a>
     </li>
 
@@ -96,18 +92,14 @@
     <!-- Next page. -->
     <li class="page-item{{ if eq $paginator.HasNext false }} disabled{{ end }}">
       <a class="page-link" href="{{ if $paginator.HasNext }}{{ $paginator.Next.URL }}{{else}}{{ $paginator.Last.URL }}{{ end }}" aria-label="{{ i18n "commons.pagination.next" }}"{{ if eq $paginator.HasNext false }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        <svg aria-hidden="true" width="11" height="8">
-          <use xlink:href="/assets/images/icons.svg#arrow-right"></use>
-        </svg>
+        {{ partial "icons/arrow-right.html" }}
       </a>
     </li>
 
     <!-- Last page. -->
     <li class="page-item{{ if eq $paginator.PageNumber $paginator.TotalPages }} disabled{{ end }}">
-      <a class="page-link" href="{{ $paginator.Last.URL }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        <svg aria-hidden="true" width="11" height="8">
-          <use xlink:href="/assets/images/icons.svg#arrow-last"></use>
-        </svg>
+      <a class="page-link" href="{{ $paginator.Last.URL }}" aria-label="{{ i18n "commons.pagination.last" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
+        {{ partial "icons/arrow-last.html" }}
       </a>
     </li>
 

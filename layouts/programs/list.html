@@ -5,11 +5,9 @@
           "image" .Params.image
           "context" .
         ) -}}
-  <div class="container">
-    {{ if .Params.level }}
-      {{ partial "programs/show.html" . }}
-    {{ else }}
-      {{ partial "programs/index.html" . }}
-    {{ end }}
-  </div>
+  {{ if .Params.level }}
+    {{ partial "programs/show.html" . }}
+  {{ else }}
+    {{ partial "programs/index.html" . }}
+  {{ end }}
 {{ end }}

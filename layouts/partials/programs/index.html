@@ -1,9 +1,11 @@
-{{ range sort .Pages ".Params.position" }}
-  <div class="row row-cols-1 row-cols-md-2 mb-5">
-    <div class="col-md-8">
+<div class="container">
+{{ $len := (len .Pages) }}
+{{ range $index, $programs := sort .Pages ".Params.position" }}
+  <div class="programs">
+    <div class="highlighted">
       <div class="card card--program">
         <div class="card-body">
-          <h2 class="card-title mb-2">
+          <h2 class="card-title">
             <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
           </h2>
           <p>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</p>
@@ -11,26 +13,24 @@
       </div>
     </div>
     {{ range sort .Pages ".Params.position"  }}
-    <div class="col mb-4">
+    <div>
       <div class="card card--program">
         {{ if .Params.image }}
-          <div class="row">
-            <div class="col-md-6">
-              {{ partial "commons/image.html"
-                    (dict
-                      "image"    .Params.image
-                      "class"    "img-fluid"
-                      "mobile"   "351x168"
-                      "tablet"   "456x219"
-                      "desktop"  "856x410"
-                      "itemprop" true
-                    )}}
-            </div>
+          <div class="card-media">
+            {{ partial "commons/image.html"
+                  (dict
+                    "image"    .Params.image
+                    "class"    "img-fluid"
+                    "mobile"   "351x168"
+                    "tablet"   "456x219"
+                    "desktop"  "856x410"
+                    "itemprop" true
+                  )}}
           </div>
         {{ end }}
         <div class="card-body">
           <p class="card-title ">
-            <a href="{{ .Permalink }}" class="link link--more stretched-link">
+            <a href="{{ .Permalink }}" class="link stretched-link">
               {{ safeHTML (partial "CorrectPunctuation" .Title) }}
             </a>
           </p>
@@ -42,5 +42,6 @@
     </div>
     {{ end }}
   </div>
-  <hr class="my-5">
+  {{ if ne (add $index 1) $len }}<hr>{{ end }}
 {{ end }}
+</div>

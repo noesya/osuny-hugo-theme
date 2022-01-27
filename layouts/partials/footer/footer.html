@@ -1,13 +1,13 @@
-<footer class="footer">
+<footer role="contentinfo">
   <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-4">
+    <div class="content">
+      <div>
         {{ partial "footer/logo.html" }}
       </div>
-      <div class="col-md-8">
+      <div>
         {{ with site.Data.school }}
         <address itemscope itemtype="https://schema.org/CollegeOrUniversity">
-          <meta itemprop="logo" content="/assets/images/logo.svg">
+          <meta itemprop="image" content="{{ site.Params.logo }}">
           <span itemprop="name">{{ .name }}</span>
           <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
             <span itemprop="streetAddress">{{ .address }}</span><br>
@@ -17,19 +17,30 @@
           <span itemprop="telephone">{{ .phone }}</span>
         </address>
         {{ end }}
+        {{ with site.Data.journal }}
+        <div itemscope itemtype="https://schema.org/Periodical">
+          <meta itemprop="image" content="{{ site.Params.logo }}">
+          <span itemprop="name">{{ .name }}</span><br>
+          <span itemprop="issn">{{ trim .issn "\n" }}</span>
+        </div>
+        {{ end }}
       </div>
     </div>
-    {{ partial "commons/menu.html"
-          (dict
-            "items"       site.Data.menus.primary
-            "level"       1
-            "class"       "nav nav--levels grid"
-          )}}
-    {{ partial "commons/menu.html"
-          (dict
-            "items"       site.Data.menus.legal
-            "level"       1
-            "class"       "nav"
-          )}}
+    <nav role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
+      {{ partial "commons/menu.html"
+            (dict
+              "items"       site.Data.menus.primary
+              "level"       1
+              "class"       "nav-levels"
+            )}}
+    </nav>
+    <nav role="navigation" aria-label="{{ i18n "commons.menu.legal" }}">
+      {{ partial "commons/menu.html"
+            (dict
+              "items"       site.Data.menus.legal
+              "level"       1
+              "class"       "nav-legal"
+            )}}
+    </nav>
   </div>
 </footer>

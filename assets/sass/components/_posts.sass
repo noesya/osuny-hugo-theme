@@ -1,0 +1,9 @@
+.posts
+    --bs-gutter-y: 3rem
+    @include row-cols(1)
+    @extend .row
+    margin-bottom: map-get($spacers, 5)
+    @include media-breakpoint-up(md)
+        @include row-cols(2)
+    @include media-breakpoint-up(lg)
+        @include row-cols(3)

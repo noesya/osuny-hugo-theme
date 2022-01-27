@@ -9,7 +9,7 @@
   <body class="{{ .Type }}__{{ .Kind }}"{{ if eq .Kind "section" }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
-    <main class="main" id="main" aria-label="Content">
+    <main{{ if eq .Kind "section" }} id="main"{{ end }}>
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "footer/footer.html" . -}}

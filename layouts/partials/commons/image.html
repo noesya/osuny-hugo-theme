@@ -2,10 +2,17 @@
   {{- $image := partial "GetMedia" .image -}}
   {{- if $image -}}
     {{- $url := $image.url -}}
+    {{- if site.Params.cdnkey -}}
+      {{- $url = $image.direct_url -}}
+    {{- end -}}
     {{- $lazy := default true .lazy -}}
     {{- $alt := or .alt "" -}}
     {{- $width := $image.width -}}
     {{- $height := $image.height -}}
+    {{- $default := "1280x720" -}}
+    {{- if .desktop -}}
+      {{- $default = .desktop -}}
+    {{- end -}}
     <picture>
       {{ with .desktop -}}
       <source srcset="{{ partial "GetImageUrl" (dict "url" $url "size" . "format" "webp") }},
@@ -38,7 +45,10 @@
                       {{ partial "GetImageUrl" (dict "url" $url "size" . "scale" 2) }} 2x">
       {{- end }}
 
-      <img src="{{ $url }}" alt="{{ chomp (plainify $alt) }}" width="{{ $width }}" height="{{ $height }}"
+      <img src="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}"
+           alt="{{ chomp (plainify $alt) }}"
+           width="{{ $width }}"
+           height="{{ $height }}"
            {{- if .class }} class="{{ .class }}"{{- end -}}
            {{- if $lazy }} loading="lazy"{{- end -}}
            {{- if .itemprop }} itemprop="image"{{- end -}}

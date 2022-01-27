@@ -5,12 +5,12 @@ body
     text-rendering: optimizelegibility
 
 ::selection
-    background: rgba(0, 0, 0, .7)
+    background: rgba($primary, .7)
     color: white
     text-shadow: none
 
 ::-moz-selection
-    background: rgba(0, 0, 0, .7)
+    background: rgba($primary, .7)
     color: white
     text-shadow: none
 
@@ -31,28 +31,33 @@ img
         transition: outline-offset .3s ease
 
 a
+    color: $primary
+    text-decoration-color: rgba($primary, 0.3)
     text-decoration-thickness: 1px
     text-underline-offset: 3px
-    text-decoration-color: rgba(black, 0.3)
     &:hover
-        text-decoration-color: rgba(black, 1)
+        text-decoration-color: rgba($primary, 1)
     &.icon
         text-decoration: none
-    &[target="_blank"]:not(.icon)
+    &[target="_blank"]
         &::after
-            background: url('/assets/images/icons.svg#link-blank') no-repeat
+            background: url('/assets/images/icons/icons.svg#link-blank') no-repeat
             content: ''
             display: inline-block
             height: 12px
             margin-left: px2rem(5)
             vertical-align: middle
             width: 12px
+    &.icon,
+    &[href^="mailto"]
+        &::after
+            content: none
 
 h1, h2
     a
-        text-decoration: none
+        text-decoration-thickness: 0
         &:hover
-            text-decoration: underline
+            text-decoration-thickness: 1px
 
 [itemprop="articleBody"]
     overflow-wrap: break-word
@@ -64,28 +69,3 @@ h1, h2
 
 ul
     padding-left: 15px
-
-.page-link
-    &--previous
-        span
-            color: #666666
-            &::before
-                background: url('/assets/images/icons.svg#arrow-left') no-repeat
-                content: ''
-                color: #999999
-                display: inline-block
-                height: 12px
-                margin-left: px2rem(5)
-                vertical-align: middle
-                width: 12px
-    &--next
-        span
-            color: #666666
-            &::after
-                background: url('/assets/images/icons.svg#arrow') no-repeat
-                content: ''
-                display: inline-block
-                height: 12px
-                margin-left: px2rem(5)
-                vertical-align: middle
-                width: 12px

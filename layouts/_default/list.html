@@ -6,9 +6,9 @@
           "context" .
         ) -}}
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 mb-5">
+    <div class="pages">
       {{ range .Paginator.Pages }}
-        <div class="col">
+        <div>
           <h2>
             <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
           </h2>

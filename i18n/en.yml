@@ -8,6 +8,7 @@ commons:
     main_content: Access main content
     menu: Access menu
   biography: Biography
+  breadcrumb: Breadcrumb
   close: Close
   date: Date
   download:
@@ -16,6 +17,9 @@ commons:
   language: Language
   menu:
     label: Toggle navigation
+    legal: Legals menu
+    main: Main menu
+    secondary: Secondary menu
     title: Menu
   more: Read more
   pagination:
@@ -43,6 +47,7 @@ persons:
   publications: Publications
 posts:
   author: Author
+  categories: Categories
   category: Category
   date: Date
   informations: Informations

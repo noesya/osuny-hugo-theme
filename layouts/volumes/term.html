@@ -14,8 +14,8 @@
   {{- end -}}
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-lg-3 mb-2">
+    <div class="content">
+      <div>
         {{- if .Params.image -}}
           {{- partial "commons/image.html"
                 (dict
@@ -28,12 +28,12 @@
                 ) -}}
         {{- end -}}
       </div>
-      <div class="col-md-5">
+      <div>
         <div itemprop="description">
           {{ safeHTML (partial "CorrectPunctuation" .Content) }}
         </div>
       </div>
-      <div class="col-md-3 offset-lg-1">
+      <aside>
         <dl>
           {{ if .Params.keywords }}
             <dt>{{ i18n "volumes.keywords" }}</dt>
@@ -45,46 +45,52 @@
             <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
           {{ end }}
         </dl>
-      </div>
-    </div>
+      </aside>
 
-    <div class="row">
-        <div class="col-md-8">
-          <h2>{{ i18n "volumes.table" }}</h2>
-          <ol class="list-unstyled">
-            {{ range $index, $s := .Pages }}
-              {{ $modalId := "modalID_temp" }}
-              <li class="row flex-md-row-reverse mt-4" itemprop="hasPart" itemscope itemtype="https://schema.org/ScholarlyArticle">
-                <div class="col-md-4 text-md-end">
-                  <small class="text-uppercase" itemprop="articleSection">{{ i18n "volumes.article.singular_name" }}</small>
+      <div>
+        <h2>{{ i18n "volumes.table" }}</h2>
+        <ol class="volume-table">
+          {{ range $index, $articles := .Pages }}
+            {{ $modalId := print "modalID_" $index }}
+            <li itemprop="hasPart" itemscope itemtype="https://schema.org/ScholarlyArticle">
+              <div>
+                <span itemprop="articleSection">{{ i18n "volumes.article.singular_name" }}</span>
+              </div>
+              <div>
+                <h3>
+                  <a href="{{ .Permalink }}" itemprop="url">
+                    <span itemprop="name">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</span>
+                  </a>
+                </h3>
+                <p>
+                  {{ range .Params.Researchers }}
+                    {{ $author := site.GetPage (printf "/persons/%s" .) }}
+                    <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                      <a href="{{ $author.Permalink }}" itemprop="url">
+                        <span itemprop="name">{{ trim $author.Title "\n" }}</span>
+                      </a>
+                    </span>
+                  {{ end }}
+                </p>
+                <div role="group">
+                  <a href="{{ .Permalink }}" itemprop="url">{{ i18n "commons.read" }}</a>
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">{{ i18n "volumes.abstract" }}</button>
+                  {{ if .Params.pdf }}
+                    {{- $pdf := partial "GetMedia" .Params.pdf -}}
+                    <a href="{{ $pdf.url }}" download>{{ i18n "commons.pdf" }}</a>
+                  {{ end }}
                 </div>
-                <div class="col-md-8">
-                  <h3>
-                    <a href="{{ .Permalink }}" itemprop="url">
-                      <span itemprop="name">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</span>
-                    </a>
-                  </h3>
-                  <p>
-                    {{ range .Params.Researchers }}
-                      {{ $author := site.GetPage (printf "/persons/%s" .) }}
-                      <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <a href="{{ $author.Permalink }}" itemprop="url">
-                          <span itemprop="name">{{ trim $author.Title "\n" }}</span>
-                        </a>
-                      </span>
-                    {{ end }}
-                  </p>
-                  <div class="d-grid gap-2 d-lg-block">
-                    <a class="btn btn-secondary me-lg-1" href="{{ .Permalink }}" itemprop="url">{{ i18n "commons.read" }}</a>
-                    <button type="button" class="btn btn--eye btn-secondary me-lg-1" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">{{ i18n "volumes.abstract" }}</button>
-                    <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary" download>{{ i18n "commons.pdf" }}</a>
-                  </div>
-                  {{ partial "volumes/modal.html" (dict "modalId" $modalId) }}
-                </div>
-              </li>
-            {{ end }}
-          </ol>
-        </div>
+                {{ partial "volumes/modal.html"
+                      (dict
+                        "modalId" $modalId
+                        "title" .Title
+                        "abstract" .Params.abstract
+                      ) }}
+              </div>
+            </li>
+          {{ end }}
+        </ol>
+      </div>
     </div>
 
   </div>

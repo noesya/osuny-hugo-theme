@@ -6,9 +6,9 @@
           "context" .
         ) -}}
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-4 mb-5">
+    <div class="volumes">
       {{ range .Paginator.Pages }}
-        <div class="col">
+        <div>
           {{ partial "volumes/volume.html" . }}
         </div>
       {{ end }}

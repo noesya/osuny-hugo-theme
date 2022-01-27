@@ -1,4 +1,5 @@
 {{ if .Pages }}
+<section class="related">
   <div class="top">
     <h2 id="page-posts">{{ i18n "posts.title" }}</h2>
     <a href="{{ .Permalink }}" class="link link--more">
@@ -6,11 +7,12 @@
       {{ i18n "posts.see_all_in_category" (dict "Title" $category_name) }}
     </a>
   </div>
-  <div class="row row-cols-1 row-cols-md-2 gy-5">
+  <div>
     {{ range first 2 .Pages }}
-      <div class="col">
+      <div>
         {{ partial "posts/post.html" . }}
       </div>
     {{ end }}
   </div>
+</section>
 {{ end }}

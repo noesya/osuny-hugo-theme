@@ -9,37 +9,38 @@
   <meta itemprop="name" content="{{ .Title }}">
 
   <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-8">
-        <section class="mb-5">
+    <div class="content">
+      <div>
+        <section>
           <p itemprop="abstract">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
-        <section class="mb-5">
+        <section class="article-authors">
           <h2>{{ i18n "volumes.authors" }}</h2>
-          <div class="row">
-
+          <div>
             {{ range .Params.Researchers }}
               {{ $author := site.GetPage (printf "/persons/%s" .) }}
-              <div class="col-md-6 mb-3" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <p class="mb-0">
-                  <a href="{{ $author.Permalink }}" itemprop="url">
-                    <span itemprop="name">{{ $author.Title }}</span>
-                  </a>
-                </p>
-                <p class="small" itemprop="description">{{ i18n "biography" }}</p>
+              {{ $content := trim $author.Content "\n" }}
+              <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <p>
+                    <a href="{{ $author.Permalink }}" itemprop="url">
+                      <span itemprop="name">{{ $author.Title }}</span>
+                    </a>
+                  </p>
+                  {{ if ne $content " " }}
+                    <p itemprop="description">{{ truncate 120 (plainify $content) }}</p>
+                  {{ end }}
               </div>
             {{ end }}
-
           </div>
         </section>
-        <section class="mb-5" id="full-text">
+        <section id="full-text">
           <h2>{{ i18n "volumes.full_text" }}</h2>
           <div class="articleBody">
             {{ safeHTML (partial "CorrectPunctuation" .Content) | markdownify }}
           </div>
         </section>
         {{ if isset .Params "references" }}
-          <section class="mb-5">
+          <section>
             <h2>{{ i18n "volumes.references" }}</h2>
             <p>
               {{ .Params.References }}
@@ -47,13 +48,14 @@
           </section>
         {{ end }}
       </div>
-      <div class="col-md-3 offset-md-1">
+      <aside>
         <dl>
-          <dd>
+          <dd role="group">
             {{ if isset .Params "pdf" }}
-              <a href="{{ .Params.pdf }}" class="btn btn--download btn-secondary mb-1" download>{{ i18n "commons.download.pdf" }}</a><br>
+              {{- $pdf := partial "GetMedia" .Params.pdf -}}
+              <a href="{{ $pdf.url }}" download>{{ i18n "commons.download.pdf" }}</a><br>
             {{ end }}
-            <a href="#full-text" class="btn btn--eye btn-secondary">{{ i18n "commons.read_online" }}</a>
+            <a href="#full-text" class="btn-eye">{{ i18n "commons.read_online" }}</a>
           </dd>
 
           {{ if isset .Params "type" }}
@@ -80,17 +82,17 @@
             </dd>
           {{ end }}
 
-          {{ if isset .Params "publication" }}
+          {{ if .Date }}
             <dt>{{ i18n "commons.date" }}</dt>
             <dd>
-              <time itemprop="datePublished" datetime="{{ .Params.Publication | time.Format "2006-01-02T15:04" }}">{{ .Params.Publication | time.Format ":date_long" }}</time>
+              <time itemprop="datePublished" datetime="{{ .Date | time.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
             </dd>
           {{ end }}
         </dl>
-      </div>
+      </aside>
     </div>
-
   </div>
+
 </article>
 
 {{ end }}

@@ -5,14 +5,12 @@
             (dict
               "image"    .Params.image
               "alt"      .Title
-              "mobile"   "375x450"
-              "tablet"   "334x167"
-              "desktop"  "634x317"
+              "mobile"   "327x388"
+              "tablet"   "208x247"
+              "desktop"  "408x485"
             ) -}}
-    {{- else -}}
-      <picture>
-        <img class="img-fluid" alt="" loading="lazy" src="/assets/images/default.jpg" width="1004" height="502">
-      </picture>
+    {{- else if site.Params.default_image.url -}}
+      {{- partial "commons/image-default.html" (dict "class" "img-fluid") -}}
     {{- end -}}
   </div>
   <div class="card-body">

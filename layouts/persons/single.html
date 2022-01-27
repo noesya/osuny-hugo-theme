@@ -1,8 +1,18 @@
 {{ define "main" }}
   {{ $slug := .Slug }}
-  {{ $programsForTeacher := index site.Taxonomies.teachers $slug}}
-  {{ $programsForAdministrator := index site.Taxonomies.administrators $slug}}
+  {{ $programsForTeacher := slice }}
+  {{ if isset site.Taxonomies "teachers" }}
+    {{ $programsForTeacher = index site.Taxonomies.teachers $slug}}
+  {{ end }}
+  {{ $programsForAdministrator := slice }}
+  {{ if isset site.Taxonomies "administrators" }}
+    {{ $programsForAdministrator = index site.Taxonomies.administrators $slug}}
+  {{ end }}
   {{ $programsForTeacherAndAdministrator := union $programsForTeacher $programsForAdministrator }}
+  {{ $articlesForResearcher := slice }}
+  {{ if isset site.Taxonomies "researchers" }}
+    {{ $articlesForResearcher = index site.Taxonomies.researchers $slug}}
+  {{ end }}
   {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
   <header class="hero">
     <div class="container">
@@ -32,57 +42,65 @@
     </div>
   </header>
   <div class="container">
-    <div class="row mb-6">
-      {{ if .Content }}
-        <div class="col-md-8">
-          <p class="lead">
-            <em>
-              {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-            </em>
-          </p>
-        </div>
-        <div class="col-md-4 text-md-end">
-          {{ range $programsForTeacherAndAdministrator }}
-            {{ $program := . }}
-            {{ range .Params.roles }}
-              {{ $role := .title }}
-              {{ if in .persons $slug }}
-                {{ safeHTML $role }}
-                <a href="{{ $program.Permalink }}" class="link link--more">{{ safeHTML $program.Title }}</a>
+    <article itemscope itemtype="https://schema.org/Person">
+      <meta itemprop="name" content="{{ chomp .Title }}">
+      <meta itemprop="url" content="{{ .Permalink }}">
+      {{- if .Params.image -}}
+        {{- $image := partial "GetMedia" .Params.image -}}
+        {{- if $image -}}
+          <meta itemprop="image" content="{{ $image.url }}">
+          {{- end -}}
+      {{- end -}}
+      <div class="row mb-5">
+        {{ if .Content }}
+          <div class="col-md-8">
+            <p class="lead" itemprop="description">
+              <em>
+                {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+              </em>
+            </p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            {{ range $programsForTeacherAndAdministrator }}
+              {{ $program := . }}
+              {{ range .Params.roles }}
+                {{ $role := .title }}
+                {{ if in .persons $slug }}
+                  {{ safeHTML $role }}
+                  <a href="{{ $program.Permalink }}" class="link link--more">{{ safeHTML $program.Title }}</a>
+                {{ end }}
               {{ end }}
             {{ end }}
-          {{ end }}
-        </div>
+          </div>
         {{ end }}
-    </div>
+      </div>
+    </article>
 
     {{ if $programsForTeacher }}
-      <section class="mb-6">
+      <section class="mb-5">
         <div class="top">
           <h2>{{ i18n "persons.programs" }}</h2>
         </div>
-        <ul class="list">
-          {{ range $programsForTeacher }}
-          <li>
-            <div>
-              <p>{{ safeHTML (index .Params.teachers_description $slug) }}</p>
-            </div>
-            <div>
-              <a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a>
-            </div>
-          </li>
-          {{ end }}
-        </ul>
+        <table class="table table--resume">
+          <tbody>
+            {{ range $programsForTeacher }}
+            <tr>
+              <th><p>{{ safeHTML (index .Params.teachers_description $slug) }}</p></th>
+              <td><a href="{{ .Permalink }}" class="link link--more">{{ safeHTML .Title }}</a></td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
       </section>
     {{ end }}
 
     {{ if $author.Pages }}
-      <section class="mb-6">
+      <section class="mb-5">
         <div class="top">
           <h2>{{ i18n "persons.posts" }}</h2>
           <a href="actualites/" class="link link--more">{{ i18n "posts.see_all" }}</a>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 gy-5">
+        <div class="row row-cols-1 row-cols-md-3 gy-4">
           {{ range first 3 $author.Pages }}
             <div class="col">
               {{ partial "posts/post.html" . }}
@@ -92,8 +110,21 @@
       </section>
     {{ end }}
 
-    {{ if in .Params.roles "researcher" }}
-      <a href="publications/">{{ i18n "persons.publications" }}</a>
+    {{ if $articlesForResearcher }}
+      <section class="mb-5">
+        <div class="top">
+          <h2>{{ i18n "persons.publications" }}</h2>
+          <a href="publications/" class="link link--more">{{ i18n "persons.publications" }}</a>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 gy-4">
+          {{ range first 3 $articlesForResearcher }}
+            <div class="col">
+              {{ partial "articles/article.html" . }}
+            </div>
+          {{ end }}
+        </div>
+      </section>
     {{ end }}
+
   </div>
 {{ end }}
