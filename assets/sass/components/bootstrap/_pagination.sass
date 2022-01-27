@@ -3,6 +3,51 @@
     font-size: px2rem(14)
     justify-content: center
     margin: $grid-gutter-width 0 0
+    li
+        @extend .page-item
+    a
+        @extend .page-link
     .disabled
         svg
             opacity: .3
+
+    &-between-pages
+        justify-content: space-between
+        margin-top: map-get($spacers, 5)
+
+        li
+            flex: 1
+
+        a
+            &:hover
+                background-color: transparent
+                text-decoration: underline
+                span
+                    text-decoration: none
+
+        span
+            color: $gray-600
+
+        .previous
+            padding-left: 0
+            span::before
+                background: url('/assets/images/icons/icons.svg#arrow-left') no-repeat
+                color: $gray-400
+                content: ''
+                display: inline-block
+                height: 12px
+                margin-left: px2rem(5)
+                vertical-align: middle
+                width: 12px
+
+        .next
+            padding-right: 0
+            text-align: right
+            span::after
+                background: url('/assets/images/icons/icons.svg#arrow-right') no-repeat
+                content: ''
+                display: inline-block
+                height: 12px
+                margin-left: px2rem(5)
+                vertical-align: middle
+                width: 12px

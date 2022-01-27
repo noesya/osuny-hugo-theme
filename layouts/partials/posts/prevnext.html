@@ -1,8 +1,8 @@
-<nav aria-label="Navigation des articles" class="mt-5">
-  <ul class="pagination justify-content-between">
+<nav aria-label="Navigation des articles">
+  <ul class="pagination pagination-between-pages">
     {{with .Site.RegularPages.Prev . }}
-      <li class="page-item">
-        <a class="page-link page-link--previous ps-0" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
+      <li>
+        <a class="previous" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
           <span>
             {{ i18n "posts.previous" }}
           </span><br>
@@ -11,8 +11,8 @@
       </li>
     {{end}}
     {{with .Site.RegularPages.Next . }}
-      <li class="page-item text-end">
-        <a class="page-link page-link--next pe-0" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
+      <li>
+        <a class="next" href="{{.RelPermalink}}" title="{{htmlEscape .Title}}">
           <span>
             {{ i18n "posts.next" }}
           </span><br>
