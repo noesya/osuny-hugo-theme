@@ -9,10 +9,8 @@
     {{ $content := safeHTML (partial "CorrectPunctuation" .Content) }}
     {{ $content = trim $content "\n" }}
     {{ if $content }}
-      <div class="row mb-5">
-        <div class="col-md-8">
-          {{ $content }}
-        </div>
+      <div class="description">
+        {{ $content }}
       </div>
     {{ end }}
     <div class="posts">
