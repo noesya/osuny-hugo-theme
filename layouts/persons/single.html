@@ -36,7 +36,7 @@
           {{ end }}
         </div>
       </div>
-      <div class="hero__nav">
+      <div>
         {{ partial "header/breadcrumbs.html" (dict "context" .) }}
       </div>
     </div>
@@ -81,7 +81,7 @@
         <div class="top">
           <h2>{{ i18n "persons.programs" }}</h2>
         </div>
-        <table class="table table--resume">
+        <table class="table table-resume">
           <tbody>
             {{ range $programsForTeacher }}
             <tr>
