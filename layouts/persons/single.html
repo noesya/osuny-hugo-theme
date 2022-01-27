@@ -16,7 +16,7 @@
   {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
   <header class="hero">
     <div class="container">
-      <div>
+      <div class="title-avatar">
         <h1>{{ safeHTML (partial "CorrectPunctuation" .Title) }}</h1>
         <div>
           {{ if .Params.image }}
@@ -34,9 +34,7 @@
           {{ end }}
         </div>
       </div>
-      <div>
-        {{ partial "header/breadcrumbs.html" (dict "context" .) }}
-      </div>
+      {{ partial "header/breadcrumbs.html" (dict "context" .) }}
     </div>
   </header>
   <div class="container">

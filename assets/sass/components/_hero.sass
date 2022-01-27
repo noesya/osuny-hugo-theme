@@ -41,6 +41,8 @@
     .title-avatar
         @include make-row()
         align-items: flex-end
+        @include media-breakpoint-up(md)
+            margin-bottom: 1.5rem
         > *
             @include make-col-ready()
         h1
