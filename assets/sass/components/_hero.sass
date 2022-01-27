@@ -12,38 +12,44 @@
     @include media-breakpoint-up(md)
         min-height: 450px
 
-    &__image
-        filter: blur(16px) grayscale(100%)
-        height: 100%
-        left: 0
-        mix-blend-mode: overlay
-        object-fit: cover
-        opacity: .3
-        position: absolute
-        top: 0
-        width: 100%
-        .layout-home &
-            filter: none
+    > picture
+        img
+            filter: blur(16px) grayscale(100%)
+            height: 100%
+            inset: 0
+            mix-blend-mode: overlay
+            object-fit: cover
+            opacity: .3
+            position: absolute
+            width: 100%
 
     .container
         position: relative
-        > div:first-of-type
+        > div:first-of-type:not(.title-avatar)
             max-width: 76.666666667%
-            & + div
-                align-items: flex-start
-                display: flex
-                flex-direction: column
-                @include media-breakpoint-up(md)
-                    align-items: baseline
-                    flex-direction: row
-                    justify-content: space-between
+
     nav
+        margin-top: auto
         @include media-breakpoint-down(md)
             margin-left: calc(#{$grid-gutter-width} / -2)
             width: calc(100% + #{$grid-gutter-width})
-    .btn
-        @include media-breakpoint-down(md)
-            margin-top: $grid-gutter-width
+
     .breadcrumb
         a
             color: $white
+
+    .title-avatar
+        @include make-row()
+        align-items: flex-end
+        > *
+            @include make-col-ready()
+        h1
+            @include media-breakpoint-up(md)
+                @include make-col(10)
+                margin-bottom: 0
+        > div
+            @include make-col(4)
+            @include media-breakpoint-down(md)
+                margin-bottom: map-get($spacers, 4)
+            @include media-breakpoint-up(md)
+                @include make-col(2)

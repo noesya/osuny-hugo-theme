@@ -4,7 +4,6 @@
         (dict
           "image"    .image
           "alt"      .title
-          "class"    "hero__image"
           "mobile"   "351x168"
           "tablet"   "456x219"
           "desktop"  "856x410"
@@ -15,8 +14,6 @@
     <div>
       <h1>{{ safeHTML (partial "CorrectPunctuation" .title) }}</h1>
     </div>
-    <div>
-      {{ partial "header/breadcrumbs.html" . }}
-    </div>
+    {{ partial "header/breadcrumbs.html" . }}
   </div>
 </header>
