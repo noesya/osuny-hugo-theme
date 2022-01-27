@@ -17,7 +17,9 @@ commons:
   language: Langue
   menu:
     label: Ouvrir / Fermer le menu
+    legal: Menu pages légales
     main: Menu principal
+    secondary: Menu secondaire
     title: Menu
   more: En savoir plus
   pagination:

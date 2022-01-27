@@ -1,4 +1,5 @@
 header[role="banner"]
+
     nav[role="navigation"]
         @extend .navbar-expand-lg
         button[type="button"]
@@ -17,27 +18,22 @@ header[role="banner"]
                 background-size: 20px 17px
                 height: px2rem(32)
                 width: px2rem(32)
+
     .logo
         @extend .navbar-brand
         img
             height: 20px
             width: auto
-    .nav-item
-        @include media-breakpoint-down(lg)
-            border-bottom: 1px solid $black
-            .nav-item
-                border: 0
-                .nav-link
-                    padding-bottom: 5px
-                    padding-top: 5px
-    .nav-link
-        @include media-breakpoint-down(lg)
-            &.dropdown-toggle
-                align-items: center
-                display: flex
-                justify-content: space-between
+
+    ul
+        list-style: none
+        margin: 0
+        padding: 0
+        a
+            text-decoration: none
             &:hover
-                text-decoration: none
+                text-decoration: underline
+
     .menu
         @extend .collapse
         @extend .navbar-collapse
@@ -45,6 +41,47 @@ header[role="banner"]
         @include media-breakpoint-down(lg)
             background: white
             padding-top: calc(#{$grid-gutter-width} / 2)
+        > ul
+            @extend .navbar-nav
+            li
+                @extend .nav-item
+                @include media-breakpoint-down(lg)
+                    border-bottom: 1px solid $black
+                    li
+                        border: 0
+                    a
+                        padding-bottom: 5px
+                        padding-top: 5px
+            a,
+            span
+                @extend .nav-link
+                @include media-breakpoint-down(lg)
+                    &.dropdown-toggle
+                        align-items: center
+                        display: flex
+                        justify-content: space-between
+                    &:hover
+                        text-decoration: none
+
+        .nav-level-1 > .has-children
+            @extend .dropdown
+            > a
+                @extend .dropdown-toggle
+
+        .nav-level-2 > li
+            & > a,
+            & > span
+                color: $primary
+                font-size: px2rem(18)
+                line-height: px2rem(26)
+
+        .nav-level-3 > li
+            & > a,
+            & > span
+                color: $primary
+                font-size: px2rem(14)
+                line-height: px2rem(22)
+
     .dropdown
         position: static
         &-menu
@@ -70,26 +107,3 @@ header[role="banner"]
                     margin-bottom: $grid-gutter-width
                     &:last-child
                         margin-bottom: 0
-    ul
-        list-style: none
-        margin: 0
-        padding: 0
-        a
-            text-decoration: none
-            &:hover
-                text-decoration: underline
-
-
-    .nav-level-2 > li
-        & > a,
-        & > span
-            color: $primary
-            font-size: px2rem(18)
-            line-height: px2rem(26)
-
-    .nav-level-3 > li
-        & > a,
-        & > span
-            color: $primary
-            font-size: px2rem(14)
-            line-height: px2rem(22)
