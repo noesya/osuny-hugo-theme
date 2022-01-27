@@ -1,6 +1,10 @@
 {{- $level := .level -}}
 {{- $dropdown := .dropdown }}
-<ul class="{{ .class }}{{ if $level }} nav-level-{{ $level }}{{ end }}">
+{{- $ulClass := "" -}}
+{{- if .class -}}
+  {{- $ulClass = printf "%s " .class -}}
+{{- end -}}
+<ul class="{{ $ulClass }}{{ if $level }}nav-level-{{ $level }}{{ end }}">
   {{ range .items -}}
     {{- $slug := urlize .title -}}
     {{- $itemClass := "" -}}
