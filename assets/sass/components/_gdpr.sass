@@ -1,19 +1,23 @@
 .gdpr-cookie-consent
     background: white
     border: 1px solid $border-color
-    bottom: $grid-gutter-width/2
     color: black
     display: none
     font-size: px2rem(14)
-    left: $grid-gutter-width/2
+    inset: auto $spacer $spacer $spacer
     max-width: 500px
-    padding: $grid-gutter-width/2
+    padding: $spacer
     position: fixed
-    right: $grid-gutter-width/2
     z-index: 9999
 
     a
         text-decoration: underline
 
-    &__text
-        margin-bottom: $grid-gutter-width/2
+    > div:first-of-type
+        margin-bottom: $spacer
+
+    button
+        @extend .btn
+        @extend .btn-primary
+        &:first-of-type
+            margin-right: map-get($spacers, 1)
