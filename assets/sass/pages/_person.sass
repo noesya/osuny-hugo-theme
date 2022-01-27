@@ -1,0 +1,17 @@
+.persons__page
+    main
+        .content
+            > div:last-of-type
+                margin-top: $spacer
+                p:last-of-type
+                    margin-bottom: 0
+                @include media-breakpoint-up(md)
+                    @include make-col(4)
+                    @include make-col-offset(0)
+                    margin-top: 0
+                    text-align: right
+        .lead
+            font-style: italic
+            margin-bottom: 0
+        section
+            @extend .mt-5

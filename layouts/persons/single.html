@@ -37,6 +37,7 @@
       {{ partial "header/breadcrumbs.html" (dict "context" .) }}
     </div>
   </header>
+
   <div class="container">
     <article itemscope itemtype="https://schema.org/Person">
       <meta itemprop="name" content="{{ chomp .Title }}">
@@ -47,23 +48,24 @@
           <meta itemprop="image" content="{{ $image.url }}">
           {{- end -}}
       {{- end -}}
-      <div class="row mb-5">
+
+      <div class="content">
         {{ if .Content }}
-          <div class="col-md-8">
+          <div>
             <p class="lead" itemprop="description">
-              <em>
-                {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-              </em>
+              {{ safeHTML (partial "CorrectPunctuation" .Content) }}
             </p>
           </div>
-          <div class="col-md-4 text-md-end">
+          <div>
             {{ range $programsForTeacherAndAdministrator }}
               {{ $program := . }}
               {{ range .Params.roles }}
                 {{ $role := .title }}
                 {{ if in .persons $slug }}
-                  {{ safeHTML $role }}<br>
-                  <a href="{{ $program.Permalink }}" class="link link-more">{{ safeHTML $program.Title }}</a>
+                  <p>
+                    {{ safeHTML $role }}<br>
+                    <a href="{{ $program.Permalink }}" class="link link-more">{{ safeHTML $program.Title }}</a>
+                  </p>
                 {{ end }}
               {{ end }}
             {{ end }}
@@ -73,7 +75,7 @@
     </article>
 
     {{ if $programsForTeacher }}
-      <section class="mb-5">
+      <section>
         <div class="top">
           <h2>{{ i18n "persons.programs" }}</h2>
         </div>
@@ -91,7 +93,7 @@
     {{ end }}
 
     {{ if $author.Pages }}
-      <section class="mb-5">
+      <section>
         <div class="top">
           <h2>{{ i18n "persons.posts" }}</h2>
           <a href="actualites/" class="link link-more">{{ i18n "posts.see_all" }}</a>
@@ -107,7 +109,7 @@
     {{ end }}
 
     {{ if $articlesForResearcher }}
-      <section class="mb-5">
+      <section>
         <div class="top">
           <h2>{{ i18n "persons.publications" }}</h2>
           <a href="publications/" class="link link-more">{{ i18n "persons.publications" }}</a>
