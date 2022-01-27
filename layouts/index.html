@@ -15,7 +15,7 @@
             {{ if .target }}</a>{{ end }}
           </h2>
           {{ if or (eq .kind "news") (eq .kind "programs") }}
-            <a href="{{ .target }}" class="link link--more">{{ i18n "commons.more" }}</a>
+            <a href="{{ .target }}" class="link link-more">{{ i18n "commons.more" }}</a>
           {{ end }}
         </div>
         {{ if eq .kind "news" }}

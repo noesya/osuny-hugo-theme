@@ -12,7 +12,7 @@
           {{- with $.Site.GetPage "taxonomyTerm" $name}}
             {{ if .Pages }}
               <li class="list-inline-item">
-                <a href="{{ .Permalink }}" class="link link--more">{{ .Title }}</a>
+                <a href="{{ .Permalink }}" class="link link-more">{{ .Title }}</a>
               </li>
             {{ end }}
           {{ end -}}
