@@ -8,8 +8,10 @@ window.template.cookieConsent = {
         this.cookieConsentOkButton = document.querySelector('.js-gdpr-cookie-consent-btn-ok');
         this.cookieConsentKoButton = document.querySelector('.js-gdpr-cookie-consent-btn-ko');
         this.displayAgain = document.querySelector('.js-gdpr-cookie-consent-display-again');
-        this.bindActions();
-        this.manageBannerDisplay();
+        if (this.cookieBanner) {
+            this.bindActions();
+            this.manageBannerDisplay();
+        }
     },
 
     bindActions: function () {
@@ -52,15 +54,17 @@ window.template.cookieConsent = {
         }
     },
 
-    setCookieAcceptance: function (value) {
+    setCookieAcceptance: function (accepted) {
         'use strict';
-        Cookies.set('gdpr.cookie_consent.ok', value, { path: '/', expires: 365 });
+        Cookies.set('gdpr.cookie_consent.ok', accepted, { path: '/', expires: 365 });
         this.displayBanner(false);
-        if (value) {
-            gtag('consent', 'update', {
-                'ad_storage': 'granted',
-                'analytics_storage': 'granted'
-            });
+        if (accepted) {
+            if (typeof window.gtag !== 'undefined') {
+                window.gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'analytics_storage': 'granted'
+                });
+            }
         }
     },
 
