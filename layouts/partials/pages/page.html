@@ -6,7 +6,7 @@
       </a>
     </p>
     {{ if .Params.description }}
-      <p class="card-text">{{ truncate 120 .Params.description }}</p>
+      <p class="card-text">{{ truncate 120 (safeHTML .Params.description) }}</p>
     {{ end }}
   </div>
 </div>
