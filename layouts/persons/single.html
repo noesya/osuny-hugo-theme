@@ -98,9 +98,9 @@
           <h2>{{ i18n "persons.posts" }}</h2>
           <a href="actualites/" class="link link-more">{{ i18n "posts.see_all" }}</a>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 gy-4">
+        <div class="posts">
           {{ range first 3 $author.Pages }}
-            <div class="col">
+            <div>
               {{ partial "posts/post.html" . }}
             </div>
           {{ end }}
