@@ -29,6 +29,7 @@ commons:
     next: Next page
     previous: Previous page
   pdf: PDF
+  pdf_with_size: PDF ({{ .Size }} ko)
   read: Read
   read_online: Read online
 cookie_banner:
