@@ -89,5 +89,5 @@ volumes:
   nature: Nature
   plural_name: Volumes
   singular_name: Volume
-  table: Table
+  table_contents: Table of contents
   volume_number: Volume {{ .Number }}

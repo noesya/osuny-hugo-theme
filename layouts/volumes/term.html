@@ -48,7 +48,7 @@
       </aside>
 
       <div>
-        <h2>{{ i18n "volumes.table" }}</h2>
+        <h2>{{ i18n "volumes.table_contents" }}</h2>
         <ol class="volume-table">
           {{ range $index, $articles := .Pages }}
             {{ $modalId := print "modalID_" $index }}
@@ -78,7 +78,9 @@
                   {{ if .Params.pdf }}
                     {{- $pdf := partial "GetMedia" .Params.pdf -}}
                     {{- $pdf_size := div $pdf.size 1000 }}
-                    <a href="{{ $pdf.url }}" download>{{ i18n "commons.pdf_with_size" (dict "Size" $pdf_size) }}</a>
+                    <a href="{{ $pdf.url }}" download>
+                      {{ i18n "commons.pdf_with_size" (dict "Size" $pdf_size) }}
+                    </a>
                   {{ end }}
                 </div>
                 {{ partial "volumes/modal.html"
