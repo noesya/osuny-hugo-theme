@@ -79,7 +79,7 @@
                     {{- $pdf := partial "GetMedia" .Params.pdf -}}
                     {{- $pdf_size := partial "GetHumanSize" $pdf.size -}}
                     <a href="{{ $pdf.url }}" download>
-                      {{ i18n "commons.pdf_with_size" (dict "Size" $pdf_size) }}
+                      {{- i18n "commons.pdf_with_size" (dict "Size" $pdf_size) }}
                     </a>
                   {{ end }}
                 </div>
