@@ -42,9 +42,11 @@
             <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
           {{ end }}
 
-          {{ if .Params.date }}
+          {{ if .Date }}
             <dt>{{ i18n "commons.date" }}</dt>
-            <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
+            <dd>
+              <time itemprop="datePublished" datetime="{{ .Date | time.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
+            </dd>
           {{ end }}
         </dl>
       </aside>
