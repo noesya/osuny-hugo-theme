@@ -7,10 +7,12 @@
         ) -}}
 <article itemscope itemtype="https://schema.org/PublicationVolume">
   <meta itemprop="name" content="{{ .Title }}">
-  {{- $image := partial "GetMedia" .Params.Image -}}
-  {{- if $image -}}
-    {{- $url := $image.url -}}
-    <meta itemprop="image" content="{{ $url }}">
+  {{- if .Params.image -}}
+    {{- $image := partial "GetMedia" .Params.image -}}
+    {{- if $image -}}
+      {{- $url := $image.url -}}
+      <meta itemprop="image" content="{{ $url }}">
+    {{- end -}}
   {{- end -}}
 
   <div class="container">
