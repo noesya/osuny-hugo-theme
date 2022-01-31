@@ -67,14 +67,11 @@
                   </a>
                 </h3>
                 <p>
-                  {{ range .Params.Researchers }}
-                    {{ $author := site.GetPage (printf "/persons/%s" .) }}
-                    <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                      <a href="{{ $author.Permalink }}" itemprop="url">
-                        <span itemprop="name">{{ trim $author.Title "\n" }}</span>
-                      </a>
-                    </span>
-                  {{ end }}
+                  {{- range $index, $authors := .Params.Researchers -}}
+                    {{- $author := site.GetPage (printf "/persons/%s" .) -}}
+                    {{- if ne $index 0 -}},{{ end }}
+                    <span itemprop="author" itemscope itemtype="https://schema.org/Person"><a href="{{ $author.Permalink }}" itemprop="url"><span itemprop="name">{{ trim $author.Title "\n" }}</span></a></span>
+                  {{- end -}}
                 </p>
                 <div role="group">
                   <a href="{{ .Permalink }}" itemprop="url">{{ i18n "commons.read" }}</a>
