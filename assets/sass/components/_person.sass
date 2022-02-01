@@ -1,0 +1,19 @@
+.person
+    @extend .card
+
+    .avatar
+        padding-top: px2rem(76)
+        width: px2rem(76)
+
+    > div:last-of-type
+        @extend .card-body
+
+    .name
+        @extend .card-title
+
+    .name + p
+        margin-bottom: .5rem
+
+    .link
+        @extend .link-more
+        @extend .stretched-link

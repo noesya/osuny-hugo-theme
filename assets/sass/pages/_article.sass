@@ -3,24 +3,19 @@
         section
             @extend .mb-5
         aside
-            [role="group"]
-                a
-                    @extend .btn
-                    @extend .btn-secondary
-                    &:not(:last-child)
-                        margin-bottom: map-get($spacers, 1)
-                [download]
-                    @extend .btn-download !optional
-        .article-authors
-            > div
-                @include row-cols(1)
-                @extend .row
-                margin-top: - map-get($spacers, 3)
-                @include media-breakpoint-up(md)
-                    @include row-cols(2)
-            [itemprop="author"]
-                margin-top: map-get($spacers, 3)
-                p
-                    margin-bottom: 0
-                [itemprop="description"]
-                    @extend .small
+            > a
+                @extend .btn
+                @extend .btn-secondary
+                &:not(:last-child)
+                    margin-bottom: map-get($spacers, 1)
+                & + dl
+                   margin-top: map-get($spacers, 3)
+            [download]
+                @extend .btn-download !optional
+        .authors
+            --bs-gutter-y: 1rem
+            @include media-breakpoint-up(lg)
+                @include row-cols(2)
+        .person
+            .name
+                font-size: px2rem(18)

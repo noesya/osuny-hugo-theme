@@ -14,22 +14,23 @@
         <section>
           <p itemprop="abstract">{{ safeHTML (partial "CorrectPunctuation" .Params.Abstract) }}</p>
         </section>
-        <section class="article-authors">
+        <section>
           <h2>{{ i18n "volumes.authors" }}</h2>
-          <div>
+          <div class="authors">
             {{ range .Params.Researchers }}
-              {{ $author := site.GetPage (printf "/persons/%s" .) }}
-              {{ $content := trim $author.Content "\n" }}
-              <div itemprop="author" itemscope itemtype="https://schema.org/Person">
-                  <p>
-                    <a href="{{ $author.Permalink }}" itemprop="url">
-                      <span itemprop="name">{{ $author.Title }}</span>
-                    </a>
-                  </p>
-                  {{ if ne $content " " }}
-                    <p itemprop="description">{{ truncate 120 (plainify $content) }}</p>
+
+              {{ with site.GetPage (printf "/persons/%s" .) }}
+                <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <meta itemprop="name" content="{{ trim .Title "\n" }}">
+                  <meta itemprop="url" content="{{ .Permalink }}">
+                  <meta itemprop="description" content="{{ trim .Content "\n" }}">
+                  {{ if .Params.image }}
+                    <meta itemprop="image" content="{{ .Params.image }}">
                   {{ end }}
-              </div>
+                  {{ partial "persons/person.html" . }}
+                </div>
+              {{ end }}
+
             {{ end }}
           </div>
         </section>
@@ -49,14 +50,12 @@
         {{ end }}
       </div>
       <aside>
+        {{ if isset .Params "pdf" }}
+          {{- $pdf := partial "GetMedia" .Params.pdf -}}
+          <a href="{{ $pdf.url }}" download>{{ i18n "commons.download.pdf" }}</a><br>
+        {{ end }}
+        <a href="#full-text" class="btn-eye">{{ i18n "commons.read_online" }}</a>
         <dl>
-          <dd role="group">
-            {{ if isset .Params "pdf" }}
-              {{- $pdf := partial "GetMedia" .Params.pdf -}}
-              <a href="{{ $pdf.url }}" download>{{ i18n "commons.download.pdf" }}</a><br>
-            {{ end }}
-            <a href="#full-text" class="btn-eye">{{ i18n "commons.read_online" }}</a>
-          </dd>
 
           {{ if isset .Params "type" }}
             <dt>{{ i18n "volumes.nature" }}</dt>
