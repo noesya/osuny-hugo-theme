@@ -50,27 +50,27 @@
       {{- end -}}
 
       <div class="content">
-        {{ if .Content }}
-          <div>
+        <div>
+          {{ if .Content }}
             <p class="lead" itemprop="description">
               {{ safeHTML (partial "CorrectPunctuation" .Content) }}
             </p>
-          </div>
-          <div>
-            {{ range $programsForTeacherAndAdministrator }}
-              {{ $program := . }}
-              {{ range .Params.roles }}
-                {{ $role := .title }}
-                {{ if in .persons $slug }}
-                  <p>
-                    {{ safeHTML $role }}<br>
-                    <a href="{{ $program.Permalink }}" class="link link-more">{{ safeHTML $program.Title }}</a>
-                  </p>
-                {{ end }}
+          {{ end }}
+        </div>
+        <div>
+          {{ range $programsForTeacherAndAdministrator }}
+            {{ $program := . }}
+            {{ range .Params.roles }}
+              {{ $role := .title }}
+              {{ if in .persons $slug }}
+                <p>
+                  {{ safeHTML $role }}<br>
+                  <a href="{{ $program.Permalink }}" class="link link-more">{{ safeHTML $program.Title }}</a>
+                </p>
               {{ end }}
             {{ end }}
-          </div>
-        {{ end }}
+          {{ end }}
+        </div>
       </div>
     </article>
 
