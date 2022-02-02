@@ -3,13 +3,15 @@
         section
             @extend .mb-5
         aside
-            > a
-                @extend .btn
-                @extend .btn-secondary
-                &:not(:last-child)
-                    margin-bottom: map-get($spacers, 1)
+            [role="group"]
+                a
+                    @extend .btn
+                    @extend .btn-secondary
+                    &:not(:last-child)
+                        margin-bottom: map-get($spacers, 1)
                 & + dl
-                   margin-top: map-get($spacers, 3)
+                    margin-bottom: 0
+                    margin-top: map-get($spacers, 4)
             [download]
                 @extend .btn-download !optional
         .authors

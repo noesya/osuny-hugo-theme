@@ -1,13 +1,11 @@
-<article class="card card--article">
-  <div class="card-body">
-    <p class="card-title">
-      <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
-    </p>
-    {{ range .Params.Volumes }}
-      {{ $volume := site.GetPage (printf "/volumes%s" .) }}
-      {{ if $volume }}
-        <p class="card-text">In “<a href="{{ $volume.Permalink }}">{{ $volume.Title }}</a>”</p>
-      {{ end }}
+<article class="article">
+  <p class="title">
+    <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+  </p>
+  {{ range .Params.Volumes }}
+    {{ $volume := site.GetPage (printf "/volumes%s" .) }}
+    {{ if $volume }}
+      <p>In “<a href="{{ $volume.Permalink }}">{{ $volume.Title }}</a>”</p>
     {{ end }}
-  </div>
+  {{ end }}
 </article>
