@@ -1,5 +1,5 @@
-<article class="card card-post">
-  <div class="card-media">
+<article class="post">
+  <div class="media">
     {{- if .Params.image -}}
       {{- partial "commons/image.html"
             (dict
@@ -13,9 +13,9 @@
       {{- partial "commons/image-default.html" (dict "class" "img-fluid") -}}
     {{- end -}}
   </div>
-  <div class="card-body">
-    <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
+  <div>
+    <p class="title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
     <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-    <a href="{{ .Permalink }}" class="stretched-link link">{{ i18n "commons.more" }}</a>
+    <a href="{{ .Permalink }}" class="link">{{ i18n "commons.more" }}</a>
   </div>
 </article>
