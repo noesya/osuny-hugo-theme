@@ -2,3 +2,11 @@
     article
         .programs
             --bs-gutter-y: 1rem
+        .persons
+            --bs-gutter-y: 1.5rem
+            margin-bottom: 3rem
+            margin-top: -2rem
+            @include media-breakpoint-up(lg)
+                @include row-cols(2)
+        .table-infos
+            @extend .table-hover

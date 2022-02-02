@@ -10,9 +10,17 @@
 
     .name
         @extend .card-title
+        .link
+            font-size: px2rem(18)
+            &::after
+                content: none
 
-    .name + p
+    .name + p:not(.contact)
         margin-bottom: .5rem
+
+    .contact
+        @extend .small
+        margin-bottom: 0
 
     .link
         @extend .link-more
