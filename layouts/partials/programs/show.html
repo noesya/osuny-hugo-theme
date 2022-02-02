@@ -87,7 +87,7 @@
               {{ $chapterExists = $contactsExist }}
             {{ end }}
             {{ if $chapterExists }}
-              <section class="page-{{ . }}">
+              <section>
                 <h2 id="page-{{ . }}">{{ i18n (printf "programs._%s" .) }}</h2>
                 {{ if eq . "contacts" }}
                   {{ safeHTML (partial "CorrectPunctuation" $content) }}

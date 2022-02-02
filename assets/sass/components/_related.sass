@@ -1,8 +1,6 @@
 .related
     margin-top: $grid-gutter-width * 3
-    .top + div
-        @include make-row()
+    .posts
+        margin-bottom: 0
         > div
-            @include make-col-ready()
-            @include media-breakpoint-up(md)
-                @include make-col(6)
+            @extend .col-md-6

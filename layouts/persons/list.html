@@ -19,7 +19,7 @@
         {{ end }}
       {{ end }}
     </ul>
-    <div class="authors">
+    <div class="persons">
       {{ range .Paginator.Pages.ByParam "last_name" }}
         <div>
           {{ partial "persons/person.html" . }}

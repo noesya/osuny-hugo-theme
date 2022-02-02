@@ -1,6 +1,5 @@
 .pages
     --bs-gutter-y: 1rem
-    @include row-cols(1)
     @extend .row
-    @include media-breakpoint-up(md)
-        @include row-cols(2)
+    > *
+        @extend .col-md-6
