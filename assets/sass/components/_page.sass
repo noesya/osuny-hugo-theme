@@ -1,0 +1,20 @@
+.page
+    @extend .card
+
+    > div:last-of-type
+        @extend .card-body
+
+    .media
+        @extend .card-media
+
+    .title
+        @extend .card-title
+        margin-bottom: .5rem
+        .link
+            font-size: px2rem(22)
+            line-height: px2rem(30)
+            text-decoration: none
+
+    .link
+        @extend .link-more
+        @extend .stretched-link

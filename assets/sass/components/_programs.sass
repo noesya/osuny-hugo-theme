@@ -1,11 +1,11 @@
 .programs
     --bs-gutter-y: 3rem
-    @include row-cols(1)
     @extend .row
     margin-bottom: map-get($spacers, 5)
-    @include media-breakpoint-up(lg)
-        @include row-cols(2)
+    > *
+        @extend .col-md-6
     .highlighted
-        @include make-col(8)
+        @extend .col-md-12
+        @extend .col-lg-8
     & + hr
         @extend .my-5

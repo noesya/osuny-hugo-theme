@@ -29,6 +29,7 @@ commons:
     next: Next page
     previous: Previous page
   pdf: PDF
+  pdf_with_size: PDF ({{ .Size }})
   read: Read
   read_online: Read online
 cookie_banner:
@@ -88,5 +89,5 @@ volumes:
   nature: Nature
   plural_name: Volumes
   singular_name: Volume
-  table: Table
+  table_contents: Table of contents
   volume_number: Volume {{ .Number }}

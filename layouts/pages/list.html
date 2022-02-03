@@ -11,18 +11,27 @@
       {{ $h2s := partial "H2Extract" .Content }}
       {{ if or (or $category .Pages) $h2s }}
       <aside>
-        <ul class="nav toc" id="nav-toc">
+        {{/* nav-link required for active toggle class */}}
+        <ul class="toc" id="nav-toc">
           {{ if not $h2s }}
-            <li class="nav-item"><a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a></li>
+            <li>
+              <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
+            </li>
           {{ end }}
           {{ range $index, $h2 := $h2s }}
-            <li class="nav-item"><a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a></li>
+            <li>
+              <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
+            </li>
           {{ end }}
           {{ if .Pages }}
-            <li class="nav-item"><a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a></li>
+            <li>
+              <a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a>
+            </li>
           {{ end }}
           {{ if $category }}
-            <li class="nav-item"><a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a></li>
+            <li>
+              <a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a>
+            </li>
           {{ end }}
         </ul>
       </aside>
@@ -33,7 +42,7 @@
           {{ partial "commons/image.html"
                 (dict
                   "image"    .Params.image
-                  "class"    "img-fluid mb-4"
+                  "class"    "featured-image"
                   "mobile"   "351x168"
                   "tablet"   "456x219"
                   "desktop"  "856x410"

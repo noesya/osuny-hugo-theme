@@ -9,18 +9,15 @@
                     @extend .btn-secondary
                     &:not(:last-child)
                         margin-bottom: map-get($spacers, 1)
-                [download]
-                    @extend .btn-download !optional
-        .article-authors
-            > div
-                @include row-cols(1)
-                @extend .row
-                margin-top: - map-get($spacers, 3)
-                @include media-breakpoint-up(md)
-                    @include row-cols(2)
-            [itemprop="author"]
-                margin-top: map-get($spacers, 3)
-                p
+                & + dl
                     margin-bottom: 0
-                [itemprop="description"]
-                    @extend .small
+                    margin-top: map-get($spacers, 4)
+            [download]
+                @extend .btn-download !optional
+        .authors
+            --bs-gutter-y: 1rem
+            @include media-breakpoint-up(lg)
+                @include row-cols(2)
+        .person
+            .name
+                font-size: px2rem(18)

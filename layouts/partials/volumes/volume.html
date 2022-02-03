@@ -1,5 +1,5 @@
-<article class="card card--volume">
-  <div class="card-media">
+<article class="volume">
+  <div class="media">
     {{- if .Params.image -}}
       {{- partial "commons/image.html"
             (dict
@@ -13,9 +13,9 @@
       {{- partial "commons/image-default.html" (dict "class" "img-fluid") -}}
     {{- end -}}
   </div>
-  <div class="card-body">
-    <p class="card-subtitle">{{ i18n "volumes.volume_number" (dict "Number" .Params.Number) }}</p>
-    <p class="card-title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
-    <a href="{{ .Permalink }}" class="stretched-link link">{{ i18n "commons.more" }}</a>
+  <div>
+    <p class="suptitle">{{ i18n "volumes.volume_number" (dict "Number" .Params.Number) }}</p>
+    <p class="title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
+    <a href="{{ .Permalink }}" class="link">{{ i18n "commons.more" }}</a>
   </div>
 </article>

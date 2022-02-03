@@ -7,10 +7,12 @@
         ) -}}
 <article itemscope itemtype="https://schema.org/PublicationVolume">
   <meta itemprop="name" content="{{ .Title }}">
-  {{- $image := partial "GetMedia" .Params.Image -}}
-  {{- if $image -}}
-    {{- $url := $image.url -}}
-    <meta itemprop="image" content="{{ $url }}">
+  {{- if .Params.image -}}
+    {{- $image := partial "GetMedia" .Params.image -}}
+    {{- if $image -}}
+      {{- $url := $image.url -}}
+      <meta itemprop="image" content="{{ $url }}">
+    {{- end -}}
   {{- end -}}
 
   <div class="container">
@@ -40,15 +42,17 @@
             <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
           {{ end }}
 
-          {{ if .Params.date }}
+          {{ if .Date }}
             <dt>{{ i18n "commons.date" }}</dt>
-            <dd><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "January 2, 2006" }}</time></dd>
+            <dd>
+              <time itemprop="datePublished" datetime="{{ .Date | time.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
+            </dd>
           {{ end }}
         </dl>
       </aside>
 
       <div>
-        <h2>{{ i18n "volumes.table" }}</h2>
+        <h2>{{ i18n "volumes.table_contents" }}</h2>
         <ol class="volume-table">
           {{ range $index, $articles := .Pages }}
             {{ $modalId := print "modalID_" $index }}
@@ -63,21 +67,21 @@
                   </a>
                 </h3>
                 <p>
-                  {{ range .Params.Researchers }}
-                    {{ $author := site.GetPage (printf "/persons/%s" .) }}
-                    <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                      <a href="{{ $author.Permalink }}" itemprop="url">
-                        <span itemprop="name">{{ trim $author.Title "\n" }}</span>
-                      </a>
-                    </span>
-                  {{ end }}
+                  {{- range $index, $authors := .Params.Researchers -}}
+                    {{- $author := site.GetPage (printf "/persons/%s" .) -}}
+                    {{- if ne $index 0 -}},{{ end }}
+                    <span itemprop="author" itemscope itemtype="https://schema.org/Person"><a href="{{ $author.Permalink }}" itemprop="url"><span itemprop="name">{{ trim $author.Title "\n" }}</span></a></span>
+                  {{- end -}}
                 </p>
                 <div role="group">
                   <a href="{{ .Permalink }}" itemprop="url">{{ i18n "commons.read" }}</a>
                   <button type="button" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">{{ i18n "volumes.abstract" }}</button>
                   {{ if .Params.pdf }}
                     {{- $pdf := partial "GetMedia" .Params.pdf -}}
-                    <a href="{{ $pdf.url }}" download>{{ i18n "commons.pdf" }}</a>
+                    {{- $pdf_size := partial "GetHumanSize" $pdf.size -}}
+                    <a href="{{ $pdf.url }}" download>
+                      {{- i18n "commons.pdf_with_size" (dict "Size" $pdf_size) }}
+                    </a>
                   {{ end }}
                 </div>
                 {{ partial "volumes/modal.html"

@@ -1,0 +1,7 @@
+{{ $size := "" }}
+{{ $size_with_unity := "" }}
+{{ if . }}
+  {{ $size = div . 1000 }}
+  {{ $size_with_unity = print $size " ko" }}
+{{ end }}
+{{ return $size_with_unity }}

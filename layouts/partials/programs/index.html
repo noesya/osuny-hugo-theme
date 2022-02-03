@@ -3,9 +3,9 @@
 {{ range $index, $programs := sort .Pages ".Params.position" }}
   <div class="programs">
     <div class="highlighted">
-      <div class="card card--program">
-        <div class="card-body">
-          <h2 class="card-title">
+      <div class="program">
+        <div>
+          <h2 class="title">
             <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
           </h2>
           <p>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</p>
@@ -14,9 +14,9 @@
     </div>
     {{ range sort .Pages ".Params.position"  }}
     <div>
-      <div class="card card--program">
+      <div class="program">
         {{ if .Params.image }}
-          <div class="card-media">
+          <div class="media">
             {{ partial "commons/image.html"
                   (dict
                     "image"    .Params.image
@@ -28,14 +28,14 @@
                   )}}
           </div>
         {{ end }}
-        <div class="card-body">
-          <p class="card-title ">
-            <a href="{{ .Permalink }}" class="link stretched-link">
+        <div>
+          <p class="title">
+            <a href="{{ .Permalink }}" class="link">
               {{ safeHTML (partial "CorrectPunctuation" .Title) }}
             </a>
           </p>
           {{ if .Params.description}}
-          <p class="card-text">{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</p>
+            <p>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</p>
           {{ end }}
         </div>
       </div>

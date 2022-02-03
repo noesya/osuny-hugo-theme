@@ -25,7 +25,7 @@
   <div class="container">
     <div class="content">
       <aside>
-        {{/* nav-link required for active toggle */}}
+        {{/* nav-link required for active toggle class */}}
         <ul class="toc" id="nav-toc">
           {{ range $chapters }}
             {{ $content := index $params . }}
@@ -55,7 +55,7 @@
           {{ partial "commons/image.html"
                 (dict
                   "image"    .Params.image
-                  "class"    "img-fluid mb-4"
+                  "class"    "featured-image"
                   "mobile"   "351x168"
                   "tablet"   "456x219"
                   "desktop"  "856x410"
@@ -87,19 +87,21 @@
               {{ $chapterExists = $contactsExist }}
             {{ end }}
             {{ if $chapterExists }}
-              <h2 id="page-{{ . }}">{{ i18n (printf "programs._%s" .) }}</h2>
-              {{ if eq . "contacts" }}
-                {{ safeHTML (partial "CorrectPunctuation" $content) }}
-                {{ partial "programs/roles.html" $params.roles }}
-              {{ else if eq . "teachers" }}
-                {{ partial "programs/teachers.html"
-                              (dict
-                                "teachers" $params.teachers
-                                "descriptions" $params.teachers_description
-                              ) }}
-              {{ else }}
-                {{ safeHTML (partial "CorrectPunctuation" $content) }}
-              {{ end }}
+              <section>
+                <h2 id="page-{{ . }}">{{ i18n (printf "programs._%s" .) }}</h2>
+                {{ if eq . "contacts" }}
+                  {{ safeHTML (partial "CorrectPunctuation" $content) }}
+                  {{ partial "programs/roles.html" $params.roles }}
+                {{ else if eq . "teachers" }}
+                  {{ partial "programs/teachers.html"
+                                (dict
+                                  "teachers" $params.teachers
+                                  "descriptions" $params.teachers_description
+                                ) }}
+                {{ else }}
+                  {{ safeHTML (partial "CorrectPunctuation" $content) }}
+                {{ end }}
+              </section>
             {{ end }}
           {{ end }}
         </div>

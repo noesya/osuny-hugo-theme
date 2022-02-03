@@ -1,4 +1,4 @@
-<article class="card card--person">
+<article class="person">
   <div class="avatar">
     {{ if .Params.image }}
       {{ partial "commons/image.html"
@@ -12,11 +12,11 @@
             )}}
     {{ end }}
   </div>
-  <div class="card-body">
-    <p class="card-title">{{ safeHTML .Title }}</p>
+  <div>
+    <p class="name">{{ safeHTML .Title }}</p>
     {{ if .Content }}
-      <p class="card-text">{{ truncate 120 (plainify .Content) }}</p>
+      <p>{{- truncate 120 (plainify .Content) -}}</p>
     {{ end }}
-    <a href="{{ .Permalink }}" class="stretched-link link">{{ i18n "commons.more" }}</a>
+    <a href="{{ .Permalink }}" class="link">{{ i18n "commons.more" }}</a>
   </div>
 </article>

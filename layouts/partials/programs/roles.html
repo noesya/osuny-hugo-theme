@@ -1,24 +1,22 @@
 {{ range . }}
-  <h3 class="mb-1">{{ .title }}</h3>
-  <div class="row">
+  <h3>{{ .title }}</h3>
+  <div class="persons">
     {{ range .persons }}
       {{ $slug := . }}
       {{ with site.GetPage "persons" }}
         {{ with .GetPage $slug }}
-          <div class="col-md-6">
-            <div class="card mb-2">
-              <div class="card-title">
-                <a href="{{ .Permalink }}">
-                  {{ safeHTML .Title }}
-                </a>
-              </div>
+          <div>
+            <div class="person">
+              <p class="name">
+                <a href="{{ .Permalink }}">{{ safeHTML .Title }}</a>
+              </p>
               {{ if .Params.email }}
-                <p class="small mb-0">
+                <p class="contact">
                   <a href="mailto:{{ .Params.email }}" rel="noreferrer" target="_blank">{{ .Params.email }}</a>
                 </p>
               {{ end }}
               {{ if .Params.phone }}
-                <p class="small mb-0">
+                <p class="contact">
                   {{ safeHTML .Params.phone }}
                 </p>
               {{ end }}
