@@ -8,7 +8,6 @@
   {{ if isset site.Taxonomies "administrators" }}
     {{ $programsForAdministrator = index site.Taxonomies.administrators $slug}}
   {{ end }}
-  {{ $programsForTeacherAndAdministrator := union $programsForTeacher $programsForAdministrator }}
   {{ $articlesForResearcher := slice }}
   {{ if isset site.Taxonomies "researchers" }}
     {{ $articlesForResearcher = index site.Taxonomies.researchers $slug}}
@@ -58,7 +57,7 @@
           {{ end }}
         </div>
         <div>
-          {{ range $programsForTeacherAndAdministrator }}
+          {{ range $programsForAdministrator }}
             {{ $program := . }}
             {{ range .Params.roles }}
               {{ $role := .title }}
