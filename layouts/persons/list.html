@@ -20,7 +20,8 @@
       {{ end }}
     </ul>
     <div class="persons">
-      {{ range .Paginator.Pages.ByParam "last_name" }}
+      {{ $persons := .Pages.ByParam "last_name" }}
+      {{ range (.Paginate $persons).Pages }}
         <div>
           {{ partial "persons/person.html" . }}
         </div>
