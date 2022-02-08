@@ -17,7 +17,14 @@
           {{ if or (eq .kind "news") (eq .kind "programs") }}
             <a href="{{ .target }}" class="link link-more">{{ i18n "commons.more" }}</a>
           {{ end }}
+          {{ $page := partial "GetPageByUrl" .target }}
+          {{ if $page.Params.description }}
+            <div>
+              <p>{{ truncate 120 (safeHTML $page.Params.description) }}</p>
+            </div>
+          {{ end }}
         </div>
+
         {{ if eq .kind "news" }}
           <div class="posts">
             {{ range (where site.RegularPages "Type" "posts" | first 6) }}
@@ -27,20 +34,31 @@
             {{ end }}
           </div>
         {{ else }}
-          <div class="pages">
-            {{ range .children }}
-              {{ if and .target (not (eq .kind "url")) }}
-                {{ $page := partial "GetPageByUrl" .target }}
-                {{ if $page }}
-                  <div>
-                    {{ partial "pages/page.html" $page }}
-                  </div>
+          {{ if .children }}
+            <div class="pages">
+              {{ range .children }}
+                {{ if and .target (not (eq .kind "url")) }}
+                  {{ $page := partial "GetPageByUrl" .target }}
+                  {{ if $page }}
+                    <div>
+                      {{ partial "pages/page.html" $page }}
+                    </div>
+                  {{ end }}
                 {{ end }}
               {{ end }}
-            {{ end }}
-          </div>
+            </div>
+          {{ end }}
         {{ end }}
       </section>
+    {{ end }}
+    {{ if .Site.Taxonomies.volumes }}
+      <div class="volumes">
+        {{ range .Site.Taxonomies.volumes }}
+          <div>
+            {{ partial "volumes/volume.html" .Page }}
+          </div>
+        {{ end }}
+      </div>
     {{ end }}
   </div>
 {{ end }}
