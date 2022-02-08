@@ -18,11 +18,13 @@
             <a href="{{ .target }}" class="link link-more">{{ i18n "commons.more" }}</a>
           {{ end }}
           {{ $page := partial "GetPageByUrl" .target }}
-          {{ if $page.Params.description }}
-            <div>
-              <p>{{ truncate 120 (safeHTML $page.Params.description) }}</p>
-            </div>
-          {{ end }}
+          {{with $page}}
+            {{ if .Description }}
+              <div>
+                <p>{{ truncate 120 (safeHTML .Description) }}</p>
+              </div>
+            {{ end }}
+          {{end}}
         </div>
 
         {{ if eq .kind "news" }}
