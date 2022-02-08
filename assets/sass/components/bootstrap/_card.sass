@@ -1,9 +1,12 @@
 .card
     &-media
-        @extend .ratio
         --bs-aspect-ratio: 50%
+        @extend .ratio
         background-color: $light
         overflow: hidden
+        @supports not (--css: variables)
+            &::before
+                padding-top: 50%
         img
             display: block
             height: 100%
