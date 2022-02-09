@@ -17,6 +17,6 @@
     {{ if .Content }}
       <p>{{- truncate 120 (plainify .Content) -}}</p>
     {{ end }}
-    <a href="{{ .Permalink }}" class="link">{{ i18n "commons.more" }}</a>
+    <a href="{{ .Permalink }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">{{ i18n "commons.more" }}</a>
   </div>
 </article>
