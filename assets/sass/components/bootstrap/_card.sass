@@ -4,6 +4,7 @@
         @extend .ratio
         background-color: $light
         overflow: hidden
+        // polyfill for ratio size
         @supports not (--css: variables)
             &::before
                 padding-top: 50%
