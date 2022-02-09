@@ -4,6 +4,9 @@
     flex-wrap: wrap
     justify-content: space-between
     margin-bottom: $spacer * 2
+    // Polyfill flex-wrap
+    @supports not (flex-wrap: wrap)
+        display: block
     h2, p
         margin-bottom: 0
     div
@@ -11,3 +14,5 @@
         margin-top: px2rem(5)
         p
             @extend .col-lg-8
+    .link
+        @extend .link-more
