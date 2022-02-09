@@ -6,3 +6,11 @@
         > *
             padding-left: px2rem(12)
             padding-right: px2rem(12)
+
+
+// Polyfill flex-wrap
+@supports not (flex-wrap: wrap)
+    .row
+        display: block
+        > *
+            display: inline-block
