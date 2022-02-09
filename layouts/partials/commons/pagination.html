@@ -19,15 +19,17 @@
 
     <!-- First page. -->
     <li{{ if eq $paginator.PageNumber 1 }} class="disabled"{{ end }}>
-      <a href="{{ $paginator.First.URL }}" aria-label="{{ i18n "commons.pagination.first" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        {{ partial "icons/arrow-first.html" }}
+      <a href="{{ $paginator.First.URL }}"
+          aria-label="{{ i18n "commons.pagination.first" }}"
+          {{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
       </a>
     </li>
 
     <!-- Previous page. -->
     <li{{ if eq $paginator.HasPrev false }} class="disabled"{{ end }}>
-      <a href="{{ if $paginator.HasPrev }}{{ $paginator.Prev.URL }}{{ else }}{{ $paginator.First.URL }}{{ end }}" aria-label="{{ i18n "commons.pagination.previous" }}"{{ if eq $paginator.HasPrev false }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        {{ partial "icons/arrow-left.html" }}
+      <a href="{{ if $paginator.HasPrev }}{{ $paginator.Prev.URL }}{{ else }}{{ $paginator.First.URL }}{{ end }}"
+          aria-label="{{ i18n "commons.pagination.previous" }}"
+          {{ if eq $paginator.HasPrev false }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
       </a>
     </li>
 
@@ -35,7 +37,6 @@
     {{ range $paginator.Pagers }}
 
       {{ $.Scratch.Set "page_number_flag" false }}
-
 
       <!-- Advanced page numbers. -->
       {{ if gt $paginator.TotalPages $max_links }}
@@ -81,7 +82,7 @@
       <!-- Output page numbers. -->
       {{ if eq ($.Scratch.Get "page_number_flag") true }}
         <li{{ if eq . $paginator }} class="active"{{ end }}>
-          <a href="{{ .URL }}">
+          <a href="{{ .URL }}" aria-label="{{ i18n "commons.pagination.page" (dict "Number" .PageNumber) }}">
             {{ .PageNumber }}
           </a>
         </li>
@@ -91,15 +92,17 @@
 
     <!-- Next page. -->
     <li{{ if eq $paginator.HasNext false }} class="disabled"{{ end }}>
-      <a href="{{ if $paginator.HasNext }}{{ $paginator.Next.URL }}{{else}}{{ $paginator.Last.URL }}{{ end }}" aria-label="{{ i18n "commons.pagination.next" }}"{{ if eq $paginator.HasNext false }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        {{ partial "icons/arrow-right.html" }}
+      <a href="{{ if $paginator.HasNext }}{{ $paginator.Next.URL }}{{else}}{{ $paginator.Last.URL }}{{ end }}"
+          aria-label="{{ i18n "commons.pagination.next" }}"
+          {{ if eq $paginator.HasNext false }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
       </a>
     </li>
 
     <!-- Last page. -->
     <li{{ if eq $paginator.PageNumber $paginator.TotalPages }} class="disabled"{{ end }}>
-      <a href="{{ $paginator.Last.URL }}" aria-label="{{ i18n "commons.pagination.last" }}"{{ if eq $paginator.PageNumber 1 }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
-        {{ partial "icons/arrow-last.html" }}
+      <a href="{{ $paginator.Last.URL }}"
+          aria-label="{{ i18n "commons.pagination.last" }}"
+          {{ if eq $paginator.PageNumber $paginator.TotalPages }} aria-disabled="true" role="button" tabindex="-1"{{ end }}>
       </a>
     </li>
 

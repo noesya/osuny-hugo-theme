@@ -42,13 +42,10 @@ a
         text-decoration: none
     &[target="_blank"]
         &::after
-            background: url('/assets/images/icons/icons.svg#link-blank') no-repeat
-            content: ''
-            display: inline-block
-            height: 12px
+            @include icon
+            content: $icon-link-blank
+            font-size: px2rem(10)
             margin-left: px2rem(5)
-            vertical-align: middle
-            width: 12px
     &.icon,
     &[href^="mailto"]
         &::after

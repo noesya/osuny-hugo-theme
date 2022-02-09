@@ -27,6 +27,7 @@ commons:
     label: Pagination
     last: Dernière page
     next: Page suivante
+    page: Aller à la page {{ .Number }}
     previous: Page précédente
   pdf: PDF
   pdf_with_size: PDF ({{ .Size }})

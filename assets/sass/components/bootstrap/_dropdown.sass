@@ -1,10 +1,8 @@
 .dropdown
     &-toggle
         &:after
-            background: url('/assets/images/icons/icons.svg#caret') no-repeat
-            content: ''
-            display: inline-block
-            height: 6px
-            margin-left: 5px
-            vertical-align: middle
-            width: 10px
+            @include icon
+            border: 0
+            content: $icon-caret
+            font-size: px2rem(6)
+            margin-left: px2rem(5)

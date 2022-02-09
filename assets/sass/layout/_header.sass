@@ -13,13 +13,16 @@ header[role="banner"]
                 text-transform: uppercase
             span:last-of-type
                 @extend .navbar-toggler-icon
-                background-image: url('/assets/images/icons/icons.svg#burger')
-                background-position: center
-                background-repeat: no-repeat
-                background-size: 20px 17px
-                height: px2rem(32)
+                @extend .icon
+                @extend .icon-burger
+                background: none
+                height: auto
+                padding-bottom: px2rem(5)
+                padding-top: px2rem(5)
                 width: px2rem(32)
-
+                &::before
+                    font-size: px2rem(17) !important
+                    vertical-align: top !important
     .logo
         @extend .navbar-brand
         img
