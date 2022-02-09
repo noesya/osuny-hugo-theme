@@ -22,6 +22,7 @@ commons:
     secondary: Secondary menu
     title: Menu
   more: Read more
+  more_aria: Read more about “{{ .Title }}”
   pagination:
     first: First page
     label: Pagination

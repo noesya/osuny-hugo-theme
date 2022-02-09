@@ -11,3 +11,13 @@
         margin-top: px2rem(5)
         p
             @extend .col-lg-8
+    .link
+        @extend .link-more
+
+    // Polyfill flex-wrap
+    @supports not (flex-wrap: wrap)
+        display: block
+        h2
+            display: inline-block
+        .link
+            float: right

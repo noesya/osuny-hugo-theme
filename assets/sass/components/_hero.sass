@@ -6,8 +6,8 @@
     margin-bottom: 3rem
     min-height: 300px
     overflow: hidden
-    padding-bottom: map-get($spacers, 3)
-    padding-top: map-get($spacers, 3)
+    padding-bottom: 2rem
+    padding-top: 2rem
     position: relative
     @include media-breakpoint-up(md)
         min-height: 450px
@@ -20,6 +20,7 @@
             opacity: .3
             position: absolute
             width: 100%
+            // polyfill for inset
             @supports not (inset: 0)
                 bottom: 0
                 left: 0
@@ -36,6 +37,12 @@
         @include media-breakpoint-down(md)
             margin-left: calc(#{$grid-gutter-width} / -2)
             width: calc(100% + #{$grid-gutter-width})
+
+    a
+        color: $white
+        text-decoration-color: rgba($white, .3)
+        &:hover
+          text-decoration-color: $white
 
     .breadcrumb
         a
