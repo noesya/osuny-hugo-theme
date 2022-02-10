@@ -59,6 +59,7 @@ posts:
   see_all: See all posts
   see_all_in_category: See all posts in « {{ .Title }} »
   share: Share on
+  share_aria: Share on {{ .Title }}
   title: News
 programs:
   _accessibility: Accessibility
