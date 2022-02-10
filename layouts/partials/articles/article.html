@@ -5,7 +5,7 @@
   {{ range .Params.Volumes }}
     {{ $volume := site.GetPage (printf "/volumes%s" .) }}
     {{ if $volume }}
-      <p>In “<a href="{{ $volume.Permalink }}">{{ $volume.Title }}</a>”</p>
+      <p>{{ i18n "commons.in" }} “<a href="{{ $volume.Permalink }}">{{ $volume.Title }}</a>”</p>
     {{ end }}
   {{ end }}
 </article>
