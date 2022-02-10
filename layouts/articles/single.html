@@ -37,7 +37,7 @@
         <section id="full-text">
           <h2>{{ i18n "volumes.full_text" }}</h2>
           <div class="articleBody">
-            {{ safeHTML (partial "CorrectPunctuation" .Content) | markdownify }}
+            {{ safeHTML (partial "CorrectPunctuation" .Content) }}
           </div>
         </section>
         {{ if isset .Params "references" }}
