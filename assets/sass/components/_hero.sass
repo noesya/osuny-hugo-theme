@@ -29,8 +29,9 @@
 
     .container
         position: relative
-        > div:first-of-type:not(.title-avatar)
-            max-width: 76.666666667%
+        @include media-breakpoint-up(md)
+            > div:first-of-type:not(.title-avatar)
+                max-width: 76.666666667%
 
     nav
         margin-top: auto

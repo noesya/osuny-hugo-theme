@@ -5,7 +5,7 @@ header[role="banner"]
         button[type="button"]
             @extend .navbar-toggler
             border: 0
-            margin-right: -$navbar-toggler-padding-x
+            margin-right: calc(-#{$navbar-toggler-padding-x} - .3125rem)
             position: relative
             span:first-of-type
                 font-family: $font-family-sans-serif
@@ -17,9 +17,8 @@ header[role="banner"]
                 @extend .icon-burger
                 background: none
                 height: auto
-                padding-bottom: px2rem(5)
-                padding-top: px2rem(5)
-                width: px2rem(32)
+                padding: px2rem(5)
+                width: calc(1.5rem + .3125rem * 2)
                 &::before
                     font-size: px2rem(17) !important
                     vertical-align: top !important
