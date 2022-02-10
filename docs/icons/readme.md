@@ -12,3 +12,6 @@ Pour générer la font : https://icomoon.io/app/
 Le fichier du projet icomoon pour ajouter ou supprimer des icons : [Osuny.json](Osuny.json)
 
 Il est important de le mettre à jour à chaque modification de font.
+
+## Icons
+[La liste des icons](svg)
