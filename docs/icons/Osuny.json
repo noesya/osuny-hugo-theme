@@ -8,12 +8,20 @@
     {
       "selection": [
         {
+          "order": 18,
+          "id": 14,
+          "name": "close",
+          "prevSize": 32,
+          "code": 59662,
+          "tempChar": ""
+        },
+        {
           "order": 4,
           "id": 13,
           "name": "download",
           "prevSize": 32,
           "code": 59648,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 5,
@@ -21,7 +29,7 @@
           "name": "eye",
           "prevSize": 32,
           "code": 59649,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 6,
@@ -29,7 +37,7 @@
           "name": "burger",
           "prevSize": 32,
           "code": 59650,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 10,
@@ -37,7 +45,7 @@
           "name": "link-blank",
           "prevSize": 32,
           "code": 59651,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 11,
@@ -45,7 +53,7 @@
           "name": "caret",
           "prevSize": 32,
           "code": 59652,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 12,
@@ -53,7 +61,7 @@
           "name": "arrow",
           "prevSize": 32,
           "code": 59653,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 13,
@@ -61,7 +69,7 @@
           "name": "arrow-first",
           "prevSize": 32,
           "code": 59654,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 14,
@@ -69,7 +77,7 @@
           "name": "arrow-last",
           "prevSize": 32,
           "code": 59655,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 15,
@@ -77,7 +85,7 @@
           "name": "arrow-left",
           "prevSize": 32,
           "code": 59656,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 16,
@@ -85,7 +93,7 @@
           "name": "arrow-right",
           "prevSize": 32,
           "code": 59657,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 17,
@@ -93,7 +101,7 @@
           "name": "instagram",
           "prevSize": 32,
           "code": 59658,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 7,
@@ -101,7 +109,7 @@
           "name": "facebook",
           "prevSize": 32,
           "code": 59659,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 8,
@@ -109,7 +117,7 @@
           "name": "linkedin",
           "prevSize": 32,
           "code": 59660,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 9,
@@ -117,20 +125,35 @@
           "name": "twitter",
           "prevSize": 32,
           "code": 59661,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 0,
       "metadata": {
         "name": "Main",
         "importSize": {
-          "width": 24,
-          "height": 24
+          "width": 16,
+          "height": 16
         }
       },
       "height": 1024,
       "prevSize": 32,
       "icons": [
+        {
+          "id": 14,
+          "paths": [
+            "M466.735 557.253l-407.293 407.291 45.255 45.254 407.293-407.291 407.293 407.297 45.254-45.261-407.293-407.291 452.547-452.549-45.254-45.255-452.547 452.549-452.548-452.548-45.255 45.255 452.548 452.548z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "close"
+          ]
+        },
         {
           "id": 13,
           "paths": [

@@ -23,12 +23,16 @@ header[role="banner"]
                 @extend .icon
                 @extend .icon-burger
                 background: none
-                height: auto
+                height: calc(1.063rem + .3125rem * 2)
                 padding: px2rem(5) 0 px2rem(5) px2rem(5)
                 width: calc(1.5rem + .3125rem)
                 &::before
                     font-size: px2rem(17) !important
                     vertical-align: top !important
+            &[aria-expanded="true"]
+                span:last-of-type
+                    &::before
+                        content: $icon-close
 
     .logo
         @extend .navbar-brand
