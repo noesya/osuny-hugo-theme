@@ -1,0 +1,14 @@
+{{ range . }}
+
+  <h2>{{ .title }}</h2>
+
+  <div class="persons">
+    {{ range .persons }}
+      {{ $person := site.GetPage (printf "/persons/%s" .slug) }}
+      <div>
+        {{ partial "persons/person.html" $person }}
+      </div>
+    {{ end }}
+  </div>
+
+{{ end }}
