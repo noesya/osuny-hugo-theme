@@ -8,7 +8,7 @@
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
     <div class="content">
-      
+
       {{ $h2s := partial "H2Extract" .Content }}
       {{ if or (or $category .Pages) $h2s }}
       <aside>
@@ -63,6 +63,11 @@
                 {{ end }}
               </div>
             </section>
+          {{ end }}
+
+          {{ range .Params.blocks }}
+            {{ $template := printf "blocks/%s.html" .template }}
+            {{ partial $template .data }}
           {{ end }}
 
           {{ partial "posts/related.html" $category }}
