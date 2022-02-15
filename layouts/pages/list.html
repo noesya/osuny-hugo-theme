@@ -8,6 +8,7 @@
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
     <div class="content">
+      
       {{ $h2s := partial "H2Extract" .Content }}
       {{ if or (or $category .Pages) $h2s }}
       <aside>
@@ -38,17 +39,8 @@
       {{ end }}
 
       <div>
-        {{ if .Params.image }}
-          {{ partial "commons/image.html"
-                (dict
-                  "image"    .Params.image
-                  "class"    "featured-image"
-                  "mobile"   "351x168"
-                  "tablet"   "456x219"
-                  "desktop"  "856x410"
-                  "itemprop" true
-                )}}
-        {{ end }}
+        {{ partial "pages/image.html" .Params.image }}
+
         <div itemprop="articleBody" id="page-informations">
           {{
             safeHTML (
