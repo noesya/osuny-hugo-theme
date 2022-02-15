@@ -34,6 +34,7 @@ footer[role="contentinfo"]
         a,
         span
             @extend .nav-link
+            color: $link-color
             display: inline-block
             font-size: px2rem(14)
             line-height: 1.4
@@ -48,7 +49,7 @@ footer[role="contentinfo"]
                 margin-bottom: calc(#{$grid-gutter-width} * 2)
                 & > a,
                 & > span
-                    color: $primary
+                    color: $link-color
                     font-size: px2rem(18)
                     margin-bottom: calc(#{$grid-gutter-width} / 2)
                     margin-top: 0
@@ -58,7 +59,7 @@ footer[role="contentinfo"]
                 .nav-level-2 > li
                     & > a,
                     & > span
-                        color: $primary
+                        color: $link-color
                         font-size: px2rem(16)
 
                 .nav-level-3
