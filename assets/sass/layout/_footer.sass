@@ -9,10 +9,20 @@ footer[role="contentinfo"]
             width: auto
 
     .content
-        margin-bottom: map-get($spacers, 5)
+        margin-bottom: map-get($spacers, 3)
+        @include media-breakpoint-up(md)
+            margin-bottom: map-get($spacers, 5)
         > div
+            &:first-of-type
+                @include media-breakpoint-down(md)
+                    margin-bottom: map-get($spacers, 3)
             @include media-breakpoint-up(md)
                 @include make-col(4)
+
+        ~ div
+            @include media-breakpoint-up(md)
+                display: flex
+                justify-content: space-between
 
     address
         font-size: px2rem(14)
@@ -38,7 +48,7 @@ footer[role="contentinfo"]
             padding-left: 0
             padding-right: 0
 
-        .nav-level-1:not(.nav-levels):not(.nav-legal)
+        .nav-level-1
             flex-direction: column
 
         .nav-levels
@@ -64,5 +74,15 @@ footer[role="contentinfo"]
                     margin-bottom: $grid-gutter-width
 
         .nav-legal
+            @include media-breakpoint-up(md)
+                flex-direction: row
             li
-                margin-right: $spacer * 2
+                @include media-breakpoint-up(md)
+                    margin-right: $spacer * 2
+
+        .nav-social
+            @include media-breakpoint-up(md)
+                flex-direction: row
+            li
+                @include media-breakpoint-up(md)
+                    margin-left: $spacer * 2

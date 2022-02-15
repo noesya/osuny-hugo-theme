@@ -21,6 +21,7 @@ commons:
     legal: Legals menu
     main: Main menu
     secondary: Secondary menu
+    social: Socials networks menu
     title: Menu
   more: Read more
   more_aria: Read more about “{{ .Title }}”
