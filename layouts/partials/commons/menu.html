@@ -1,4 +1,5 @@
 {{- $level := .level -}}
+{{- $stop := .stop -}}
 {{- $dropdown := .dropdown }}
 {{- $ulClass := "" -}}
 {{- if .class -}}
@@ -27,21 +28,23 @@
       {{- else -}}
         <span class="{{ if ne $linkClass ""}} {{ $linkClass }}{{ end }}{{ if gt .level 1 }} disabled{{ end }}"{{ safeHTMLAttr $attr }}>{{ .title }}</span>
       {{- end -}}
-      {{- if $hasDropdown }}
-        {{/* dropdown-menu class is required for bootstrap js */}}
-        <div class="dropdown-menu" aria-labelledby="dropdown-{{ $slug }}">
+      {{- if ne $stop $level -}}
+        {{- if $hasDropdown }}
+          {{/* dropdown-menu class is required for bootstrap js */}}
+          <div class="dropdown-menu" aria-labelledby="dropdown-{{ $slug }}">
+        {{- end -}}
+        {{- if gt (len .children) 0 -}}
+          {{- $nextLevel := add $level 1 -}}
+          {{- partial "commons/menu.html"
+                (dict
+                  "items" .children
+                  "level" $nextLevel
+                ) -}}
+        {{- end -}}
+        {{- if $hasDropdown -}}
+          </div>
+        {{- end -}}
       {{- end -}}
-      {{- if gt (len .children) 0 -}}
-        {{- $nextLevel := add $level 1 -}}
-        {{- partial "commons/menu.html"
-              (dict
-                "items" .children
-                "level" $nextLevel
-              ) -}}
-      {{- end -}}
-      {{- if $hasDropdown -}}
-        </div>
-      {{ end -}}
     </li>
   {{ end -}}
 </ul>
