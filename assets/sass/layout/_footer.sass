@@ -10,12 +10,9 @@ footer[role="contentinfo"]
 
     .content
         margin-bottom: map-get($spacers, 5)
-        > div:first-of-type
+        > div
             @include media-breakpoint-up(md)
                 @include make-col(4)
-        > div:last-of-type
-            @include media-breakpoint-up(md)
-                @include make-col(8)
 
     address
         font-size: px2rem(14)
@@ -41,6 +38,9 @@ footer[role="contentinfo"]
             padding-left: 0
             padding-right: 0
 
+        .nav-level-1:not(.nav-levels)
+            flex-direction: column
+
         .nav-levels
             @extend .grid
             margin-bottom: map-get($spacers, 3)
@@ -49,7 +49,6 @@ footer[role="contentinfo"]
                 margin-bottom: calc(#{$grid-gutter-width} * 2)
                 & > a,
                 & > span
-                    color: $link-color
                     font-size: px2rem(18)
                     margin-bottom: calc(#{$grid-gutter-width} / 2)
                     margin-top: 0
@@ -59,7 +58,6 @@ footer[role="contentinfo"]
                 .nav-level-2 > li
                     & > a,
                     & > span
-                        color: $link-color
                         font-size: px2rem(16)
 
                 .nav-level-3
