@@ -7,6 +7,7 @@
       {{ $person := site.GetPage (printf "/persons/%s" .slug) }}
       <div>
         {{ partial "persons/person.html" $person }}
+        {{ safeHTML .role }}
       </div>
     {{ end }}
   </div>
