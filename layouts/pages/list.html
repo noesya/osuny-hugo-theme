@@ -43,10 +43,8 @@
 
         <div itemprop="articleBody" id="page-informations">
           {{
-            safeHTML (
-              partial "CorrectPunctuation" (
-                partial "H2AddId" .Content
-              )
+            partial "PrepareHTML" (
+              partial "H2AddId" .Content
             )
           }}
 

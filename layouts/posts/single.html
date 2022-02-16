@@ -79,8 +79,8 @@
                   )}}
           {{ end }}
           <div itemprop="articleBody">
-            {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-            {{ safeHTML (partial "CorrectPunctuation" .Params.text) }}
+            {{ partial "PrepareHTML" .Content }}
+            {{ partial "PrepareHTML" .Params.text }}
           </div>
           {{ partial "posts/prevnext.html" . }}
         </div>
