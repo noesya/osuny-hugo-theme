@@ -62,8 +62,9 @@ h1, h2
     h2
         margin-top: $grid-gutter-width * 3
     // If a h2 directly follows the beginning of the article, no top margin
-    > h2:first-child
-        margin-top: 0
+    > section:first-of-type
+        h2
+            margin-top: 0
 
 ul
-    padding-left: 15px
+    padding-left: px2rem(15)
