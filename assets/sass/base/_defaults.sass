@@ -31,24 +31,21 @@ img
         transition: outline-offset .3s ease
 
 a
-    color: $primary
-    text-decoration-color: rgba($primary, 0.3)
+    color: $link-color
+    text-decoration-color: rgba($link-color, 0.3)
     text-decoration-thickness: 1px
     text-underline-offset: 3px
     &:hover
-        text-decoration-color: rgba($primary, 1)
+        text-decoration-color: rgba($link-color, 1)
         text-decoration-thickness: 1px
-    &.icon
+    &.icon:not(.link)
         text-decoration: none
     &[target="_blank"]
         &::after
-            background: url('/assets/images/icons/icons.svg#link-blank') no-repeat
-            content: ''
-            display: inline-block
-            height: 12px
+            @include icon
+            content: $icon-link-blank
+            font-size: px2rem(10)
             margin-left: px2rem(5)
-            vertical-align: middle
-            width: 12px
     &.icon,
     &[href^="mailto"]
         &::after
@@ -65,8 +62,9 @@ h1, h2
     h2
         margin-top: $grid-gutter-width * 3
     // If a h2 directly follows the beginning of the article, no top margin
-    > h2:first-child
-        margin-top: 0
+    > section:first-of-type
+        h2
+            margin-top: 0
 
 ul
-    padding-left: 15px
+    padding-left: px2rem(15)

@@ -15,9 +15,18 @@
             {{ if .target }}</a>{{ end }}
           </h2>
           {{ if or (eq .kind "news") (eq .kind "programs") }}
-            <a href="{{ .target }}" class="link link-more">{{ i18n "commons.more" }}</a>
+            <a href="{{ .target }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .title) }}">{{ i18n "commons.more" }}</a>
           {{ end }}
+          {{ $page := partial "GetPageByUrl" .target }}
+          {{with $page}}
+            {{ if .Description }}
+              <div>
+                <p>{{ truncate 120 (safeHTML .Description) }}</p>
+              </div>
+            {{ end }}
+          {{end}}
         </div>
+
         {{ if eq .kind "news" }}
           <div class="posts">
             {{ range (where site.RegularPages "Type" "posts" | first 6) }}
@@ -27,20 +36,31 @@
             {{ end }}
           </div>
         {{ else }}
-          <div class="pages">
-            {{ range .children }}
-              {{ if and .target (not (eq .kind "url")) }}
-                {{ $page := partial "GetPageByUrl" .target }}
-                {{ if $page }}
-                  <div>
-                    {{ partial "pages/page.html" $page }}
-                  </div>
+          {{ if .children }}
+            <div class="pages">
+              {{ range .children }}
+                {{ if and .target (not (eq .kind "url")) }}
+                  {{ $page := partial "GetPageByUrl" .target }}
+                  {{ if $page }}
+                    <div>
+                      {{ partial "pages/page.html" $page }}
+                    </div>
+                  {{ end }}
                 {{ end }}
               {{ end }}
-            {{ end }}
-          </div>
+            </div>
+          {{ end }}
         {{ end }}
       </section>
+    {{ end }}
+    {{ if .Site.Taxonomies.volumes }}
+      <div class="volumes">
+        {{ range .Site.Taxonomies.volumes }}
+          <div>
+            {{ partial "volumes/volume.html" .Page }}
+          </div>
+        {{ end }}
+      </div>
     {{ end }}
   </div>
 {{ end }}

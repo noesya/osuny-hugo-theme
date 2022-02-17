@@ -8,7 +8,6 @@
   {{ if isset site.Taxonomies "administrators" }}
     {{ $programsForAdministrator = index site.Taxonomies.administrators $slug}}
   {{ end }}
-  {{ $programsForTeacherAndAdministrator := union $programsForTeacher $programsForAdministrator }}
   {{ $articlesForResearcher := slice }}
   {{ if isset site.Taxonomies "researchers" }}
     {{ $articlesForResearcher = index site.Taxonomies.researchers $slug}}
@@ -58,7 +57,7 @@
           {{ end }}
         </div>
         <div>
-          {{ range $programsForTeacherAndAdministrator }}
+          {{ range $programsForAdministrator }}
             {{ $program := . }}
             {{ range .Params.roles }}
               {{ $role := .title }}
@@ -96,7 +95,7 @@
       <section>
         <div class="top">
           <h2>{{ i18n "persons.posts" }}</h2>
-          <a href="actualites/" class="link link-more">{{ i18n "posts.see_all" }}</a>
+          <a href="actualites/" class="link">{{ i18n "posts.see_all" }}</a>
         </div>
         <div class="posts">
           {{ range first 3 $author.Pages }}
@@ -112,7 +111,7 @@
       <section>
         <div class="top">
           <h2>{{ i18n "persons.publications" }}</h2>
-          <a href="publications/" class="link link-more">{{ i18n "persons.publications" }}</a>
+          <a href="publications/" class="link">{{ i18n "persons.publications" }}</a>
         </div>
         <div class="articles">
           {{ range first 3 $articlesForResearcher }}

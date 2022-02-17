@@ -9,6 +9,12 @@
     padding: $spacer
     position: fixed
     z-index: 9999
+    // polyfill for inset
+    @supports not (inset: 0)
+        bottom: $spacer
+        left: $spacer
+        right: $spacer
+        top: auto
 
     a
         text-decoration: underline

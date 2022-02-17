@@ -3,36 +3,47 @@
     background-color: $primary
     color: $white
     display: flex
-    margin-bottom: map-get($spacers, 4)
+    margin-bottom: 3rem
     min-height: 300px
     overflow: hidden
-    padding-bottom: map-get($spacers, 3)
-    padding-top: map-get($spacers, 3)
+    padding-bottom: 2rem
+    padding-top: 2rem
     position: relative
     @include media-breakpoint-up(md)
         min-height: 450px
 
     > picture
         img
-            filter: blur(16px) grayscale(100%)
             height: 100%
             inset: 0
-            mix-blend-mode: overlay
             object-fit: cover
             opacity: .3
             position: absolute
             width: 100%
+            // polyfill for inset
+            @supports not (inset: 0)
+                bottom: 0
+                left: 0
+                right: 0
+                top: 0
 
     .container
         position: relative
-        > div:first-of-type:not(.title-avatar)
-            max-width: 76.666666667%
+        @include media-breakpoint-up(md)
+            > div:first-of-type:not(.title-avatar)
+                max-width: 76.666666667%
 
     nav
         margin-top: auto
         @include media-breakpoint-down(md)
             margin-left: calc(#{$grid-gutter-width} / -2)
             width: calc(100% + #{$grid-gutter-width})
+
+    a
+        color: $white
+        text-decoration-color: rgba($white, .3)
+        &:hover
+          text-decoration-color: $white
 
     .breadcrumb
         a

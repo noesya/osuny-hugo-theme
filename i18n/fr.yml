@@ -14,19 +14,23 @@ commons:
   download:
     singular_name: Télécharger
     pdf: Télécharger le PDF
+  in: Dans
   language: Langue
   menu:
     label: Ouvrir / Fermer le menu
     legal: Menu pages légales
     main: Menu principal
     secondary: Menu secondaire
+    social: Menu réseaux sociaux
     title: Menu
   more: En savoir plus
+  more_aria: En savoir plus sur “{{ .Title }}”
   pagination:
     first: Première page
     label: Pagination
     last: Dernière page
     next: Page suivante
+    page: Aller à la page {{ .Number }}
     previous: Page précédente
   pdf: PDF
   pdf_with_size: PDF ({{ .Size }})
@@ -57,6 +61,7 @@ posts:
   see_all: Voir toutes les actualités
   see_all_in_category: Voir toutes les actualités « {{ .Title }} »
   share: Partager sur
+  share_aria: Partager sur {{ .Title }}
   title: Actualités
 programs:
   _accessibility: Accessibilité

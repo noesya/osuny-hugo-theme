@@ -1,46 +1,5 @@
 <footer role="contentinfo">
   <div class="container">
-    <div class="content">
-      <div>
-        {{ partial "footer/logo.html" }}
-      </div>
-      <div>
-        {{ with site.Data.school }}
-        <address itemscope itemtype="https://schema.org/CollegeOrUniversity">
-          <meta itemprop="image" content="{{ site.Params.logo }}">
-          <span itemprop="name">{{ .name }}</span>
-          <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-            <span itemprop="streetAddress">{{ .address }}</span><br>
-            <span itemprop="postalCode">{{ .zipcode }}</span> <span itemprop="addressLocality">{{ .city }}</span><br>
-            <span itemprop="addressCountry">{{ .country }}</span>
-          </div>
-          <span itemprop="telephone">{{ .phone }}</span>
-        </address>
-        {{ end }}
-        {{ with site.Data.journal }}
-        <div itemscope itemtype="https://schema.org/Periodical">
-          <meta itemprop="image" content="{{ site.Params.logo }}">
-          <span itemprop="name">{{ .name }}</span><br>
-          <span itemprop="issn">{{ trim .issn "\n" }}</span>
-        </div>
-        {{ end }}
-      </div>
-    </div>
-    <nav role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
-      {{ partial "commons/menu.html"
-            (dict
-              "items"       site.Data.menus.primary
-              "level"       1
-              "class"       "nav-levels"
-            )}}
-    </nav>
-    <nav role="navigation" aria-label="{{ i18n "commons.menu.legal" }}">
-      {{ partial "commons/menu.html"
-            (dict
-              "items"       site.Data.menus.legal
-              "level"       1
-              "class"       "nav-legal"
-            )}}
-    </nav>
+    {{ partial "footer/footer-simple.html" }}
   </div>
 </footer>

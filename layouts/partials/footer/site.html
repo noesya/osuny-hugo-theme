@@ -1,0 +1,35 @@
+{{ with site.Data.school }}
+<address itemscope itemtype="https://schema.org/CollegeOrUniversity">
+  <meta itemprop="image" content="/assets/images/logo.svg">
+  <span itemprop="name">{{ htmlUnescape .name }}</span>
+  {{ if or (.address) (.country) }}
+  <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+    {{ if .address }}<span itemprop="streetAddress">{{ .address }}</span><br>{{ end }}
+    {{ if .zipcode }}<span itemprop="postalCode">{{ .zipcode }}</span> {{ end }}{{ if .city }}<span itemprop="addressLocality">{{ .city }}</span>{{ end }}<br>
+    {{ if .country }}<span itemprop="addressCountry">{{ .country }}</span>{{ end }}
+  </div>
+  {{ end }}
+  {{ if .phone }}<span itemprop="telephone">{{ .phone }}</span>{{ end }}
+</address>
+{{ end }}
+{{ with site.Data.laboratory }}
+<address itemscope itemtype="">
+  <meta itemprop="image" content="/assets/images/logo.svg">
+  <span itemprop="name">{{ htmlUnescape .name }}</span>
+  {{ if or (.address) (.country) }}
+  <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+    {{ if .address }}<span itemprop="streetAddress">{{ .address }}</span><br>{{ end }}
+    {{ if .zipcode }}<span itemprop="postalCode">{{ .zipcode }}</span> {{ end }}{{ if .city }}<span itemprop="addressLocality">{{ .city }}</span>{{ end }}<br>
+    {{ if .country }}<span itemprop="addressCountry">{{ .country }}</span>{{ end }}
+  </div>
+  {{ end }}
+  {{ if .phone }}<span itemprop="telephone">{{ .phone }}</span>{{ end }}
+</address>
+{{ end }}
+{{ with site.Data.journal }}
+<div itemscope itemtype="https://schema.org/Periodical">
+  <meta itemprop="image" content="/assets/images/logo.svg">
+  <span itemprop="name">{{ htmlUnescape .name }}</span><br>
+  <span itemprop="issn">{{ trim .issn "\n" }}</span>
+</div>
+{{ end }}

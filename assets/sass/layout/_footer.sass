@@ -6,16 +6,24 @@ footer[role="contentinfo"]
     .logo
         img
             height: 60px
+            max-width: 100%
             width: auto
 
     .content
-        margin-bottom: map-get($spacers, 5)
-        > div:first-of-type
+        margin-bottom: map-get($spacers, 3)
+        @include media-breakpoint-up(md)
+            margin-bottom: map-get($spacers, 5)
+        > div
+            &:first-of-type
+                @include media-breakpoint-down(md)
+                    margin-bottom: map-get($spacers, 3)
             @include media-breakpoint-up(md)
                 @include make-col(4)
-        > div:last-of-type
+
+        ~ div
             @include media-breakpoint-up(md)
-                @include make-col(8)
+                display: flex
+                justify-content: space-between
 
     address
         font-size: px2rem(14)
@@ -34,11 +42,15 @@ footer[role="contentinfo"]
         a,
         span
             @extend .nav-link
+            color: $link-color
             display: inline-block
             font-size: px2rem(14)
             line-height: 1.4
             padding-left: 0
             padding-right: 0
+
+        .nav-level-1
+            flex-direction: column
 
         .nav-levels
             @extend .grid
@@ -48,7 +60,6 @@ footer[role="contentinfo"]
                 margin-bottom: calc(#{$grid-gutter-width} * 2)
                 & > a,
                 & > span
-                    color: $primary
                     font-size: px2rem(18)
                     margin-bottom: calc(#{$grid-gutter-width} / 2)
                     margin-top: 0
@@ -58,12 +69,21 @@ footer[role="contentinfo"]
                 .nav-level-2 > li
                     & > a,
                     & > span
-                        color: $primary
                         font-size: px2rem(16)
 
                 .nav-level-3
                     margin-bottom: $grid-gutter-width
 
         .nav-legal
+            @include media-breakpoint-up(md)
+                flex-direction: row
             li
-                margin-right: $spacer * 2
+                @include media-breakpoint-up(md)
+                    margin-right: $spacer * 2
+
+        .nav-social
+            @include media-breakpoint-up(md)
+                flex-direction: row
+            li
+                @include media-breakpoint-up(md)
+                    margin-left: $spacer * 2

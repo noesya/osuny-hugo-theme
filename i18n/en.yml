@@ -14,19 +14,23 @@ commons:
   download:
     singular_name: Download
     pdf: Download PDF
+  in: In
   language: Language
   menu:
     label: Toggle navigation
     legal: Legals menu
     main: Main menu
     secondary: Secondary menu
+    social: Socials networks menu
     title: Menu
   more: Read more
+  more_aria: Read more about “{{ .Title }}”
   pagination:
     first: First page
     label: Pagination
     last: Last page
     next: Next page
+    page: Go to page {{ .Number }}
     previous: Previous page
   pdf: PDF
   pdf_with_size: PDF ({{ .Size }})
@@ -57,6 +61,7 @@ posts:
   see_all: See all posts
   see_all_in_category: See all posts in « {{ .Title }} »
   share: Share on
+  share_aria: Share on {{ .Title }}
   title: News
 programs:
   _accessibility: Accessibility

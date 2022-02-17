@@ -1,9 +1,13 @@
 .card
     &-media
-        @extend .ratio
         --bs-aspect-ratio: 50%
+        @extend .ratio
         background-color: $light
         overflow: hidden
+        // polyfill for ratio size
+        @supports not (--css: variables)
+            &::before
+                padding-top: 50%
         img
             display: block
             height: 100%
@@ -18,6 +22,9 @@
         margin-top: 0
     &-text
         margin-bottom: 0
+
+    > a[type="button"]
+        appearance: none
 
     time
         color: $gray-600

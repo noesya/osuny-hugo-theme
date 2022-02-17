@@ -4,5 +4,20 @@
     flex-wrap: wrap
     justify-content: space-between
     margin-bottom: $spacer * 2
-    h2
+    h2, p
         margin-bottom: 0
+    div
+        @extend .col-12
+        margin-top: px2rem(5)
+        p
+            @extend .col-lg-8
+    .link
+        @extend .link-more
+
+    // Polyfill flex-wrap
+    @supports not (flex-wrap: wrap)
+        display: block
+        h2
+            display: inline-block
+        .link
+            float: right
