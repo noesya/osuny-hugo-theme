@@ -6,6 +6,8 @@
           "context" .
         )}}
   <div class="container">
+    {{ partial "PrepareHTML" .Content }}
+
     {{- range site.Data.menus.primary -}}
       <section>
         <div class="top">
