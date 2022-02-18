@@ -1,0 +1,14 @@
+{{ if .children }}
+  <div class="pages">
+    {{ range .children }}
+      {{ if and .target (not (eq .kind "url")) }}
+        {{ $page := partial "GetPageByUrl" .target }}
+        {{ if $page }}
+          <div>
+            {{ partial "pages/page.html" $page }}
+          </div>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}
