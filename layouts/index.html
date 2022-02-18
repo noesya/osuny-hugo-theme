@@ -1,11 +1,12 @@
 {{ define "main" }}
   {{ partial "header/hero.html"
         (dict
-          "title" .Content
+          "title" .Params.header_text
           "image" .Params.image
           "context" .
         )}}
   <div class="container">
+    {{ partial "PrepareHTML" .Content }}
 
     {{- range site.Data.menus.primary -}}
       <section>

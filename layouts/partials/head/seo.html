@@ -8,7 +8,13 @@
 {{- else -}}
   {{- $seoDescription = .Summary -}}
 {{- end -}}
-{{- $seoImage := "/assets/images/share.png" -}}
+{{- $seoImage := "" -}}
+{{- if os.FileExists "static/assets/images/share.png" }}
+    {{- $seoImage = "/assets/images/share.png" -}}
+{{ end }}
+{{- if os.FileExists "static/assets/images/share.jpg" }}
+    {{- $seoImage = "/assets/images/share.jpg" -}}
+{{ end }}
 {{- if .Params.image }}
   {{- $image := partial "GetMedia" .Params.image -}}
   {{- $seoImage = $image.url -}}
@@ -22,8 +28,8 @@
 <!-- Facebook Meta Tags -->
 <meta property="og:title" content="{{ $seoTitle }}">
 <meta property="og:description" content="{{ $seoDescription }}">
-{{- if os.FileExists "static/assets/images/share.png" }}
-    <meta property="og:image" content="{{ $seoImage }}">
+{{- with $seoImage }}
+    <meta property="og:image" content="{{ . }}">
 {{ end }}
 <meta property="og:url" content="{{ $seoUrl }}">
 <meta property="og:type" content="website">
@@ -31,8 +37,8 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:title" content="{{ $seoTitle }}">
 <meta name="twitter:description" content="{{ $seoDescription }}">
-{{- if os.FileExists "static/assets/images/share.png" }}
-    <meta name="twitter:image" content="{{ $seoImage }}">
+{{- with $seoImage }}
+    <meta name="twitter:image" content="{{ . }}">
 {{ end }}
 <meta name="twitter:card" content="summary_large_image">
 {{- if site.Data.school.twitter }}
@@ -52,7 +58,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
 {{ end -}}
 {{- if os.FileExists "static/assets/images/favicons/favicon.ico" }}
-  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon.ico">
+  <link rel="icon" type="image/ico" href="/assets/images/favicons/favicon.ico">
 {{ end -}}
 {{- if os.FileExists "static/assets/images/favicons/favicon.png" }}
   <link rel="icon" type="image/png" href="/assets/images/favicons/favicon.png">
