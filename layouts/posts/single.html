@@ -14,70 +14,9 @@
 
     <div class="container">
       <div class="content">
-        <aside>
-          <table class="table-infos" aria-label="{{ i18n "posts.informations" }}">
-            <tbody>
-              <tr>
-                <th scope="row">{{ i18n "posts.date" }}</th>
-                <td>
-                  <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-                </td>
-              </tr>
-              {{ range .GetTerms "authors" }}
-                <tr>
-                  <th scope="row">{{ i18n "posts.author" }}</th>
-                  <td itemscope itemtype="https://schema.org/Person" itemprop="author">
-                    <a href="{{ .Permalink }}" itemprop="url">
-                      <span itemprop="name">{{ safeHTML .Params.person }}</span>
-                    </a>
-                  </td>
-                </tr>
-              {{ end }}
-              {{ if .Params.Categories }}
-                <tr>
-                  <th scope="row">
-                    {{- if gt (len .Params.Categories) 1 -}}
-                      {{ i18n "posts.categories" }}
-                    {{- else -}}
-                      {{ i18n "posts.category" }}
-                    {{- end -}}
-                  </th>
-                  <td itemprop="articleSection">
-                    {{- range $index, $s := .GetTerms "categories" -}}
-                      {{ if ne $index 0 }},{{ end }}
-                      <a href="{{ .Permalink }}" >
-                        {{- safeHTML .Title -}}
-                      </a>
-                    {{- end }}
-                  </td>
-                </tr>
-              {{ end }}
-              <tr>
-                <th scope="row">{{ i18n "posts.share" }}</th>
-                <td>
-                  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noopener" aria-label="{{ i18n "posts.share_aria" (dict "Title" "Facebook") }}" class="icon icon-facebook">
-                  </a>
-                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noopener" aria-label="{{ i18n "posts.share_aria" (dict "Title" "Linkedin") }}" class="icon icon-linkedin">
-                  </a>
-                  <a href="https://twitter.com/intent/tweet?text={{ .Title }} {{ .Permalink | absURL }}" target="_blank" rel="noopener" aria-label="{{ i18n "posts.share_aria" (dict "Title" "Twitter") }}" class="icon icon-twitter">
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </aside>
+        {{ partial "posts/aside.html" . }}
         <div>
-          {{ if .Params.image }}
-            {{ partial "commons/image.html"
-                  (dict
-                    "image"    .Params.image
-                    "class"    "featured-image"
-                    "mobile"   "351x168"
-                    "tablet"   "456x219"
-                    "desktop"  "856x410"
-                    "itemprop" true
-                  )}}
-          {{ end }}
+          {{ partial "posts/image.html" .Params.image }}
           <div itemprop="articleBody">
             {{ partial "PrepareHTML" .Content }}
             {{ partial "PrepareHTML" .Params.text }}
@@ -88,5 +27,4 @@
     </div>
 
   </article>
-
 {{ end }}
