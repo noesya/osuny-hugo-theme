@@ -36,6 +36,8 @@
     &-between-pages
         justify-content: space-between
         margin-top: map-get($spacers, 5)
+        @include media-breakpoint-down(md)
+            flex-direction: column
 
         li
             flex: 1
