@@ -40,14 +40,14 @@
               </div>
             </section>
           {{ end }}
-
-          {{ range .Params.blocks }}
-            {{ $template := printf "blocks/%s.html" .template }}
-            {{ partial $template .data }}
-          {{ end }}
-
-          {{ partial "posts/related.html" $category }}
         </div>
+
+        {{ range .Params.blocks }}
+          {{ $template := printf "blocks/%s.html" .template }}
+          {{ partial $template .data }}
+        {{ end }}
+
+        {{ partial "posts/related.html" $category }}
       </div>
     </div>
   </div>
