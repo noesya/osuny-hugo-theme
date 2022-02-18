@@ -25,7 +25,8 @@
         @extend .navbar-nav
         @include media-breakpoint-down(lg)
             li
-                a
+                a,
+                span
                     padding: px2rem(5) calc(#{$grid-gutter-width} / 2)
 
     .nav-level-1
@@ -36,7 +37,8 @@
                 line-height: px2rem(26)
         & > .has-children
             @extend .dropdown
-            > a
+            > a,
+            > span
                 @extend .dropdown-toggle
                 @include media-breakpoint-down(lg)
                     align-items: center
@@ -44,7 +46,11 @@
                     justify-content: space-between
                     &:hover
                         text-decoration: none
-            li a
+            > span
+                text-decoration-thickness: 1px
+                text-underline-offset: 3px
+            li a,
+            li span
                 @extend .dropdown-item
                 @include media-breakpoint-down(lg)
                     padding-left: calc(#{$grid-gutter-width} / 2)
