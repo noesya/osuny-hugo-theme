@@ -14,9 +14,11 @@
       <dd>{{ partial "PrepareHTML" .Params.Type }}</dd>
     {{ end }}
 
-    {{ if gt ( len .Params.keywords ) 0 }}
-      <dt>{{ i18n "volumes.keywords" }}</dt>
-      <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
+    {{ if isset .Params "keywords" }}
+      {{ if gt ( len .Params.keywords ) 0 }}
+        <dt>{{ i18n "volumes.keywords" }}</dt>
+        <dd itemprop="keywords">{{ delimit .Params.Keywords " " }}</dd>
+      {{ end }}
     {{ end }}
 
     {{ if isset .Params "lang" }}
