@@ -5,7 +5,7 @@
     {{ if ne .kind "blank" }}</a>{{ end }}
   </h2>
   {{ if or (eq .kind "news") (eq .kind "programs") }}
-    <a href="{{ .target }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .title) }}">{{ i18n "commons.more" }}</a>
+    <a href="{{ .target }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .title) }}" title="{{ i18n "commons.more_aria" (dict "Title" .title) }}">{{ i18n "commons.more" }}</a>
   {{ end }}
   {{ $page := partial "GetPageByUrl" .target }}
   {{with $page}}
