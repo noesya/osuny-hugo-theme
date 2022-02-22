@@ -6,11 +6,11 @@
         ) -}}
 
   <div class="container">
-    {{ $content := safeHTML (partial "CorrectPunctuation" .Content) }}
+    {{ $content := partial "PrepareHTML" .Content }}
     {{ $content = trim $content "\n" }}
     {{ if $content }}
       <div class="description">
-        {{ $content }}
+        <p>{{ $content }}</p>
       </div>
     {{ end }}
     <div class="posts">
