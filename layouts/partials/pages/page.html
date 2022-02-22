@@ -2,7 +2,7 @@
   <div>
     <p class="title">
       <a href="{{ .Permalink }}" class="link">
-        {{ safeHTML (partial "CorrectPunctuation" .Title) }}
+        {{ partial "PrepareHTML" .Title }}
       </a>
     </p>
     {{ if .Params.description }}

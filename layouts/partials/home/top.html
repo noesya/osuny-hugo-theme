@@ -1,7 +1,7 @@
 <div class="top">
   <h2>
     {{ if ne .kind "blank" }}<a href="{{ .target }}">{{ end }}
-      {{ safeHTML .title }}
+      {{ partial "PrepareHTML" .title }}
     {{ if ne .kind "blank" }}</a>{{ end }}
   </h2>
   {{ if or (eq .kind "news") (eq .kind "programs") }}

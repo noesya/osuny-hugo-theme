@@ -6,7 +6,13 @@
           "context" .
         )}}
   <div class="container">
-    {{ partial "PrepareHTML" .Content }}
+
+    {{ $content := trim .Content "\n" }}
+    {{ if ne $content " " }}
+    <section>
+      {{- partial "PrepareHTML" .Content -}}
+    </section>
+    {{ end }}
 
     {{- range site.Data.menus.primary -}}
       <section>
