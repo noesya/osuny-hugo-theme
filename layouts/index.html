@@ -10,7 +10,7 @@
     {{ $content := .Content | plainify }}
     {{ $content = trim $content "\n" }}
     {{ if $content }}
-    <section class="content">
+    <section>
       {{- partial "PrepareHTML" .Content -}}
     </section>
     {{ end }}
