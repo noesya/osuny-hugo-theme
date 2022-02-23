@@ -6,9 +6,9 @@
       <div class="program">
         <div>
           <h2 class="title">
-            <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+            <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
           </h2>
-          <p>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</p>
+          <p>{{ partial "PrepareHTML" .Params.description }}</p>
         </div>
       </div>
     </div>
@@ -30,12 +30,10 @@
         {{ end }}
         <div>
           <p class="title">
-            <a href="{{ .Permalink }}" class="link">
-              {{ safeHTML (partial "CorrectPunctuation" .Title) }}
-            </a>
+            <a href="{{ .Permalink }}" class="link">{{ partial "PrepareHTML" .Title }}</a>
           </p>
           {{ if .Params.description}}
-            <p>{{ safeHTML (partial "CorrectPunctuation" .Params.description) }}</p>
+            <p>{{ partial "PrepareHTML" .Params.description }}</p>
           {{ end }}
         </div>
       </div>
