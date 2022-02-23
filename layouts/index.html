@@ -7,9 +7,10 @@
         )}}
   <div class="container">
 
-    {{ $content := trim .Content "\n" }}
-    {{ if ne $content " " }}
-    <section>
+    {{ $content := .Content | plainify }}
+    {{ $content = trim $content "\n" }}
+    {{ if $content }}
+    <section class="content">
       {{- partial "PrepareHTML" .Content -}}
     </section>
     {{ end }}
