@@ -7,15 +7,11 @@
         )}}
   <div class="container">
 
-    {{ $content := .Content | plainify }}
-    {{ $content = trim $content "\n" }}
-    {{ if $content }}
+    {{ if (partial "GetTextContent" .Content) }}
     <section>
       {{- partial "PrepareHTML" .Content -}}
     </section>
     {{ end }}
-
-    {{ partial "GetContent" .Content }}
 
     {{- range site.Data.menus.primary -}}
       <section>

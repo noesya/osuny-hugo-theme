@@ -1,5 +1,0 @@
-{{ $content := . | plainify }}
-{{ $content = trim $content "\n" }}
-{{ if $content }}
-  {{- partial "PrepareHTML" . -}}
-{{ end }}
