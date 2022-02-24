@@ -23,7 +23,7 @@
       {{- $attr = " target=\"_blank\" rel=\"noreferrer\"" -}}
     {{- end -}}
     <li{{ if ne $itemClass ""}} class="{{ $itemClass }}"{{ end }}>
-      {{- if .target -}}
+      {{- if ne .kind "blank" -}}
         <a href="{{ .target }}"{{ if ne $linkClass ""}} class="{{ $linkClass }}"{{ end }} {{ safeHTMLAttr $attr }}>{{ .title }}</a>
       {{- else -}}
         <span class="{{ if ne $linkClass ""}} {{ $linkClass }}{{ end }}{{ if gt .level 1 }} disabled{{ end }}"{{ safeHTMLAttr $attr }}>{{ .title }}</span>

@@ -8,53 +8,21 @@
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
     <div class="content">
-      {{ $h2s := partial "H2Extract" .Content }}
-      {{ if or (or $category .Pages) $h2s }}
-      <aside>
-        {{/* nav-link required for active toggle class */}}
-        <ul class="toc" id="nav-toc">
-          {{ if not $h2s }}
-            <li>
-              <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
-            </li>
-          {{ end }}
-          {{ range $index, $h2 := $h2s }}
-            <li>
-              <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
-            </li>
-          {{ end }}
-          {{ if .Pages }}
-            <li>
-              <a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a>
-            </li>
-          {{ end }}
-          {{ if $category }}
-            <li>
-              <a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a>
-            </li>
-          {{ end }}
-        </ul>
-      </aside>
-      {{ end }}
+
+      {{ partial "pages/aside.html"
+          (dict
+              "category" $category
+              "context" .
+          )
+      }}
 
       <div>
-        {{ if .Params.image }}
-          {{ partial "commons/image.html"
-                (dict
-                  "image"    .Params.image
-                  "class"    "featured-image"
-                  "mobile"   "351x168"
-                  "tablet"   "456x219"
-                  "desktop"  "856x410"
-                  "itemprop" true
-                )}}
-        {{ end }}
+        {{ partial "pages/image.html" .Params.image }}
+
         <div itemprop="articleBody" id="page-informations">
           {{
-            safeHTML (
-              partial "CorrectPunctuation" (
-                partial "H2AddId" .Content
-              )
+            partial "PrepareHTML" (
+              partial "H2AddId" .Content
             )
           }}
 
@@ -72,9 +40,14 @@
               </div>
             </section>
           {{ end }}
-
-          {{ partial "posts/related.html" $category }}
         </div>
+
+        {{ range .Params.blocks }}
+          {{ $template := printf "blocks/%s.html" .template }}
+          {{ partial $template .data }}
+        {{ end }}
+
+        {{ partial "posts/related.html" $category }}
       </div>
     </div>
   </div>

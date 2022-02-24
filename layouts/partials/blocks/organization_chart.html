@@ -1,0 +1,45 @@
+<section class="block-organization_chart">
+{{ range . }}
+
+  <h2>{{ .title }}</h2>
+
+  <div class="persons">
+    {{ range .persons }}
+      {{ $person := site.GetPage (printf "/persons/%s" .slug) }}
+      <div>
+
+        {{ $modalId := print "modalID_" $person.Slug }}
+        <article itemscope itemtype="https://schema.org/Person">
+          <a class="person" type="button" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">
+            <div class="avatar" itemprop="image">
+              {{ if $person.Params.image }}
+                {{ partial "commons/image.html"
+                      (dict
+                        "alt"    $person.Title
+                        "image"    $person.Params.image
+                        "class"    "img-fluid"
+                        "mobile"   "100x100"
+                        "tablet"   "152x152"
+                        "desktop"  "152x152"
+                      )}}
+              {{ end }}
+            </div>
+            <div>
+              <p class="name" itemprop="name">{{ safeHTML $person.Title }}</p>
+              <p itemprop="jobTitle">{{ safeHTML .role }}</p>
+            </div>
+          </a>
+          {{ partial "persons/modal.html"
+                (dict
+                  "modalId" $modalId
+                  "title" $person.Title
+                  "abstract" $person.Content
+                ) }}
+        </article>
+
+      </div>
+    {{ end }}
+  </div>
+
+{{ end }}
+</section>

@@ -1,6 +1,6 @@
 <article class="article">
   <p class="title">
-    <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+    <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
   </p>
   {{ range .Params.Volumes }}
     {{ $volume := site.GetPage (printf "/volumes%s" .) }}

@@ -1,24 +1,28 @@
 <nav aria-label="Navigation des articles">
   <ul class="pagination pagination-between-pages">
-    {{with .Site.RegularPages.Prev . }}
-      <li class="previous">
-        <a href="{{.RelPermalink}}" aria-label="{{htmlEscape .Title}}">
-          <span>
-            {{ i18n "posts.previous" }}
-          </span><br>
-          {{ safeHTML .Title }}
-        </a>
-      </li>
+    {{if .PrevInSection}}
+      {{with .Site.RegularPages.Prev . }}
+        <li class="previous">
+          <a href="{{.RelPermalink}}" aria-label="{{htmlEscape .Title}}">
+            <span>
+              {{ i18n "posts.previous" }}
+            </span><br>
+            {{ safeHTML .Title }}
+          </a>
+        </li>
+      {{end}}
     {{end}}
-    {{with .Site.RegularPages.Next . }}
-      <li class="next">
-        <a href="{{.RelPermalink}}" aria-label="{{htmlEscape .Title}}">
-          <span>
-            {{ i18n "posts.next" }}
-          </span><br>
-          {{ safeHTML .Title }}
-        </a>
-      </li>
+    {{if .NextInSection}}
+      {{with .Site.RegularPages.Next . }}
+        <li class="next">
+          <a href="{{.RelPermalink}}" aria-label="{{htmlEscape .Title}}">
+            <span>
+              {{ i18n "posts.next" }}
+            </span><br>
+            {{ safeHTML .Title }}
+          </a>
+        </li>
+      {{end}}
     {{end}}
   </ul>
 </nav>
