@@ -2,7 +2,7 @@
   {{- $image := partial "GetMedia" .image -}}
   {{- if $image -}}
     {{- $url := $image.url -}}
-    {{- if site.Params.cdnkey -}}
+    {{- if site.Params.keycdn -}}
       {{- $url = $image.direct_url -}}
     {{- end -}}
     {{- $lazy := default true .lazy -}}

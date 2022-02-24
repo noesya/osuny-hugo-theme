@@ -1,6 +1,6 @@
 {{ $result := "" }}
-{{ if site.Params.cdnkey }}
-  {{ $result = partial "GetImageUrlCdnkey" . }}
+{{ if site.Params.keycdn }}
+  {{ $result = partial "GetImageUrlKeycdn" . }}
 {{ else }}
   {{ $result = partial "GetImageUrlOsuny" . }}
 {{ end }}
