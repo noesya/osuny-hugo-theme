@@ -1,10 +1,5 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "image" .Params.image
-          "context" .
-        ) -}}
+  {{ partial "posts/hero-single.html" . }}
 
   <article itemscope itemtype="https://schema.org/NewsArticle">
     <meta itemprop="headline" content="{{ .Title }}">
