@@ -1,5 +1,5 @@
-{{ $content := .Content | plainify }}
+{{ $content := . | plainify }}
 {{ $content = trim $content "\n" }}
 {{ if $content }}
-  {{- partial "PrepareHTML" .Content -}}
+  {{- partial "PrepareHTML" . -}}
 {{ end }}
