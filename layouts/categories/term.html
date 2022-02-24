@@ -1,28 +1,17 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "context" .
-        ) -}}
+  {{ partial "categories/hero-term.html" . }}
 
   <div class="container">
-    {{ $content := partial "PrepareHTML" .Content }}
+    {{ $content := .Content | plainify }}
     {{ $content = trim $content "\n" }}
     {{ if $content }}
-      <div class="description">
-        <p>{{ $content }}</p>
-      </div>
+    <section class="description">
+      <p>{{- partial "PrepareHTML" .Content -}}</p>
+    </section>
     {{ end }}
-    <div class="posts">
-      {{ if not .Pages }}
-        <p>{{ i18n "categories.no_post" }}</p>
-      {{ end }}
-      {{ range .Paginator.Pages }}
-        <div>
-          {{ partial "posts/post.html" . }}
-        </div>
-      {{ end }}
-    </div>
+
+    {{ partial "posts/posts.html" . }}
     {{ partial "commons/pagination.html" . }}
   </div>
+
 {{ end }}
