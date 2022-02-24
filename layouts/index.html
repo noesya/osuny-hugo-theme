@@ -7,7 +7,7 @@
         )}}
   <div class="container">
 
-    {{ if (partial "GetTextContent" .Content) }}
+    {{ if (partial "GetTextFromHTML" .Content) }}
     <section>
       {{- partial "PrepareHTML" .Content -}}
     </section>
