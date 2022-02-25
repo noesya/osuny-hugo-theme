@@ -1,7 +1,8 @@
+{{ $position := .position }}
 <section class="block block-organization_chart">
-{{ range .data }}
+{{ range $index, $parts := .data }}
 
-  <h2>{{ partial "PrepareHTML" .title }}</h2>
+  <h2 id="block-{{ $position }}-{{ $index }}">{{ partial "PrepareHTML" .title }}</h2>
 
   <div class="persons">
     {{ range .persons }}
