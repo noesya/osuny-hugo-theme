@@ -25,50 +25,21 @@
   <div class="container">
     <div class="content">
 
-      <aside>
-        {{/* nav-link required for active toggle class */}}
-        <ul class="toc" id="nav-toc">
-          {{ range $chapters }}
-            {{ $content := index $params . }}
-            {{ $chapterExists := $content }}
-            {{ if eq "contacts" . }}
-              {{ $chapterExists = $contactsExist }}
-            {{ end }}
-            {{ if $chapterExists }}
-            <li>
-              <a class="nav-link" href="#page-{{ . }}">
-                {{ i18n (printf "programs._%s" .) }}
-              </a>
-            </li>
-            {{ end }}
-          {{ end }}
-          {{ if $category.Pages }}
-            <li>
-              <a class="nav-link" href="#page-posts">
-                {{ i18n "programs.posts" }}
-              </a>
-            </li>
-          {{ end }}
-        </ul>
-      </aside>
+      {{ partial "programs/aside.html"
+          (dict
+              "category" $category
+              "chapters" $chapters
+              "contactsExist" $contactsExist
+              "params" $params
+          )
+      }}
+
       <div>
         {{ partial "programs/image.html" .Params.image }}
 
-        {{ if .Params.description }}
-        <p class="lead" itemprop="abstract">
-            {{ safeHTML (partial "CorrectPunctuation" .Params.description) }}
-        </p>
-        {{ end }}
+        {{ partial "programs/abstract.html" .Params.description }}
 
-        {{ if .Pages }}
-        <section class="programs">
-          {{ range sort .Pages ".Params.position" }}
-            <div>
-              {{ partial "programs/program.html" . }}
-            </div>
-          {{ end }}
-        </section>
-        {{ end }}
+        {{ partial "programs/programs.html" .Pages }}
 
         <div itemprop="articleBody">
           {{ range $chapters }}
@@ -81,7 +52,7 @@
               <section>
                 <h2 id="page-{{ . }}">{{ i18n (printf "programs._%s" .) }}</h2>
                 {{ if eq . "contacts" }}
-                  {{ partial "PrepareHTML" $content }}
+                  {{ partial "programs/content.html" $content }}
                   {{ partial "programs/roles.html" $params.roles }}
                 {{ else if eq . "teachers" }}
                   {{ partial "programs/teachers.html"
@@ -90,7 +61,7 @@
                                   "descriptions" $params.teachers_description
                                 ) }}
                 {{ else }}
-                  {{ partial "PrepareHTML" $content }}
+                  {{ partial "programs/content.html" $content }}
                 {{ end }}
               </section>
             {{ end }}

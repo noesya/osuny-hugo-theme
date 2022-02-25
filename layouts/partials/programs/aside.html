@@ -1,0 +1,26 @@
+<aside>
+  {{/* nav-link required for active toggle class */}}
+  <ul class="toc" id="nav-toc">
+    {{ range .chapters }}
+      {{ $content := index .params . }}
+      {{ $chapterExists := $content }}
+      {{ if eq "contacts" . }}
+        {{ $chapterExists = .contactsExist }}
+      {{ end }}
+      {{ if $chapterExists }}
+      <li>
+        <a class="nav-link" href="#page-{{ . }}">
+          {{ i18n (printf "programs._%s" .) }}
+        </a>
+      </li>
+      {{ end }}
+    {{ end }}
+    {{ if .category.Pages }}
+      <li>
+        <a class="nav-link" href="#page-posts">
+          {{ i18n "programs.posts" }}
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</aside>
