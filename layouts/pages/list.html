@@ -40,10 +40,7 @@
           {{ end }}
         </div>
 
-        {{ range .Params.blocks }}
-          {{ $template := printf "blocks/%s.html" .template }}
-          {{ partial $template .data }}
-        {{ end }}
+        {{ partial "blocks/list.html" .Params.blocks }}
 
         {{ partial "posts/related.html" $category }}
       </div>

@@ -1,0 +1,4 @@
+{{ range . }}
+  {{ $template := printf "blocks/%s/toc.html" .template }}
+  {{ partial $template .data }}
+{{ end }}
