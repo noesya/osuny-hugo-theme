@@ -1,15 +1,12 @@
 .block-partners
     .partners
-        --bs-gutter-y: 1rem
+        --bs-gutter-y: 1.5rem
         @extend .row
         align-items: center
         > div
-            margin-bottom: $grid-gutter-width
             @extend .col-6
             @extend .col-md-4
             @extend .col-lg-3
             a[target=_blank]
-                display: block
-                position: relative
                 &::after
-                    display: none
+                    content: none
