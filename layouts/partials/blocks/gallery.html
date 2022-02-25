@@ -1,0 +1,23 @@
+<section class="block-gallery">
+  <h2>{{ partial "PrepareHTML" .title }}</h2>
+
+  <div class="row">
+    {{ range .images }}
+      <div class="col col-md-3">
+        {{ if .file }}
+          {{ partial "commons/image.html"
+              (dict
+                "image"    .file
+                "alt"      .alt
+                "class"    "img-fluid"
+                "mobile"   "100x100"
+                "tablet"   "152x152"
+                "desktop"  "152x152"
+              )}}
+        {{ end }}
+        <p>{{ partial "PrepareHTML" .alt }}</p>
+      </div>
+    {{ end }}
+  </div>
+
+</section>

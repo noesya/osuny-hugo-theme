@@ -1,7 +1,7 @@
 <section class="block-organization_chart">
 {{ range . }}
 
-  <h2>{{ .title }}</h2>
+  <h2>{{ partial "PrepareHTML" .title }}</h2>
 
   <div class="persons">
     {{ range .persons }}
@@ -25,8 +25,8 @@
               {{ end }}
             </div>
             <div>
-              <p class="name" itemprop="name">{{ safeHTML $person.Title }}</p>
-              <p itemprop="jobTitle">{{ safeHTML .role }}</p>
+              <p class="name" itemprop="name">{{ partial "PrepareHTML" $person.Title }}</p>
+              <p itemprop="jobTitle">{{ partial "PrepareHTML" .role }}</p>
             </div>
           </a>
           {{ partial "persons/modal.html"
