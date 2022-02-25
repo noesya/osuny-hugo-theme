@@ -1,10 +1,6 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "image" .Params.image
-          "context" .
-        ) -}}
+  {{ partial "programs/hero.html" . }}
+
   {{ if .Params.level }}
     {{ partial "programs/show.html" . }}
   {{ else }}
