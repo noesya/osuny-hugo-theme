@@ -1,10 +1,6 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "image" .Params.image
-          "context" .
-        ) -}}
+  {{ partial "pages/hero.html" . }}
+
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
   <div class="container">
     <div class="content">
@@ -20,11 +16,13 @@
         {{ partial "pages/image.html" .Params.image }}
 
         <div itemprop="articleBody" id="page-informations">
-          {{
-            partial "PrepareHTML" (
-              partial "H2AddId" .Content
-            )
-          }}
+          {{ if (partial "GetTextFromHTML" .Content) }}
+            {{
+              partial "PrepareHTML" (
+                partial "H2AddId" .Content
+              )
+            }}
+          {{ end }}
 
           {{ if .Pages }}
             <section>
