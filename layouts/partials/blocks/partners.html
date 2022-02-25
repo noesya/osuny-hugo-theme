@@ -1,2 +1,27 @@
 <section class="block-partners">
+  {{ range . }}
+    <h2>{{ partial "PrepareHTML" .name }}</h2>
+    <div class="row">
+      {{ range .partners }}
+        <div class="col">
+          {{ if .url }}
+            <a href="{{ .url }}" target="_blank" rel="noreferrer">
+          {{ end }}
+          {{ if .logo }}
+            {{- partial "commons/image.html"
+                  (dict
+                    "image"    .logo
+                    "alt"      .name
+                    "mobile"   "351x291"
+                    "tablet"   "334x167"
+                    "desktop"  "634x317"
+                  ) -}}
+          {{ end }}
+          {{ if .url }}
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  {{ end }}
 </section>
