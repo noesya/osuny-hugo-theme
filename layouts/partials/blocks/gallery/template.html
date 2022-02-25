@@ -1,8 +1,8 @@
 <section class="block block-gallery">
-  <h2 id="block-{{ .position }}">{{ partial "PrepareHTML" .title }}</h2>
+  <h2 id="block-{{ .position }}">{{ partial "PrepareHTML" .data.title }}</h2>
 
   <div class="row">
-    {{ range .images }}
+    {{ range .data.images }}
       <div class="col col-md-3">
         {{ if .file }}
           {{ partial "commons/image.html"
