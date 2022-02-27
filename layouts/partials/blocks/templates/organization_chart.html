@@ -1,14 +1,10 @@
 {{ $position := .position }}
 <section class="block block-organization_chart">
-{{ range $index, $parts := .data }}
-
-  <h2 id="block-{{ $position }}-{{ $index }}">{{ partial "PrepareHTML" .title }}</h2>
-
+  <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   <div class="persons">
-    {{ range .persons }}
+    {{ range .data }}
       {{ $person := site.GetPage (printf "/persons/%s" .slug) }}
       <div>
-
         {{ $modalId := print "modalID_" $person.Slug }}
         <article itemscope itemtype="https://schema.org/Person">
           <a class="person" type="button" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">
@@ -37,10 +33,7 @@
                   "abstract" $person.Content
                 ) }}
         </article>
-
       </div>
     {{ end }}
   </div>
-
-{{ end }}
 </section>

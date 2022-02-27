@@ -1,4 +1,4 @@
 {{ range . }}
-  {{ $template := printf "blocks/%s/template.html" .template }}
+  {{ $template := printf "blocks/templates/%s.html" .template }}
   {{ partial $template . }}
 {{ end }}

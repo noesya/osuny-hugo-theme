@@ -1,6 +1,0 @@
-{{ $position := .position }}
-{{ range $index, $parts := .data }}
-<li>
-  <a class="nav-link" href="#block-{{ $position }}-{{ $index }}">{{ partial "PrepareHTML" .title }}</a>
-</li>
-{{ end }}

@@ -5,7 +5,7 @@ module:
 
 ## PARAMS
 params:
-  cdnkey: https://osuny-1b4da.kxcdn.com
+  keycdn: https://osuny-1b4da.kxcdn.com
   cookie_banner:
     enable: true
     blank: true
