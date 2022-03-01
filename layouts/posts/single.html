@@ -4,7 +4,7 @@
   <article itemscope itemtype="https://schema.org/NewsArticle">
     <meta itemprop="headline" content="{{ .Title }}">
     <meta itemprop="url" content="{{ .Permalink }}">
-    {{ if .Date }}<meta itemprop="datePublished" content="{{ .Date }}">{{ end }}
+    {{ if .Date }}<meta itemprop="datePublished" content="{{ .Date.Format "2006-01-02T15:04" }}">{{ end }}
     {{ if .Summary }}<meta itemprop="description" content="{{ .Summary }}">{{ end }}
 
     <div class="container">

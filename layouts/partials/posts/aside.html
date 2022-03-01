@@ -4,7 +4,7 @@
       <tr>
         <th scope="row">{{ i18n "posts.date" }}</th>
         <td>
-          <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format "2 January 2006" }}</time>
+          <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
         </td>
       </tr>
       {{ range .GetTerms "authors" }}
