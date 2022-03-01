@@ -17,7 +17,14 @@
 {{ end }}
 {{- if .Params.image }}
   {{- $image := partial "GetMedia" .Params.image -}}
-  {{- $seoImage = $image.url -}}
+  {{- $seoImageUrl := $image.url -}}
+  {{- if site.Params.keycdn -}}
+    {{- $seoImageUrl = $image.direct_url -}}
+  {{- end -}}
+  {{ $seoImage = partial "GetImageUrl" (dict
+          "url" $seoImageUrl
+          "size" "1200x600"
+        ) }}
 {{- end -}}
 {{- $seoUrl := .Permalink -}}
 
