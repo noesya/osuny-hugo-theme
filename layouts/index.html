@@ -1,10 +1,6 @@
 {{ define "main" }}
-  {{ partial "header/hero.html"
-        (dict
-          "title" .Params.header_text
-          "image" .Params.image
-          "context" .
-        )}}
+  {{ partial "home/hero.html" . }}
+
   <div class="container">
 
     {{ if (partial "GetTextFromHTML" .Content) }}
