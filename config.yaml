@@ -1,7 +1,8 @@
 ## MODULE
 module:
     hugoVersion:
-        min: "0.91.2"
+        min: "0.93.0"
+        max: "0.93.0"
 
 ## PARAMS
 params:
