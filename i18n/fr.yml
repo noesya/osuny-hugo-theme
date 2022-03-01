@@ -10,6 +10,7 @@ commons:
   biography: Biographie
   breadcrumb: Fil d’arianne
   close: Fermer
+  credit: un site éco-conçu produit avec <a href="https://www.osuny.org/" target="_blank" rel="noreferrer">Osuny</a>
   date: Date
   download:
     singular_name: Télécharger
