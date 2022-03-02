@@ -51,19 +51,5 @@ a
         &::after
             content: none
 
-h1, h2
-    a
-        text-decoration-thickness: 0
-        &:hover
-            text-decoration-thickness: 1px
-
-[itemprop="articleBody"]
-    overflow-wrap: break-word
-    h2
-        margin-top: $grid-gutter-width * 3
-    // If a h2 directly follows the beginning of the article, no top margin
-    > h2:first-of-type
-        margin-top: 0
-
 ul
     padding-left: px2rem(15)
