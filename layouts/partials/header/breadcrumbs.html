@@ -1,6 +1,6 @@
 <nav aria-label="{{ i18n "commons.breadcrumb" }}">
   <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-    {{- $permalink := .context.RelPermalink -}}
+    {{- $permalink := .RelPermalink -}}
     {{- $path := strings.TrimSuffix "/" $permalink -}}
     {{- $crumbs := split $path "/" -}}
     {{- $currentPath := "" -}}
