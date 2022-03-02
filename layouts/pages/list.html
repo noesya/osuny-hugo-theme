@@ -15,29 +15,18 @@
       <div>
         {{ partial "pages/image.html" .Params.image }}
 
-        <div itemprop="articleBody" id="page-informations">
+        <div id="page-informations">
           {{ if (partial "GetTextFromHTML" .Content) }}
+            <section itemprop="articleBody">
             {{
               partial "PrepareHTML" (
                 partial "H2AddId" .Content
               )
             }}
-          {{ end }}
-
-          {{ if .Pages }}
-            <section>
-              <div class="top">
-                <h2 id="page-children">{{ i18n "pages.details" }}</h2>
-              </div>
-              <div class="pages">
-                {{ range sort .Pages ".Params.position"  }}
-                  <div>
-                    {{ partial "pages/page.html" . }}
-                  </div>
-                {{ end }}
-              </div>
             </section>
           {{ end }}
+
+          {{ partial "pages/children.html" .Pages }}
         </div>
 
         {{ partial "blocks/list.html" .Params.blocks }}
