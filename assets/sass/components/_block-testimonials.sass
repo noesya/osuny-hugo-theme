@@ -1,0 +1,11 @@
+.block-testimonials
+    blockquote
+        @extend .blockquote
+        &::before
+            content: '“'
+            font-size: calc(#{$blockquote-font-size} * 3)
+            line-height: 1
+    figcaption
+        @extend .blockquote-footer
+    .avatar
+        max-width: 192px

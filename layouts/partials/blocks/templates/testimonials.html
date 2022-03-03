@@ -3,26 +3,27 @@
   <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   <div class="testimonials">
     {{ range .data.testimonials }}
-      <div>
-        <p class="lead">
-          {{ .text }}
-        </p>
-
-        {{ if .photo }}
-          {{- partial "commons/image.html"
-                (dict
-                  "image"    .photo
-                  "alt"      .author
-                  "mobile"   "351x291"
-                  "tablet"   "334x167"
-                  "desktop"  "634x317"
-                ) -}}
-        {{ end }}
-        <p>
+      <figure>
+        <blockquote>
+          {{- .text -}}
+        </blockquote>
+        <figcaption>
+          {{ if .photo }}
+            <div class="avatar">
+              {{- partial "commons/image.html"
+                    (dict
+                      "image"    .photo
+                      "alt"      .author
+                      "mobile"   "192x192"
+                      "tablet"   "192x192"
+                      "desktop"  "192x192"
+                    ) -}}
+            </div>
+          {{ end }}
           <b>{{ .author }}</b><br>
           {{ .job }}
-        </p>
-      </div>
+        </figcaption>
+      </figure>
     {{ end }}
   </div>
 </section>
