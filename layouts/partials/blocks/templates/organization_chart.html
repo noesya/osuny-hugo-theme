@@ -6,8 +6,12 @@
       {{ $person := site.GetPage (printf "/persons/%s" .slug) }}
       <div>
         {{ $modalId := print "modalID_" $person.Slug }}
-        <article itemscope itemtype="https://schema.org/Person">
-          <a class="person" type="button" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">
+        <article class="person" itemscope itemtype="https://schema.org/Person">
+
+          {{ if (partial "GetTextFromHTML" $person.Content) }}
+          <a type="button" data-bs-toggle="modal" data-bs-target="#{{ $modalId }}">
+          {{ end }}
+
             <div class="avatar" itemprop="image">
               {{ if $person.Params.image }}
                 {{ partial "commons/image.html"
@@ -25,13 +29,19 @@
               <p class="name" itemprop="name">{{ partial "PrepareHTML" $person.Title }}</p>
               <p itemprop="jobTitle">{{ partial "PrepareHTML" .role }}</p>
             </div>
+
+          {{ if (partial "GetTextFromHTML" $person.Content) }}
           </a>
-          {{ partial "persons/modal.html"
-                (dict
-                  "modalId" $modalId
-                  "title" $person.Title
-                  "abstract" $person.Content
-                ) }}
+          {{ end }}
+
+          {{ if (partial "GetTextFromHTML" $person.Content) }}
+            {{ partial "persons/modal.html"
+                  (dict
+                    "modalId" $modalId
+                    "title" $person.Title
+                    "abstract" $person.Content
+                  ) }}
+          {{ end }}
         </article>
       </div>
     {{ end }}
