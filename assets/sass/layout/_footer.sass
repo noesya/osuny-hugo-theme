@@ -22,6 +22,7 @@ footer[role="contentinfo"]
 
         ~ div
             @include media-breakpoint-up(md)
+                align-items: center
                 display: flex
                 .credit + nav,
                 nav + nav
@@ -41,12 +42,18 @@ footer[role="contentinfo"]
         padding-bottom: $nav-link-padding-y
         padding-top: $nav-link-padding-y
 
+    nav + .credit,
+    small + .credit
+        @include media-breakpoint-up(md)
+            &::before
+                content: '—'
+                margin-right: calc(#{$nav-link-padding-x} / 2),
     nav + .credit
         @include media-breakpoint-up(md)
             margin-left: calc(#{$nav-link-padding-x} / -2)
-            &::before
-                content: '—'
-                margin-right: calc(#{$nav-link-padding-x} / 2)
+    small + .credit
+        @include media-breakpoint-up(md)
+            margin-left: calc(#{$nav-link-padding-x} / 2)
 
     nav
         margin-left: -$nav-link-padding-x
@@ -94,14 +101,7 @@ footer[role="contentinfo"]
                 .nav-level-3
                     margin-bottom: $grid-gutter-width
 
-        .nav-legal
-            @include media-breakpoint-up(md)
-                flex-direction: row
-                li:not(:last-child)
-                    margin-right: $spacer * 2
-
+        .nav-legal,
         .nav-social
             @include media-breakpoint-up(md)
                 flex-direction: row
-                li
-                    margin-left: $spacer * 2
