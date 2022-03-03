@@ -7,8 +7,6 @@
         @extend .page-item
     a
         @extend .page-link
-        padding-left: 0
-        padding-right: 0
 
     .disabled
         a::before
@@ -29,14 +27,16 @@
                 a
                     @extend .icon-arrow-left
             &:nth-last-child(2)
-              a
-                  @extend .icon-arrow-right
+                a
+                    @extend .icon-arrow-right
             &:last-child
                 a
                     @extend .icon-arrow-last
 
     &-between-pages
         justify-content: space-between
+        margin-left: -$pagination-padding-x
+        margin-right: -$pagination-padding-x
         margin-top: map-get($spacers, 5)
         @include media-breakpoint-down(md)
             flex-direction: column
