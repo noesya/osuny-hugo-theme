@@ -18,7 +18,6 @@
 </div>
 
 <div>
-  {{ partial "footer/credit.html" }}
   <nav role="navigation" aria-label="{{ i18n "commons.menu.legal" }}">
     {{ partial "commons/menu.html"
           (dict
@@ -27,6 +26,7 @@
             "class"       "nav-legal"
           )}}
   </nav>
+  {{ partial "footer/credit.html" }}
   <nav aria-label="{{ i18n "commons.menu.social" }}">
     {{ partial "commons/menu.html"
           (dict

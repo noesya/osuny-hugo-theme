@@ -23,7 +23,10 @@ footer[role="contentinfo"]
         ~ div
             @include media-breakpoint-up(md)
                 display: flex
-                justify-content: space-between
+                .credit + nav,
+                nav + nav
+                    margin-left: auto
+                    margin-right: -$nav-link-padding-x
 
     address
         font-size: px2rem(14)
@@ -35,9 +38,18 @@ footer[role="contentinfo"]
         padding: 0
 
     .credit
-        padding: 0.5rem 0
+        padding-bottom: $nav-link-padding-y
+        padding-top: $nav-link-padding-y
+
+    nav + .credit
+        @include media-breakpoint-up(md)
+            margin-left: calc(#{$nav-link-padding-x} / -2)
+            &::before
+                content: '—'
+                margin-right: calc(#{$nav-link-padding-x} / 2)
 
     nav
+        margin-left: -$nav-link-padding-x
         > ul
             @extend .nav
         li
@@ -49,8 +61,14 @@ footer[role="contentinfo"]
             display: inline-block
             font-size: px2rem(14)
             line-height: 1.4
-            padding-left: 0
-            padding-right: 0
+        a
+            text-decoration: underline
+            text-decoration-color: rgba($link-color, 0.3)
+            text-decoration-thickness: 1px
+            text-underline-offset: 3px
+            &:hover
+                text-decoration-color: rgba($link-color, 1)
+                text-decoration-thickness: 1px
 
         .nav-level-1
             flex-direction: column
@@ -79,13 +97,11 @@ footer[role="contentinfo"]
         .nav-legal
             @include media-breakpoint-up(md)
                 flex-direction: row
-            li
-                @include media-breakpoint-up(md)
+                li:not(:last-child)
                     margin-right: $spacer * 2
 
         .nav-social
             @include media-breakpoint-up(md)
                 flex-direction: row
-            li
-                @include media-breakpoint-up(md)
+                li
                     margin-left: $spacer * 2
