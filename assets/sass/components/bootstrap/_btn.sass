@@ -1,7 +1,0 @@
-@if variable-exists(btn-icons)
-    @each $icon in $btn-icons
-        .btn-#{$icon}
-            @extend .icon
-            @extend .icon-#{$icon}
-            &::before
-                margin-right: px2rem(5)

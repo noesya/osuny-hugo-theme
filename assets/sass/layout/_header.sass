@@ -33,7 +33,7 @@ header[role="banner"]
             &[aria-expanded="true"]
                 span:last-of-type
                     &::before
-                        content: $icon-close
+                        content: map-get($icons, "close")
 
     .logo
         @extend .navbar-brand
