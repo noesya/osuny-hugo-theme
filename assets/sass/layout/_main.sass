@@ -1,6 +1,12 @@
 main
     padding-bottom: $grid-gutter-width * 2.5
     div[itemprop='articleBody']
+        overflow-wrap: break-word
+        h2
+            margin-top: $grid-gutter-width * 3
+        // If a h2 directly follows the beginning of the article, no top margin
+        > h2:first-of-type
+            margin-top: 0
         img
             display: block
             height: auto
