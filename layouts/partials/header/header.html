@@ -5,14 +5,14 @@
       {{ partial "header/logo.html" }}
       <button type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
+          data-bs-target="#navigation"
+          aria-controls="navigation"
           aria-expanded="false"
           aria-label="{{ i18n "commons.menu.label" }}">
         <span>{{ i18n "commons.menu.title" }}</span>
         <span></span>
       </button>
-      <div class="menu" id="navbarNavDropdown">
+      <div class="menu" id="navigation">
         {{ partial "commons/menu.html"
               (dict
                 "items" site.Data.menus.primary
