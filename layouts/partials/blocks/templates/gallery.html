@@ -12,7 +12,7 @@
             {{- $url = $image.direct_url -}}
           {{- end -}}
           {{- $default := "1280x720" -}}
-          <a class="glightbox" href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
+          <a class="glightbox" data-glightbox="type: image" href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
             {{ partial "commons/image.html"
                 (dict
                   "image"    .file
