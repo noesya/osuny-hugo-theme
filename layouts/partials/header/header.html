@@ -3,15 +3,7 @@
   <nav class="navbar" role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
     <div class="container">
       {{ partial "header/logo.html" }}
-      <button type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navigation"
-          aria-controls="navigation"
-          aria-expanded="false"
-          aria-label="{{ i18n "commons.menu.label" }}">
-        <span>{{ i18n "commons.menu.title" }}</span>
-        <span></span>
-      </button>
+      {{ partial "header/button.html" }}
       <div class="menu" id="navigation">
         {{ partial "commons/menu.html"
               (dict
