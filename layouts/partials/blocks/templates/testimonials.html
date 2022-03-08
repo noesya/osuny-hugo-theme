@@ -1,6 +1,8 @@
 {{ $position := .position }}
 <section class="block block-testimonials">
-  <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
+  {{ if .title }}
+    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
+  {{ end }}
   <div class="testimonials">
     {{ range .data.testimonials }}
       <figure>
