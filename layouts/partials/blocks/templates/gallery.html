@@ -1,6 +1,7 @@
 <section class="block block-gallery">
-  <h2 id="block-{{ .position }}">{{ partial "PrepareHTML" .title }}</h2>
-
+  {{ if .title }}
+    <h2 id="block-{{ .position }}">{{ partial "PrepareHTML" .title }}</h2>
+  {{ end }}
   <div class="row">
     {{ range .data.images }}
       <div class="col col-md-3">
