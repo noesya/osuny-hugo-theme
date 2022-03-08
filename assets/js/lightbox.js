@@ -1,3 +1,6 @@
 import gLightbox from 'glightbox';
 
-gLightbox();
+gLightbox({
+    openEffect: 'fade',
+    closeEffect: 'fade'
+});
