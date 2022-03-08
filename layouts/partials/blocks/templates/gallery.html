@@ -5,15 +5,23 @@
     {{ range .data.images }}
       <div class="col col-md-3">
         {{ if .file }}
-          {{ partial "commons/image.html"
-              (dict
-                "image"    .file
-                "alt"      .alt
-                "class"    "img-fluid"
-                "mobile"   "351x168"
-                "tablet"   "456x219"
-                "desktop"  "856x410"
-              )}}
+          {{- $image := partial "GetMedia" .file -}}
+          {{- $url := $image.url -}}
+          {{- if site.Params.keycdn -}}
+            {{- $url = $image.direct_url -}}
+          {{- end -}}
+          {{- $default := "1280x720" -}}
+          <a class="glightbox" href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
+            {{ partial "commons/image.html"
+                (dict
+                  "image"    .file
+                  "alt"      .alt
+                  "class"    "img-fluid"
+                  "mobile"   "351x168"
+                  "tablet"   "456x219"
+                  "desktop"  "856x410"
+                )}}
+          </a>
         {{ end }}
         <p>{{ partial "PrepareHTML" .alt }}</p>
       </div>
