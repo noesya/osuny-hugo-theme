@@ -1,10 +1,10 @@
-<section class="block block-gallery">
+<section class="block-gallery">
   {{ if .title }}
     <h2 id="block-{{ .position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
-  <div class="row">
+  <div class="gallery">
     {{ range .data.images }}
-      <div class="col col-md-3">
+      <figure>
         {{ if .file }}
           {{- $image := partial "GetMedia" .file -}}
           {{- $url := $image.url -}}
@@ -24,8 +24,8 @@
                 )}}
           </a>
         {{ end }}
-        <p>{{ partial "PrepareHTML" .alt }}</p>
-      </div>
+        <figcaption>{{ partial "PrepareHTML" .alt }}</figcaption>
+      </figure>
     {{ end }}
   </div>
 

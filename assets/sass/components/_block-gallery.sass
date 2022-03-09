@@ -1,4 +1,11 @@
 .block-gallery
+    .gallery
+        @extend .row
+        > *
+            @extend .col-md-3
     a.glightbox
         display: block
-        margin-bottom: $grid-gutter-width / 2
+        margin-bottom: calc(#{$grid-gutter-width} / 2)
+        transition: opacity .3s ease
+        &:hover
+            opacity: .7
