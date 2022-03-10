@@ -3,7 +3,7 @@
 <aside>
   {{/* nav-link required for active toggle class */}}
   <ul class="toc" id="nav-toc">
-    {{ if not $h2s }}
+    {{ if and (not $h2s) (partial "GetTextFromHTML" .context.Content) }}
       <li>
         <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
       </li>
