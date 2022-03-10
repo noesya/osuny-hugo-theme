@@ -7,18 +7,34 @@
 
     &,
     & > a
+        @include media-breakpoint-down(md)
+            display: block
         > div:last-of-type
             @extend .card-body
             padding-left: 0
             padding-right: 0
 
+    .avatar
+        @include media-breakpoint-down(md)
+            float: right
+            margin-bottom: calc(#{$grid-gutter-width} / 2)
+            margin-left: calc(#{$grid-gutter-width} / 2)
+            & + div
+                padding-bottom: 0
+                padding-top: 0
+
     .name
         @extend .card-title
         margin-bottom: 0
+        @include media-breakpoint-down(md)
+            font-size: px2rem(22)
         .link
             font-size: px2rem(18)
             &::after
                 content: none
+        & + p
+            font-size: px2rem(16)
+            margin-bottom: 0
 
     .contact,
     [itemprop="jobTitle"]
