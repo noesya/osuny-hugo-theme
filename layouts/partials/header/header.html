@@ -3,17 +3,15 @@
   <nav class="navbar" role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
     <div class="container">
       {{ partial "header/logo.html" }}
-      {{ if site.Data.menus.primay }}
-        {{ partial "header/button.html" }}
-        <div class="menu" id="navigation">
-          {{ partial "commons/menu.html"
-                (dict
-                  "items" site.Data.menus.primary
-                  "dropdown" true
-                  "level" 1
-                )}}
-        </div>
-      {{ end }}
+      {{ partial "header/button.html" }}
+      <div class="menu" id="navigation">
+        {{ partial "commons/menu.html"
+              (dict
+                "items" site.Data.menus.primary
+                "dropdown" true
+                "level" 1
+              )}}
+      </div>
     </div>
   </nav>
 </header>
