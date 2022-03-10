@@ -1,11 +1,28 @@
 .block-testimonials
     blockquote
         @extend .blockquote
+        padding-top: $blockquote-font-size
         &::before
             content: '“'
             font-size: calc(#{$blockquote-font-size} * 3)
             line-height: 1
+            position: absolute
+            transform: translateY(-50%)
     figcaption
         @extend .blockquote-footer
+        align-items: center
+        display: flex
+        margin-top: 0
+        &::before
+            content: none
+        .avatar
+            flex-shrink: 0
+            margin-right: calc(#{$grid-gutter-width} / 2)
     .avatar
-        max-width: 192px
+        max-width: 96px
+        @include media-breakpoint-up(lg)
+            max-width: 136px
+        @include media-breakpoint-up(xl)
+            max-width: 166px
+        @include media-breakpoint-up(xxl)
+            max-width: 192px
