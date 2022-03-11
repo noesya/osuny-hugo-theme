@@ -1,9 +1,13 @@
 {{ $position := .position }}
 <section class="block-testimonials">
-  <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
-  <div class="testimonials">
+  {{ if .title }}
+    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
+  {{ end }}
+  <div class="testimonials splide" data-splide='{"arrows":false,"autoplay":true}'>
+    <div class="splide__track">
+    <div class="splide__list">
     {{ range .data.testimonials }}
-      <figure>
+      <figure class="splide__slide">
         <blockquote>
           {{- .text -}}
         </blockquote>
@@ -20,10 +24,14 @@
                     ) -}}
             </div>
           {{ end }}
-          <b>{{ .author }}</b><br>
-          {{ .job }}
+          <span>
+            <b>{{ .author }}</b><br>
+            {{ .job }}
+          </span>
         </figcaption>
       </figure>
     {{ end }}
+    </div>
+    </div>
   </div>
 </section>

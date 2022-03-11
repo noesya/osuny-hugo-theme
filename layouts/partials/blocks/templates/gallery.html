@@ -1,22 +1,30 @@
 <section class="block-gallery">
-  <h2 id="block-{{ .position }}">{{ partial "PrepareHTML" .title }}</h2>
-
-  <div class="row">
+  {{ if .title }}
+    <h2 id="block-{{ .position }}">{{ partial "PrepareHTML" .title }}</h2>
+  {{ end }}
+  <div class="gallery">
     {{ range .data.images }}
-      <div class="col col-md-3">
+      <figure>
         {{ if .file }}
-          {{ partial "commons/image.html"
-              (dict
-                "image"    .file
-                "alt"      .alt
-                "class"    "img-fluid"
-                "mobile"   "351x168"
-                "tablet"   "456x219"
-                "desktop"  "856x410"
-              )}}
+          {{- $image := partial "GetMedia" .file -}}
+          {{- $url := $image.url -}}
+          {{- if site.Params.keycdn -}}
+            {{- $url = $image.direct_url -}}
+          {{- end -}}
+          {{- $default := "1280x2560" -}}
+          <a class="glightbox" data-glightbox="type: image" href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
+            {{ partial "commons/image.html"
+                (dict
+                  "image"    .file
+                  "alt"      .alt
+                  "mobile"   "164x164"
+                  "tablet"   "136x136"
+                  "desktop"  "196x196"
+                )}}
+          </a>
         {{ end }}
-        <p>{{ partial "PrepareHTML" .alt }}</p>
-      </div>
+        <figcaption>{{ partial "PrepareHTML" .alt }}</figcaption>
+      </figure>
     {{ end }}
   </div>
 

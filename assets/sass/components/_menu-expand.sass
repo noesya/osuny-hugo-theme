@@ -3,6 +3,8 @@
     .dropdown-menu
         padding-bottom: 0
         padding-top: 0
+        a
+            margin-left: -$nav-link-padding-x
 
     .nav-level-1
         > li:not(:last-child)
@@ -12,17 +14,13 @@
             li
                 @include media-breakpoint-down(lg)
                     border-top: 1px solid $light
-                a
-                    padding-left: calc(#{$grid-gutter-width} / 2)
-                    padding-right: calc(#{$grid-gutter-width} / 2)
-                    white-space: normal
 
     @include media-breakpoint-up(lg)
         .dropdown-menu
             border: 0
             inset: 100% 0 auto 0
             margin-top: 0
-            padding-bottom: $grid-gutter-width * 2
+            padding-bottom: calc(#{$grid-gutter-width} * 2)
             padding-top: $grid-gutter-width
             @supports not (inset: 0)
                 bottom: auto
@@ -30,17 +28,16 @@
                 right: 0
                 top: 100%
             > ul
-                column-count: 3
-                column-gap: $grid-gutter-width
+                display: grid
+                grid-auto-rows: auto
+                grid-gap: calc(#{$grid-gutter-width} * 2) $grid-gutter-width
+                grid-template-columns: repeat(3, 1fr)
                 margin-left: auto
                 margin-right: auto
                 max-width: map-get($container-max-widths, 'lg')
+                padding-left: calc(#{$grid-gutter-width} / 2)
+                padding-right: calc(#{$grid-gutter-width} / 2)
                 width: 100%
-                > li
-                    break-inside: avoid-column
-                    margin-bottom: $grid-gutter-width
-                    &:last-child
-                        margin-bottom: 0
 
         .nav-level-1
             > .has-children
@@ -50,6 +47,8 @@
                         &:hover
                             background-color: transparent
                             text-decoration: underline
+                            text-decoration-thickness: 1px
+                            text-underline-offset: 3px
 
     @include media-breakpoint-up(xl)
         .dropdown-menu

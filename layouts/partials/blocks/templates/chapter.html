@@ -1,7 +1,7 @@
 {{ $position := .position }}
 <section class="block-chapter">
-  <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
-  {{ with .data }}
-    {{ .text }}
+  {{ if .title }}
+    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
+  {{ partial "PrepareHTML" .data.text }}
 </section>

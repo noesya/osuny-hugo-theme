@@ -1,0 +1,32 @@
+.splide
+    button
+        appearance: none
+        background: transparent
+        border: 0
+    &__arrow
+        position: absolute
+        top: 50%
+        &--prev
+            right: 100%
+            svg
+                transform: scale(-1, 1)
+        &--next
+            left: 100%
+    &__pagination
+        display: flex
+        list-style: none
+        margin: 0
+        padding: 0
+        li
+            margin: 0 .5rem
+        button
+            background-color: rgba($link-color, .3)
+            border-radius: 50%
+            display: block
+            height: 10px
+            padding: 0
+            transition: background .3s ease
+            width: 10px
+
+            &.is-active
+                background-color: $link-color

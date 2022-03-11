@@ -6,19 +6,9 @@
           "context" .
         ) -}}
   <div class="container">
-    <ul class="list-inline text-end mb-5">
-      {{ range $name, $t := .Site.Taxonomies }}
-        {{ if ne $name "categories" }}
-          {{- with $.Site.GetPage "taxonomyTerm" $name}}
-            {{ if .Pages }}
-              <li class="list-inline-item">
-                <a href="{{ .Permalink }}" class="link link-more">{{ .Title }}</a>
-              </li>
-            {{ end }}
-          {{ end -}}
-        {{ end }}
-      {{ end }}
-    </ul>
+
+    {{ partial "persons/taxonomies.html" }}
+
     <div class="persons">
       {{ $persons := .Pages.ByParam "last_name" }}
       {{ range (.Paginate $persons).Pages }}

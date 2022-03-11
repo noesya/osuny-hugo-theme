@@ -33,6 +33,9 @@ commons:
     next: Page suivante
     page: Aller à la page {{ .Number }}
     previous: Page précédente
+    between:
+      pages: Navigation entre pages
+      posts: Navigation entre articles
   pdf: PDF
   pdf_with_size: PDF ({{ .Size }})
   read: Lire
