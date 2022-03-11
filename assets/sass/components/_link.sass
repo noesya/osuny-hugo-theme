@@ -4,7 +4,7 @@
     font-size: px2rem(14)
 
     &-more
-        @extend .icon-arrow
         &::before
+            content: map-get($icons, 'arrow')
             font-size: px2rem(10)
             margin-right: px2rem(5)
