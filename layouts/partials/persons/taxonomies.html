@@ -1,0 +1,15 @@
+{{ if . }}
+  <ul class="list-inline text-end mb-5">
+    {{ range $name, $t := . }}
+      {{ if ne $name "categories" }}
+        {{- with $.Site.GetPage "taxonomyTerm" $name}}
+          {{ if .Pages }}
+            <li class="list-inline-item">
+              <a href="{{ .Permalink }}" class="link link-more">{{ .Title }}</a>
+            </li>
+          {{ end }}
+        {{ end -}}
+      {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}
