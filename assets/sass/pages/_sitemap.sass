@@ -1,6 +1,8 @@
 .sitemap__section
     main
-        .content
-            div.row
-                div
-                    @include make-col(4)
+        section
+            --bs-gutter-y: 3rem
+            @extend .row
+            > *
+                @extend .col-md-6
+                @extend .col-lg-4

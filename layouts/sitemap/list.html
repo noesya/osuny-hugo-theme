@@ -6,11 +6,11 @@
           "context" .
         ) -}}
   <div class="container">
-    <div class="row">
+    <section>
       {{ range site.Sections }}
-        <div class="col-md-4">
+        <div>
           <h2>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <a href="{{ .Permalink }}">{{ safeHTML .Title }}</a>
           </h2>
           <ul>
             {{ range where .Site.Pages "Section" .Type }}
@@ -19,6 +19,6 @@
           </ul>
         </div>
       {{ end }}
-    </div>
+    </section>
   </div>
 {{ end }}
