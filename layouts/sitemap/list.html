@@ -1,0 +1,24 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "image" .Params.image
+          "context" .
+        ) -}}
+  <div class="container">
+    <div class="row">
+      {{ range site.Sections }}
+        <div class="col-md-4">
+          <h2>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+          <ul>
+            {{ range where .Site.Pages "Section" .Type }}
+              <li><a href="{{ .Permalink }}">{{ safeHTML .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
