@@ -14,6 +14,9 @@
             padding-left: 0
             padding-right: 0
 
+    p
+        margin-bottom: 0
+
     .avatar
         @include media-breakpoint-down(md)
             float: right
@@ -28,23 +31,11 @@
         margin-bottom: 0
         @include media-breakpoint-down(md)
             font-size: px2rem(22)
-        .link
-            font-size: px2rem(18)
-            &::after
-                content: none
-        & + p
-            font-size: px2rem(16)
-            margin-bottom: 0
+        a
+            @extend .stretched-link
 
-    .contact,
-    [itemprop="jobTitle"]
+    .name + p
+        font-size: px2rem(16)
+
+    .name ~ .contact
         @extend .small
-        margin-bottom: 0
-
-    [itemprop="jobTitle"]
-        color: rgba($body-color, .7)
-
-    .link
-        @extend .link-more
-        @extend .stretched-link
-        margin-top: .5rem

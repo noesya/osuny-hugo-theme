@@ -13,10 +13,9 @@
     {{ end }}
   </div>
   <div>
-    <p class="name">{{ safeHTML .Title }}</p>
+    <p class="name"><a href="{{ .Permalink }}" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">{{ safeHTML .Title }}</a></p>
     {{ if (partial "GetTextFromHTML" .Content) }}
       <p>{{- truncate 120 (safeHTML (plainify .Content)) -}}</p>
     {{ end }}
-    <a href="{{ .Permalink }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">{{ i18n "commons.more" }}</a>
   </div>
 </article>
