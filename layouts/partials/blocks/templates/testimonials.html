@@ -3,9 +3,11 @@
   {{ if .title }}
     <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
-  <div class="testimonials">
+  <div class="testimonials splide" data-splide='{"arrows":false,"autoplay":true}'>
+    <div class="splide__track">
+    <div class="splide__list">
     {{ range .data.testimonials }}
-      <figure>
+      <figure class="splide__slide">
         <blockquote>
           {{- .text -}}
         </blockquote>
@@ -29,5 +31,7 @@
         </figcaption>
       </figure>
     {{ end }}
+    </div>
+    </div>
   </div>
 </section>
