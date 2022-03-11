@@ -6,8 +6,8 @@
           "context" .
         ) -}}
   <div class="container">
-    
-    {{ partial "persons/taxonomies.html" .Site.Taxonomies }}
+
+    {{ partial "persons/taxonomies.html" }}
 
     <div class="persons">
       {{ $persons := .Pages.ByParam "last_name" }}
