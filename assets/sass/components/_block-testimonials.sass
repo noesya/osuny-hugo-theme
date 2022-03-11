@@ -7,14 +7,13 @@
             font-size: calc(#{$blockquote-font-size} * 3)
             line-height: 1
             position: absolute
-            transform: translateY(-50%)
+            transform: translate(-15%, -50%)
+    figure
+        font-size: px2rem(16)
+        margin-bottom: 0
     figcaption
-        @extend .blockquote-footer
         align-items: center
         display: flex
-        margin-top: 0
-        &::before
-            content: none
         .avatar
             flex-shrink: 0
             margin-right: calc(#{$grid-gutter-width} / 2)
