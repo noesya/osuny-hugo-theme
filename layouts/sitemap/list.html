@@ -8,16 +8,18 @@
   <div class="container">
     <section>
       {{ range site.Sections }}
-        <div>
-          <h2>
-            <a href="{{ .Permalink }}">{{ safeHTML .Title }}</a>
-          </h2>
-          <ul>
-            {{ range where .Site.Pages "Section" .Type }}
-              <li><a href="{{ .Permalink }}">{{ safeHTML .Title }}</a></li>
-            {{ end }}
-          </ul>
-        </div>
+        {{ if ne .Type "sitemap"}}
+          <div>
+            <h2>
+              <a href="{{ .Permalink }}">{{ safeHTML .Title }}</a>
+            </h2>
+            <ul>
+              {{ range where .Site.Pages "Section" .Type }}
+                <li><a href="{{ .Permalink }}">{{ safeHTML .Title }}</a></li>
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
       {{ end }}
     </section>
   </div>
