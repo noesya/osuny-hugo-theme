@@ -7,31 +7,37 @@
   </div>
 </div>
 
-<nav role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
-  {{ partial "commons/menu.html"
-        (dict
-          "items"       site.Data.menus.primary
-          "level"       1
-          "class"       "nav-levels"
-        )}}
-</nav>
+{{ if site.Data.menus.primary }}
+  <nav role="navigation" aria-label="{{ i18n "commons.menu.main" }}">
+    {{ partial "commons/menu.html"
+          (dict
+            "items"       site.Data.menus.primary
+            "level"       1
+            "class"       "nav-levels"
+          )}}
+  </nav>
+{{ end }}
 
 <div>
-  <nav role="navigation" aria-label="{{ i18n "commons.menu.legal" }}">
-    {{ partial "commons/menu.html"
-          (dict
-            "items"       site.Data.menus.legal
-            "level"       1
-            "class"       "nav-legal"
-          )}}
-  </nav>
+  {{ if site.Data.menus.legal }}
+    <nav role="navigation" aria-label="{{ i18n "commons.menu.legal" }}">
+      {{ partial "commons/menu.html"
+            (dict
+              "items"       site.Data.menus.legal
+              "level"       1
+              "class"       "nav-legal"
+            )}}
+    </nav>
+  {{ end }}
   {{ partial "footer/credit.html" }}
-  <nav aria-label="{{ i18n "commons.menu.social" }}">
-    {{ partial "commons/menu.html"
-          (dict
-            "items"       site.Data.menus.social
-            "level"       1
-            "class"       "nav-social"
-          )}}
-  </nav>
+  {{ if site.Data.menus.social }}
+    <nav aria-label="{{ i18n "commons.menu.social" }}">
+      {{ partial "commons/menu.html"
+            (dict
+              "items"       site.Data.menus.social
+              "level"       1
+              "class"       "nav-social"
+            )}}
+    </nav>
+  {{ end }}
 </div>
