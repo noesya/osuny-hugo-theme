@@ -2,11 +2,31 @@
     .taxonomies
         @extend .list-inline
         margin-bottom: map-get($spacers, 4)
-        text-align: right
+        @include media-breakpoint-up(md)
+            text-align: right
         li
-            @extend .list-inline-item
+            @include media-breakpoint-up(md)
+                display: inline-block
+                &:not(:last-child)
+                    margin-right: .5rem
         a
             @extend .link
             @extend .link-more
         &:empty
             margin-bottom: 0
+            @include media-breakpoint-down(md)
+                flex-direction: column
+    .table-resume
+        td
+            font-size: px2rem(16)
+            text-align: left
+        @include media-breakpoint-up(md)
+            th
+                width: calc(100% / 3)
+        @include media-breakpoint-down(md)
+            border: 0
+            tr
+                margin-bottom: 1rem
+            td
+                border: 0
+                padding-top: 0

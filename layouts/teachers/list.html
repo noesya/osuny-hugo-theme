@@ -1,19 +1,8 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "image" .Params.image
-          "context" .
-        ) -}}
+
+  {{ partial "persons/hero.html" . }}
+
   <div class="container">
-    <div class="authors">
-      {{ range .Paginator.Pages.ByParam "last_name" }}
-        {{ $person := site.GetPage (printf "/persons/%s" .Slug) }}
-        <div>
-          {{ partial "persons/person.html" $person }}
-        </div>
-      {{ end }}
-      {{ partial "commons/pagination.html" . }}
-    </div>
+    {{ partial "persons/list-specific.html" . }}
   </div>
 {{ end }}

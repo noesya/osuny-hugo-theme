@@ -1,22 +1,10 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "image" .Params.image
-          "context" .
-        ) -}}
-  <div class="container">
 
+  {{ partial "persons/hero.html" . }}
+
+  <div class="container">
     {{ partial "persons/taxonomies.html" . }}
 
-    <div class="persons">
-      {{ $persons := .Pages.ByParam "last_name" }}
-      {{ range (.Paginate $persons).Pages }}
-        <div>
-          {{ partial "persons/person.html" . }}
-        </div>
-      {{ end }}
-    </div>
-    {{ partial "commons/pagination.html" . }}
+    {{ partial "persons/list.html" . }}
   </div>
 {{ end }}
