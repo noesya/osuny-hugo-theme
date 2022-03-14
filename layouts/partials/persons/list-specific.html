@@ -1,9 +1,11 @@
 <div class="persons">
   {{ range .Paginator.Pages.ByParam "last_name" }}
     {{ $person := site.GetPage (printf "/persons/%s" .Slug) }}
-    <div>
-      {{ partial "persons/person.html" $person }}
-    </div>
+    {{ if $person }}
+      <div>
+        {{ partial "persons/person.html" $person }}
+      </div>
+    {{ end }}
   {{ end }}
 </div>
 {{ partial "commons/pagination.html" . }}
