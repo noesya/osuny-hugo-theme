@@ -7,7 +7,7 @@
         ) -}}
   <div class="container">
 
-    {{ partial "persons/taxonomies.html" }}
+    {{ partial "persons/taxonomies.html" . }}
 
     <div class="persons">
       {{ $persons := .Pages.ByParam "last_name" }}

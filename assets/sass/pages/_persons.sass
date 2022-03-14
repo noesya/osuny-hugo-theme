@@ -1,10 +1,12 @@
 .persons__section
     .taxonomies
         @extend .list-inline
-        margin-bottom: $grid-gutter-width
+        margin-bottom: map-get($spacers, 4)
         text-align: right
         li
             @extend .list-inline-item
         a
             @extend .link
             @extend .link-more
+        &:empty
+            margin-bottom: 0
