@@ -4,14 +4,15 @@
     overflow: hidden
     position: relative
     width: 100%
-    picture
+    &::before
+        content: ''
         display: block
-        height: 0
         padding-top: 100%
+
+    picture,
     img
         height: 100%
         inset: 0
-        object-fit: cover
         position: absolute
         width: 100%
         // polyfill for inset
@@ -20,3 +21,6 @@
             left: 0
             right: 0
             top: 0
+
+    img
+        object-fit: cover
