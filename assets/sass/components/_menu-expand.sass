@@ -4,16 +4,21 @@
         padding-bottom: 0
         padding-top: 0
         a
-            margin-left: -$nav-link-padding-x
+            @include media-breakpoint-up(lg)
+                margin-left: -$nav-link-padding-x
+
+    [aria-expanded="true"]
+        &::after
+            transform: rotate(180deg)
 
     .nav-level-1
         > li:not(:last-child)
             @include media-breakpoint-down(lg)
                 border-bottom: 1px solid $gray-500
-        & > .has-children
+        > .has-children
             li
-                @include media-breakpoint-down(lg)
-                    border-top: 1px solid $light
+                a
+                    white-space: normal
 
     @include media-breakpoint-up(lg)
         .dropdown-menu
