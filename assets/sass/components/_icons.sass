@@ -10,13 +10,12 @@
     &::before
         @include icon
 
-@each $icon in $icons
-    .icon-#{$icon}
+@each $name, $glyph in $icons
+    .icon-#{$name}
         &::before
-            content: map-get($icons, $icon)
-
-    .btn-#{$icon}
+            content: $glyph
+    .btn-#{$name}
         @extend .icon
         &::before
-            content: map-get($icons, $icon)
+            content: $glyph
             margin-right: px2rem(5)

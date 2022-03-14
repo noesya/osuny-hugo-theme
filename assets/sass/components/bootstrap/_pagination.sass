@@ -22,24 +22,16 @@
                     @extend .icon
             &:first-child
                 a
-                    @extend .icon-arrow-first // TODO: fix icons
-                    &::before
-                        content: map-get($icons, 'arrow-first') !important
+                    @extend .icon-arrow-first
             &:nth-child(2)
                 a
-                    @extend .icon-arrow-left // TODO: fix icons
-                    &::before
-                        content: map-get($icons, 'arrow-left') !important
+                    @extend .icon-arrow-left
             &:nth-last-child(2)
                 a
-                    @extend .icon-arrow-right // TODO: fix icons
-                    &::before
-                        content: map-get($icons, 'arrow-right') !important
+                    @extend .icon-arrow-right
             &:last-child
                 a
-                    @extend .icon-arrow-last // TODO: fix icons
-                    &::before
-                        content: map-get($icons, 'arrow-last') !important
+                    @extend .icon-arrow-last
 
     &-between-pages
         justify-content: space-between
@@ -68,9 +60,7 @@
             padding-left: 0
             span
                 @extend .icon
-                @extend .icon-arrow-left // TODO: fix icons
-                &::before
-                    content: map-get($icons, 'arrow-left') !important
+                @extend .icon-arrow-left
 
         .next
             padding-right: 0
