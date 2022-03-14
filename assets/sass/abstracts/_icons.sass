@@ -1,17 +1,38 @@
-$icon-download: "\e900"
-$icon-eye: "\e901"
-$icon-burger: "\e902"
-$icon-link-blank: "\e903"
-$icon-caret: "\e904"
-$icon-arrow: "\e905"
-$icon-arrow-first: "\e906"
-$icon-arrow-last: "\e907"
-$icon-arrow-left: "\e908"
-$icon-arrow-right: "\e909"
-$icon-instagram: "\e90a"
-$icon-facebook: "\e90b"
-$icon-linkedin: "\e90c"
-$icon-twitter: "\e90d"
-$icon-close: "\e90e"
+//    Icons:
+//    - abstracts/icons
+//    - base/fonts-icons
+//    - components/icons
 
-$btn-icons: ('download', 'eye')
+// set array icons
+$icons: ()
+
+// add icons
+$icons: map-merge($icons, ("arrow": "\e905"))
+$icons: map-merge($icons, ("arrow-first": "\e906"))
+$icons: map-merge($icons, ("arrow-last": "\e907"))
+$icons: map-merge($icons, ("arrow-left": "\e908"))
+$icons: map-merge($icons, ("arrow-right": "\e909"))
+$icons: map-merge($icons, ("burger": "\e902"))
+$icons: map-merge($icons, ("caret": "\e904"))
+$icons: map-merge($icons, ("close": "\e90e"))
+$icons: map-merge($icons, ("download": "\e900"))
+$icons: map-merge($icons, ("eye": "\e901"))
+$icons: map-merge($icons, ("link-blank": "\e903"))
+
+$icons: map-merge($icons, ("instagram": "\e90a"))
+$icons: map-merge($icons, ("facebook": "\e90b"))
+$icons: map-merge($icons, ("linkedin": "\e90c"))
+$icons: map-merge($icons, ("twitter": "\e90d"))
+
+// create icon mixin
+@mixin icon
+    content: ''
+    display: inline-block
+    font-family: 'Icon'
+    font-style: normal
+    font-variant: normal
+    font-weight: normal
+    line-height: 1
+    speak: never
+    text-transform: none
+    vertical-align: middle

@@ -76,13 +76,8 @@ footer[role="contentinfo"]
             font-size: px2rem(14)
             line-height: 1.4
         a
+            @include link
             text-decoration: underline
-            text-decoration-color: rgba($link-color, 0.3)
-            text-decoration-thickness: 1px
-            text-underline-offset: 3px
-            &:hover
-                text-decoration-color: rgba($link-color, 1)
-                text-decoration-thickness: 1px
 
         .nav-level-1
             flex-direction: column

@@ -22,18 +22,18 @@ header[role="banner"]
             span:last-of-type
                 @extend .navbar-toggler-icon
                 @extend .icon
-                @extend .icon-burger
                 background: none
                 height: calc(1.063rem + .3125rem * 2)
                 padding: px2rem(5) 0 px2rem(5) px2rem(5)
                 width: calc(1.5rem + .3125rem)
                 &::before
+                    content: map-get($icons, "burger") !important
                     font-size: px2rem(17) !important
                     vertical-align: top !important
             &[aria-expanded="true"]
                 span:last-of-type
                     &::before
-                        content: $icon-close
+                        content: map-get($icons, "close")
 
     .logo
         @extend .navbar-brand

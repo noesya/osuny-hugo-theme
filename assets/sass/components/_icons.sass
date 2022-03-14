@@ -1,0 +1,22 @@
+//    Icons:
+//    - abstracts/icons
+//    - base/fonts-icons
+//    - components/icons
+
+// set icon classes
+.icon,
+[class^="icon-"],
+[class*=" icon-"]
+    &::before
+        @include icon
+
+@each $icon in $icons
+    .icon-#{$icon}
+        &::before
+            content: map-get($icons, $icon)
+
+    .btn-#{$icon}
+        @extend .icon
+        &::before
+            content: map-get($icons, $icon)
+            margin-right: px2rem(5)

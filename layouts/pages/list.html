@@ -15,19 +15,7 @@
       <div>
         {{ partial "pages/image.html" .Params.image }}
 
-        <div id="page-informations">
-          {{ if (partial "GetTextFromHTML" .Content) }}
-            <section itemprop="articleBody">
-            {{
-              partial "PrepareHTML" (
-                partial "H2AddId" .Content
-              )
-            }}
-            </section>
-          {{ end }}
-
-          {{ partial "pages/children.html" .Pages }}
-        </div>
+        {{ partial "pages/body.html" . }}
 
         {{ partial "blocks/list.html" .Params.blocks }}
 
