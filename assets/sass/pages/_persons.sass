@@ -12,6 +12,8 @@
         a
             @extend .link
             @extend .link-more
+            @include link
+            text-decoration-color: transparent
         &:empty
             margin-bottom: 0
             @include media-breakpoint-down(md)
