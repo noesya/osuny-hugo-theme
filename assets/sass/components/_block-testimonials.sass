@@ -1,7 +1,7 @@
 .block-testimonials
     blockquote
         @extend .blockquote
-        padding-top: $blockquote-font-size
+        padding-top: calc(#{$blockquote-font-size} * 2)
         &::before
             content: '“'
             font-size: calc(#{$blockquote-font-size} * 3)
