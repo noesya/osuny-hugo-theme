@@ -40,11 +40,13 @@ commons:
   pdf_with_size: PDF ({{ .Size }})
   read: Lire
   read_online: Lire en ligne
+  toc: Table des matières
 cookie_banner:
   accept: Accepter
   more: En savoir plus
   refuse: Refuser
   text: Ce site utilise des cookies pour améliorer l’expérience de navigation et fournir des fonctionnalités supplémentaires.
+  title: Bandeau cookie
 page_not_found: 404 page non trouvée
 pages:
   details: En détail

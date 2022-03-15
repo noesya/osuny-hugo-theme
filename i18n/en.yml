@@ -40,11 +40,13 @@ commons:
   pdf_with_size: PDF ({{ .Size }})
   read: Read
   read_online: Read online
+  toc: Table of content
 cookie_banner:
   accept: Accept
   more: Read more
   refuse: Refuse
   text: This site uses cookies to improve the browsing experience and provide additional functionality.
+  title: Cookie banner
 page_not_found: 404 page not found
 pages:
   details: Details
