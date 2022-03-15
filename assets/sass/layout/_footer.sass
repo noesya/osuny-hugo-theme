@@ -3,6 +3,15 @@ footer[role="contentinfo"]
     padding-bottom: calc(#{$grid-gutter-width} * 2.5)
     padding-top: calc(#{$grid-gutter-width} * 2.5)
 
+    address
+        font-size: px2rem(14)
+        line-height: px2rem(26)
+
+    ul
+        list-style: none
+        margin-left: 0
+        padding: 0
+
     .logo
         img
             height: 60px
@@ -20,52 +29,39 @@ footer[role="contentinfo"]
             @include media-breakpoint-up(md)
                 @include make-col(4)
 
-        ~ div
-            @include media-breakpoint-up(md)
-                align-items: center
-                display: flex
-                .credit + nav,
-                nav + nav
-                    margin-left: auto
-                    margin-right: -$nav-link-padding-x
-
-                .nav-legal
-                    li:not(:first-child)
-                        margin-left: -$nav-link-padding-x
-                .nav-social
-                    li:not(:last-child)
-                        margin-right: -$nav-link-padding-x
-
-    address
-        font-size: px2rem(14)
-        line-height: px2rem(26)
-
-    ul
-        list-style: none
-        margin-left: 0
-        padding: 0
+    .complementary
+        @include media-breakpoint-up(md)
+            align-items: center
+            display: flex
+            .credit + [class^="nav-"],
+            [class^="nav-"] + [class^="nav-"]
+                margin-left: auto
+                margin-right: -$nav-link-padding-x
 
     .credit
         padding-bottom: $nav-link-padding-y
         padding-top: $nav-link-padding-y
 
-    nav + .credit,
+    [class^="nav-"] + .credit,
     small + .credit
         @include media-breakpoint-up(md)
             &::before
                 content: '—'
                 margin-right: calc(#{$nav-link-padding-x} / 2),
-    nav + .credit
+
+    [class^="nav-"] + .credit
         @include media-breakpoint-up(md)
             margin-left: calc(#{$nav-link-padding-x} / -2)
+
     small + .credit
         @include media-breakpoint-up(md)
             margin-left: calc(#{$nav-link-padding-x} / 2)
 
-    nav
+    .nav-level-1
+        @extend .nav
+        align-items: flex-start
+        flex-direction: column
         margin-left: -$nav-link-padding-x
-        > ul
-            @extend .nav
         li
             @extend .nav-item
         a,
@@ -77,33 +73,15 @@ footer[role="contentinfo"]
             line-height: 1.4
         a
             @include link
-            text-decoration: underline
 
-        .nav-level-1
-            flex-direction: column
+    .nav-legal,
+    .nav-social
+        @include media-breakpoint-up(md)
+            flex-direction: row
 
-        .nav-levels
-            @extend .grid
-            margin-bottom: map-get($spacers, 3)
-            > li
-                break-inside: avoid
-                margin-bottom: calc(#{$grid-gutter-width} * 2)
-                & > a,
-                & > span
-                    font-size: px2rem(18)
-                    margin-bottom: calc(#{$grid-gutter-width} / 2)
-                    margin-top: 0
-                    padding-bottom: calc(#{$grid-gutter-width} / 2)
-
-                .nav-level-2 > li
-                    & > a,
-                    & > span
-                        font-size: px2rem(16)
-
-                .nav-level-3
-                    margin-bottom: $grid-gutter-width
-
-        .nav-legal,
-        .nav-social
-            @include media-breakpoint-up(md)
-                flex-direction: row
+    .nav-legal
+        li:not(:first-child)
+            margin-left: -$nav-link-padding-x
+    .nav-social
+        li:not(:last-child)
+            margin-right: -$nav-link-padding-x
