@@ -12,7 +12,7 @@
   <body class="{{ .Type }}__{{ .Kind }}"{{ if eq .Kind "section" }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
-    <main id="main">
+    <main id="main" role="main" tabindex="-1">
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "footer/footer.html" . -}}
