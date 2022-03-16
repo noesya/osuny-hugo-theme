@@ -49,13 +49,15 @@
             {{ end }}
             {{ if $chapterExists }}
               <section>
-                <h2 id="page-{{ . }}">{{ i18n (printf "programs._%s" .) }}</h2>
+                {{ $title := i18n (printf "programs._%s" .) }}
+                <h2 id="page-{{ . }}">{{ $title }}</h2>
                 {{ if eq . "contacts" }}
                   {{ partial "programs/content.html" $content }}
                   {{ partial "programs/roles.html" $params.roles }}
                 {{ else if eq . "teachers" }}
                   {{ partial "programs/teachers.html"
                                 (dict
+                                  "title" $title
                                   "teachers" $params.teachers
                                   "descriptions" $params.teachers_description
                                 ) }}
