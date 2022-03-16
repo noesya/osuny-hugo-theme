@@ -27,6 +27,8 @@ commons:
     pdf: Download PDF
   in: In
   language: Language
+  link:
+    blank: extern link
   menu:
     label: Toggle navigation
     legal: Legals menu
@@ -77,7 +79,7 @@ posts:
   see_all: See all posts
   see_all_in_category: See all posts in « {{ .Title }} »
   share: Share on
-  share_aria: Share on {{ .Title }}
+  share_aria: Share on {{ .Title }} - extern link
   title: News
 programs:
   _accessibility: Accessibility

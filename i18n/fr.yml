@@ -27,6 +27,8 @@ commons:
     pdf: Télécharger le PDF
   in: Dans
   language: Langue
+  link:
+    blank: lien externe
   menu:
     label: Ouvrir / Fermer le menu
     legal: Menu pages légales
@@ -77,7 +79,7 @@ posts:
   see_all: Voir toutes les actualités
   see_all_in_category: Voir toutes les actualités « {{ .Title }} »
   share: Partager sur
-  share_aria: Partager sur {{ .Title }}
+  share_aria: Partager sur {{ .Title }} - lien externe
   title: Actualités
 programs:
   _accessibility: Accessibilité
