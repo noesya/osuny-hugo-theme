@@ -5,8 +5,9 @@ categories:
     other: See the {{ .Count }} posts
 commons:
   accessibility:
-    main_content: Access main content
-    menu: Access menu
+    main_content: Go to main content
+    menu: Go to menu
+    search: Go to search
   biography: Biography
   breadcrumb: Breadcrumb
   close: Close
