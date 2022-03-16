@@ -1,4 +1,9 @@
 <article class="post">
+  <div>
+    {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
+    <p class="title"><a href="{{ .Permalink }}" aria-label="{{ i18n "commons.more_aria" (dict "Title" $title) }}">{{ $title }}</a></p>
+    <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
+  </div>
   <div class="media">
     {{- if .Params.image -}}
       {{- partial "commons/image.html"
@@ -12,9 +17,5 @@
     {{- else -}}
       {{- partial "commons/image-default.html" (dict "class" "img-fluid") -}}
     {{- end -}}
-  </div>
-  <div>
-    <p class="title"><a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a></p>
-    <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
   </div>
 </article>

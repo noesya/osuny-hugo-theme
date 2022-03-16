@@ -12,7 +12,8 @@
     {{ end }}
   </div>
   <div>
-    <p class="name"><a href="{{ .Permalink }}" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">{{ safeHTML .Title }}</a></p>
+    {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
+    <p class="name"><a href="{{ .Permalink }}" aria-label="{{ i18n "commons.more_aria" (dict "Title" $title) }}">{{ $title }}</a></p>
     {{ if (partial "GetTextFromHTML" .Content) }}
       <p>{{- truncate 120 (safeHTML (plainify .Content)) -}}</p>
     {{ end }}
