@@ -11,8 +11,14 @@ commons:
   biography: Biographie
   breadcrumb: Fil d’arianne
   carousel:
+    first: Aller au premier slide
+    last: Aller au dernier slide
+    next: Slide suivant
+    pageX: Aller à la page %s
     pause: Mettre en pause le carousel
     play: Démarrer le carousel
+    prev: Slide précedent
+    slideX: Aller au slide %s
   close: Fermer
   credit: un site éco-conçu produit avec <a href="https://www.osuny.org/" target="_blank" rel="noreferrer">Osuny</a>
   date: Date

@@ -11,8 +11,14 @@ commons:
   biography: Biography
   breadcrumb: Breadcrumb
   carousel:
+    first: Go to first slide
+    last: Go to first slide
+    next: Slide suivant
+    pageX: Go to page %s
     pause: Pause
     play: Play
+    prev: Slide précedent
+    slideX: Go to slide %s
   close: Close
   credit: a low impact website crafted with <a href="https://www.osuny.org/" target="_blank" rel="noreferrer">Osuny</a>
   date: Date
