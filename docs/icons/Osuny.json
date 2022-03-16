@@ -8,12 +8,28 @@
     {
       "selection": [
         {
+          "order": 20,
+          "id": 16,
+          "name": "pause",
+          "prevSize": 32,
+          "code": 59663,
+          "tempChar": ""
+        },
+        {
+          "order": 19,
+          "id": 15,
+          "name": "play",
+          "prevSize": 32,
+          "code": 59664,
+          "tempChar": ""
+        },
+        {
           "order": 18,
           "id": 14,
           "name": "close",
           "prevSize": 32,
           "code": 59662,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 4,
@@ -21,7 +37,7 @@
           "name": "download",
           "prevSize": 32,
           "code": 59648,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 5,
@@ -29,7 +45,7 @@
           "name": "eye",
           "prevSize": 32,
           "code": 59649,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 6,
@@ -37,7 +53,7 @@
           "name": "burger",
           "prevSize": 32,
           "code": 59650,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 10,
@@ -45,7 +61,7 @@
           "name": "link-blank",
           "prevSize": 32,
           "code": 59651,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 11,
@@ -53,7 +69,7 @@
           "name": "caret",
           "prevSize": 32,
           "code": 59652,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 12,
@@ -61,7 +77,7 @@
           "name": "arrow",
           "prevSize": 32,
           "code": 59653,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 13,
@@ -69,7 +85,7 @@
           "name": "arrow-first",
           "prevSize": 32,
           "code": 59654,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 14,
@@ -77,7 +93,7 @@
           "name": "arrow-last",
           "prevSize": 32,
           "code": 59655,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 15,
@@ -85,7 +101,7 @@
           "name": "arrow-left",
           "prevSize": 32,
           "code": 59656,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 16,
@@ -93,7 +109,7 @@
           "name": "arrow-right",
           "prevSize": 32,
           "code": 59657,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 17,
@@ -101,7 +117,7 @@
           "name": "instagram",
           "prevSize": 32,
           "code": 59658,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 7,
@@ -109,7 +125,7 @@
           "name": "facebook",
           "prevSize": 32,
           "code": 59659,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 8,
@@ -117,7 +133,7 @@
           "name": "linkedin",
           "prevSize": 32,
           "code": 59660,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 9,
@@ -125,20 +141,52 @@
           "name": "twitter",
           "prevSize": 32,
           "code": 59661,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 0,
       "metadata": {
         "name": "Main",
         "importSize": {
-          "width": 16,
-          "height": 16
+          "width": 32,
+          "height": 48
         }
       },
       "height": 1024,
       "prevSize": 32,
       "icons": [
+        {
+          "id": 16,
+          "paths": [
+            "M213.333 0h-213.333v1024h213.333v-1024zM682.667 0h-213.333v1024h213.333v-1024z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "width": 683,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "pause"
+          ]
+        },
+        {
+          "id": 15,
+          "paths": [
+            "M682.667 512l-682.667 512 0-1024 682.667 512z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "width": 683,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "play"
+          ]
+        },
         {
           "id": 14,
           "paths": [
@@ -407,7 +455,7 @@
       "showSelector": true,
       "selector": "",
       "classSelector": ".icon",
-      "showMetrics": false,
+      "showMetrics": true,
       "showMetadata": false,
       "showVersion": false,
       "flutter": false
