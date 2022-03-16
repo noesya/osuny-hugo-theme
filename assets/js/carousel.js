@@ -2,9 +2,14 @@ import Splide from '@splidejs/splide';
 
 Splide.defaults = {
     i18n: {
-        play: '{{ i18n "commons.carousel.play" }}',
-        prev: 'Slide précedent',
+        first: 'Aller au premier slide',
+        last: 'Aller au dernier slide',
         next: 'Slide suivant',
+        pageX: 'Aller à la page %s',
+        pause: 'Mettre en pause le carousel',
+        play: 'Démarrer le carousel',
+        prev: 'Slide précedent',
+        slideX: 'Aller au slide %s'
     },
 };
 
