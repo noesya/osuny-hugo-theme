@@ -1,21 +1,25 @@
-{{ with site.Data.school }}
+{{- with site.Data.school -}}
 <address itemscope itemtype="https://schema.org/CollegeOrUniversity">
   <meta itemprop="image" content="/assets/images/logo.svg">
-  <span itemprop="name">{{ htmlUnescape .name }}</span>
-  {{ if or (.address) (.country) }}
+  <span itemprop="name">{{ htmlUnescape (trim .name "\n") }}</span>
+  {{ if or (.address) (.country) -}}
   <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-    {{ if .address }}<span itemprop="streetAddress">{{ .address }}</span><br>{{ end }}
-    {{ if .zipcode }}<span itemprop="postalCode">{{ .zipcode }}</span> {{ end }}{{ if .city }}<span itemprop="addressLocality">{{ .city }}</span>{{ end }}<br>
-    {{ if .country }}<span itemprop="addressCountry">{{ .country }}</span>{{ end }}
+    {{ if .address }}<span itemprop="streetAddress">{{ trim .address "\n" }}</span><br>{{ end }}
+    {{ if .zipcode }}<span itemprop="postalCode">{{ trim .zipcode "\n" }}</span> {{ end }}{{ if .city }}<span itemprop="addressLocality">{{ trim .city "\n" }}</span>{{ end }}<br>
+    {{ if .country }}<span itemprop="addressCountry">{{ trim .country "\n" }}</span>{{ end }}
   </div>
   {{ end }}
-  {{ if .phone }}<span itemprop="telephone">{{ .phone }}</span>{{ end }}
+  {{- if .phone -}}
+    {{- $phone := trim .phone "\n " -}}
+    {{- $phone_href := replace $phone " " "" -}}
+    <a itemprop="telephone" href="tel:{{ $phone_href }}">{{ $phone }}</a>
+  {{- end }}
 </address>
-{{ end }}
-{{ with site.Data.laboratory }}
+{{- end -}}
+{{- with site.Data.laboratory -}}
 <address itemscope itemtype="">
   <meta itemprop="image" content="/assets/images/logo.svg">
-  <span itemprop="name">{{ htmlUnescape .name }}</span>
+  <span itemprop="name">{{ htmlUnescape (trim .name "\n") }}</span>
   {{ if or (.address) (.country) }}
   <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
     {{ if .address }}<span itemprop="streetAddress">{{ .address }}</span><br>{{ end }}
@@ -23,13 +27,17 @@
     {{ if .country }}<span itemprop="addressCountry">{{ .country }}</span>{{ end }}
   </div>
   {{ end }}
-  {{ if .phone }}<span itemprop="telephone">{{ .phone }}</span>{{ end }}
+  {{- if .phone -}}
+    {{- $phone := trim .phone "\n " -}}
+    {{- $phone_href := replace $phone " " "" -}}
+    <a itemprop="telephone" href="tel:{{ $phone_href }}">{{ $phone }}</a>
+  {{- end }}
 </address>
-{{ end }}
-{{ with site.Data.journal }}
+{{- end -}}
+{{- with site.Data.journal -}}
 <div itemscope itemtype="https://schema.org/Periodical">
   <meta itemprop="image" content="/assets/images/logo.svg">
-  <span itemprop="name">{{ htmlUnescape .name }}</span><br>
+  <span itemprop="name">{{ htmlUnescape (trim .name "\n") }}</span><br>
   <span itemprop="issn">{{ trim .issn "\n" }}</span>
 </div>
-{{ end }}
+{{- end -}}
