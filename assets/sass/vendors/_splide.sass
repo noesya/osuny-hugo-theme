@@ -17,24 +17,37 @@
         list-style: none
         margin: 0
         padding: 0
-        li
-            margin: 0 1rem
         button
-            background-color: rgba($link-color, .3)
-            border-radius: 50%
             display: block
-            height: 10px
+            height: 48px
             padding: 0
-            transition: background .3s ease
-            width: 10px
-
+            width: 48px
+            &::before
+                background-color: rgba($link-color, .3)
+                border-radius: 50%
+                content: ''
+                display: block
+                height: 10px
+                margin: auto
+                transition: background .3s ease
+                width: 10px
+            &:hover
+                &::before
+                    background-color: rgba($link-color, .6)
             &.is-active
-                background-color: $link-color
+                &::before
+                    background-color: $link-color
     &__autoplay
         bottom: 0
         position: absolute
         right: 0
-        button
-            @extend .icon
-            height: px2rem(48)
-            width: px2rem(48)
+    &__pause,
+    &__play
+        @extend .icon
+        height: 48px
+        padding: 0
+        width: 48px
+    &__play
+        @extend .icon-play
+    &__pause
+        @extend .icon-pause
