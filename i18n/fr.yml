@@ -9,6 +9,9 @@ commons:
     menu: Accéder au menu
   biography: Biographie
   breadcrumb: Fil d’arianne
+  carousel:
+    pause: Mettre en pause le carousel
+    play: Démarrer le carousel
   close: Fermer
   credit: un site éco-conçu produit avec <a href="https://www.osuny.org/" target="_blank" rel="noreferrer">Osuny</a>
   date: Date
