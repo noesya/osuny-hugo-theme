@@ -3,6 +3,7 @@
         --bs-aspect-ratio: 50%
         @extend .ratio
         background-color: $light
+        order: 1
         overflow: hidden
         // polyfill for ratio size
         @supports not (--css: variables)
@@ -19,6 +20,9 @@
     &-suptitle
         margin-bottom: 0
     &-title
+        font-size: px2rem(18)
+        line-height: $line-height-base
+        margin-bottom: 0
         margin-top: 0
         a
             text-decoration-color: transparent
