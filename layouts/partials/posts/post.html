@@ -1,7 +1,7 @@
 <article class="post">
   <div>
     {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
-    <p class="title"><a href="{{ .Permalink }}" aria-label="{{ i18n "commons.more_aria" (dict "Title" $title) }}">{{ $title }}</a></p>
+    <p class="title"><a href="{{ .Permalink }}">{{ $title }}</a></p>
     <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
   </div>
   <div class="media">
