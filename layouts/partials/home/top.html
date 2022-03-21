@@ -1,7 +1,7 @@
 <div class="top">
   <h2>
     {{ if ne .kind "blank" }}<a href="{{ .target }}">{{ end }}
-      {{ partial "PrepareHTML" .title }}
+      {{- safeHTML (partial "CorrectPunctuation" .title) -}}
     {{ if ne .kind "blank" }}</a>{{ end }}
   </h2>
   {{ if or (eq .kind "news") (eq .kind "programs") }}
@@ -9,9 +9,9 @@
   {{ end }}
   {{ $page := partial "GetPageByUrl" .target }}
   {{with $page}}
-    {{ if .Description }}
+    {{ if (partial "GetTextFromHTML" .Description) }}
       <div>
-        <p>{{ truncate 120 (safeHTML .Description) }}</p>
+        <p>{{ truncate 250 (safeHTML .Description) }}</p>
       </div>
     {{ end }}
   {{end}}

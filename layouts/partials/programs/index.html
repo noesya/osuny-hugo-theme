@@ -6,9 +6,11 @@
       <div class="program">
         <div>
           <h2 class="title">
-            <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
+            <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
           </h2>
-          <p>{{ partial "PrepareHTML" .Params.description }}</p>
+          {{ if (partial "GetTextFromHTML" .Params.description) }}
+            <p>{{ partial "PrepareHTML" .Params.description }}</p>
+          {{ end }}
         </div>
       </div>
     </div>
