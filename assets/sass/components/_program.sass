@@ -4,6 +4,7 @@
 
     > div:first-of-type
         @extend .card-body
+        order: 2
         padding-left: 0
         padding-right: 0
 
@@ -17,14 +18,18 @@
         @extend .card-title
         margin-bottom: 0.5rem
         a
+            @extend .link
+            @extend .link-more
             @extend .stretched-link
-        .link
             font-size: px2rem(22)
             line-height: px2rem(30)
-            text-decoration: none
+            &::after
+                content: ''
+
         .highlighted &
             margin-bottom: 1rem
-
-    .link
-        @extend .link-more
-        @extend .stretched-link
+            a
+                font-size: px2rem(26)
+                line-height: px2rem(36)
+                &::before
+                    content: none
