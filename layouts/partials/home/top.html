@@ -1,7 +1,8 @@
 <div class="top">
   <h2>
-    {{ if ne .kind "blank" }}<a href="{{ .target }}">{{ end }}
-      {{- safeHTML (partial "CorrectPunctuation" .title) -}}
+    {{- $title := safeHTML (partial "CorrectPunctuation" .title) -}}
+    {{ if ne .kind "blank" }}<a href="{{ .target }}" title="{{ i18n "commons.more_aria" (dict "Title" $title) }}">{{ end }}
+      {{- $title -}}
     {{ if ne .kind "blank" }}</a>{{ end }}
   </h2>
   {{ if or (eq .kind "news") (eq .kind "programs") }}

@@ -75,9 +75,11 @@ posts:
   date: Date
   informations: Informations
   next: Next article
+  next_aria: Next article “{{ .Title }}”
   previous: Previous article
+  previous_aria: revious article “{{ .Title }}”
   see_all: See all posts
-  see_all_in_category: See all posts in « {{ .Title }} »
+  see_all_in_category: See all posts in “{{ .Title }}”
   share: Share on
   share_aria: Share on {{ .Title }} - extern link
   title: News

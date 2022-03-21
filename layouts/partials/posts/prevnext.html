@@ -3,11 +3,12 @@
     {{if .PrevInSection}}
       {{with .Site.RegularPages.Prev . }}
         <li class="previous">
-          <a href="{{.RelPermalink}}" aria-label="{{htmlEscape .Title}}">
+          {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
+          <a href="{{.RelPermalink}}" title="{{ i18n "posts.previous_aria" (dict "Title" $title) }}">
             <span>
-              {{ i18n "posts.previous" }}
+              {{- i18n "posts.previous" -}}
             </span><br>
-            {{ safeHTML .Title }}
+            {{- safeHTML .Title -}}
           </a>
         </li>
       {{end}}
@@ -15,11 +16,12 @@
     {{if .NextInSection}}
       {{with .Site.RegularPages.Next . }}
         <li class="next">
-          <a href="{{.RelPermalink}}" aria-label="{{htmlEscape .Title}}">
+          {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
+          <a href="{{.RelPermalink}}" title="{{ i18n "posts.next_aria" (dict "Title" $title) }}">
             <span>
-              {{ i18n "posts.next" }}
+              {{- i18n "posts.next" -}}
             </span><br>
-            {{ safeHTML .Title }}
+            {{- safeHTML .Title -}}
           </a>
         </li>
       {{end}}
