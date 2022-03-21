@@ -4,11 +4,11 @@
       {{with .Site.RegularPages.Prev . }}
         <li class="previous">
           {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
-          <a href="{{.RelPermalink}}" title="{{ i18n "posts.previous_aria" (dict "Title" $title) }}">
+          <a href="{{.RelPermalink}}" title="{{ safeHTML (i18n "posts.previous_aria" (dict "Title" $title)) }}">
             <span>
               {{- i18n "posts.previous" -}}
             </span><br>
-            {{- safeHTML .Title -}}
+            {{- $title -}}
           </a>
         </li>
       {{end}}
@@ -17,11 +17,11 @@
       {{with .Site.RegularPages.Next . }}
         <li class="next">
           {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
-          <a href="{{.RelPermalink}}" title="{{ i18n "posts.next_aria" (dict "Title" $title) }}">
+          <a href="{{.RelPermalink}}" title="{{ safeHTML (i18n "posts.next_aria" (dict "Title" $title)) }}">
             <span>
               {{- i18n "posts.next" -}}
             </span><br>
-            {{- safeHTML .Title -}}
+            {{- $title -}}
           </a>
         </li>
       {{end}}
