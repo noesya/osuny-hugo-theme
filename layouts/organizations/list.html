@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{- partial "header/hero.html"
+        (dict
+          "title" .Title
+          "image" .Params.image
+          "context" .
+        ) -}}
+
+  <div class="container">
+    <div class="organizations">
+      {{ range $index, $list := .Paginator.Pages }}
+        <div>
+          {{ partial "organizations/organization.html" . }}
+        </div>
+      {{ end }}
+    </div>
+    {{ partial "commons/pagination.html" . }}
+  </div>
+{{ end }}
