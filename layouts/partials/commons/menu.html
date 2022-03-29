@@ -25,6 +25,7 @@
       {{- $attr = " target=\"_blank\" rel=\"noreferrer\"" -}}
       {{- $attr_title = printf "title=\"%s - %s\"" .title $extern_link -}}
     {{- end -}}
+    {{- if or (ne $stop 1) (and (eq $stop 1) (ne .kind "blank")) -}}
     <li{{ if ne $itemClass ""}} class="{{ $itemClass }}"{{ end }}>
       {{- if ne .kind "blank" -}}
         <a href="{{ .target }}"{{ if ne $linkClass ""}} class="{{ $linkClass }}"{{ end }} {{ safeHTMLAttr $attr }} {{ safeHTMLAttr $attr_title }}>{{ .title }}</a>
@@ -49,5 +50,6 @@
         {{- end -}}
       {{- end -}}
     </li>
+    {{- end -}}
   {{ end -}}
 </ul>
