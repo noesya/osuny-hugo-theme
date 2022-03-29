@@ -10,5 +10,9 @@
             > div:nth-of-type(2)
                 @include media-breakpoint-up(md)
                     @include make-col(8)
+            .media
+                --bs-aspect-ratio: 100%
+                @extend .ratio
+                background-color: $light
     [itemprop="articleBody"] + .contacts-list
         margin-top: map-get($spacers, 5)
