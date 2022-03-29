@@ -1,4 +1,8 @@
 <article class="organization">
+  <div>
+    {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
+    <p class="title"><a href="{{ .Permalink }}">{{ $title }}</a></p>
+  </div>
   <div class="media">
     {{- if .Params.logo -}}
       {{- partial "commons/image.html"
@@ -11,9 +15,5 @@
               "class"    "img-fluid"
             ) -}}
     {{- end -}}
-  </div>
-  <div>
-    {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
-    <p class="title"><a href="{{ .Permalink }}">{{ $title }}</a></p>
   </div>
 </article>

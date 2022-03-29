@@ -1,8 +1,18 @@
 .organization
-    position: relative
+    @extend .card
+    border: 0
+
+    > div:first-of-type
+        @extend .card-body
+        padding-left: 0
+        padding-right: 0
+
     .media
-        margin-bottom: px2rem(10)
+        --bs-aspect-ratio: 100%
+        @extend .card-media
+
     .title
+        @extend .card-title
         font-size: px2rem(16)
         line-height: px2rem(20)
         a

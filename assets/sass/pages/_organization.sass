@@ -1,0 +1,14 @@
+.organizations__page
+    main
+        .content
+            > div
+                @include media-breakpoint-down(md)
+                    margin-bottom: map-get($spacers, 3)
+            > div:first-of-type
+                @include media-breakpoint-up(md)
+                    @include make-col(4)
+            > div:nth-of-type(2)
+                @include media-breakpoint-up(md)
+                    @include make-col(8)
+    [itemprop="articleBody"] + .contacts-list
+        margin-top: map-get($spacers, 5)
