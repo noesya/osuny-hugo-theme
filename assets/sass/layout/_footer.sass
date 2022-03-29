@@ -73,14 +73,14 @@ footer[role="contentinfo"]
         a
             @include link
 
-    .nav-legal,
-    .nav-social
-        @include media-breakpoint-up(md)
+    @include media-breakpoint-up(md)
+        .nav-legal,
+        .nav-social
             flex-direction: row
 
-    .nav-legal
-        li:not(:first-child)
-            margin-left: -$nav-link-padding-x
-    .nav-social
-        li:not(:last-child)
-            margin-right: -$nav-link-padding-x
+        .nav-legal
+            li:not(:first-child)
+                margin-left: -$nav-link-padding-x
+        .nav-social
+            li:not(:last-child)
+                margin-right: -$nav-link-padding-x
