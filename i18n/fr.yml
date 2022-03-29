@@ -20,6 +20,10 @@ commons:
     prev: Slide précedent
     slideX: Aller au slide %s
   close: Fermer
+  contact:
+    email: Email
+    phone: Téléphone
+    website: Site web
   credit: un site éco-conçu produit avec <a href="https://www.osuny.org/" target="_blank" rel="noreferrer">Osuny</a>
   date: Date
   download:
