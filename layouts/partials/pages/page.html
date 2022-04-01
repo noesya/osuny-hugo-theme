@@ -6,7 +6,7 @@
       </a>
     </p>
     {{ if .Params.description }}
-      <p>{{ truncate 120 (safeHTML .Params.description) }}</p>
+      <p>{{- partial "GetTruncateContent" .Params.description -}}</p>
     {{ end }}
   </div>
 </div>

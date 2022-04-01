@@ -1,0 +1,3 @@
+{{ $text := replace . "<" " <" }}
+{{ $text = chomp (truncate 120 (safeHTML (plainify $text))) }}
+{{ return $text }}

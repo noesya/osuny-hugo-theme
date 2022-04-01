@@ -1,15 +1,15 @@
 <article class="person">
   <div>
-    {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
-    <p class="name"><a href="{{ .Permalink }}">{{ $title }}</a></p>
-    {{ if .Params.description_short }}
-      <p>{{- safeHTML (plainify .Params.description_short) -}}</p>
+    {{- $title := chomp (safeHTML (partial "CorrectPunctuation" .Title)) }}
+    <p class="name"><a href="{{ .Permalink }}">{{- $title -}}</a></p>
+    {{- if .Params.description_short }}
+      <p>{{- chomp (safeHTML (plainify .Params.description_short)) -}}</p>
     {{ else if (partial "GetTextFromHTML" .Content) }}
-      <p>{{- truncate 120 (safeHTML (plainify .Content)) -}}</p>
-    {{ end }}
+      <p>{{- partial "GetTruncateContent"  .Content -}}</p>
+    {{ end -}}
   </div>
   <div class="avatar">
-    {{ if .Params.image }}
+    {{- if .Params.image }}
       {{ partial "commons/image.html"
             (dict
               "alt"    .Title
@@ -18,6 +18,6 @@
               "tablet"   "76x76"
               "desktop"  "76x76"
             )}}
-    {{ end }}
+    {{ end -}}
   </div>
 </article>
