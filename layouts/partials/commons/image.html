@@ -29,7 +29,6 @@
                       {{ partial "GetImageUrl" (dict "url" $url "size" . "format" "webp" "scale" 2) }} 2x"
                       type="image/webp">
       {{- end }}
-
       {{ with .desktop -}}
       <source srcset="{{ partial "GetImageUrl" (dict "url" $url "size" . ) }},
                       {{ partial "GetImageUrl" (dict "url" $url "size" . "scale" 2) }} 2x"
@@ -44,7 +43,6 @@
       <source srcset="{{ partial "GetImageUrl" (dict "url" $url "size" . ) }},
                       {{ partial "GetImageUrl" (dict "url" $url "size" . "scale" 2) }} 2x">
       {{- end }}
-
       <img src="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}"
            alt="{{ chomp (plainify $alt) }}"
            width="{{ $width }}"
