@@ -6,7 +6,7 @@
 {{- if .Params.description -}}
   {{- $seoDescription = .Params.description | chomp -}}
 {{- else -}}
-  {{- $seoDescription = .Summary -}}
+  {{- $seoDescription = truncate 160 .Summary -}}
 {{- end -}}
 {{- $seoImage := "" -}}
 {{- if os.FileExists "static/assets/images/share.png" }}
