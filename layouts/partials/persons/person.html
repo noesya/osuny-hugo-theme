@@ -2,7 +2,9 @@
   <div>
     {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
     <p class="name"><a href="{{ .Permalink }}">{{ $title }}</a></p>
-    {{ if (partial "GetTextFromHTML" .Content) }}
+    {{ if .Params.description_short }}
+      <p>{{- safeHTML (plainify .Params.description_short) -}}</p>
+    {{ else if (partial "GetTextFromHTML" .Content) }}
       <p>{{- truncate 120 (safeHTML (plainify .Content)) -}}</p>
     {{ end }}
   </div>
