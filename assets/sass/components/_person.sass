@@ -9,10 +9,15 @@
     & > a
         @include media-breakpoint-down(md)
             display: block
-        > div:last-of-type
+        > div:first-of-type
             @extend .card-body
             padding-left: 0
             padding-right: 0
+            @include media-breakpoint-down(md)
+                float: left
+                max-width: calc(100% - 5rem)
+                padding-bottom: 0
+                padding-top: 0
 
     p
         margin-bottom: 0
@@ -20,11 +25,6 @@
     .avatar
         @include media-breakpoint-down(md)
             float: right
-            margin-bottom: calc(#{$grid-gutter-width} / 2)
-            margin-left: calc(#{$grid-gutter-width} / 2)
-            & + div
-                padding-bottom: 0
-                padding-top: 0
 
     .name
         @extend .card-title

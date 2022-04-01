@@ -2,7 +2,7 @@
     @extend .card
     border: 0
 
-    > div:last-of-type
+    > div:first-of-type
         @extend .card-body
         padding-left: 0
         padding-right: 0
@@ -13,10 +13,8 @@
 
     .title
         @extend .card-title
+        a
+            @extend .stretched-link
 
     .suptitle
         @extend .card-suptitle
-
-    .link
-        @extend .link-more
-        @extend .stretched-link

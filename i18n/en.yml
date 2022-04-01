@@ -8,6 +8,7 @@ commons:
     main_content: Go to main content
     menu: Go to menu
     search: Go to search
+  backtotop: Back to top
   biography: Biography
   breadcrumb: Breadcrumb
   carousel:
@@ -20,6 +21,10 @@ commons:
     prev: Slide précedent
     slideX: Go to slide %s
   close: Close
+  contact:
+    email: Email
+    phone: Téléphone
+    website: Site web
   credit: a low impact website crafted with <a href="https://www.osuny.org/" target="_blank" rel="noreferrer">Osuny</a>
   date: Date
   download:
@@ -27,6 +32,8 @@ commons:
     pdf: Download PDF
   in: In
   language: Language
+  link:
+    blank: extern link
   menu:
     label: Toggle navigation
     legal: Legals menu
@@ -73,11 +80,13 @@ posts:
   date: Date
   informations: Informations
   next: Next article
+  next_aria: Next article “{{ .Title }}”
   previous: Previous article
+  previous_aria: revious article “{{ .Title }}”
   see_all: See all posts
-  see_all_in_category: See all posts in « {{ .Title }} »
+  see_all_in_category: See all posts in “{{ .Title }}”
   share: Share on
-  share_aria: Share on {{ .Title }}
+  share_aria: Share on {{ .Title }} - extern link
   title: News
 programs:
   _accessibility: Accessibility

@@ -6,23 +6,42 @@
   <div class="partners">
     {{ range .data }}
       <div>
-        {{ if .url }}
-          <a href="{{ .url }}" target="_blank" rel="noreferrer" aria-label="{{ i18n "commons.more_aria" (dict "Title" .name) }}">
-        {{ end }}
-        {{ if .logo }}
-          {{- partial "commons/image.html"
-                (dict
-                  "image"    .logo
-                  "alt"      .name
-                  "mobile"   "351x291"
-                  "tablet"   "334x167"
-                  "desktop"  "634x317"
-                ) -}}
+        {{ if .slug }}
+          {{ with (site.GetPage (printf "/organizations/%s" .slug )) }}
+            <a href="{{ .Permalink }}" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">
+            {{ if .Params.logo }}
+              {{- partial "commons/image.html"
+                    (dict
+                      "image"    .Params.logo
+                      "alt"      .Title
+                      "mobile"   "351x291"
+                      "tablet"   "334x167"
+                      "desktop"  "634x317"
+                    ) -}}
+            {{ else }}
+              {{ .Title }}
+            {{ end }}
+            </a>
+          {{ end }}
         {{ else }}
-          {{ .name }}
-        {{ end }}
-        {{ if .url }}
-          </a>
+          {{ if .url }}
+            <a href="{{ .url }}" target="_blank" rel="noreferrer" aria-label="{{ i18n "commons.more_aria" (dict "Title" .name) }}">
+          {{ end }}
+          {{ if .logo }}
+            {{- partial "commons/image.html"
+                  (dict
+                    "image"    .logo
+                    "alt"      .name
+                    "mobile"   "351x291"
+                    "tablet"   "334x167"
+                    "desktop"  "634x317"
+                  ) -}}
+          {{ else }}
+            {{ .name }}
+          {{ end }}
+          {{ if .url }}
+            </a>
+          {{ end }}
         {{ end }}
       </div>
     {{ end }}

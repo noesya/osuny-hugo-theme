@@ -2,7 +2,7 @@
     @extend .card
     border: 0
 
-    > div:last-of-type
+    > div:first-of-type
         @extend .card-body
         padding-left: 0
         padding-right: 0
@@ -16,9 +16,8 @@
         a
             @extend .link
             @extend .link-more
+            @extend .stretched-link
             font-size: px2rem(22)
             line-height: px2rem(30)
-
-    .link
-        @extend .link-more
-        @extend .stretched-link
+            &::after
+                content: ''

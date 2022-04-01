@@ -5,12 +5,14 @@
 {{- if .class -}}
   {{- $ulClass = printf "%s " .class -}}
 {{- end -}}
+{{ $extern_link := i18n "commons.link.blank" }}
 <ul class="{{ $ulClass }}{{ if $level }}nav-level-{{ $level }}{{ end }}">
   {{ range .items -}}
     {{- $slug := urlize .title -}}
     {{- $itemClass := "" -}}
     {{- $linkClass := "" -}}
     {{- $attr := "" -}}
+    {{- $attr_title := "" -}}
     {{- $hasDropdown := false -}}
     {{- if gt (len .children) 0 -}}
       {{- $itemClass = printf "%shas-children" $itemClass -}}
@@ -21,10 +23,12 @@
     {{- end -}}
     {{- if and (hasPrefix .target "http") (eq .kind "url") -}}
       {{- $attr = " target=\"_blank\" rel=\"noreferrer\"" -}}
+      {{- $attr_title = printf "title=\"%s - %s\"" .title $extern_link -}}
     {{- end -}}
+    {{- if or (ne $stop 1) (and (eq $stop 1) (ne .kind "blank")) -}}
     <li{{ if ne $itemClass ""}} class="{{ $itemClass }}"{{ end }}>
       {{- if ne .kind "blank" -}}
-        <a href="{{ .target }}"{{ if ne $linkClass ""}} class="{{ $linkClass }}"{{ end }} {{ safeHTMLAttr $attr }}>{{ .title }}</a>
+        <a href="{{ .target }}"{{ if ne $linkClass ""}} class="{{ $linkClass }}"{{ end }} {{ safeHTMLAttr $attr }} {{ safeHTMLAttr $attr_title }}>{{ .title }}</a>
       {{- else -}}
         <span class="{{ if ne $linkClass ""}} {{ $linkClass }}{{ end }}{{ if gt .level 1 }} disabled{{ end }}"{{ safeHTMLAttr $attr }}>{{ .title }}</span>
       {{- end -}}
@@ -46,5 +50,6 @@
         {{- end -}}
       {{- end -}}
     </li>
+    {{- end -}}
   {{ end -}}
 </ul>

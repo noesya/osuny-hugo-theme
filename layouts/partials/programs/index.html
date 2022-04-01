@@ -3,40 +3,13 @@
 {{ range $index, $programs := sort .Pages ".Params.position" }}
   <div class="programs">
     <div class="highlighted">
-      <div class="program">
-        <div>
-          <h2 class="title">
-            <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
-          </h2>
-          <p>{{ partial "PrepareHTML" .Params.description }}</p>
-        </div>
-      </div>
+      {{ partial "programs/program.html" . }}
     </div>
     {{ range sort .Pages ".Params.position"  }}
     <div>
-      <div class="program">
-        {{ if .Params.image }}
-          <div class="media">
-            {{ partial "commons/image.html"
-                  (dict
-                    "image"    .Params.image
-                    "class"    "img-fluid"
-                    "mobile"   "351x168"
-                    "tablet"   "456x219"
-                    "desktop"  "856x410"
-                    "itemprop" true
-                  )}}
-          </div>
-        {{ end }}
-        <div>
-          <p class="title">
-            <a href="{{ .Permalink }}" class="link">{{ partial "PrepareHTML" .Title }}</a>
-          </p>
-          {{ if .Params.description}}
-            <p>{{ partial "PrepareHTML" .Params.description }}</p>
-          {{ end }}
-        </div>
-      </div>
+      {{ .Scratch.Set "with_image" true }}
+      {{ partial "programs/program.html" . }}
+      {{ .Scratch.Delete "with_image" }}
     </div>
     {{ end }}
   </div>

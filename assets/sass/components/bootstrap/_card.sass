@@ -1,8 +1,13 @@
 .card
+
+    > div:first-of-type
+        order: 2
+
     &-media
         --bs-aspect-ratio: 50%
         @extend .ratio
         background-color: $light
+        order: 1
         overflow: hidden
         // polyfill for ratio size
         @supports not (--css: variables)
@@ -19,16 +24,23 @@
     &-suptitle
         margin-bottom: 0
     &-title
+        // margin-bottom: 0
         margin-top: 0
         a
             text-decoration-color: transparent
             &:hover
                 text-decoration-color: $link-color
-    &-text
-        margin-bottom: 0
+    &-title:is(a)
+        font-size: px2rem(18)
+        line-height: $line-height-base
+    // &-text
+    //     margin-bottom: 0
 
     > a[type="button"]
         appearance: none
+
+    p
+        margin-bottom: 0
 
     time
         color: $gray-600

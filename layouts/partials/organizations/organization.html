@@ -1,21 +1,19 @@
-<article class="post">
+<article class="organization">
   <div>
     {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
     <p class="title"><a href="{{ .Permalink }}">{{ $title }}</a></p>
-    <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
   </div>
   <div class="media">
-    {{- if .Params.image -}}
+    {{- if .Params.logo -}}
       {{- partial "commons/image.html"
             (dict
-              "image"    .Params.image
+              "image"    .Params.logo
               "alt"      .Title
               "mobile"   "351x291"
               "tablet"   "334x167"
               "desktop"  "634x317"
+              "class"    "img-fluid"
             ) -}}
-    {{- else -}}
-      {{- partial "commons/image-default.html" (dict "class" "img-fluid") -}}
     {{- end -}}
   </div>
 </article>

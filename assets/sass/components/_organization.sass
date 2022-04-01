@@ -1,4 +1,4 @@
-.post
+.organization
     @extend .card
     border: 0
 
@@ -8,15 +8,12 @@
         padding-right: 0
 
     .media
-        --bs-aspect-ratio: 50%
+        --bs-aspect-ratio: 100%
         @extend .card-media
 
     .title
         @extend .card-title
+        font-size: px2rem(16)
+        line-height: px2rem(20)
         a
             @extend .stretched-link
-
-    .post-categories
-        @extend .card-text
-        @extend .small
-        color: $gray-700

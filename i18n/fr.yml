@@ -8,6 +8,7 @@ commons:
     main_content: Accéder au contenu principal
     menu: Accéder au menu
     search: Accéder à la recherche
+  backtotop: Haut de page
   biography: Biographie
   breadcrumb: Fil d’arianne
   carousel:
@@ -20,6 +21,10 @@ commons:
     prev: Slide précedent
     slideX: Aller au slide %s
   close: Fermer
+  contact:
+    email: Email
+    phone: Téléphone
+    website: Site web
   credit: un site éco-conçu produit avec <a href="https://www.osuny.org/" target="_blank" rel="noreferrer">Osuny</a>
   date: Date
   download:
@@ -27,6 +32,8 @@ commons:
     pdf: Télécharger le PDF
   in: Dans
   language: Langue
+  link:
+    blank: lien externe
   menu:
     label: Ouvrir / Fermer le menu
     legal: Menu pages légales
@@ -35,7 +42,7 @@ commons:
     social: Menu réseaux sociaux
     title: Menu
   more: En savoir plus
-  more_aria: En savoir plus sur “{{ .Title }}”
+  more_aria: En savoir plus sur « {{ .Title }} »
   pagination:
     first: Première page
     label: Pagination
@@ -73,11 +80,13 @@ posts:
   date: Date
   informations: Informations
   next: Article suivant
+  next_aria: Article suivant « {{ .Title }} »
   previous: Article précédent
+  previous_aria: Article précédent « {{ .Title }} »
   see_all: Voir toutes les actualités
   see_all_in_category: Voir toutes les actualités « {{ .Title }} »
   share: Partager sur
-  share_aria: Partager sur {{ .Title }}
+  share_aria: Partager sur {{ .Title }} - lien externe
   title: Actualités
 programs:
   _accessibility: Accessibilité

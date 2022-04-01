@@ -1,0 +1,37 @@
+{{ define "main" }}
+  {{ partial "organizations/hero.html" . }}
+
+  <div class="container">
+    <div class="content">
+      <div>
+        {{- if .Params.logo -}}
+          <div class="media">
+            {{- partial "commons/image.html"
+                  (dict
+                    "image"    .Params.logo
+                    "alt"      .Title
+                    "mobile"   "351x291"
+                    "tablet"   "334x167"
+                    "desktop"  "634x317"
+                    "class"    "img-fluid"
+                  ) -}}
+          </div>
+        {{- end -}}
+      </div>
+      <div>
+        {{ if (partial "GetTextFromHTML" .Content) }}
+          <div itemprop="articleBody">
+          {{
+            partial "PrepareHTML" (
+              partial "H2AddId" .Content
+            )
+          }}
+          </div>
+        {{ end }}
+
+        {{ partial "organizations/contacts.html" . }}
+
+      </div>
+    </div>
+  </div>
+{{ end }}

@@ -10,10 +10,10 @@
 {{- end -}}
 {{- $seoImage := "" -}}
 {{- if os.FileExists "static/assets/images/share.png" }}
-    {{- $seoImage = "/assets/images/share.png" -}}
+    {{- $seoImage = printf "%sassets/images/share.png" site.BaseURL -}}
 {{ end }}
 {{- if os.FileExists "static/assets/images/share.jpg" }}
-    {{- $seoImage = "/assets/images/share.jpg" -}}
+    {{- $seoImage = printf "%sassets/images/share.jpg" site.BaseURL -}}
 {{ end }}
 {{- if .Params.image }}
   {{- $image := partial "GetMedia" .Params.image -}}
