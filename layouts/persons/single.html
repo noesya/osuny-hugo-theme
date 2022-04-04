@@ -50,10 +50,10 @@
 
       <div class="content">
         <div>
-          {{ if .Content }}
-            <p class="lead" itemprop="description">
-              {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-            </p>
+          {{ if (partial "GetTextFromHTML" .Content) }}
+            <div class="lead" itemprop="description">
+              {{ partial "PrepareHTML" .Content }}
+            </div>
           {{ end }}
         </div>
         <div>
