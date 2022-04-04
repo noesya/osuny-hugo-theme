@@ -2,17 +2,7 @@
   {{ partial "posts/hero-list.html" . }}
 
   <div class="container">
-    <div class="posts">
-      {{ range $index, $list := .Paginator.Pages }}
-        <div>
-          {{ $lazy := true }}
-          {{ if (eq $index 0) }}
-            {{ $lazy = false }}
-          {{ end }}
-          {{ partial "posts/post.html" . }}
-        </div>
-      {{ end }}
-    </div>
+    {{ partial "posts/posts.html" . }}
     {{ partial "commons/pagination.html" . }}
   </div>
 {{ end }}
