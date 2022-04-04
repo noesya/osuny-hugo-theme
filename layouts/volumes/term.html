@@ -14,15 +14,7 @@
   <div class="container">
     <div class="content">
       {{ partial "volumes/image.html" . }}
-
-      {{- if (partial "GetTextFromHTML" .Content) -}}
-      <div>
-        <div itemprop="description">
-          {{ partial "PrepareHTML" .Content }}
-        </div>
-      </div>
-      {{- end -}}
-
+      {{ partial "volumes/description.html" . }}
       {{ partial "volumes/aside.html" . }}
       {{ partial "volumes/table-contents.html" . }}
     </div>
