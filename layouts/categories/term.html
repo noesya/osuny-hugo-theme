@@ -2,12 +2,10 @@
   {{ partial "categories/hero-term.html" . }}
 
   <div class="container">
-    {{ $content := .Content | plainify }}
-    {{ $content = trim $content "\n" }}
-    {{ if $content }}
-    <section class="description">
-      <p>{{- partial "PrepareHTML" .Content -}}</p>
-    </section>
+    {{ if (partial "GetTextFromHTML" .Content) }}
+      <div class="lead" itemprop="description">
+        <p>{{ partial "PrepareHTML" .Content }}</p>
+      </div>
     {{ end }}
 
     {{ partial "posts/posts.html" . }}

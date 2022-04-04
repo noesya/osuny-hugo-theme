@@ -5,22 +5,7 @@
           "context" .
         ) -}}
   <div class="container">
-    {{ if .Content }}
-      <div class="content">
-        <div>
-          <p class="lead">
-            {{ safeHTML (partial "CorrectPunctuation" .Content) }}
-          </p>
-        </div>
-      </div>
-    {{ end }}
-    <div class="articles">
-      {{ range .Paginator.Pages }}
-        <div>
-          {{ partial "articles/article.html" . }}
-        </div>
-      {{ end }}
-    </div>
+    {{ partial "articles/articles.html" . }}
     {{ partial "commons/pagination.html" . }}
   </div>
 {{ end }}
