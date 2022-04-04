@@ -14,10 +14,10 @@
         </div>
       </div>
     {{ end }}
-    <div class="pages">
+    <div class="articles">
       {{ range .Paginator.Pages }}
         <div>
-          {{ partial "pages/page.html" . }}
+          {{ partial "articles/article.html" . }}
         </div>
       {{ end }}
     </div>
