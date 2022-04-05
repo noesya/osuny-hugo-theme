@@ -1,0 +1,13 @@
+.nav-accessibility
+    list-style: none
+    margin: 0
+    padding: calc(#{$grid-gutter-width} / 2)
+    position: absolute
+    transform: translateY(-100%)
+    z-index: $zindex-popover
+    li
+        display: inline-block
+        margin-right: px2rem(5)
+    &:focus-within
+        position: relative
+        transform: translateY(0)

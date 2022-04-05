@@ -1,0 +1,30 @@
+.footer-nav-expand
+    .nav-level-1
+        @extend .grid
+        margin-bottom: map-get($spacers, 3)
+        margin-left: 0
+        > li
+            break-inside: avoid
+            margin-bottom: calc(#{$grid-gutter-width} * 2)
+            margin-left: -$nav-link-padding-x
+            & > a,
+            & > span
+                margin-top: 0
+                padding-bottom: calc(#{$grid-gutter-width} / 2)
+
+    .nav-level-1
+        a
+            text-decoration-color: transparent
+        > li
+            & > a,
+            & > span
+                font-size: px2rem(24)
+
+    .nav-level-2
+        > li
+            & > a,
+            & > span
+                font-size: px2rem(18)
+
+    .nav-level-3
+        margin-bottom: $grid-gutter-width

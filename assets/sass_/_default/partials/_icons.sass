@@ -1,0 +1,21 @@
+//    Icons:
+//    - abstracts/icons
+//    - base/fonts-icons
+//    - components/icons
+
+// set icon classes
+.icon,
+[class^="icon-"],
+[class*=" icon-"]
+    &::before
+        @include icon
+
+@each $name, $glyph in $icons
+    .icon-#{$name}
+        &::before
+            content: $glyph
+    .btn-#{$name}
+        @extend .icon
+        &::before
+            content: $glyph
+            margin-right: px2rem(5)

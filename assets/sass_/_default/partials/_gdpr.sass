@@ -1,0 +1,32 @@
+.gdpr-cookie-consent
+    background: white
+    border: 1px solid $border-color
+    color: black
+    display: none
+    font-size: px2rem(14)
+    inset: auto $spacer $spacer $spacer
+    max-width: 500px
+    padding: $spacer
+    position: fixed
+    z-index: 9999
+    // polyfill for inset
+    @supports not (inset: 0)
+        bottom: $spacer
+        left: $spacer
+        right: $spacer
+        top: auto
+
+    > div:first-of-type
+        margin-bottom: $spacer
+
+    p
+        margin-bottom: 0
+
+    a
+        text-decoration: underline
+
+    button
+        @extend .btn
+        @extend .btn-primary
+        &:first-of-type
+            margin-right: map-get($spacers, 1)

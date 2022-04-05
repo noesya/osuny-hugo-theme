@@ -1,0 +1,68 @@
+.hero
+    align-items: flex-end
+    background-color: $primary
+    color: $white
+    display: flex
+    margin-bottom: 3rem
+    min-height: 300px
+    overflow: hidden
+    padding-bottom: 2rem
+    padding-top: 2rem
+    position: relative
+    @include media-breakpoint-up(md)
+        min-height: 450px
+
+    > picture
+        img
+            height: 100%
+            inset: 0
+            object-fit: cover
+            opacity: .3
+            position: absolute
+            width: 100%
+            // polyfill for inset
+            @supports not (inset: 0)
+                bottom: 0
+                left: 0
+                right: 0
+                top: 0
+
+    .container
+        position: relative
+        @include media-breakpoint-up(md)
+            > div:first-of-type:not(.title-avatar)
+                max-width: 76.666666667%
+
+    nav
+        margin-top: auto
+        @include media-breakpoint-down(md)
+            margin-left: calc(#{$grid-gutter-width} / -2)
+            width: calc(100% + #{$grid-gutter-width})
+
+    a
+        color: $white
+        text-decoration-color: rgba($white, .3)
+        &:hover
+            text-decoration-color: $white
+
+    .breadcrumb
+        a
+            color: $white
+
+    .title-avatar
+        @include make-row()
+        align-items: flex-end
+        @include media-breakpoint-up(md)
+            margin-bottom: 1.5rem
+        > *
+            @include make-col-ready()
+        h1
+            @include media-breakpoint-up(md)
+                @include make-col(10)
+                margin-bottom: 0
+        > div
+            @include make-col(4)
+            @include media-breakpoint-down(md)
+                margin-bottom: map-get($spacers, 4)
+            @include media-breakpoint-up(md)
+                @include make-col(2)
