@@ -7,8 +7,7 @@
     {{ partial "head/seo.html" . }}
     {{ partial "head/rss.html" . }}
   </head>
-  {{ $is_single := or (eq .Kind "page") (eq .Kind "term") }}
-  <body class="{{ .Type }}__{{ .Kind }} {{ if $is_single }}is-single{{ end }}"{{ if .IsSection }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
+  <body class="{{ .Type }}__{{ .Kind }}"{{ if .IsSection }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
     <main id="main" role="main" tabindex="-1">
