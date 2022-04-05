@@ -3,6 +3,12 @@ body
     -webkit-font-smoothing: antialiased
     font-variant-ligatures: common-ligatures
     text-rendering: optimizelegibility
+    @media (prefers-reduced-motion: reduce)
+        *
+            transition-duration: 0s !important
+    &:not(.is-loaded)
+        *
+            transition-duration: 0s !important
 
 ::selection
     background: rgba($primary, .7)
