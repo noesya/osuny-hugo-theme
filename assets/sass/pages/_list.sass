@@ -1,0 +1,10 @@
+.pages
+    --bs-gutter-y: 1rem
+    @extend .row
+    > *
+        @extend .col-md-6
+
+.pages__section
+    [itemprop="articleBody"] + section,
+    div + .blocks
+        margin-top: $grid-gutter-width * 3

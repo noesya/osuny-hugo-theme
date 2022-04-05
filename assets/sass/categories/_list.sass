@@ -1,0 +1,12 @@
+.categories
+    --bs-gutter-y: 3rem
+    @extend .row
+    > *
+        @extend .col-md-6
+        @extend .col-lg-4
+
+.categories__term
+    main
+        .description
+            margin-bottom: map-get($spacers, 5)
+            max-width: calc( 100/12 * 8 * 1% - (#{$grid-gutter-width} / 2))

@@ -1,0 +1,27 @@
+.persons
+    --bs-gutter-y: 3rem
+    @extend .row
+    > *
+        @extend .col-md-6
+        @extend .col-lg-4
+
+.persons__section
+    .taxonomies
+        @extend .list-inline
+        margin-bottom: map-get($spacers, 4)
+        @include media-breakpoint-up(md)
+            text-align: right
+        li
+            @include media-breakpoint-up(md)
+                display: inline-block
+                &:not(:last-child)
+                    margin-right: .5rem
+        a
+            @extend .link
+            @extend .link-more
+            @include link
+            text-decoration-color: transparent
+        &:empty
+            margin-bottom: 0
+            @include media-breakpoint-down(md)
+                flex-direction: column

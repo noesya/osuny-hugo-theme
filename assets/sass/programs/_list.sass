@@ -1,0 +1,21 @@
+.programs
+    --bs-gutter-y: 3rem
+    @extend .row
+    > *
+        @extend .col-md-6
+    .highlighted
+        @extend .col-md-12
+        @extend .col-lg-8
+    & + hr
+        @extend .my-5
+
+.programs__section
+    article
+        .programs
+            --bs-gutter-y: 1rem
+        .persons
+            --bs-gutter-y: 1.5rem
+            margin-bottom: 3rem
+            margin-top: -2rem
+            @include media-breakpoint-up(lg)
+                @include row-cols(2)
