@@ -6,13 +6,7 @@
           "context" .
         ) -}}
   <div class="container">
-    <div class="articles">
-      {{ range .Paginator.Pages }}
-        <div>
-          {{ partial "articles/article.html" . }}
-        </div>
-      {{ end }}
-    </div>
+    {{ partial "articles/articles.html" . }}
     {{ partial "commons/pagination.html" . }}
   </div>
 {{ end }}

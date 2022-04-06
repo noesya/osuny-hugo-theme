@@ -1,18 +1,7 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "image" .Params.image
-          "context" .
-        ) -}}
+  {{ partial "volumes/hero.html" . }}
   <div class="container">
-    <div class="volumes">
-      {{ range .Paginator.Pages }}
-        <div>
-          {{ partial "volumes/volume.html" . }}
-        </div>
-      {{ end }}
-    </div>
+    {{ partial "volumes/volumes.html" . }}
     {{ partial "commons/pagination.html" . }}
   </div>
 {{ end }}

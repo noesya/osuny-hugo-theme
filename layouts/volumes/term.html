@@ -1,10 +1,6 @@
 {{ define "main" }}
-  {{- partial "header/hero.html"
-        (dict
-          "title" .Title
-          "image" .Params.image
-          "context" .
-        ) -}}
+  {{ partial "volumes/hero.html" . }}
+
 <article itemscope itemtype="https://schema.org/PublicationVolume">
   <meta itemprop="name" content="{{ .Title }}">
   {{- if .Params.image -}}
@@ -17,18 +13,10 @@
 
   <div class="container">
     <div class="content">
-      
       {{ partial "volumes/image.html" . }}
-
-      <div>
-        <div itemprop="description">
-          {{ partial "PrepareHTML" .Content }}
-        </div>
-      </div>
-
+      {{ partial "volumes/description.html" . }}
       {{ partial "volumes/aside.html" . }}
       {{ partial "volumes/table-contents.html" . }}
-
     </div>
   </div>
 </article>
