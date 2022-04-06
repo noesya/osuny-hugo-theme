@@ -1,22 +1,18 @@
-.program
+.page
     @extend .card
     border: 0
 
     > div:first-of-type
         @extend .card-body
-        order: 2
         padding-left: 0
         padding-right: 0
 
     .media
-        --bs-aspect-ratio: 70%
         @extend .card-media
-        @include media-breakpoint-up(md)
-            max-width: calc(50% - #{$grid-gutter-width} / 2)
 
     .title
         @extend .card-title
-        margin-bottom: 0.5rem
+        margin-bottom: .5rem
         a
             @extend .link
             @extend .link-more
@@ -25,11 +21,8 @@
             line-height: px2rem(30)
             &::after
                 content: ''
-
-        .highlighted &
-            margin-bottom: 1rem
-            a
-                font-size: px2rem(26)
-                line-height: px2rem(36)
-                &::before
-                    content: none
+.pages
+    --bs-gutter-y: 1rem
+    @extend .row
+    > *
+        @extend .col-md-6

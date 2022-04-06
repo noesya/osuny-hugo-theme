@@ -1,4 +1,4 @@
-.volume
+.post
     @extend .card
     border: 0
 
@@ -8,7 +8,7 @@
         padding-right: 0
 
     .media
-        --bs-aspect-ratio: 118.77%
+        --bs-aspect-ratio: 50%
         @extend .card-media
 
     .title
@@ -16,5 +16,14 @@
         a
             @extend .stretched-link
 
-    .suptitle
-        @extend .card-suptitle
+    .post-categories
+        @extend .card-text
+        @extend .small
+        color: $gray-700
+
+.posts
+    --bs-gutter-y: 3rem
+    @extend .row
+    > *
+        @extend .col-md-6
+        @extend .col-lg-4

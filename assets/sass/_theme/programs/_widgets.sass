@@ -1,0 +1,46 @@
+.program
+    @extend .card
+    border: 0
+
+    > div:first-of-type
+        @extend .card-body
+        order: 2
+        padding-left: 0
+        padding-right: 0
+
+    .media
+        --bs-aspect-ratio: 70%
+        @extend .card-media
+        @include media-breakpoint-up(md)
+            max-width: calc(50% - #{$grid-gutter-width} / 2)
+
+    .title
+        @extend .card-title
+        margin-bottom: 0.5rem
+        a
+            @extend .link
+            @extend .link-more
+            @extend .stretched-link
+            font-size: px2rem(22)
+            line-height: px2rem(30)
+            &::after
+                content: ''
+
+        .highlighted &
+            margin-bottom: 1rem
+            a
+                font-size: px2rem(26)
+                line-height: px2rem(36)
+                &::before
+                    content: none
+
+.programs
+    --bs-gutter-y: 3rem
+    @extend .row
+    > *
+        @extend .col-md-6
+    .highlighted
+        @extend .col-md-12
+        @extend .col-lg-8
+    & + hr
+        @extend .my-5

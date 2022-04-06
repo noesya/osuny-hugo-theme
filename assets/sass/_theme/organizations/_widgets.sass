@@ -1,4 +1,4 @@
-.page
+.organization
     @extend .card
     border: 0
 
@@ -8,16 +8,18 @@
         padding-right: 0
 
     .media
+        --bs-aspect-ratio: 100%
         @extend .card-media
 
     .title
         @extend .card-title
-        margin-bottom: .5rem
+        font-size: px2rem(16)
+        line-height: px2rem(20)
         a
-            @extend .link
-            @extend .link-more
             @extend .stretched-link
-            font-size: px2rem(22)
-            line-height: px2rem(30)
-            &::after
-                content: ''
+
+.organizations
+    @extend .row
+    > *
+        @extend .col-6
+        @extend .col-lg-2
