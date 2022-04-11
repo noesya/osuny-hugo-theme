@@ -4,7 +4,7 @@
   <div class="container">
     {{ if (partial "GetTextFromHTML" .Content) }}
       <div class="lead" itemprop="description">
-        <p>{{ partial "PrepareHTML" .Content }}</p>
+        {{ partial "PrepareHTML" .Content }}
       </div>
     {{ end }}
 
