@@ -85,7 +85,7 @@ posts:
   previous_aria: revious article “{{ .Title }}”
   see_all: See all posts
   see_all_in_category: See all posts in “{{ .Title }}”
-  share: Share on
+  share: Please, share
   share_aria: Share on {{ .Title }} - extern link
   title: News
 programs:
