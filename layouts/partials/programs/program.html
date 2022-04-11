@@ -9,8 +9,8 @@
         {{- safeHTML (partial "CorrectPunctuation" .Title) -}}
       </a>
     </p>
-    {{ if .Params.description }}
-      <p>{{ partial "PrepareHTML" .Params.description }}</p>
+    {{ if (partial "GetTextFromHTML" .Params.presentation) }}
+      {{ partial "PrepareHTML" .Params.presentation }}
     {{ end }}
   </div>
   {{ if $with_image }}
