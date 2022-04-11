@@ -5,6 +5,8 @@
 {{- $seoDescription := "" -}}
 {{- if .Params.description -}}
   {{- $seoDescription = .Params.description | chomp -}}
+{{- else if .Params.description_short -}}
+  {{- $seoDescription = .Params.description_short | chomp -}}
 {{- else -}}
   {{- $seoDescription = truncate 160 .Summary -}}
 {{- end -}}
