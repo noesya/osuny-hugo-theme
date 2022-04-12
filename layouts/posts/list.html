@@ -1,8 +1,13 @@
 {{ define "main" }}
   {{ partial "posts/hero-list.html" . }}
+  {{ partial "commons/list-content.html" . }}
 
   <div class="container">
     {{ partial "posts/posts.html" . }}
     {{ partial "commons/pagination.html" . }}
+  </div>
+
+  <div class="container">
+    {{ partial "blocks/list.html" .Params.blocks }}
   </div>
 {{ end }}
