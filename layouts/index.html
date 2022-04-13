@@ -25,5 +25,11 @@
 
     {{ partial "home/volumes.html" . }}
 
+    {{ if .Params.blocks }}
+      <section>
+        {{ partial "blocks/list.html" .Params.blocks }}
+      </section>
+    {{ end }}
+
   </div>
 {{ end }}
