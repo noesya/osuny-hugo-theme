@@ -10,7 +10,7 @@ Splide.defaults = {
         play: 'Démarrer le carousel',
         prev: 'Slide précedent',
         slideX: 'Aller au slide %s'
-    },
+    }
 };
 
 (function () {
