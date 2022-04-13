@@ -13,7 +13,10 @@ Splide.defaults = {
     },
 };
 
-var elms = document.getElementsByClassName( 'splide' );
-for ( var i = 0; i < elms.length; i++ ) {
-    new Splide( elms[ i ] ).mount();
-}
+(function () {
+    var splides = document.getElementsByClassName('splide'),
+        i = 0;
+    for (i = 0; i < splides.length; i+=1) {
+        new Splide(splides[i]).mount();
+    }
+}());
