@@ -3,7 +3,7 @@
   {{ if .title }}
     <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
-  <div class="testimonials splide" data-splide='{"arrows":false,"autoplay":true,"autoHeight":true}'>
+  <div class="testimonials splide" data-slides-length="{{ len .data.testimonials }}" data-splide='{"arrows":false,"autoplay":true,"autoHeight":true}'>
     <div class="splide__track">
       <div class="splide__list">
       {{ range .data.testimonials }}

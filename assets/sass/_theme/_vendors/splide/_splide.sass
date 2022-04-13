@@ -51,3 +51,7 @@
         @extend .icon-play
     &__pause
         @extend .icon-pause
+    &[data-slides-length="1"]
+        .splide
+            &__autoplay, &__pagination, &__arrow
+                display: none
