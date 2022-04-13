@@ -70,6 +70,10 @@
         </div>
 
         {{ partial "posts/related.html" $category }}
+
+        {{ if .Params.blocks }}
+          {{ partial "blocks/list.html" .Params.blocks }}
+        {{ end }}
       </div>
     </div>
   </div>

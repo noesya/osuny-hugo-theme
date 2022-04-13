@@ -9,7 +9,7 @@
       {{ range .data.testimonials }}
         <figure class="splide__slide">
           <blockquote>
-            {{- .text -}}
+            {{- partial "PrepareHTML" .text -}}
           </blockquote>
           <figcaption>
             {{ if .photo }}

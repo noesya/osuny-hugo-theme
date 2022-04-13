@@ -15,4 +15,7 @@
   </div>
   {{ if ne (add $index 1) $len }}<hr>{{ end }}
 {{ end }}
+  {{ if .Params.blocks }}
+    {{ partial "blocks/list.html" .Params.blocks }}
+  {{ end }}
 </div>
