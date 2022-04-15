@@ -1,4 +1,4 @@
-{{ if .Content }}
+{{ if (partial "GetTextFromHTML" .Content) }}
 <div class="container">
     <section itemprop="articleBody">
         {{ safeHTML (partial "PrepareHTML" .Content) }}

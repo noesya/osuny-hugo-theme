@@ -12,10 +12,7 @@
         {{ partial "posts/aside.html" . }}
         <div>
           {{ partial "posts/image.html" .Params.image }}
-          <div itemprop="articleBody">
-            {{ partial "PrepareHTML" .Content }}
-            {{ partial "PrepareHTML" .Params.text }}
-          </div>
+          {{ partial "posts/body.html" . }}
           {{ partial "posts/prevnext.html" . }}
         </div>
       </div>
