@@ -28,12 +28,7 @@
             {{- end -}}
           </th>
           <td itemprop="articleSection">
-            {{- range $index, $s := .GetTerms "categories" -}}
-              {{ if ne $index 0 }},{{ end }}
-              <a href="{{ .Permalink }}" >
-                {{- safeHTML .Title -}}
-              </a>
-            {{- end }}
+            {{ partial "posts/categories.html" . }}
           </td>
         </tr>
       {{ end }}
