@@ -1,8 +1,10 @@
 {{ return
 safeHTML (
-  partial "CorrectPunctuation" (
-    partial "FixIframeRatio" (
-      .
+  trim (
+    partial "CorrectPunctuation" (
+      partial "FixIframeRatio" (
+        .
+      )
     )
-  )
+  ) "\n "
 ) }}
