@@ -1,5 +1,5 @@
 {{ $h2s := partial "H2Extract" .context.Content }}
-{{- if or (or .category .context.Pages) $h2s }}
+{{- if or (or .category .context.Pages .context.Params.blocks) $h2s }}
 <nav class="toc" id="nav-toc" aria-label="{{ i18n "commons.toc" }}">
   <ol>
     {{- if and (not $h2s) (partial "GetTextFromHTML" .context.Content) }}
