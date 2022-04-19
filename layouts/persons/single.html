@@ -1,24 +1,24 @@
 {{ define "main" }}
-  {{ $slug := .Slug }}
-  {{ $programsForTeacher := slice }}
-  {{ if isset site.Taxonomies "teachers" }}
+  {{- $slug := .Slug -}}
+  {{- $programsForTeacher := slice -}}
+  {{ if isset site.Taxonomies "teachers" -}}
     {{ $programsForTeacher = index site.Taxonomies.teachers $slug}}
-  {{ end }}
-  {{ $programsForAdministrator := slice }}
-  {{ if isset site.Taxonomies "administrators" }}
+  {{- end }}
+  {{- $programsForAdministrator := slice -}}
+  {{ if isset site.Taxonomies "administrators" -}}
     {{ $programsForAdministrator = index site.Taxonomies.administrators $slug}}
-  {{ end }}
-  {{ $articlesForResearcher := slice }}
-  {{ if isset site.Taxonomies "researchers" }}
+  {{- end }}
+  {{- $articlesForResearcher := slice -}}
+  {{- if isset site.Taxonomies "researchers" -}}
     {{ $articlesForResearcher = index site.Taxonomies.researchers $slug}}
-  {{ end }}
-  {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
+  {{- end }}
+  {{- $author := site.GetPage (printf "/authors/%s" $slug) }}
   <header class="hero">
     <div class="container">
       <div class="title-avatar">
-        <h1>{{ safeHTML (partial "CorrectPunctuation" .Title) }}</h1>
+        <h1>{{ partial "PrepareHTML" .Title }}</h1>
         <div>
-          {{ if .Params.image }}
+          {{ if .Params.image -}}
             <div class="avatar">
               {{ partial "commons/image.html"
                     (dict
@@ -30,7 +30,7 @@
                       "desktop"  "196x196"
                     )}}
             </div>
-          {{ end }}
+          {{- end }}
         </div>
       </div>
       {{ partial "header/breadcrumbs.html" . }}

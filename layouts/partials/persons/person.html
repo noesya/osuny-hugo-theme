@@ -1,6 +1,6 @@
 <article class="person">
   <div>
-    {{- $title := chomp (safeHTML (partial "CorrectPunctuation" .Title)) }}
+    {{- $title := partial "PrepareHTML" .Title }}
     <p class="name"><a href="{{ .Permalink }}">{{- $title -}}</a></p>
     {{- if .Params.description_short }}
       <p>{{- chomp (safeHTML (plainify .Params.description_short)) -}}</p>

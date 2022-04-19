@@ -14,7 +14,8 @@
     {{- end -}}
   </div>
   <div>
-    <p class="title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
-    <a href="{{ .Permalink }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">{{ i18n "commons.more" }}</a>
+    {{ $title := partial "PrepareHTML" .Title }}
+    <p class="title">{{ $title }}</p>
+    <a href="{{ .Permalink }}" class="link" title="{{ safeHTML (i18n "commons.more_aria" (dict "Title" $title)) }}">{{ i18n "commons.more" }}</a>
   </div>
 </article>

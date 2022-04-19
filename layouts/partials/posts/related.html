@@ -3,7 +3,7 @@
   <div class="top">
     <h2 id="page-posts">{{ i18n "posts.title" }}</h2>
     <a href="{{ .Permalink }}" class="link">
-      {{ $category_name := safeHTML (partial "CorrectPunctuation" .Title) | truncate 30 }}
+      {{ $category_name := partial "PrepareHTML" .Title | truncate 30 }}
       {{ safeHTML (i18n "posts.see_all_in_category" (dict "Title" $category_name)) }}
     </a>
   </div>

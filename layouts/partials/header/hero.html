@@ -12,7 +12,7 @@
   {{ end -}}
   <div class="container">
     <div>
-      <h1>{{ safeHTML (partial "CorrectPunctuation" .title) }}</h1>
+      <h1>{{ partial "PrepareHTML" .title }}</h1>
     </div>
     {{ partial "header/breadcrumbs.html" .context }}
   </div>

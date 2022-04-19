@@ -1,18 +1,18 @@
 <div class="container">
-{{ $len := (len .Pages) }}
-{{ range $index, $programs := sort .Pages ".Params.position" }}
+{{ $len := (len .Pages) -}}
+{{ range $index, $programs := sort .Pages ".Params.position" -}}
   <div class="programs">
     <div class="highlighted">
       {{ partial "programs/program.html" . }}
     </div>
-    {{ range sort .Pages ".Params.position"  }}
+    {{- range sort .Pages ".Params.position" }}
     <div>
-      {{ .Scratch.Set "with_image" true }}
+      {{ .Scratch.Set "with_image" true -}}
       {{ partial "programs/program.html" . }}
-      {{ .Scratch.Delete "with_image" }}
+      {{- .Scratch.Delete "with_image" -}}
     </div>
-    {{ end }}
+    {{ end -}}
   </div>
   {{ if ne (add $index 1) $len }}<hr>{{ end }}
-{{ end }}
+{{- end }}
 </div>
