@@ -10,9 +10,9 @@
   {{ end }}
   {{ $page := partial "GetPageByUrl" .target }}
   {{with $page}}
-    {{ if (partial "GetTextFromHTML" .Description) }}
+    {{ if partial "GetTextFromHTML" .Params.description_short }}
       <div>
-        <p>{{ truncate 250 (safeHTML .Description) }}</p>
+        <p>{{ partial "GetTruncateContent" .Params.description_short }}</p>
       </div>
     {{ end }}
   {{end}}

@@ -2,8 +2,19 @@
   {{ partial "persons/hero.html" . }}
 
   <div class="container">
-    {{ partial "persons/taxonomies.html" . }}
+    {{ if (partial "GetTextFromHTML" .Params.description_short) }}
+      <div class="lead">
+        <p>{{ partial "PrepareHTML" .Params.description_short }}</p>
+      </div>
+    {{ end }}
 
+    {{ if (partial "GetTextFromHTML" .Content) }}
+      <div>
+        {{ partial "PrepareHTML" .Content }}
+      </div>
+    {{ end }}
+
+    {{ partial "persons/taxonomies.html" . }}
     {{ partial "persons/list.html" . }}
   </div>
 {{ end }}
