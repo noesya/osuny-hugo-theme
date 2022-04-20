@@ -4,4 +4,9 @@
     <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
   {{ partial "PrepareHTML" .data.text }}
+  {{ if .data.notes }}
+    <div class="notes">
+      {{ partial "PrepareHTML" .data.notes }}
+    </div>
+  {{ end }}
 </section>
