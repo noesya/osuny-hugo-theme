@@ -1,5 +1,8 @@
 {{ $position := .position }}
-<section class="block-pages">
+{{ $show_description := .data.show_description }}
+{{ $show_image := .data.show_image }}
+{{ $page := site.GetPage (printf "/pages/%s" .data.page) }}
+<section class="block-pages{{ if $page.Params.bodyclass }} {{ $page.Params.bodyclass }}{{ end }}">
 
   {{ if .title }}
     <div class="top">
@@ -7,42 +10,37 @@
     </div>
   {{ end }}
 
-  {{ $show_description := .data.show_description }}
-  {{ $show_image := .data.show_image }}
-  {{ with .data.page }}
-    {{ $page := site.GetPage (printf "/pages/%s" .) }}
-    {{ with $page }}
+  {{ with $page }}
 
-      <div class="page">
-        <div>
-          <p class="title">
-            <a href="{{ .Permalink }}">
-              {{ partial "PrepareHTML" .Title }}
-            </a>
-          </p>
-          {{ if and .Params.description_short $show_description }}
-            <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
-          {{ end }}
-        </div>
-        {{ if $show_image }}
-          <div class="media">
-            {{- if .Params.image -}}
-              {{- partial "commons/image.html"
-                    (dict
-                      "image"    .Params.image
-                      "alt"      .Title
-                      "mobile"   "351x291"
-                      "tablet"   "334x167"
-                      "desktop"  "634x317"
-                    ) -}}
-            {{- else -}}
-              {{- partial "commons/image-default.html" -}}
-            {{- end -}}
-          </div>
+    <div class="page">
+      <div>
+        <p class="title">
+          <a href="{{ .Permalink }}">
+            {{ partial "PrepareHTML" .Title }}
+          </a>
+        </p>
+        {{ if and .Params.description_short $show_description }}
+          <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
         {{ end }}
       </div>
+      {{ if $show_image }}
+        <div class="media">
+          {{- if .Params.image -}}
+            {{- partial "commons/image.html"
+                  (dict
+                    "image"    .Params.image
+                    "alt"      .Title
+                    "mobile"   "351x291"
+                    "tablet"   "334x167"
+                    "desktop"  "634x317"
+                  ) -}}
+          {{- else -}}
+            {{- partial "commons/image-default.html" -}}
+          {{- end -}}
+        </div>
+      {{ end }}
+    </div>
 
-    {{ end }}
   {{ end }}
 
   <div class="pages">

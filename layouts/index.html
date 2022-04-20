@@ -3,9 +3,7 @@
 
   <div class="container">
     {{ if .Params.blocks }}
-      <section>
-        {{ partial "blocks/list.html" .Params.blocks }}
-      </section>
+      {{ partial "blocks/list.html" .Params.blocks }}
     {{ else }}
       {{ if (partial "GetTextFromHTML" .Content) }}
       <section>
