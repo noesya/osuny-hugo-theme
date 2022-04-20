@@ -3,4 +3,18 @@
   {{ if .title }}
     <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
+  {{ with .data }}
+    {{ if .description }}
+      <h3>{{ partial "PrepareHTML" .description }}</h3>
+    {{ end }}
+    <div class="events">
+      {{ range .events }}
+        <div class="event">
+          <strong>{{- partial "PrepareHTML" .title -}}</strong>
+          <hr>
+          <p>{{- partial "PrepareHTML" .text -}}</p>
+        </div>
+      {{ end }}
+    </div>
+  {{ end }}
 </section>
