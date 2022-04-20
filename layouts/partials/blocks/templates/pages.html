@@ -1,6 +1,27 @@
 {{ $position := .position }}
 <section class="block-pages">
+
   {{ if .title }}
-    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
+    <div class="top">
+      <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
+    </div>
   {{ end }}
+
+  {{ with .data.page }}
+    {{ $page := site.GetPage (printf "/pages/%s" .) }}
+    {{ with $page }}
+      {{ partial "pages/page.html" . }}
+    {{ end }}
+  {{ end }}
+
+  <div class="pages">
+    {{ range .data.pages }}
+      {{ $page := site.GetPage (printf "/pages/%s" .slug) }}
+      {{ with $page }}
+        <div>
+          {{ partial "pages/page.html" . }}
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
 </section>
