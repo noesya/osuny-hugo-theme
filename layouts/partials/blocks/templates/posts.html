@@ -1,6 +1,23 @@
 {{ $position := .position }}
 <section class="block-posts">
+
   {{ if .title }}
-    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
+    <div class="top">
+      <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
+    </div>
   {{ end }}
+
+  {{ $posts_quantity := 3 }}
+  {{ $posts := where site.RegularPages "Type" "posts" }}
+  {{ if .category }}
+    {{ $posts = where $posts "Params.categories" "intersect" (slice .category) }}
+  {{ end }}
+
+  <div class="posts">
+    {{ range first $posts_quantity $posts }}
+      <div>
+        {{ partial "posts/post" . }}
+      </div>
+    {{ end }}
+  </div>
 </section>
