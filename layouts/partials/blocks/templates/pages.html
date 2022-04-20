@@ -4,7 +4,7 @@
 {{ $page := site.GetPage (printf "/pages/%s" .data.page) }}
 <section class="block-pages{{ if $page.Params.bodyclass }} {{ $page.Params.bodyclass }}{{ end }}">
 
-  {{ if .title }}
+  {{ if and .title (ne .title $page.Title) }}
     <div class="top">
       <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
     </div>
