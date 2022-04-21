@@ -47,11 +47,11 @@
     {{ range .data.pages }}
       {{ $show_description := .show_description }}
       {{ $show_image := .show_image }}
-      {{ $page := site.GetPage (printf "/pages/%s" .slug) }}
+      {{ $page := site.GetPage .slug }}
       {{ with $page }}
         <div>
 
-          <div class="page">
+          <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
             <div>
               <p class="title">
                 <a href="{{ .Permalink }}">
@@ -59,7 +59,7 @@
                 </a>
               </p>
               {{ if and .Params.description_short $show_description }}
-                <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
+                <p>{{- partial "GetTruncateContent" .Params.description_short -}}</p>
               {{ end }}
             </div>
             {{ if $show_image }}
