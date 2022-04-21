@@ -1,30 +1,25 @@
 .block-timeline
-    h3
-        margin-bottom: $grid-gutter-width
     .events
-        display: flex
-        flex-flow: row nowrap
-        overflow: auto
-        scroll-snap-type: x proximity
-        width: 100%
-    .event
-        flex: none
-        padding-right: $grid-gutter-width
-        scroll-snap-align: start
-        width: 50%
-        hr
-            opacity: 1
-            overflow: visible
-            width: calc(100% + #{$grid-gutter-width})
+        padding-left: $grid-gutter-width
+        position: relative
+        &::before
+            background: $primary
+            bottom: 0
+            content: ''
+            display: block
+            left: 3px
+            position: absolute
+            top: 10px
+            width: 1px
+        .event
+            margin-bottom: $grid-gutter-width
             &::before
-                background: black
+                background: $primary
                 border-radius: 50%
                 content: ''
                 display: block
                 height: 9px
-                position: relative
-                top: -4px
+                left: -1px
+                margin-top: 10px
+                position: absolute
                 width: 9px
-
-
-

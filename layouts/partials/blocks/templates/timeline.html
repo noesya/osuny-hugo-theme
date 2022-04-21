@@ -11,7 +11,6 @@
       {{ range .events }}
         <div class="event">
           <strong>{{- partial "PrepareHTML" .title -}}</strong>
-          <hr>
           <p>{{- partial "PrepareHTML" .text -}}</p>
         </div>
       {{ end }}
