@@ -3,5 +3,7 @@
   {{ if .title }}
     <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
-  {{ partial "PrepareHTML" .data.text }}
+  {{ with .data }}
+    {{ partial "PrepareHTML" .text }}
+  {{ end }}
 </section>
