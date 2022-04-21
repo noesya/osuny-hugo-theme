@@ -1,10 +1,20 @@
 {{ $position := .position }}
+
 {{ $show_description := .data.show_description }}
 {{ $show_image := .data.show_image }}
-{{ $page := site.GetPage (printf "/pages/%s" .data.page) }}
-<section class="block-pages{{ if $page.Params.bodyclass }} {{ $page.Params.bodyclass }}{{ end }}">
+{{ $page_primary_title := "" }}
+{{ $block_class := "" }}
 
-  {{ if and .title (ne .title $page.Title) }}
+{{ $page := partial "GetPageByUrl" .data.page }}
+{{ with $page }}
+  {{ $page_primary_title = .Title }}
+  {{ if .Params.bodyclass }}
+    {{ $block_class = .Params.bodyclass }}
+  {{ end }}
+{{ end }}
+<section class="block-pages {{ $block_class }}">
+
+  {{ if and .title (ne .title $page_primary_title) }}
     <div class="top">
       <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
     </div>
@@ -47,7 +57,7 @@
     {{ range .data.pages }}
       {{ $show_description := .show_description }}
       {{ $show_image := .show_image }}
-      {{ $page := site.GetPage .slug }}
+      {{ $page := partial "GetPageByUrl" .slug }}
       {{ with $page }}
         <div>
 
