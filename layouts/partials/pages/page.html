@@ -5,8 +5,8 @@
         {{ partial "PrepareHTML" .Title }}
       </a>
     </p>
-    {{ if .Params.description }}
-      <p>{{- partial "GetTruncateContent" .Params.description -}}</p>
+    {{ if .Params.description_short }}
+      <p>{{- partial "GetTruncateContent" .Params.description_short -}}</p>
     {{ end }}
   </div>
 </div>
