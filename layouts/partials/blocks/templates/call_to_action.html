@@ -18,13 +18,15 @@
 
         {{ with .button }}
           {{ if .text }}
-            <a href="{{ .url }}">{{ .text }}</a>
+            {{ $title := partial "PrepareHTML" .text }}
+            <a href="{{ .url }}" title="{{ safeHTML (i18n "commons.more_aria" (dict "Title" $title)) }}">{{ $title }}</a>
           {{ end }}
         {{ end }}
 
         {{ with .button_secondary }}
           {{ if .text }}
-            <a href="{{ .url }}">{{ .text }}</a>
+            {{ $title := partial "PrepareHTML" .text }}
+            <a href="{{ .url }}" title="{{ safeHTML (i18n "commons.more_aria" (dict "Title" $title)) }}">{{ $title }}</a>
           {{ end }}
         {{ end }}
 
