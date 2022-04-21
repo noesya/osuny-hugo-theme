@@ -10,10 +10,10 @@
     <div class="events">
       {{ range .events }}
         <div class="event">
-          <strong>{{- partial "PrepareHTML" .title -}}</strong>
+          <p><strong>{{- partial "PrepareHTML" .title -}}</strong></p>
           <p>{{- partial "PrepareHTML" .text -}}</p>
         </div>
       {{ end }}
     </div>
-  {{ end }}
+    {{ end }}
 </section>
