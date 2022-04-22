@@ -7,11 +7,12 @@
     {{ partial "head/seo.html" . }}
     {{ partial "head/rss.html" . }}
   </head>
-  {{ $bodyclass := printf "%s__%s" .Type .Kind }}
+  {{ $body_class := printf "%s__%s" .Type .Kind }}
   {{ if .Params.bodyclass }}
-    {{ $bodyclass = printf "%s %s" $bodyclass .Params.bodyclass }}
+    {{ $pageclass := partial "GetBodyclass" .Params.bodyclass }}
+    {{ $body_class = printf "%s %s" $body_class $pageclass }}
   {{ end }}
-  <body class="{{ $bodyclass }}"{{ if or .IsSection .IsPage }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
+  <body class="{{ $body_class }}"{{ if or .IsSection .IsPage }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
     <main id="main" role="main" tabindex="-1">
