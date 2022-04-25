@@ -1,0 +1,40 @@
+{{ $position := .position }}
+{{ $buttons := and .data.button.text .data.button_secondary.text }}
+<section class="block-call_to_action">
+  {{ $title := .title }}
+  {{ with .data }}
+    <div class="call_to_action">
+
+      {{ if $title }}
+        <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" $title }}</h2>
+      {{ end }}
+
+      <div>
+        {{ partial "PrepareHTML" .text }}
+      </div>
+
+      {{ if $buttons }}
+      <div role="group">
+      {{ end }}
+
+        {{ with .button }}
+          {{ if .text }}
+            {{ $title := partial "PrepareHTML" .text }}
+            <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
+          {{ end }}
+        {{ end }}
+
+        {{ with .button_secondary }}
+          {{ if .text }}
+            {{ $title := partial "PrepareHTML" .text }}
+            <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
+          {{ end }}
+        {{ end }}
+
+      {{ if $buttons }}
+      </div>
+      {{ end }}
+
+    </div>
+  {{ end }}
+</section>

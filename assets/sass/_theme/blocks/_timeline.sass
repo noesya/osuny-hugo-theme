@@ -1,0 +1,25 @@
+.block-timeline
+    .events
+        padding-left: $grid-gutter-width
+        position: relative
+        &::before
+            background: $primary
+            bottom: 0
+            content: ''
+            display: block
+            left: 3px
+            position: absolute
+            top: 10px
+            width: 1px
+        .event
+            margin-bottom: $grid-gutter-width
+            &::before
+                background: $primary
+                border-radius: 50%
+                content: ''
+                display: block
+                height: 9px
+                left: -1px
+                margin-top: 10px
+                position: absolute
+                width: 9px

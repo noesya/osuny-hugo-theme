@@ -2,28 +2,31 @@
   {{ partial "home/hero.html" . }}
 
   <div class="container">
-
-    {{ if (partial "GetTextFromHTML" .Content) }}
-    <section>
-      {{- partial "PrepareHTML" .Content -}}
-    </section>
-    {{ end }}
-
-    {{- range site.Data.menus.primary -}}
+    {{ if .Params.blocks }}
+      {{ partial "blocks/list.html" .Params.blocks }}
+    {{ else }}
+      {{ if (partial "GetTextFromHTML" .Content) }}
       <section>
-        {{ partial "home/top.html" . }}
-
-        {{ if eq .kind "news" }}
-          {{ partial "home/posts.html" . }}
-        {{ else }}
-          {{ if .children }}
-            {{ partial "home/pages.html" . }}
-          {{ end }}
-        {{ end }}
+        {{- partial "PrepareHTML" .Content -}}
       </section>
-    {{ end }}
+      {{ end }}
 
-    {{ partial "home/volumes.html" . }}
+      {{- range site.Data.menus.primary -}}
+        <section>
+          {{ partial "home/top.html" . }}
+
+          {{ if eq .kind "news" }}
+            {{ partial "home/posts.html" . }}
+          {{ else }}
+            {{ if .children }}
+              {{ partial "home/pages.html" . }}
+            {{ end }}
+          {{ end }}
+        </section>
+      {{ end }}
+
+      {{ partial "home/volumes.html" . }}
+    {{ end }}
 
   </div>
 {{ end }}
