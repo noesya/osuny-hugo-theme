@@ -4,9 +4,10 @@
       <h2 id="page-children">{{ i18n "pages.details" }}</h2>
     </div>
     <div class="pages">
-      {{ range sort . ".Params.position"  }}
+      {{ range . }}
+        {{ $page := partial "GetPageByUrl" . }}
         <div>
-          {{ partial "pages/page.html" . }}
+          {{ partial "pages/page.html" $page }}
         </div>
       {{ end }}
     </div>
