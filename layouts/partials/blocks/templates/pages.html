@@ -3,16 +3,16 @@
 {{ $show_description := .data.show_description }}
 {{ $show_image := .data.show_image }}
 {{ $page_primary_title := "" }}
-{{ $block_class := "" }}
+{{ $page_class := "" }}
 
 {{ $page := partial "GetPageByUrl" .data.page }}
 {{ with $page }}
   {{ $page_primary_title = .Title }}
   {{ if .Params.bodyclass }}
-    {{ $block_class = .Params.bodyclass }}
+    {{- $page_class = partial "GetBodyclass" .Params.bodyclass }}
   {{ end }}
 {{ end }}
-<section class="block-pages {{ $block_class }}">
+<section class="block-pages {{ $page_class }}">
 
   {{ if and .title (ne .title $page_primary_title) }}
     <div class="top">
