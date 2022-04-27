@@ -12,6 +12,9 @@
     {{ $pageclass := partial "GetBodyclass" .Params.bodyclass }}
     {{ $body_class = printf "%s %s" $body_class $pageclass }}
   {{ end }}
+  {{ if eq .Kind "term" }}
+    {{ $body_class = printf "%s %s" $body_class (printf "term-%s" (replace .Slug "/" "")) }}
+  {{ end }}
   <body class="{{ $body_class }}"{{ if or .IsSection .IsPage }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
