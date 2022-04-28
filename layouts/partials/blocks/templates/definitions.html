@@ -3,4 +3,10 @@
   {{ if .title }}
     <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
   {{ end }}
+  <dl>
+    {{ range .data }}
+      <dt>{{ .title }}</dt>
+      <dd>{{ .text }}</dd>
+    {{ end }}
+  </dl>
 </section>
