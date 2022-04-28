@@ -1,5 +1,4 @@
-{{ $content := trim .Content "\n" }}
-{{ if ne $content " " }}
+{{ if (partial "GetTextFromHTML" .Content) }}
   <section id="full-text">
     <h2>{{ i18n "volumes.full_text" }}</h2>
     <div class="articleBody">
