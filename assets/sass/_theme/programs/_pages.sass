@@ -2,6 +2,10 @@
     aside
         @extend .sticky
         align-self: flex-start
+        .toc + p
+            margin-top: $grid-gutter-width
+        p:last-of-type
+            margin-bottom: 0
     article
         .programs
             --bs-gutter-y: 1rem
