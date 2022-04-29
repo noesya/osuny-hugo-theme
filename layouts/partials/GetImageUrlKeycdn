@@ -25,5 +25,7 @@
   {{ $fit = "crop" }}
   {{ $result = printf "%scrop=smart" $result }}
 {{ end }}
-{{ $result = printf "%s&fit=%s" $result $fit }}
+{{ if ne $fit "" }}
+  {{ $result = printf "%s&fit=%s" $result $fit }}
+{{ end }}
 {{ return $result }}
