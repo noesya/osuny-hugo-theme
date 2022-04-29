@@ -1,16 +1,14 @@
 {{ $position := .position }}
-
 {{ $term := false }}
 {{ with .data }}
   {{ if .category }}
-    {{ $term = $.Site.GetPage .data.category }}
+    {{ $term = site.GetPage (printf "/categories%s" .category) }}
   {{ end }}
 {{ end }}
 
 <section class="block-posts" id="block-{{ $position }}">
   {{ if .title }}
     <div class="top">
-
       <h2>
         {{ if $term }}
           <a href="{{ $term.Permalink }}">
@@ -20,7 +18,6 @@
           </a>
         {{ end }}
       </h2>
-
     </div>
   {{ end }}
 
