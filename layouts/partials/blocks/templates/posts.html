@@ -1,35 +1,35 @@
-{{ $position := .position }}
-{{ $term := false }}
-{{ with .data }}
+{{- $position := .position -}}
+{{- $term := false -}}
+{{- with .data }}
   {{ if .category }}
-    {{ $term = site.GetPage (printf "/categories%s" .category) }}
+    {{- $term = site.GetPage (printf "/categories%s" .category) -}}
   {{ end }}
-{{ end }}
+{{ end -}}
 
 <section class="block-posts" id="block-{{ $position }}">
-  {{ if .title }}
+  {{ if .title -}}
     <div class="top">
       <h2>
-        {{ if $term }}
+        {{- if $term -}}
           <a href="{{ $term.Permalink }}">
-        {{ end }}
+        {{- end -}}
           {{- partial "PrepareHTML" .title -}}
-        {{ if $term }}
+        {{- if $term -}}
           </a>
-        {{ end }}
+        {{- end -}}
       </h2>
     </div>
-  {{ end }}
+  {{- end }}
 
-  {{ with .data }}
+  {{- with .data }}
     <div class="posts">
-      {{ $posts := where site.RegularPages "Type" "posts" }}
-      {{ range .posts }}
+      {{- $posts := where site.RegularPages "Type" "posts" -}}
+      {{ range .posts -}}
         {{ range where $posts "Params.slug" . }}
           <div>
             {{ partial "posts/post" . }}
           </div>
-        {{ end }}
+        {{- end }}
       {{ end }}
     </div>
   {{ end }}

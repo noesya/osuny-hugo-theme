@@ -1,4 +1,4 @@
-{{ if .Params.Categories }}
+{{- if .Params.Categories -}}
 <ul class="post-categories">
   {{- range $index, $s := .GetTerms "categories" -}}
     <li>
@@ -8,4 +8,4 @@
     </li>
   {{- end }}
 </ul>
-{{ end }}
+{{- end -}}
