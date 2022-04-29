@@ -1,49 +1,42 @@
-{{ $position := .position }}
-<section class="block-partners">
-  {{ if .title }}
-    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
-  {{ end }}
-  <div class="partners">
-    {{ range .data }}
-      <div>
-        {{ if .slug }}
-          {{ with (site.GetPage (printf "/organizations/%s" .slug )) }}
-            <a href="{{ .Permalink }}" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">
-            {{ if .Params.logo }}
-              {{- partial "commons/image.html"
-                    (dict
-                      "image"    .Params.logo
-                      "alt"      .Title
-                      "mobile"   "351x291"
-                      "tablet"   "334x167"
-                      "desktop"  "634x317"
-                    ) -}}
-            {{ else }}
-              {{ .Title }}
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  <section class="block-partners" id="block-{{ $position }}">
+    {{- if $title }}
+      <h2>{{ partial "PrepareHTML" $title }}</h2>
+    {{ end -}}
+
+    <div class="organizations">
+      {{ range . }}
+        <div>
+
+          {{ if .slug }}
+            {{ with (site.GetPage (printf "/organizations/%s" .slug )) }}
+              {{ partial "organizations/organization.html" . }}
             {{ end }}
-            </a>
-          {{ end }}
-        {{ else }}
-          {{ if .url }}
-            <a href="{{ .url }}" target="_blank" rel="noreferrer" aria-label="{{ i18n "commons.more_aria" (dict "Title" .name) }}">
-          {{ end }}
-          {{ if .logo }}
-            {{- partial "commons/image.html"
-                  (dict
-                    "image"    .logo
-                    "alt"      .name
-                    "mobile"   "351x291"
-                    "tablet"   "334x167"
-                    "desktop"  "634x317"
-                  ) -}}
           {{ else }}
-            {{ .name }}
+            <article class="organization">
+              <div>
+                {{ $title := partial "PrepareHTML" .name }}
+                <p class="title"><a href="{{ .url }}">{{ $title }}</a></p>
+              </div>
+              <div class="media">
+                {{- if .logo -}}
+                  {{- partial "commons/image.html"
+                        (dict
+                          "image"    .logo
+                          "alt"      $title
+                          "mobile"   "164"
+                          "tablet"   "216"
+                          "desktop"  "196"
+                        ) -}}
+                {{- end -}}
+              </div>
+            </article>
           {{ end }}
-          {{ if .url }}
-            </a>
-          {{ end }}
-        {{ end }}
-      </div>
-    {{ end }}
-  </div>
-</section>
+
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{- end -}}
