@@ -5,8 +5,9 @@
 <article class="program">
   <div>
     <p class="title">
-      <a href="{{ .Permalink }}" title="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">
-        {{- safeHTML (partial "CorrectPunctuation" .Title) -}}
+      {{ $title := partial "PrepareHTML" .Title }}
+      <a href="{{ .Permalink }}" title="{{ i18n "commons.more_aria" (dict "Title" $title) }}">
+        {{- $title -}}
       </a>
     </p>
     {{ if .Params.description }}

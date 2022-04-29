@@ -1,6 +1,6 @@
 <article class="post">
   <div>
-    {{ $title := safeHTML (partial "CorrectPunctuation" .Title) }}
+    {{ $title := partial "PrepareHTML" .Title }}
     <p class="title"><a href="{{ .Permalink }}">{{ $title }}</a></p>
     <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format ":date_long" }}</time>
   </div>
@@ -9,7 +9,6 @@
       {{- partial "commons/image.html"
             (dict
               "image"    .Params.image
-              "alt"      .Title
               "mobile"   "351x291"
               "tablet"   "334x167"
               "desktop"  "634x317"
