@@ -1,40 +1,42 @@
-{{ $position := .position }}
-{{ $buttons := and .data.button.text .data.button_secondary.text }}
-<section class="block-call_to_action">
-  {{ $title := .title }}
-  {{ with .data }}
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  {{- $buttons := and .button.text .button_secondary.text -}}
+  <section class="block-call_to_action" id="block-{{ $position }}">
     <div class="call_to_action">
 
-      {{ if $title }}
-        <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" $title }}</h2>
-      {{ end }}
+      {{- if $title }}
+        <h2>{{ partial "PrepareHTML" $title }}</h2>
+      {{- end -}}
 
+      {{- if (partial "GetTextFromHTML" .text) }}
       <div>
         {{ partial "PrepareHTML" .text }}
       </div>
+      {{ end -}}
 
-      {{ if $buttons }}
+      {{- if $buttons }}
       <div role="group">
-      {{ end }}
+      {{ end -}}
 
-        {{ with .button }}
+        {{- with .button -}}
           {{ if .text }}
-            {{ $title := partial "PrepareHTML" .text }}
+            {{- $title := partial "PrepareHTML" .text -}}
             <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
-          {{ end }}
-        {{ end }}
+          {{ end -}}
+        {{ end -}}
 
-        {{ with .button_secondary }}
+        {{- with .button_secondary }}
           {{ if .text }}
-            {{ $title := partial "PrepareHTML" .text }}
+            {{- $title := partial "PrepareHTML" .text -}}
             <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
-          {{ end }}
-        {{ end }}
+          {{ end -}}
+        {{ end -}}
 
-      {{ if $buttons }}
+      {{- if $buttons }}
       </div>
-      {{ end }}
+      {{ end -}}
 
     </div>
-  {{ end }}
-</section>
+  </section>
+{{- end -}}

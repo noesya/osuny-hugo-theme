@@ -1,21 +1,26 @@
 {{ $position := .position }}
-<!-- {{ $term := false }}
-{{ if .data.category }}
-  {{ $term = $.Site.GetPage .data.category }}
-{{ end }} -->
 
-<section class="block-posts">
+{{ $term := false }}
+{{ with .data }}
+  {{ if .category }}
+    {{ $term = $.Site.GetPage .data.category }}
+  {{ end }}
+{{ end }}
+
+<section class="block-posts" id="block-{{ $position }}">
   {{ if .title }}
     <div class="top">
-      <!-- {{ if $term }}
-        <a href="{{ $term.Permalink }}">
-      {{ end }} -->
 
-      <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
-      
-      <!-- {{ if $term }}
-        </a>
-      {{ end }} -->
+      <h2>
+        {{ if $term }}
+          <a href="{{ $term.Permalink }}">
+        {{ end }}
+          {{- partial "PrepareHTML" .title -}}
+        {{ if $term }}
+          </a>
+        {{ end }}
+      </h2>
+
     </div>
   {{ end }}
 

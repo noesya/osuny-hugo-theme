@@ -1,14 +1,15 @@
-{{ $position := .position }}
-<section class="block-chapter">
-  {{ if .title }}
-    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
-  {{ end }}
-  {{ with .data }}
-    {{ partial "PrepareHTML" .text }}
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  <section class="block-chapter" id="block-{{ $position }}">
+    {{- if $title }}
+      <h2>{{ partial "PrepareHTML" $title }}</h2>
+    {{ end -}}
+    {{- partial "PrepareHTML" .text -}}
     {{ if .notes }}
       <div class="notes">
         {{ partial "PrepareHTML" .notes }}
       </div>
     {{ end }}
-  {{ end }}
-</section>
+  </section>
+{{- end -}}
