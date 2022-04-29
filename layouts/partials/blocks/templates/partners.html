@@ -7,19 +7,30 @@
     {{ end -}}
 
     <div class="organizations">
-      {{ range . }}
+      {{- range . }}
         <div>
 
-          {{ if .slug }}
+          {{- if .slug }}
             {{ with (site.GetPage (printf "/organizations/%s" .slug )) }}
-              {{ partial "organizations/organization.html" . }}
+              {{- partial "organizations/organization.html" . -}}
             {{ end }}
-          {{ else }}
+          {{- else -}}
             <article class="organization">
-              <div>
-                {{ $title := partial "PrepareHTML" .name }}
-                <p class="title"><a href="{{ .url }}">{{ $title }}</a></p>
-              </div>
+              {{- $title := "" -}}
+              {{ if .name }}
+                <div>
+                  {{ $title = partial "PrepareHTML" .name -}}
+                  <p class="title">
+                    {{- if .url }}
+                    <a href="{{ .url }}">
+                    {{ end }}
+                      {{- $title -}}
+                    {{ if .url }}
+                    </a>
+                    {{ end -}}
+                  </p>
+                </div>
+              {{ end -}}
               <div class="media">
                 {{- if .logo -}}
                   {{- partial "commons/image.html"
@@ -33,10 +44,10 @@
                 {{- end -}}
               </div>
             </article>
-          {{ end }}
+          {{ end -}}
 
         </div>
-      {{ end }}
+      {{ end -}}
     </div>
   </section>
 {{- end -}}
