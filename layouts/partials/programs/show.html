@@ -23,29 +23,29 @@
   <div class="container">
     <div class="content">
 
-      {{ partial "programs/aside.html"
+      {{- partial "programs/aside.html"
         (dict
             "category" $category
             "chapters" $chapters
             "context" .
         )
-      }}
+      -}}
 
       <div>
-        {{ partial "programs/image.html" .Params.image }}
+        {{- partial "programs/image.html" .Params.image -}}
 
-        {{ partial "programs/abstract.html" .Params.presentation }}
+        {{- partial "programs/abstract.html" .Params.presentation -}}
 
-        {{ partial "programs/programs.html" .Pages }}
+        {{- partial "programs/programs.html" .Pages -}}
 
-        {{ partial "programs/chapters.html"
+        {{- partial "programs/chapters.html"
           (dict
             "chapters" $chapters
             "params" .Params
           )
-        }}
+        -}}
 
-        {{ partial "posts/related.html" $category }}
+        {{- partial "posts/related.html" $category -}}
       </div>
     </div>
   </div>

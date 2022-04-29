@@ -1,6 +1,6 @@
 <aside>
   {{- partial "programs/toc.html" . -}}
   {{ if .Params.main_information }}
-    {{ partial "PrepareHTML" .Params.main_information }}
+    {{- partial "PrepareHTML" .Params.main_information -}}
   {{ end }}
 </aside>
