@@ -11,12 +11,12 @@
         --bs-aspect-ratio: 100%
         @extend .card-media
         img
-            height: 90%
-            margin-left: 5%
-            margin-top: 5%
+            height: calc(100% - 20px)
+            margin: 10px
             object-fit: contain
             object-position: center
-            width: 90%
+            width: calc(100% - 20px)
+
 
     .title
         @extend .card-title
