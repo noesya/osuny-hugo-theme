@@ -18,7 +18,7 @@
       </li>
     {{ end -}}
     {{- partial "blocks/toc.html" .context.Params.blocks -}}
-    {{- if .category }}
+    {{- if .category.Pages }}
       <li>
         <a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a>
       </li>
