@@ -10,7 +10,7 @@
       {{ range .Paginator.Pages }}
         <div>
           <h2>
-            <a href="{{ .Permalink }}">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</a>
+            <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
           </h2>
         </div>
       {{ end }}

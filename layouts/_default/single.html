@@ -6,6 +6,6 @@
           "context" .
         ) -}}
   <div class="container">
-    {{ safeHTML (partial "CorrectPunctuation" .Content) }}
+    {{ partial "PrepareHTML .Content }}
   </div>
 {{ end }}
