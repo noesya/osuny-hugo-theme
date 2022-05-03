@@ -12,7 +12,7 @@
     }}
 
     {{ partial "pages/image.html" .Params.image }}
-    {{/* partial "pages/body.html" . */}}
+    {{/* TODO: DELETE IT */}} {{ partial "pages/body.html" .Content }}
     {{ partial "pages/children.html" .Params.children }}
     {{ partial "blocks/list.html" .Params.blocks }}
     {{ partial "posts/related.html" $category }}

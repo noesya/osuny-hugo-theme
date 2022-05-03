@@ -1,13 +1,15 @@
 {{ if . }}
-  <div class="container">
-    {{ partial "commons/image.html"
-          (dict
-            "image"    .
-            "class"    "featured-image"
-            "mobile"   "351x168"
-            "tablet"   "456x219"
-            "desktop"  "856x410"
-            "itemprop" true
-          )}}
-  </div>
+  <section>
+    <div class="container">
+      {{ partial "commons/image.html"
+            (dict
+              "image"    .
+              "class"    "featured-image"
+              "mobile"   "351x168"
+              "tablet"   "456x219"
+              "desktop"  "856x410"
+              "itemprop" true
+            )}}
+    </div>
+  </section>
 {{ end }}
