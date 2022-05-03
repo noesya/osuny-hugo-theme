@@ -2,43 +2,45 @@
 {{- $title := .title -}}
 {{- with .data -}}
   <section class="block-testimonials" id="block-{{ $position }}">
-    {{ if $title }}
-      <h2>{{ partial "PrepareHTML" $title }}</h2>
-    {{ end }}
-    <div class="testimonials splide" data-slides-length="{{ len .testimonials }}" data-splide='{"arrows":false,"autoplay":true,"autoHeight":true}'>
-      <div class="splide__track">
-        <div class="splide__list">
-        {{ range .testimonials }}
-          <figure class="splide__slide">
-            <blockquote>
-              {{- partial "PrepareHTML" .text -}}
-            </blockquote>
-            <figcaption>
-              {{ if .photo }}
-                <div class="avatar">
-                  {{- partial "commons/image.html"
-                        (dict
-                          "image"    .photo
-                          "alt"      .author
-                          "mobile"   "192x192"
-                          "tablet"   "192x192"
-                          "desktop"  "192x192"
-                        ) -}}
-                </div>
-              {{ end }}
-              <span>
-                <b>{{ .author }}</b><br>
-                {{ .job }}
-              </span>
-            </figcaption>
-          </figure>
-        {{ end }}
+    <div class="container">
+      {{ if $title }}
+        <h2>{{ partial "PrepareHTML" $title }}</h2>
+      {{ end }}
+      <div class="testimonials splide" data-slides-length="{{ len .testimonials }}" data-splide='{"arrows":false,"autoplay":true,"autoHeight":true}'>
+        <div class="splide__track">
+          <div class="splide__list">
+          {{ range .testimonials }}
+            <figure class="splide__slide">
+              <blockquote>
+                {{- partial "PrepareHTML" .text -}}
+              </blockquote>
+              <figcaption>
+                {{ if .photo }}
+                  <div class="avatar">
+                    {{- partial "commons/image.html"
+                          (dict
+                            "image"    .photo
+                            "alt"      .author
+                            "mobile"   "192x192"
+                            "tablet"   "192x192"
+                            "desktop"  "192x192"
+                          ) -}}
+                  </div>
+                {{ end }}
+                <span>
+                  <b>{{ .author }}</b><br>
+                  {{ .job }}
+                </span>
+              </figcaption>
+            </figure>
+          {{ end }}
+          </div>
         </div>
-      </div>
 
-      <div class="splide__autoplay">
-        <button class="splide__play"></button>
-        <button class="splide__pause"></button>
+        <div class="splide__autoplay">
+          <button class="splide__play"></button>
+          <button class="splide__pause"></button>
+        </div>
       </div>
     </div>
   </section>

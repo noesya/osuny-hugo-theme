@@ -1,6 +1,6 @@
-<div class="container">
-  {{ $len := (len .Pages) }}
-  {{ range $index, $programs := sort .Pages ".Params.position" }}
+{{ $len := (len .Pages) }}
+{{ range $index, $programs := sort .Pages ".Params.position" }}
+  <div class="container">
     <div class="programs">
       <div class="highlighted">
         {{ partial "programs/program.html" . }}
@@ -14,7 +14,7 @@
       {{ end }}
     </div>
     {{ if ne (add $index 1) $len }}<hr>{{ end }}
-  {{ end }}
+  </div>
+{{ end }}
 
-  {{ partial "blocks/list.html" .Params.blocks }}
-</div>
+{{ partial "blocks/list.html" .Params.blocks }}

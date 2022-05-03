@@ -2,33 +2,35 @@
 {{- $title := .title -}}
 {{- with .data -}}
   <section class="block-gallery" id="block-{{ $position }}">
-    {{- if $title }}
-      <h2>{{ partial "PrepareHTML" $title }}</h2>
-    {{ end -}}
-    <div class="gallery">
-      {{ range .images }}
-        <figure>
-          {{ if .file }}
-            {{- $image := partial "GetMedia" .file -}}
-            {{- $url := $image.url -}}
-            {{- if site.Params.keycdn -}}
-              {{- $url = $image.direct_url -}}
-            {{- end -}}
-            {{- $default := "1280x2560" -}}
-            <a class="glightbox" data-glightbox="type: image" href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
-              {{ partial "commons/image.html"
-                  (dict
-                    "image"    .file
-                    "alt"      .alt
-                    "mobile"   "164"
-                    "tablet"   "336"
-                    "desktop"  "416"
-                  )}}
-            </a>
-          {{ end }}
-          <figcaption>{{ partial "PrepareHTML" .alt }}</figcaption>
-        </figure>
-      {{ end }}
+    <div class="container">
+      {{- if $title }}
+        <h2>{{ partial "PrepareHTML" $title }}</h2>
+      {{ end -}}
+      <div class="gallery">
+        {{ range .images }}
+          <figure>
+            {{ if .file }}
+              {{- $image := partial "GetMedia" .file -}}
+              {{- $url := $image.url -}}
+              {{- if site.Params.keycdn -}}
+                {{- $url = $image.direct_url -}}
+              {{- end -}}
+              {{- $default := "1280x2560" -}}
+              <a class="glightbox" data-glightbox="type: image" href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
+                {{ partial "commons/image.html"
+                    (dict
+                      "image"    .file
+                      "alt"      .alt
+                      "mobile"   "164"
+                      "tablet"   "336"
+                      "desktop"  "416"
+                    )}}
+              </a>
+            {{ end }}
+            <figcaption>{{ partial "PrepareHTML" .alt }}</figcaption>
+          </figure>
+        {{ end }}
+      </div>
     </div>
   </section>
 {{- end -}}

@@ -1,10 +1,13 @@
 {{ define "main" }}
   {{ partial "home/hero.html" . }}
 
-  <div class="container">
-    {{ if .Params.blocks }}
-      {{ partial "blocks/list.html" .Params.blocks }}
-    {{ else }}
+  {{- if .Params.blocks }}
+
+    {{- partial "blocks/list.html" .Params.blocks -}}
+
+  {{ else }}
+
+    <div class="container">
       {{ if (partial "GetTextFromHTML" .Content) }}
       <section>
         {{- partial "PrepareHTML" .Content -}}
@@ -26,7 +29,8 @@
       {{ end }}
 
       {{ partial "home/volumes.html" . }}
-    {{ end }}
+    </div>
 
-  </div>
+  {{ end -}}
+
 {{ end }}

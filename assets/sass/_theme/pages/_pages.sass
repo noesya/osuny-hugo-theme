@@ -1,6 +1,26 @@
 .pages__section
-    [itemprop="articleBody"] + section
-        margin-top: $grid-gutter-width * 3
+    main > div
+        position: relative
     aside
-        @extend .sticky
-        align-self: flex-start
+        margin-bottom: map-get($spacers, 5)
+        pointer-events: none
+        @include media-breakpoint-up(md)
+            height: 100%
+            margin-bottom: 0
+            position: absolute
+            width: 100%
+            ~ *
+                .container
+                    > *
+                        padding-left: col(4)
+                        &:is(picture)
+                            display: block
+        > div
+            @extend .container
+            @extend .sticky
+            padding: 0
+            > *
+                @extend .col-md-3
+                padding-left: #{$grid-gutter-width / 2}
+                padding-right: #{$grid-gutter-width / 2}
+                pointer-events: auto

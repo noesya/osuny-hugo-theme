@@ -2,14 +2,16 @@
 {{- $title := .title -}}
 {{- with .data -}}
   <section class="block-chapter" id="block-{{ $position }}">
-    {{- if $title }}
-      <h2>{{ partial "PrepareHTML" $title }}</h2>
-    {{ end -}}
-    {{- partial "PrepareHTML" .text -}}
-    {{ if .notes }}
-      <div class="notes">
-        {{ partial "PrepareHTML" .notes }}
-      </div>
-    {{ end }}
+    <div class="container">
+      {{- if $title }}
+        <h2>{{ partial "PrepareHTML" $title }}</h2>
+      {{ end -}}
+      {{- partial "PrepareHTML" .text -}}
+      {{ if .notes }}
+        <div class="notes">
+          {{ partial "PrepareHTML" .notes }}
+        </div>
+      {{ end }}
+    </div>
   </section>
 {{- end -}}
