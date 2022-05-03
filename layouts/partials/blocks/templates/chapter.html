@@ -6,7 +6,11 @@
       {{- if $title }}
         <h2>{{ partial "PrepareHTML" $title }}</h2>
       {{ end -}}
-      {{- partial "PrepareHTML" .text -}}
+      {{ if (partial "GetTextFromHTML" .text) }}
+      <div>
+        {{- partial "PrepareHTML" .text -}}
+      </div>
+      {{ end -}}
       {{ if .notes }}
         <div class="notes">
           {{ partial "PrepareHTML" .notes }}
