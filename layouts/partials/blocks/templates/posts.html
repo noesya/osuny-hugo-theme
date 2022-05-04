@@ -5,8 +5,7 @@
   {{ if .category }}
     {{- $term = site.GetPage (printf "/categories%s" .category) -}}
   {{ end }}
-
-  <section class="block-posts" id="block-{{ $position }}">
+  <section class="block-posts {{ if $term }} term-{{ replace $term.Slug "/" "" }} {{- end -}}" id="block-{{ $position }}">
     <div class="container">
       {{ if $title -}}
         <div class="top">

@@ -12,7 +12,10 @@
                 ~ *
                     .container
                         > *
-                            margin-left: col(4)
+                            &:not(.posts)
+                                margin-left: col(4)
+                            &.posts
+                                padding-left: col(4)
                             &:is(picture)
                                 display: block
             > div
