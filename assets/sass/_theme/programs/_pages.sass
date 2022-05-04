@@ -6,6 +6,8 @@
             margin-top: $grid-gutter-width
         p:last-of-type
             margin-bottom: 0
+        @include media-breakpoint-down(md)
+            position: relative
     article
         .programs
             --bs-gutter-y: 1rem
@@ -15,3 +17,4 @@
             margin-top: -2rem
             @include media-breakpoint-up(lg)
                 @include row-cols(2)
+    
