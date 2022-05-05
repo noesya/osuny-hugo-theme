@@ -2,6 +2,14 @@
 <nav class="toc" id="nav-toc" aria-label="{{ i18n "commons.toc" }}">
   <ol>
 
+    {{/* TODO: Delete it */}}
+    {{ $h2s := partial "H2Extract" .context.Content }}
+    {{- range $index, $h2 := $h2s }}
+      <li>
+        <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
+      </li>
+    {{ end -}}
+
     {{- if .context.Pages }}
       <li>
         <a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a>
