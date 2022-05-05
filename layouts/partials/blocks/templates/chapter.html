@@ -3,19 +3,21 @@
 {{- with .data -}}
   <section class="block-chapter" id="block-{{ $position }}">
     <div class="container">
-      {{- if $title }}
-        <h2>{{ partial "PrepareHTML" $title }}</h2>
-      {{ end -}}
-      {{ if (partial "GetTextFromHTML" .text) }}
       <div>
-        {{- partial "PrepareHTML" .text -}}
-      </div>
-      {{ end -}}
-      {{ if .notes }}
-        <div class="notes">
-          {{ partial "PrepareHTML" .notes }}
+        {{- if $title }}
+          <h2>{{ partial "PrepareHTML" $title }}</h2>
+        {{ end -}}
+        {{ if (partial "GetTextFromHTML" .text) }}
+        <div>
+          {{- partial "PrepareHTML" .text -}}
         </div>
-      {{ end }}
+        {{ end -}}
+        {{ if .notes }}
+          <div class="notes">
+            {{ partial "PrepareHTML" .notes }}
+          </div>
+        {{ end }}
+      </div>
     </div>
   </section>
 {{- end -}}

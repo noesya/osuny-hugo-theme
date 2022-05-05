@@ -19,82 +19,82 @@
 
   <section class="block-pages {{ $page_class }}" id="block-{{ $position }}">
     <div class="container">
+      <div>
+        {{- if and $title (ne $title $page_primary_title) }}
+          <div class="top">
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          </div>
+        {{ end -}}
 
-      {{- if and $title (ne $title $page_primary_title) }}
-        <div class="top">
-          <h2>{{ partial "PrepareHTML" $title }}</h2>
-        </div>
-      {{ end -}}
+        {{- with $page -}}
 
-      {{- with $page -}}
-
-        <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
-          <div>
-            <p class="title">
-              <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
-            </p>
-            {{ if and .Params.description_short $show_description -}}
-              <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
+          <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
+            <div>
+              <p class="title">
+                <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
+              </p>
+              {{ if and .Params.description_short $show_description -}}
+                <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
+              {{- end }}
+            </div>
+            {{ if $show_image -}}
+              <div class="media">
+                {{- if .Params.image -}}
+                  {{- partial "commons/image.html"
+                        (dict
+                          "image"    .Params.image
+                          "alt"      .Title
+                          "mobile"   "351x291"
+                          "tablet"   "334x167"
+                          "desktop"  "634x317"
+                        ) -}}
+                {{- else -}}
+                  {{- partial "commons/image-default.html" -}}
+                {{- end -}}
+              </div>
             {{- end }}
           </div>
-          {{ if $show_image -}}
-            <div class="media">
-              {{- if .Params.image -}}
-                {{- partial "commons/image.html"
-                      (dict
-                        "image"    .Params.image
-                        "alt"      .Title
-                        "mobile"   "351x291"
-                        "tablet"   "334x167"
-                        "desktop"  "634x317"
-                      ) -}}
-              {{- else -}}
-                {{- partial "commons/image-default.html" -}}
-              {{- end -}}
-            </div>
-          {{- end }}
-        </div>
 
-      {{ end -}}
+        {{ end -}}
 
-      <div class="pages">
-        {{- range .pages }}
-          {{- $show_description := .show_description -}}
-          {{- $show_image := .show_image -}}
-          {{- $page := partial "GetPageByUrl" .slug -}}
-          {{ with $page }}
-            <div>
-              <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
-                <div>
-                  <p class="title">
-                    <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
-                  </p>
-                  {{ if and .Params.description_short $show_description -}}
-                    <p>{{- partial "GetTruncateContent" .Params.description_short -}}</p>
+        <div class="pages">
+          {{- range .pages }}
+            {{- $show_description := .show_description -}}
+            {{- $show_image := .show_image -}}
+            {{- $page := partial "GetPageByUrl" .slug -}}
+            {{ with $page }}
+              <div>
+                <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
+                  <div>
+                    <p class="title">
+                      <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
+                    </p>
+                    {{ if and .Params.description_short $show_description -}}
+                      <p>{{- partial "GetTruncateContent" .Params.description_short -}}</p>
+                    {{- end }}
+                  </div>
+                  {{ if $show_image -}}
+                    <div class="media">
+                      {{- if .Params.image -}}
+                        {{- partial "commons/image.html"
+                              (dict
+                                "image"    .Params.image
+                                "alt"      .Title
+                                "mobile"   "351x291"
+                                "tablet"   "334x167"
+                                "desktop"  "634x317"
+                              ) -}}
+                      {{- else -}}
+                        {{- partial "commons/image-default.html" -}}
+                      {{- end -}}
+                    </div>
                   {{- end }}
                 </div>
-                {{ if $show_image -}}
-                  <div class="media">
-                    {{- if .Params.image -}}
-                      {{- partial "commons/image.html"
-                            (dict
-                              "image"    .Params.image
-                              "alt"      .Title
-                              "mobile"   "351x291"
-                              "tablet"   "334x167"
-                              "desktop"  "634x317"
-                            ) -}}
-                    {{- else -}}
-                      {{- partial "commons/image-default.html" -}}
-                    {{- end -}}
-                  </div>
-                {{- end }}
               </div>
-            </div>
-          {{ end }}
-        {{ end -}}
+            {{ end }}
+          {{ end -}}
+        </div>
       </div>
-
     </div>
   </section>
 {{- end -}}

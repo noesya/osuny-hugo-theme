@@ -4,40 +4,41 @@
   {{- $buttons := and .button.text .button_secondary.text -}}
   <section class="block-call_to_action" id="block-{{ $position }}">
     <div class="container">
-      <div class="call_to_action">
+      <div>
+        <div class="call_to_action">
 
-        {{- if $title }}
-          <h2>{{ partial "PrepareHTML" $title }}</h2>
-        {{- end -}}
+          {{- if $title }}
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          {{- end -}}
 
-        {{- if (partial "GetTextFromHTML" .text) }}
-        <div>
-          {{ partial "PrepareHTML" .text }}
-        </div>
-        {{ end -}}
-
-        {{- if $buttons }}
-        <div role="group">
-        {{ end -}}
-
-          {{- with .button -}}
-            {{ if .text }}
-              {{- $title := partial "PrepareHTML" .text -}}
-              <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
-            {{ end -}}
+          {{- if (partial "GetTextFromHTML" .text) }}
+          <div>
+            {{ partial "PrepareHTML" .text }}
+          </div>
           {{ end -}}
 
-          {{- with .button_secondary }}
-            {{ if .text }}
-              {{- $title := partial "PrepareHTML" .text -}}
-              <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
-            {{ end -}}
+          {{- if $buttons }}
+          <div role="group">
           {{ end -}}
 
-        {{- if $buttons }}
-        </div>
-        {{ end -}}
+            {{- with .button -}}
+              {{ if .text }}
+                {{- $title := partial "PrepareHTML" .text -}}
+                <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
+              {{ end -}}
+            {{ end -}}
 
+            {{- with .button_secondary }}
+              {{ if .text }}
+                {{- $title := partial "PrepareHTML" .text -}}
+                <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
+              {{ end -}}
+            {{ end -}}
+
+          {{- if $buttons }}
+          </div>
+          {{ end -}}
+        </div>
       </div>
     </div>
   </section>

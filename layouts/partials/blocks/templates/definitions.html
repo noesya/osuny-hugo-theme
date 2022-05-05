@@ -3,15 +3,17 @@
 {{- with .data -}}
   <section class="block-defenitions" id="block-{{ $position }}">
     <div class="container">
-      {{- if $title }}
-        <h2>{{ partial "PrepareHTML" $title }}</h2>
-      {{ end -}}
-      <dl>
-        {{- range . }}
-          <dt>{{ .title }}</dt>
-          <dd>{{ .text }}</dd>
+      <div>
+        {{- if $title }}
+          <h2>{{ partial "PrepareHTML" $title }}</h2>
         {{ end -}}
-      </dl>
+        <dl>
+          {{- range . }}
+            <dt>{{ .title }}</dt>
+            <dd>{{ .text }}</dd>
+          {{ end -}}
+        </dl>
+      </div>
     </div>
   </section>
 {{- end -}}
