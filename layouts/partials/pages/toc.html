@@ -4,6 +4,11 @@
 
     {{/* TODO: Delete it */}}
     {{ $h2s := partial "H2Extract" .context.Content }}
+    {{ if and (not $h2s) (partial "GetTextFromHTML" .context.Content) }}
+      <li>
+        <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
+      </li>
+    {{ end }}
     {{- range $index, $h2 := $h2s }}
       <li>
         <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
