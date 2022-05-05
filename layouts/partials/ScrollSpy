@@ -1,0 +1,3 @@
+{{ if or .IsSection .IsPage }}
+    {{ return safeHTMLAttr (printf "%s" "data-bs-spy=\"scroll\" data-bs-target=\"#nav-toc\" data-bs-offset=\"5\"") }}
+{{ end }}
