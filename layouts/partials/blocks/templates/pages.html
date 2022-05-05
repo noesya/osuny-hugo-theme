@@ -19,7 +19,7 @@
 
   <section class="block-pages {{ $page_class }}" id="block-{{ $position }}">
     <div class="container">
-      <div>
+      <div class="block-content">
         {{- if and $title (ne $title $page_primary_title) }}
           <div class="top">
             <h2>{{ partial "PrepareHTML" $title }}</h2>
@@ -28,7 +28,7 @@
 
         {{- with $page -}}
 
-          <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
+          <div class="main-page page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
             <div>
               <p class="title">
                 <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
