@@ -1,4 +1,4 @@
-{{- if or .category .context.Pages .context.Params.blocks }}
+{{- if or .category .context.Pages .context.Params.blocks .context.Content }}
 <nav class="toc" id="nav-toc" aria-label="{{ i18n "commons.toc" }}">
   <ol>
 
