@@ -10,7 +10,7 @@
   {{ $body_class := printf "%s__%s" .Type .Kind }}
   {{ $pageclass := partial "GetBodyclass" . }}
   {{ $body_class = printf "%s %s" $body_class $pageclass }}
-  <body class="{{ $body_class }}"{{ if or .IsSection .IsPage }} data-bs-spy="scroll" data-bs-target="#nav-toc" data-bs-offset="5"{{ end }}>
+  <body class="{{ $body_class }}" {{ partial "ScrollSpy" . }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
     <main id="main" role="main" tabindex="-1">

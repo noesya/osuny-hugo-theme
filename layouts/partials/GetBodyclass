@@ -1,3 +1,9 @@
-{{ if .Params.bodyclass }}
-  {{ return printf "page-%s" .Params.bodyclass }}
-{{ end }}
+{{- $bodyclass := .Params.bodyclass | default "default" -}}
+
+{{- if ne $bodyclass "default" -}}
+  {{- $bodyclass = printf "page-%s" $bodyclass -}}
+{{- else -}}
+  {{- $bodyclass = "" -}}
+{{- end -}}
+
+{{- return $bodyclass -}}
