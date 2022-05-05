@@ -5,3 +5,7 @@
 @function pxr2rem($size)
     $remSize: $size / 16 / 2
     @return #{$remSize}rem
+
+@function col($nb)
+    $nbCol: calc( (100% + #{$grid-gutter-width}) / 12 * #{$nb} )
+    @return #{$nbCol}

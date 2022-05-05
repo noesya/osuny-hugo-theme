@@ -1,4 +1,8 @@
 <article class="category">
+  <div>
+    <p class="title">{{ partial "PrepareHTML" .Title }}</p>
+    <a href="{{ .Permalink }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">{{ i18n "commons.more" }}</a>
+  </div>
   <div class="media">
     {{- if .Params.image -}}
       {{- partial "commons/image.html"
@@ -12,9 +16,5 @@
     {{- else -}}
       {{- partial "commons/image-default.html" (dict "class" "img-fluid") -}}
     {{- end -}}
-  </div>
-  <div>
-    <p class="title">{{ safeHTML (partial "CorrectPunctuation" .Title) }}</p>
-    <a href="{{ .Permalink }}" class="link" aria-label="{{ i18n "commons.more_aria" (dict "Title" .Title) }}">{{ i18n "commons.more" }}</a>
   </div>
 </article>

@@ -16,10 +16,13 @@
         a
             @extend .stretched-link
 
+    .author,
     .post-categories
         @extend .card-text
         @extend .small
-        color: $gray-700
+        &,
+        a
+            color: $gray-700
 
 .posts
     --bs-gutter-y: 3rem

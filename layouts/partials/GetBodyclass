@@ -1,3 +1,3 @@
-{{ if . }}
-  {{ return printf "page-%s" . }}
+{{ if .Params.bodyclass }}
+  {{ return printf "page-%s" .Params.bodyclass }}
 {{ end }}

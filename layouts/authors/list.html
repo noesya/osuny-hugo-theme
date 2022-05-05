@@ -4,4 +4,8 @@
   <div class="container">
     {{ partial "persons/list-specific.html" . }}
   </div>
+
+  {{ if .Params.blocks }}
+    {{ partial "blocks/list.html" .Params.blocks }}
+  {{ end }}
 {{ end }}

@@ -18,7 +18,7 @@
 
   <div class="container">
     <article itemscope itemtype="https://schema.org/Person">
-      <meta itemprop="name" content="{{ chomp .Title }}">
+      <meta itemprop="name" content="{{ partial "PrepareHTML" .Title }}">
       <meta itemprop="url" content="{{ .Permalink }}">
       {{- if .Params.image -}}
         {{- $image := partial "GetMedia" .Params.image -}}

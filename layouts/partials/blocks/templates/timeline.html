@@ -1,19 +1,28 @@
-{{ $position := .position }}
-<section class="block-timeline">
-  {{ if .title }}
-    <h2 id="block-{{ $position }}">{{ partial "PrepareHTML" .title }}</h2>
-  {{ end }}
-  {{ with .data }}
-    {{ if .description }}
-      <h3>{{ partial "PrepareHTML" .description }}</h3>
-    {{ end }}
-    <div class="events">
-      {{ range .events }}
-        <div class="event">
-          <p><strong>{{- partial "PrepareHTML" .title -}}</strong></p>
-          <p>{{- partial "PrepareHTML" .text -}}</p>
-        </div>
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  <section class="block-timeline" id="block-{{ $position }}">
+    <div class="container">
+      {{ if $title }}
+        <h2>{{ partial "PrepareHTML" $title }}</h2>
       {{ end }}
+      {{ with . }}
+        {{ if (partial "GetTextFromHTML" .description) }}
+          <h3>{{ partial "PrepareHTML" .description }}</h3>
+        {{ end }}
+        <div class="events">
+          {{ range .events }}
+            <div class="event">
+              {{ if .title }}
+                <p><strong>{{- partial "PrepareHTML" .title -}}</strong></p>
+              {{ end }}
+              {{ if .text }}
+                <p>{{- partial "PrepareHTML" .text -}}</p>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+        {{ end }}
     </div>
-    {{ end }}
-</section>
+  </section>
+{{- end -}}

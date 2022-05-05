@@ -1,10 +1,15 @@
 .blocks
-    --bs-gutter-y: 3rem
-    @extend .row
     > *
-        @extend .col-12
+        margin-top: map-get($spacers, 5)
+//     --bs-gutter-y: 3rem
+//     @extend .row
+//     > *
+//         @extend .col-12
+//
+//     > .block-chapter
+//         @extend .col-md-6
+//         aside ~ &
+//             @extend .col-md-12
 
-    > .block-chapter
-        @extend .col-md-6
-        aside + div &
-            @extend .col-md-12
+// * + .blocks
+//     margin-top: 0

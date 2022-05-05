@@ -1,23 +1,23 @@
 <table class="table-persons">
   <caption>{{ .title }}</caption>
   <tbody>
-    {{ $descriptions := .descriptions }}
-    {{ range .teachers }}
-      {{ $slug := . }}
+    {{- $descriptions := .descriptions -}}
+    {{- range .teachers -}}
+      {{- $slug := . -}}
       {{ with site.GetPage "persons" }}
-        {{ with .GetPage $slug }}
+        {{ with .GetPage $slug -}}
           <tr>
             <th>
               <a href="{{ .Permalink }}">
-                {{ safeHTML .Title }}
+                {{- partial "PrepareHTML" .Title -}}
               </a>
             </th>
             <td>
-              {{ safeHTML (index $descriptions $slug) }}
+              {{- partial "PrepareHTML" (index $descriptions $slug) -}}
             </td>
           </tr>
-        {{ end }}
+        {{- end }}
       {{ end }}
-    {{ end }}
+    {{- end -}}
   </tbody>
 </table>

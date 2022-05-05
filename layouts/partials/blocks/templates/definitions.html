@@ -1,0 +1,17 @@
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  <section class="block-defenitions" id="block-{{ $position }}">
+    <div class="container">
+      {{- if $title }}
+        <h2>{{ partial "PrepareHTML" $title }}</h2>
+      {{ end -}}
+      <dl>
+        {{- range . }}
+          <dt>{{ .title }}</dt>
+          <dd>{{ .text }}</dd>
+        {{ end -}}
+      </dl>
+    </div>
+  </section>
+{{- end -}}

@@ -6,20 +6,21 @@
             background: $primary
             bottom: 0
             content: ''
-            display: block
-            left: 3px
+            left: 4px
             position: absolute
             top: 10px
             width: 1px
-        .event
+    .event
+        &:not(:last-child)
             margin-bottom: $grid-gutter-width
-            &::before
-                background: $primary
-                border-radius: 50%
-                content: ''
-                display: block
-                height: 9px
-                left: -1px
-                margin-top: 10px
-                position: absolute
-                width: 9px
+        &::before
+            background: $primary
+            border-radius: 50%
+            content: ''
+            height: 9px
+            left: 0
+            margin-top: 10px
+            position: absolute
+            width: 9px
+        p:last-child
+            margin-bottom: 0
