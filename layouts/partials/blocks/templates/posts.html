@@ -7,7 +7,7 @@
   {{ end }}
   <section class="block-posts {{ if $term }} term-{{ replace $term.Slug "/" "" }} {{- end -}}" id="block-{{ $position }}">
     <div class="container">
-      <div>
+      <div class="block-content">
         {{ if $title -}}
           <div class="top">
             <h2>
