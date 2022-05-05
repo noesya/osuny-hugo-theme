@@ -13,6 +13,7 @@
     {{ $page_primary_title = .Title }}
     {{ if .Params.bodyclass }}
       {{- $page_class = partial "GetBodyclass" . }}
+      {{- $page_class = printf "block-%s" $page_class }}
     {{ end }}
   {{ end -}}
 
@@ -27,7 +28,7 @@
 
       {{- with $page -}}
 
-        <div class="page">
+        <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
           <div>
             <p class="title">
               <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
