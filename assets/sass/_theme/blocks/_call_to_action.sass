@@ -1,15 +1,26 @@
 .block-call_to_action
     .call_to_action
-        border: 1px solid $body-color
+        align-items: flex-start
+        background-color: $primary
+        color: $white
+        display: flex
+        flex-direction: column
         padding: $grid-gutter-width
+        @include media-breakpoint-up(md)
+            padding: calc(((100% - (7 * #{$grid-gutter-width})) / 8) + #{$grid-gutter-width})
+        > *
+            order: 2
+        picture
+            order: 1
+        img
+            @extend .img-fluid
+            margin-bottom: $spacer
         p:last-of-type
             margin-bottom: 0
+        // button
         div + div,
         & >
             a
                 @extend .btn
-                @extend .btn-primary
+                @extend .btn-light
                 margin-top: 1rem
-        img
-            @extend .img-fluid
-            margin-bottom: $spacer

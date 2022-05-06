@@ -11,20 +11,20 @@
             <h2>{{ partial "PrepareHTML" $title }}</h2>
           {{- end -}}
 
-          {{ partial "commons/image.html"
-              (dict
-                "image"    .image.file
-                "alt"      .alt
-                "mobile"   "164"
-                "tablet"   "336"
-                "desktop"  "416"
-              )}}
-
           {{- if (partial "GetTextFromHTML" .text) }}
           <div>
             {{ partial "PrepareHTML" .text }}
           </div>
           {{ end -}}
+
+          {{ partial "commons/image.html"
+              (dict
+                "image"    .image.file
+                "alt"      .image.alt
+                "mobile"   "164"
+                "tablet"   "336"
+                "desktop"  "416"
+              )}}
 
           {{- if $buttons }}
           <div role="group">
