@@ -1,22 +1,33 @@
 {{- $position := .position -}}
 {{- $title := .title -}}
+{{- $is_carousel := false -}}
+
 {{- with .data -}}
+  {{ if gt (len .testimonials) 1 }}
+    {{- $is_carousel = true -}}
+  {{ end }}
   <section class="block-testimonials" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        {{ if $title }}
+        {{ if $title -}}
           <h2>{{ partial "PrepareHTML" $title }}</h2>
-        {{ end }}
-        <div class="testimonials splide" data-slides-length="{{ len .testimonials }}" data-splide='{"arrows":false,"autoplay":true,"autoHeight":true}'>
-          <div class="splide__track">
-            <div class="splide__list">
+        {{ end -}}
+
+        <div class="testimonials">
+
+          {{- if $is_carousel }}
+          <div class="splide" data-splide='{"arrows":false,"autoplay":true,"autoHeight":true}'>
+            <div class="splide__track">
+              <div class="splide__list">
+          {{ end -}}
+
             {{ range .testimonials }}
-              <figure class="splide__slide">
+              <figure{{ if $is_carousel }} class="splide__slide"{{ end }}>
                 <blockquote>
                   {{- partial "PrepareHTML" .text -}}
                 </blockquote>
                 <figcaption>
-                  {{ if .photo }}
+                  {{ if .photo -}}
                     <div class="avatar">
                       {{- partial "commons/image.html"
                             (dict
@@ -27,7 +38,7 @@
                               "desktop"  "192x192"
                             ) -}}
                     </div>
-                  {{ end }}
+                  {{- end }}
                   <span>
                     <b>{{ .author }}</b><br>
                     {{ .job }}
@@ -35,6 +46,8 @@
                 </figcaption>
               </figure>
             {{ end }}
+
+          {{- if $is_carousel }}
             </div>
           </div>
 
@@ -42,7 +55,10 @@
             <button class="splide__play"></button>
             <button class="splide__pause"></button>
           </div>
+          {{ end -}}
+
         </div>
+
       </div>
     </div>
   </section>
