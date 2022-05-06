@@ -1,10 +1,21 @@
 {{ define "main" }}
-  {{ partial "persons/hero.html" . }}
+
+{{- $is_organigram_present := false -}}
+{{ range .Params.blocks }}
+  {{- if eq .template "organization_chart" -}}
+    {{- $is_organigram_present = true -}}
+  {{ end }}
+{{ end }}
+
+
+{{ partial "persons/hero.html" . }}
 
   <div class="container">
     {{ partial "persons/taxonomies.html" . }}
 
-    {{ partial "persons/list.html" . }}
+    {{- if not $is_organigram_present -}}
+      {{ partial "persons/list.html" . }}
+    {{- end -}}
   </div>
 
   {{ if .Params.blocks }}
