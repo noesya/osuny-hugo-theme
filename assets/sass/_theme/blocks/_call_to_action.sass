@@ -6,21 +6,32 @@
         flex-direction: column
         > *
             order: 2
+
         picture
             order: 1
+            padding-left: $grid-gutter-width
+            position: relative
             width: calc( (100% / 3 * 2) - #{$grid-gutter-width} / 2)
+            @include media-breakpoint-up(md)
+                padding-left: calc(((100% - (10 * #{$grid-gutter-width})) / 12) + #{$grid-gutter-width})
+                aside ~ .blocks &
+                    padding-left: calc(((100% - (7 * #{$grid-gutter-width})) / 8) + #{$grid-gutter-width})
         img
             @extend .img-fluid
-            margin-bottom: $spacer
             margin-bottom: -50px
-            position: relative
-            z-index: 2
+
         p:last-of-type
             margin-bottom: 0
+
         > div
             background-color: $primary
             padding: $grid-gutter-width
             padding-top: calc(#{$grid-gutter-width} + 50px)
+            @include media-breakpoint-up(md)
+                padding: calc(((100% - (10 * #{$grid-gutter-width})) / 12) + #{$grid-gutter-width})
+                aside ~ .blocks &
+                    padding: calc(((100% - (7 * #{$grid-gutter-width})) / 8) + #{$grid-gutter-width})
+
             // button
             div + div,
             & >
