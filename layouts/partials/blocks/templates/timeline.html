@@ -8,9 +8,6 @@
           <h2>{{ partial "PrepareHTML" $title }}</h2>
         {{ end }}
         {{ with . }}
-          {{ if (partial "GetTextFromHTML" .description) }}
-            <h3>{{ partial "PrepareHTML" .description }}</h3>
-          {{ end }}
           <div class="events">
             {{ range .events }}
               <div class="event">
