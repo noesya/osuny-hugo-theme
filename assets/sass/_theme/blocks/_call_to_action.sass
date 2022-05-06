@@ -1,13 +1,9 @@
 .block-call_to_action
     .call_to_action
         align-items: flex-start
-        background-color: $primary
         color: $white
         display: flex
         flex-direction: column
-        padding: $grid-gutter-width
-        @include media-breakpoint-up(md)
-            padding: calc(((100% - (7 * #{$grid-gutter-width})) / 8) + #{$grid-gutter-width})
         > *
             order: 2
         picture
@@ -16,12 +12,19 @@
         img
             @extend .img-fluid
             margin-bottom: $spacer
+            margin-bottom: -50px
+            position: relative
+            z-index: 2
         p:last-of-type
             margin-bottom: 0
-        // button
-        div + div,
-        & >
-            a
-                @extend .btn
-                @extend .btn-light
-                margin-top: 1rem
+        > div
+            background-color: $primary
+            padding: $grid-gutter-width
+            padding-top: calc(#{$grid-gutter-width} + 50px)
+            // button
+            div + div,
+            & >
+                a
+                    @extend .btn
+                    @extend .btn-light
+                    margin-top: 1rem
