@@ -1,21 +1,21 @@
-{{ $with_image := false }}
-{{ if .Scratch.Get "with_image" }}
-  {{ $with_image = true }}
-{{ end }}
+{{- $with_image := false -}}
+{{- if .Scratch.Get "with_image" -}}
+  {{- $with_image = true -}}
+{{- end -}}
+{{- $title := partial "PrepareHTML" .Title -}}
 <article class="program">
   <div>
     <p class="title">
-      {{ $title := partial "PrepareHTML" .Title }}
-      <a href="{{ .Permalink }}" title="{{ i18n "commons.more_aria" (dict "Title" $title) }}">
+      <a href="{{ .Permalink }}" title="{{ safeHTML (i18n "commons.more_aria" (dict "Title" $title)) }}">
         {{- $title -}}
       </a>
     </p>
-    {{ if .Params.description }}
-      <p>{{ partial "PrepareHTML" .Params.description }}</p>
+    {{ if (partial "GetTextFromHTML" .Params.presentation) }}
+      {{- partial "PrepareHTML" .Params.presentation -}}
     {{ end }}
   </div>
-  {{ if $with_image }}
-    {{ if .Params.image }}
+  {{- if $with_image }}
+    {{- if .Params.image }}
       <div class="media">
         {{ partial "commons/image.html"
               (dict
@@ -26,6 +26,6 @@
                 "itemprop" true
               )}}
       </div>
-    {{ end }}
-  {{ end }}
+    {{ end -}}
+  {{ end -}}
 </article>
