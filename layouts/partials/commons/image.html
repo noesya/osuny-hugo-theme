@@ -1,5 +1,9 @@
 {{- if .image }}
-  {{- $image := partial "GetMedia" .image -}}
+  {{- $id := .image -}}
+  {{- if isset .image "id" -}}
+    {{- $id = .image.id -}}
+  {{- end -}}
+  {{- $image := partial "GetMedia" $id -}}
   {{- if $image -}}
     {{- $url := $image.url -}}
     {{- if site.Params.keycdn -}}
@@ -7,6 +11,9 @@
     {{- end -}}
     {{- $lazy := default true .lazy -}}
     {{- $alt := or .alt "" -}}
+    {{- if isset .image "alt" -}}
+      {{- $alt = .image.alt -}}
+    {{- end -}}
     {{- $width := $image.width -}}
     {{- $height := $image.height -}}
     {{- $default := "1280x720" -}}
