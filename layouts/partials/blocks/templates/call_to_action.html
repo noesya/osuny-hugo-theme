@@ -42,7 +42,8 @@
 
           {{ partial "commons/image.html"
             (dict
-              "image"    .image
+              "image"    .image.file
+              "alt"      .image.alt
               "mobile"   "164x164"
               "tablet"   "336x336"
               "desktop"  "416x416"
