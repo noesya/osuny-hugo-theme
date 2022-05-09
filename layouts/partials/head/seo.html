@@ -7,8 +7,16 @@
   {{- $seoDescription = .Params.description | chomp -}}
 {{- else if .Params.description_short -}}
   {{- $seoDescription = .Params.description_short | chomp -}}
-{{- else -}}
+{{- else if .Content -}}
   {{- $seoDescription = truncate 160 .Summary -}}
+{{- else if .Params.legacy_text -}}
+  {{- $seoDescription = partial "GetTruncateContent" .Params.legacy_text -}}
+{{- else if .Params.blocks -}}
+  {{- range first 1 .Params.blocks -}}
+    {{- with .data -}}
+      {{- $seoDescription = partial "GetTruncateContent" .text -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 {{- $seoImage := "" -}}
 {{- if os.FileExists "static/assets/images/share.png" }}
