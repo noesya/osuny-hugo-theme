@@ -10,7 +10,9 @@
     <div class="container">
       <div class="block-content">
         {{ if $title -}}
-          <h2>{{ partial "PrepareHTML" $title }}</h2>
+          <div class="top">
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          </div>
         {{ end -}}
 
         <div class="testimonials">

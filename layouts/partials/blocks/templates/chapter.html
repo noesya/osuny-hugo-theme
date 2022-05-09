@@ -4,19 +4,21 @@
   <section class="block-chapter" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        {{- if $title }}
-          <h2>{{ partial "PrepareHTML" $title }}</h2>
+        {{ if $title -}}
+          <div class="top">
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          </div>
         {{ end -}}
-        {{ if (partial "GetTextFromHTML" .text) }}
+        {{ if (partial "GetTextFromHTML" .text) -}}
         <div>
-          {{- partial "PrepareHTML" .text -}}
+          {{ partial "PrepareHTML" .text }}
         </div>
         {{ end -}}
         {{ if .notes }}
           <div class="notes">
             {{ partial "PrepareHTML" .notes }}
           </div>
-        {{ end }}
+        {{ end -}}
       </div>
     </div>
   </section>
