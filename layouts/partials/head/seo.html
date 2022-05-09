@@ -14,7 +14,9 @@
 {{- else if .Params.blocks -}}
   {{- range first 1 .Params.blocks -}}
     {{- with .data -}}
-      {{- $seoDescription = partial "GetTruncateContent" .text -}}
+      {{- if .text -}}
+        {{- $seoDescription = partial "GetTruncateContent" .text -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
