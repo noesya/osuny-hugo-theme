@@ -1,0 +1,20 @@
+.share
+    display: flex
+    list-style: none
+    margin: 0
+    padding: 0
+
+    li:not(:last-child)
+        margin-right: 1rem
+
+    a
+        font-size: px2rem(20)
+        text-decoration: none
+        &:hover
+            opacity: .7
+        &::after
+            content: none
+
+    span
+        display: none
+        vertical-align: middle

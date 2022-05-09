@@ -1,9 +1,0 @@
-{{ $content := trim .Content "\n" }}
-{{ if ne $content " " }}
-  <section id="full-text">
-    <h2>{{ i18n "volumes.full_text" }}</h2>
-    <div class="articleBody">
-      {{ partial "PrepareHTML" .Content }}
-    </div>
-  </section>
-{{ end }}

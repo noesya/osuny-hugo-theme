@@ -5,4 +5,8 @@
     {{ partial "organizations/organizations.html" . }}
     {{ partial "commons/pagination.html" . }}
   </div>
+
+  {{ if .Params.blocks }}
+    {{ partial "blocks/list.html" .Params.blocks }}
+  {{ end }}
 {{ end }}

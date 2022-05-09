@@ -1,10 +1,10 @@
 {{ return
 safeHTML (
-  trim (
+  chomp (
     partial "CorrectPunctuation" (
       partial "FixIframeRatio" (
         .
       )
     )
-  ) "\n "
+  )
 ) }}

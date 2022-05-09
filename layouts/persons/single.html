@@ -11,35 +11,14 @@
   {{- $articlesForResearcher := slice -}}
   {{- if isset site.Taxonomies "researchers" -}}
     {{ $articlesForResearcher = index site.Taxonomies.researchers $slug}}
-  {{- end }}
-  {{- $author := site.GetPage (printf "/authors/%s" $slug) }}
-  <header class="hero">
-    <div class="container">
-      <div class="title-avatar">
-        <h1>{{ partial "PrepareHTML" .Title }}</h1>
-        <div>
-          {{ if .Params.image -}}
-            <div class="avatar">
-              {{ partial "commons/image.html"
-                    (dict
-                      "alt"    .Title
-                      "image"    .Params.image
-                      "class"    "img-fluid"
-                      "mobile"   "202x202"
-                      "tablet"   "192x192"
-                      "desktop"  "196x196"
-                    )}}
-            </div>
-          {{- end }}
-        </div>
-      </div>
-      {{ partial "header/breadcrumbs.html" . }}
-    </div>
-  </header>
+  {{ end }}
+  {{ $author := site.GetPage (printf "/authors/%s" $slug) }}
+
+  {{ partial "persons/hero-single.html" . }}
 
   <div class="container">
     <article itemscope itemtype="https://schema.org/Person">
-      <meta itemprop="name" content="{{ chomp .Title }}">
+      <meta itemprop="name" content="{{ partial "PrepareHTML" .Title }}">
       <meta itemprop="url" content="{{ .Permalink }}">
       {{- if .Params.image -}}
         {{- $image := partial "GetMedia" .Params.image -}}

@@ -1,0 +1,26 @@
+.block-timeline
+    .events
+        padding-left: $grid-gutter-width
+        position: relative
+        &::before
+            background: $primary
+            bottom: 0
+            content: ''
+            left: 4px
+            position: absolute
+            top: 10px
+            width: 1px
+    .event
+        &:not(:last-child)
+            margin-bottom: $grid-gutter-width
+        &::before
+            background: $primary
+            border-radius: 50%
+            content: ''
+            height: 9px
+            left: 0
+            margin-top: 10px
+            position: absolute
+            width: 9px
+        p:last-child
+            margin-bottom: 0

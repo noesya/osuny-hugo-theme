@@ -1,0 +1,18 @@
+$breadcrumb-link-color: $body-bg !default
+
+.breadcrumb
+    -webkit-touch-scrolling: touch
+    flex-wrap: nowrap
+    font-family: $font-family-sans-serif
+    overflow: auto
+    @include media-breakpoint-down(md)
+        padding-left: $grid-gutter-width/2
+        padding-right: $grid-gutter-width/2
+    a
+        color: $breadcrumb-link-color
+        text-decoration-color: rgba(white, 0.3)
+        &:hover
+            text-decoration-color: rgba(white, 1)
+    li
+        flex-shrink: 0
+        white-space: nowrap

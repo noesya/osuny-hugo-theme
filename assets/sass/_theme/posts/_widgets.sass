@@ -1,0 +1,44 @@
+.post
+    @extend .card
+    border: 0
+
+    > div:first-of-type
+        @extend .card-body
+        padding-left: 0
+        padding-right: 0
+
+    .media
+        --bs-aspect-ratio: 50%
+        @extend .card-media
+
+    .title
+        @extend .card-title
+        a
+            @extend .stretched-link
+
+    .author,
+    .post-categories
+        @extend .card-text
+        @extend .small
+        &,
+        a
+            color: $gray-700
+
+.posts
+    --bs-gutter-y: 3rem
+    @extend .row
+    > *
+        @extend .col-md-6
+        @extend .col-lg-4
+
+.post-categories
+    @extend .small
+    list-style: none
+    margin: 0
+    padding: 0
+    li
+        display: inline-block
+        vertical-align: middle
+        &:not(:first-child)
+            &::before
+                content: ', '

@@ -1,0 +1,34 @@
+{{- if or .category .context.Pages .context.Params.blocks .context.Content }}
+<nav class="toc" id="nav-toc" aria-label="{{ i18n "commons.toc" }}">
+  <ol>
+
+    {{/* TODO: Delete it */}}
+    {{ $h2s := partial "H2Extract" .context.Content }}
+    {{ if and (not $h2s) (partial "GetTextFromHTML" .context.Content) }}
+      <li>
+        <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
+      </li>
+    {{ end }}
+    {{- range $index, $h2 := $h2s }}
+      <li>
+        <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
+      </li>
+    {{ end -}}
+
+    {{- if .context.Pages }}
+      <li>
+        <a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a>
+      </li>
+    {{ end -}}
+
+    {{- partial "blocks/toc.html" .context.Params.blocks -}}
+
+    {{- if .category.Pages }}
+      <li>
+        <a class="nav-link" href="#page-posts">{{ i18n "pages.posts" }}</a>
+      </li>
+    {{ end -}}
+
+  </ol>
+</nav>
+{{ end -}}

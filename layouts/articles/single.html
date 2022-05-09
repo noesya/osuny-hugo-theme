@@ -6,14 +6,14 @@
           "context" .
         ) -}}
 <article itemscope itemtype="https://schema.org/ScholarlyArticle">
-  <meta itemprop="name" content="{{ .Title }}">
+  <meta itemprop="name" content="{{ partial "PrepareHTML" .Title }}">
 
   <div class="container">
     <div class="content">
       <div>
         {{ partial "articles/abstract.html" . }}
         {{ partial "articles/authors.html" . }}
-        {{ partial "articles/full-text.html" . }}
+        {{ partial "articles/body.html" . }}
         {{ partial "articles/references.html" . }}
       </div>
       {{ partial "articles/aside.html" . }}

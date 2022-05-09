@@ -1,3 +1,6 @@
 <aside>
-  {{ partial "programs/toc.html" . }}
+  {{- partial "programs/toc.html" . -}}
+  {{ if .context.Params.main_information }}
+    {{- partial "PrepareHTML" .context.Params.main_information -}}
+  {{ end }}
 </aside>

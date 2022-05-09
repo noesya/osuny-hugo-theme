@@ -6,7 +6,7 @@
       </a>
     </p>
     {{ if .Params.description_short }}
-      <p>{{- partial "GetTruncateContent" .Params.description_short -}}</p>
+      <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
     {{ end }}
   </div>
 </div>

@@ -17,8 +17,12 @@
 {{- if os.FileExists "static/assets/images/share.jpg" }}
     {{- $seoImage = printf "%sassets/images/share.jpg" site.BaseURL -}}
 {{ end }}
-{{- if .Params.image }}
-  {{- $image := partial "GetMedia" .Params.image -}}
+{{- with .Params.image }}
+  {{- $id := . -}}
+  {{ if isset . "id" -}}
+    {{- $id = .id -}}
+  {{- end }}
+  {{- $image := partial "GetMedia" $id -}}
   {{ $seoImage = partial "GetImageUrl" (dict
           "media" $image
           "size" "1200x600"

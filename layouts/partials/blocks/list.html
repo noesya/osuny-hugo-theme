@@ -1,8 +1,8 @@
-{{ if . }}
+{{- if . -}}
   <div class="blocks">
-  {{ range . }}
+  {{- range . -}}
     {{ $template := printf "blocks/templates/%s.html" .template }}
     {{ partial $template . }}
-  {{ end }}
+  {{- end -}}
   </div>
-{{ end }}
+{{- end -}}

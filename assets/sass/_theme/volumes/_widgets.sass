@@ -1,0 +1,27 @@
+.volume
+    @extend .card
+    border: 0
+
+    > div:first-of-type
+        @extend .card-body
+        padding-left: 0
+        padding-right: 0
+
+    .media
+        --bs-aspect-ratio: 118.77%
+        @extend .card-media
+
+    .title
+        @extend .card-title
+        a
+            @extend .stretched-link
+
+    .suptitle
+        @extend .card-suptitle
+
+.volumes
+    --bs-gutter-y: 3rem
+    @extend .row
+    > *
+        @extend .col-md-6
+        @extend .col-lg-4

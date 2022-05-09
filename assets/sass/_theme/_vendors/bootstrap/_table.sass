@@ -1,0 +1,111 @@
+.table
+    p:last-of-type
+        margin-bottom: 0
+
+    > caption + tbody:not(:first-child)
+        border-top: 0
+
+    &-infos
+        @extend .table
+        border-top: $border-width solid $border-color
+        font-family: $font-family-sans-serif
+        font-size: px2rem(14)
+        margin-bottom: 0
+        caption
+            @extend .visually-hidden
+        th
+            color: $gray-600
+            font-weight: 400
+            padding-left: 0
+            white-space: nowrap
+        td:last-of-type
+            padding-right: 0
+            text-align: right
+        .share
+            justify-content: flex-end
+
+    &-resume
+        @extend .table
+        border-top: $border-width solid $border-color
+        caption
+            @extend .visually-hidden
+        tr
+            position: relative
+        th
+            padding-left: 0
+        td
+            font-size: px2rem(14)
+        td:last-of-type
+            padding-right: 0
+            text-align: right
+        a
+            @extend .stretched-link
+        @include media-breakpoint-down(md)
+            border: 0
+            tbody,
+            tr,
+            th,
+            td
+                display: block
+            tbody
+                tr
+                    margin-bottom: 1rem
+                    th,
+                    td
+                        padding-left: 0
+                        padding-right: 0
+                    th
+                        border-bottom: 0
+                    td
+                        border: 0
+                        padding-top: 0
+                    td:last-of-type
+                        text-align: left
+
+        @include media-breakpoint-up(lg)
+            tr
+                vertical-align: middle
+            th
+                width: calc(100% / 3)
+
+    &-persons
+        @extend .table
+        @extend .table-hover
+        border-top: $border-width solid $border-color
+        caption
+            @extend .visually-hidden
+        tr
+            position: relative
+        th
+            padding-left: 0
+        td
+            font-size: px2rem(16)
+        td:last-of-type
+            padding-right: 0
+        a
+            @extend .stretched-link
+        @include media-breakpoint-down(md)
+            border: 0
+            tbody,
+            tr,
+            th,
+            td
+                display: block
+            tbody
+                tr
+                    margin-bottom: 1rem
+                    th,
+                    td
+                        padding-left: 0
+                        padding-right: 0
+                    th
+                        border-bottom: 0
+                    td
+                        border: 0
+                        padding-top: 0
+
+        @include media-breakpoint-up(lg)
+            tr
+                vertical-align: middle
+            th
+                width: calc(100% / 3)

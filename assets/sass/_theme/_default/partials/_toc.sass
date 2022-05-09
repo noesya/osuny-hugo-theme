@@ -1,0 +1,16 @@
+.toc
+    ol
+        @extend .nav
+        align-items: flex-start
+        flex-direction: column
+        margin-left: -$nav-link-padding-x
+        margin-top: -$nav-link-padding-y
+        > li
+            @extend .nav-item
+            &:not(:last-child)
+                margin-bottom: 1rem
+            > a
+                font-size: px2rem(18)
+                line-height: px2rem(30)
+    .active
+        color: $primary
