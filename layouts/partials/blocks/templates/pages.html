@@ -2,15 +2,18 @@
 {{- $title := .title -}}
 {{- with .data -}}
 
+  {{- $show_main_page := false -}}
   {{- $show_description := .show_description -}}
   {{- $show_image := .show_image -}}
 
-  {{- $page_primary_title := "" -}}
   {{- $page_class := "" -}}
 
   {{ $page := partial "GetPageByUrl" .page }}
   {{- with $page }}
-    {{ $page_primary_title = .Title }}
+    {{- $show_main_page = true -}}
+    {{ if eq $title "" }}
+      {{ $title = .Title }}
+    {{ end }}
     {{ if .Params.bodyclass }}
       {{- $page_class = partial "GetBodyclass" . }}
       {{- $page_class = printf "block-%s" $page_class }}
@@ -20,7 +23,8 @@
   <section class="block-pages {{ $page_class }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        {{- if and $title (ne $title $page_primary_title) }}
+
+        {{- if and $title (not $show_main_page) }}
           <div class="top">
             <h2>{{ partial "PrepareHTML" $title }}</h2>
           </div>
@@ -31,7 +35,7 @@
           <div class="main-page page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
             <div>
               <p class="title">
-                <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
+                <a href="{{ .Permalink }}">{{ partial "PrepareHTML" $title }}</a>
               </p>
               {{ if and .Params.description_short $show_description -}}
                 <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
