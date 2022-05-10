@@ -4,11 +4,11 @@
 {{- end -}}
 {{- $seoDescription := "" -}}
 {{- if .Params.description -}}
-  {{- $seoDescription = .Params.description | chomp -}}
+  {{- $seoDescription = partial "PrepareHTML" .Params.description -}}
 {{- else if .Params.description_short -}}
-  {{- $seoDescription = .Params.description_short | chomp -}}
+  {{- $seoDescription = partial "PrepareHTML" .Params.description_short -}}
 {{- else if .Content -}}
-  {{- $seoDescription = truncate 160 .Summary -}}
+  {{- $seoDescription = partial "GetTruncateContent" .Content -}}
 {{- else if .Params.legacy_text -}}
   {{- $seoDescription = partial "GetTruncateContent" .Params.legacy_text -}}
 {{- else if .Params.blocks -}}
