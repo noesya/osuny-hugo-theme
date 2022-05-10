@@ -13,10 +13,8 @@
   {{- $seoDescription = partial "GetTruncateContent" .Params.legacy_text -}}
 {{- else if .Params.blocks -}}
   {{- range first 1 .Params.blocks -}}
-    {{- with .data -}}
-      {{- if .text -}}
-        {{- $seoDescription = partial "GetTruncateContent" .text -}}
-      {{- end -}}
+    {{- if .title -}}
+      {{- $seoDescription = partial "GetTruncateContent" .title -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
