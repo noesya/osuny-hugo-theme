@@ -3,8 +3,17 @@
 {{- with .data -}}
 
   {{- $show_main_page := false -}}
-  {{- $show_description := .show_description -}}
-  {{- $show_image := .show_image -}}
+  {{- $show_descriptions := .show_descriptions -}}
+  {{- $show_images := .show_images -}}
+  
+  {{/* LEGACY */}}
+  {{- with .show_description -}}
+    {{- $show_descriptions = . -}}
+  {{- end -}}
+  {{- with .show_image -}}
+    {{- $show_images = . -}}
+  {{- end -}}
+
 
   {{- $page_class := "" -}}
 
@@ -37,11 +46,11 @@
               <p class="title">
                 <a href="{{ .Permalink }}">{{ partial "PrepareHTML" $title }}</a>
               </p>
-              {{ if and .Params.description_short $show_description -}}
+              {{ if and .Params.description_short $show_descriptions -}}
                 <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
               {{- end }}
             </div>
-            {{ if $show_image -}}
+            {{ if $show_images -}}
               <div class="media">
                 {{- if .Params.image -}}
                   {{- partial "commons/image.html"
@@ -62,8 +71,6 @@
 
         <div class="pages">
           {{- range .pages }}
-            {{- $show_description := .show_description -}}
-            {{- $show_image := .show_image -}}
             {{- $page := partial "GetPageByUrl" .slug -}}
             {{ with $page }}
               <div>
@@ -72,11 +79,11 @@
                     <p class="title">
                       <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
                     </p>
-                    {{ if and .Params.description_short $show_description -}}
+                    {{ if and .Params.description_short $show_descriptions -}}
                       <p>{{- partial "GetTruncateContent" .Params.description_short -}}</p>
                     {{- end }}
                   </div>
-                  {{ if $show_image -}}
+                  {{ if $show_images -}}
                     <div class="media">
                       {{- if .Params.image -}}
                         {{- partial "commons/image.html"
