@@ -71,7 +71,7 @@
 
         <div class="pages">
           {{- range .pages }}
-            {{- $page := partial "GetPageByUrl" .slug -}}
+            {{- $page := partial "GetPageByUrl" .page -}}
             {{ with $page }}
               <div>
                 <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
