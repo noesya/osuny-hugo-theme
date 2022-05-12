@@ -20,33 +20,28 @@
   <meta itemprop="name" content="{{ partial "PrepareHTML" .Title }}">
   <meta itemprop="url" content="{{ .Permalink }}">
 
-    {{- partial "programs/aside.html"
-      (dict
-          "category" $category
+  {{- partial "programs/aside.html"
+    (dict
+        "category" $category
+        "chapters" $chapters
+        "context" .
+    )
+  -}}
+
+  {{- partial "blocks/list.html" .Params.blocks -}}
+
+  <div>
+    <div class="container">
+      {{- partial "programs/image.html" .Params.image -}}
+      {{- partial "programs/abstract.html" .Params.presentation -}}
+      {{- partial "programs/programs.html" .Pages -}}
+      {{- partial "programs/chapters.html"
+        (dict
           "chapters" $chapters
-          "context" .
-      )
-    -}}
-
-    {{- partial "blocks/list.html" .Params.blocks -}}
-
-    <div>
-      <div class="container">
-        {{- partial "programs/image.html" .Params.image -}}
-
-        {{- partial "programs/abstract.html" .Params.presentation -}}
-
-        {{- partial "programs/programs.html" .Pages -}}
-
-        {{- partial "programs/chapters.html"
-          (dict
-            "chapters" $chapters
-            "params" .Params
-          )
-        -}}
-
-        {{- partial "posts/related.html" $category -}}
-      </div>
+          "params" .Params
+        )
+      -}}
+      {{- partial "posts/related.html" $category -}}
     </div>
   </div>
 
