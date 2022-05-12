@@ -11,12 +11,15 @@
         )
     }}
 
-    {{ partial "pages/image.html" .Params.image }}
-    {{/* LEGACY */}}{{ partial "pages/body.html" .Content }}
-    {{/* LEGACY */}}{{ partial "pages/body.html" .Params.legacy_text }}
-    {{ partial "pages/children.html" .Params.children }}
-    {{ partial "blocks/list.html" .Params.blocks }}
-    {{ partial "posts/related.html" $category }}
+    {{- if .Params.blocks }}
+      {{ partial "blocks/list.html" .Params.blocks }}
+    {{ else }}
+      {{ partial "pages/image.html" .Params.image }}
+      {{/* LEGACY */}}{{ partial "pages/body.html" .Content }}
+      {{/* LEGACY */}}{{ partial "pages/body.html" .Params.legacy_text }}
+      {{ partial "pages/children.html" .Params.children }}
+      {{/* LEGACY */}}{{ partial "posts/related.html" $category }}
+    {{ end }}
   </div>
 
 {{ end }}
