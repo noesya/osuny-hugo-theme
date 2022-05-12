@@ -1,10 +1,16 @@
 .block-image
+    img
+        height: auto
+        max-width: 100%
+    figcaption
+        margin-top: map-get($spacers, 3)
+        p
+            margin-bottom: 0
     @include in-page-without-aside
-        .block-content
-            @include make-row
-            align-items: center
-            flex-direction: row-reverse
-            > *
-                @include make-col-ready
-                @include make-col(6)
-                
+        @include media-breakpoint-up(md)
+            figcaption
+                align-items: baseline
+                display: flex
+                justify-content: space-between
+                p
+                    max-width: 40%
