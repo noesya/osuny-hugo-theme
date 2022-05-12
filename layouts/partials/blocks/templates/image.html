@@ -1,0 +1,35 @@
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  {{- $buttons := and .button.text .button_secondary.text -}}
+  <section class="block-image" id="block-{{ $position }}">
+    <div class="container">
+      <div class="block-content">
+        {{- if or $title (partial "GetTextFromHTML" .text) }}
+          <div>
+            {{- if $title }}
+              <h2>{{ partial "PrepareHTML" $title }}</h2>
+            {{ end -}}
+            {{- if (partial "GetTextFromHTML" .text) }}
+              {{ partial "PrepareHTML" .text }}
+            {{ end -}}
+          </div>
+        {{ end -}}
+
+        {{- with .image -}}
+          <figure>
+            {{ partial "commons/image.html"
+              (dict
+                "image"    .
+                "alt"      .alt
+                "mobile"   "164x164"
+                "tablet"   "336x336"
+                "desktop"  "416x416"
+              )}}
+            <figcaption><small>{{ partial "PrepareHTML" .credit }}</small></figcaption>
+          </figure>
+        {{- end -}}
+      </div>
+    </div>
+  </section>
+{{- end -}}
