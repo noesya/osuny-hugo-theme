@@ -7,3 +7,11 @@
     &:hover
         text-decoration-color: rgba($link-color, 1)
         text-decoration-thickness: 1px
+
+@mixin in-page-with-aside
+    aside ~ .blocks > &
+        @content
+
+@mixin in-page-without-aside
+    main > .blocks
+        @content
