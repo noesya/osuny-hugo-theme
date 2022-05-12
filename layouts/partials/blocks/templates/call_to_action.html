@@ -35,6 +35,13 @@
                 {{ end -}}
               {{ end -}}
 
+              {{- with .button_tertiary }}
+                {{ if .text }}
+                  {{- $title := partial "PrepareHTML" .text -}}
+                  <a href="{{ .url }}" title="{{ $title }}">{{ $title }}</a>
+                {{ end -}}
+              {{ end -}}
+
             {{- if $buttons }}
             </div>
             {{ end -}}
