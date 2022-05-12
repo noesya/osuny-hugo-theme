@@ -9,9 +9,9 @@
         text-decoration-thickness: 1px
 
 @mixin in-page-with-aside
-    aside ~ .blocks > &
+    aside ~ .blocks &
         @content
 
 @mixin in-page-without-aside
-    main > .blocks
+    main > .blocks &
         @content
