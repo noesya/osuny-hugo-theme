@@ -5,7 +5,7 @@
   <section class="block-call_to_action" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        <div class="call_to_action">
+        <div class="call_to_action call_to_action--with{{ if not .image }}out{{ end }}-image">
           <div>
             {{- if $title }}
               <h2>{{ partial "PrepareHTML" $title }}</h2>
@@ -46,7 +46,7 @@
             </div>
             {{ end -}}
           </div>
-
+          
           {{ partial "commons/image.html"
             (dict
               "image"    .image.file
