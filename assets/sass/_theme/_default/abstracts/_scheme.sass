@@ -1,9 +1,11 @@
+$scheme: auto !default
+
 $light-color: black !default
 $dark-color: white !default
 $light-background-color: white !default
 $dark-background-color: black !default
 
-@mixin scheme-text-color($scheme: 'light')
+@mixin scheme-text-color
     @if $scheme == 'light'
         color: $light-color
     @else if $scheme == 'dark'
@@ -14,7 +16,7 @@ $dark-background-color: black !default
         @media (prefers-color-scheme: dark)
             color: $dark-color
 
-@mixin scheme-background-color($scheme: 'light')
+@mixin scheme-background-color
     @if $scheme == 'light'
         background-color: $light-background-color
     @else if $scheme == 'dark'
