@@ -1,0 +1,26 @@
+$light-color: black !default
+$dark-color: white !default
+$light-background-color: white !default
+$dark-background-color: black !default
+
+@mixin scheme-text-color($scheme: 'light')
+    @if $scheme == 'light'
+        color: $light-color
+    @else if $scheme == 'dark'
+        color: $dark-color
+    @else if $scheme == 'auto'
+        @media (prefers-color-scheme: light)
+            color: $light-color
+        @media (prefers-color-scheme: dark)
+            color: $dark-color
+
+@mixin scheme-background-color($scheme: 'light')
+    @if $scheme == 'light'
+        background-color: $light-background-color
+    @else if $scheme == 'dark'
+        background-color: $dark-background-color
+    @else if $scheme == 'auto'
+        @media (prefers-color-scheme: light)
+            background-color: $light-background-color
+        @media (prefers-color-scheme: dark)
+            background-color: $dark-background-color
