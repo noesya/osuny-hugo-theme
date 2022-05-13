@@ -18,7 +18,7 @@
             {{ end -}}
 
             
-            <div {{- if $buttons }}role="group"{{ end -}}>
+            <div {{ if $buttons }}role="group"{{ end -}}>
               {{- with .button -}}
                 {{ if .text }}
                   {{- $title := partial "PrepareHTML" .text -}}
