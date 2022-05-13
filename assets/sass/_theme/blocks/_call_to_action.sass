@@ -1,5 +1,6 @@
 .block-call_to_action
     .call_to_action
+        color: $block-call-to-action-color
         img
             @extend .img-fluid
 
@@ -16,6 +17,8 @@
                     margin-top: 1rem
 
         @include in-page-with-aside
+            display: flex
+            flex-direction: column
             > *
                 order: 2
             picture
@@ -37,7 +40,6 @@
                     padding: col(1, 8)
 
     @include in-page-without-aside
-        color: $block-call-to-action-color
         .block-content
             background-color: $block-call-to-action-background
             padding: col(1)
