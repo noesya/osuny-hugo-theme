@@ -2,24 +2,24 @@
 <nav class="toc" id="nav-toc" aria-label="{{ i18n "commons.toc" }}">
   <ol>
 
-    {{/* TODO: Delete it */}}
-    {{ $h2s := partial "H2Extract" .context.Content }}
-    {{ if and (not $h2s) (partial "GetTextFromHTML" .context.Content) }}
-      <li>
-        <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
-      </li>
-    {{ end }}
-    {{- range $index, $h2 := $h2s }}
-      <li>
-        <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
-      </li>
-    {{ end -}}
-
     {{- if .context.Params.blocks -}}
 
       {{- partial "blocks/toc.html" .context.Params.blocks -}}
 
     {{- else -}}
+
+      {{/* TODO: Delete it */}}
+      {{ $h2s := partial "H2Extract" .context.Content }}
+      {{ if and (not $h2s) (partial "GetTextFromHTML" .context.Content) }}
+        <li>
+          <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
+        </li>
+      {{ end }}
+      {{- range $index, $h2 := $h2s }}
+        <li>
+          <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
+        </li>
+      {{ end -}}
 
       {{- if .context.Pages }}
         <li>
