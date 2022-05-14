@@ -5,16 +5,10 @@
   <section class="block-image" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        {{- if or $title (partial "GetTextFromHTML" .text) }}
           <div>
             {{- if $title }}
-              <h2>{{ partial "PrepareHTML" $title }}</h2>
-            {{ end -}}
-            {{- if (partial "GetTextFromHTML" .text) }}
-              {{ partial "PrepareHTML" .text }}
             {{ end -}}
           </div>
-        {{ end -}}
 
         {{- with .image -}}
           <figure>
@@ -26,9 +20,17 @@
                 "tablet"   "336x336"
                 "desktop"  "416x416"
               )}}
-            <figcaption><small>{{ partial "PrepareHTML" .credit }}</small></figcaption>
+              <figcaption>
+                {{- if $title }}
+                  <p>{{ partial "PrepareHTML" $title }}</p>
+                {{ end -}}
+                {{- if partial "PrepareHTML" .credit }}
+                  <p><small>{{ partial "PrepareHTML" .credit }}</small></p>
+                {{ end -}}
+              </figcaption>
           </figure>
         {{- end -}}
+
       </div>
     </div>
   </section>
