@@ -5,7 +5,7 @@
   {{ if or (.address) (.country) -}}
   <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
     {{ if .address }}<span itemprop="streetAddress">{{ trim .address "\n" }}</span><br>{{ end }}
-    {{ if .zipcode }}<span itemprop="postalCode">{{ trim .zipcode "\n" }}</span> {{ end }}{{ if .city }}<span itemprop="addressLocality">{{ trim .city "\n" }}</span>{{ end }}<br>
+    {{ if .zipcode }}<span itemprop="postalCode">{{ trim .zipcode "\n" }}</span> {{ end }}{{ if .city }}<span itemprop="addressLocality">{{ trim .city "\n" }}</span>{{ end }}
     {{ if .country }}<span itemprop="addressCountry">{{ trim .country "\n" }}</span>{{ end }}
   </p>
   {{ end }}
