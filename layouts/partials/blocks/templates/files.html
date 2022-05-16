@@ -11,16 +11,18 @@
         {{ end -}}
         <ul>
           {{- range .files }}
-            <li>
-              {{- $title := .title -}}
-              {{- $file := partial "GetMedia" .id -}}
-              {{- if and (not $title) $file }}
-                {{ $title = $file.filename }}
-              {{ end -}}
-              {{ if $file }}
-                <a href="{{ $file.url }}" download>{{ $title }} ({{ partial "GetHumanSize" $file.size }})</a>
-              {{ end }}
-            </li>
+            {{- $file := partial "GetMedia" .id -}}
+            {{ if $file }}
+              <li>
+                {{- $title := .title -}}
+                {{- if (not $title) }}
+                  {{ $title = $file.filename }}
+                {{ end -}}
+                {{ if $file }}
+                  <a href="{{ $file.url }}" download>{{ $title }} ({{ partial "GetHumanSize" $file.size }})</a>
+                {{ end }}
+              </li>
+            {{ end -}}
           {{ end -}}
         </ul>
       </div>
