@@ -11,15 +11,13 @@
         {{ end -}}
         
         {{ if .url }}
-          <p>{{ .url }}</p>
           {{ partial "blocks/templates/video/GetIframe" .url }}
         {{ end }}
 
-        {{ if (partial "GetTextFromHTML" .transcription) -}}
-          <div>
-          {{ partial "PrepareHTML" .transcription }}
-          </div>
-        {{ end -}}
+        {{ partial "commons/transcription" ( dict
+          "transcription" .transcription
+          "position" $position
+        ) }}
       </div>
     </div>
   </section>
