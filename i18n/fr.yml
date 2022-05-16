@@ -106,7 +106,17 @@ programs:
   _team: Équipe
   _content: Contenus de la formation
   _results: Indicateurs de résultats
+  ects_credits: Crédits ECTS
+  diploma: Diplôme
+  duration: Durée
+  level: Niveau
   posts: Actualités
+  toc:
+    admission: Admission
+    essential: Essentiel
+    pedagogy: Pédagogie
+    presentation: Présentation
+    results: Résultats
 volumes:
   abstract: Résumé
   article:
