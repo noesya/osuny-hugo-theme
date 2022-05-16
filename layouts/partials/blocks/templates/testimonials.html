@@ -45,9 +45,9 @@
                 {{ if or .author .job -}}
                   <span>
                     {{- if .author -}}
-                      <b>{{ .author }}</b><br>
+                      <b>{{ partial "PrepareHTML" .author }}</b><br>
                     {{- end }}
-                    {{- .job -}}
+                    {{- partial "PrepareHTML" .job -}}
                   </span>
                 {{- end }}
               </figcaption>
