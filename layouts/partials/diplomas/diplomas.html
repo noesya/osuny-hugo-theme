@@ -1,0 +1,7 @@
+<div class="diplomas">
+  {{ range .Paginator.Pages }}
+    <div>
+      {{ partial "diplomas/diplomas.html" . }}
+    </div>
+  {{ end }}
+</div>
