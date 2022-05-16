@@ -12,7 +12,7 @@
         
         {{ if .url }}
           <p>{{ .url }}</p>
-          {{ partial "GetIframeVideo" .url }}
+          {{ partial "blocks/templates/video/GetIframe" .url }}
         {{ end }}
 
         {{ if (partial "GetTextFromHTML" .transcription) -}}

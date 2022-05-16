@@ -43,7 +43,7 @@
       {{ end }}
 
       {{ if $identifier }}
-        {{ $partial := printf  "blocks/templates/iframes/%s.html" $provider.name }}
+        {{ $partial := printf  "blocks/templates/video/%s.html" $provider.name }}
         {{ partial $partial (dict "id" $identifier)}}
       {{ end }}
     {{ end }}

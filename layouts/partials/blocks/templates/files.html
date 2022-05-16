@@ -1,0 +1,29 @@
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  <section class="block-files" id="block-{{ $position }}">
+    <div class="container">
+      <div class="block-content">
+        {{- if $title }}
+          <div class="top">
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          </div>
+        {{ end -}}
+        <ul>
+          {{- range .files }}
+            <li>
+              {{- $title := .title -}}
+              {{- $file := partial "GetMedia" .id -}}
+              {{- if and (not $title) $file }}
+                {{ $title = $file.filename }}
+              {{ end -}}
+              {{ if $file }}
+                <a href="{{ $file.url }}" download>{{ $title }} ({{ partial "GetHumanSize" $file.size }})</a>
+              {{ end }}
+            </li>
+          {{ end -}}
+        </ul>
+      </div>
+    </div>
+  </section>
+{{- end -}}
