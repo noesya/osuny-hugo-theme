@@ -1,0 +1,30 @@
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  <section class="block-video" id="block-{{ $position }}">
+    <div class="container">
+      <div class="block-content">
+        {{ if $title -}}
+          <div class="top">
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          </div>
+        {{ end -}}
+        
+        {{ if .url }}
+          <p>{{ .url }}</p>
+          <pre>{{ partial "GetIframeVideo" .url }}</pre>
+          {{ $iframe := partial "GetIframeVideo" .url }}
+          {{ if $iframe }}
+            <iframe src="{{ $iframe }}" frameborder="0"></iframe>
+          {{ end }}
+        {{ end }}
+
+        {{ if (partial "GetTextFromHTML" .transcription) -}}
+          <div>
+          {{ partial "PrepareHTML" .transcription }}
+          </div>
+        {{ end -}}
+      </div>
+    </div>
+  </section>
+{{- end -}}

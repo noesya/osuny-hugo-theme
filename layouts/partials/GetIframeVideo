@@ -1,0 +1,41 @@
+{{ $url := . }}
+{{ $identifier := false }}
+{{ $iframe_url := false }}
+
+{{ $youtube_urls := slice "youtube.com" }}
+
+{{ $vimeo := (dict 
+    "name" "vimeo"
+    "urls" (slice "vimeo.com")
+    "url" "https://player.vimeo.com/video/[IDENTIFIER]"
+) }}
+
+{{ $youtube := (dict 
+  "name" "youtube"
+  "urls" (slice "youtube.com" "youtu.be")
+  "url" "https://www.youtube.com/embed/[IDENTIFIER]"
+) }}
+
+{{ $providers := slice $vimeo $youtube }}
+
+{{ range $provider := $providers }}
+  {{ range $provider_url := $provider.urls }}
+    {{ if in $url $provider_url }}
+
+      {{ if eq $provider.name "vimeo" }}
+        {{ $parts := split $url "/" }}
+        {{ $identifier = (index (last 1 $parts) 0) }}
+      {{ else if eq $provider.name "youtube" }}
+        {{ $parts := split $url "v=" }}
+        {{ $identifier = (index (last 1 $parts) 0) }}
+      {{ end }}
+
+      {{ if $identifier }}
+        {{ $iframe_url = replace $provider.url "[IDENTIFIER]" $identifier 2 }}
+      {{ end }}
+
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $iframe_url }}
