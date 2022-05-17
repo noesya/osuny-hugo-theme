@@ -1,7 +1,7 @@
 {{- if .Site.Taxonomies -}}
   <ul class="taxonomies">
     {{- range $name, $t := .Site.Taxonomies }}
-      {{- if ne $name "categories" }}
+      {{- if and (ne $name "categories") (ne $name "diplomas") }}
         {{- with $.Site.GetPage "taxonomyTerm" $name}}
           {{- if .Pages }}
             <li>
