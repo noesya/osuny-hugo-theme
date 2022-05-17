@@ -1,5 +1,6 @@
-{{ $url := . }}
+{{ $url := .url }}
 {{ $identifier := false }}
+{{ $title := partial "PrepareHTML" .title }}
 
 {{ $vimeo := (dict 
     "name" "vimeo"
@@ -44,7 +45,10 @@
 
       {{ if $identifier }}
         {{ $partial := printf  "blocks/templates/video/%s.html" $provider.name }}
-        {{ partial $partial (dict "id" $identifier)}}
+        {{ partial $partial (dict 
+          "id" $identifier 
+          "title" $title
+          )}}
       {{ end }}
     {{ end }}
   {{ end }}

@@ -24,13 +24,14 @@
 
         <div class="posts">
           {{ range $post := .posts -}}
-            {{ with site.GetPage (printf "/posts/%s" $post ) }}
+            {{ with site.GetPage (printf "/posts/%s" $post) }}
               <div>
                 {{ partial "posts/post" . }}
               </div>
             {{ end }}
           {{ end }}
         </div>
+
       </div>
     </div>
   </section>

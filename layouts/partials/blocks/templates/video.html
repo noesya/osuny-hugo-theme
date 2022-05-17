@@ -11,7 +11,10 @@
         {{ end -}}
         
         {{ if .url }}
-          {{ partial "blocks/templates/video/GetIframe" .url }}
+          {{ partial "blocks/templates/video/GetIframe" ( dict
+              "url" .url
+              "title" $title
+            )}}
         {{ end }}
 
         {{ partial "commons/transcription" ( dict
