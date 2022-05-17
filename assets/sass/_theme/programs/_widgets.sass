@@ -34,6 +34,7 @@
                 &::before
                     content: none
 
+// grid
 .programs:not(ol)
     --bs-gutter-y: 3rem
     @extend .row
@@ -44,3 +45,15 @@
         @extend .col-lg-8
     & + hr
         @extend .my-5
+
+// list
+ol.programs
+    li
+        align-items: baseline
+        border-bottom: 1px solid $border-color
+        display: flex
+        justify-content: space-between
+        padding-bottom: $spacer
+        padding-top: $spacer
+        @include media-breakpoint-down(lg)
+            flex-direction: column
