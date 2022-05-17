@@ -1,0 +1,25 @@
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- with .data -}}
+  <section class="block-key_figures" id="block-{{ $position }}">
+    <div class="container">
+      <div class="block-content">
+        {{- if $title }}
+          <div class="top">
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          </div>
+        {{ end -}}
+        <ul>
+          {{- range .figures }}
+            <li>
+                <dl>
+                    <dt><strong>{{ .number }}</strong>{{ partial "PrepareHTML" .unit }}</dt>
+                    <dd>{{ partial "PrepareHTML" .description }}</dd>
+                </dl>
+            </li>
+          {{ end -}}
+        </ul>
+      </div>
+    </div>
+  </section>
+{{- end -}}
