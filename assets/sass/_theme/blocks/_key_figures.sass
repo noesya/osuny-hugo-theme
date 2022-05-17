@@ -1,17 +1,14 @@
 .block-key_figures
     ul
         @include make-row
-        justify-content: space-evenly
         list-style: none
         padding-left: 0
         li
             @include make-col-ready
             @include make-col(10)
-            text-align: center
             @include media-breakpoint-up(md)
                 @include make-col(4)
             strong
                 display: inline-block
                 font-size: px2rem(60)
-                padding: 0 px2rem(5)
-        
+                padding-right: map-get($spacers, 1)

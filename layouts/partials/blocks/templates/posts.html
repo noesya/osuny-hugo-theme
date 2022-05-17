@@ -23,13 +23,12 @@
         {{- end }}
 
         <div class="posts">
-          {{- $posts := where site.RegularPages "Type" "posts" -}}
-          {{ range .posts -}}
-            {{ range where $posts "Params.slug" . }}
+          {{ range $post := .posts -}}
+            {{ with site.GetPage (printf "/posts/%s" $post ) }}
               <div>
                 {{ partial "posts/post" . }}
               </div>
-            {{- end }}
+            {{ end }}
           {{ end }}
         </div>
       </div>
