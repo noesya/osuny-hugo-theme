@@ -25,9 +25,17 @@ class KeyFigures {
             this.targets.push(parseFloat(figure.innerHTML, 10));
             figure.style.minWidth = figure.offsetWidth + 'px';
         });
-        this.intersectionObserver = new IntersectionObserver(this.play.bind(this));
+        this.intersectionObserver = new IntersectionObserver(this.observe.bind(this));
         this.intersectionObserver.POLL_INTERVAL = 100;
         this.intersectionObserver.observe(this.dom);
+    }
+
+    observe (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                this.play();
+            }
+        });
     }
 
     play () {
