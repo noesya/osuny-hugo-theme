@@ -1,4 +1,5 @@
 import 'intersection-observer';
+import { isReducedMotionPrefered } from '../utils/isReducedMotionPrefered';
 import '../utils/number';
 
 // Compatibilities
@@ -81,6 +82,11 @@ class KeyFigures {
 }
 
 window.addEventListener('load', () => {
+    // Handle reduced motion user's preference
+    if (isReducedMotionPrefered()) {
+        return;
+    }
+
     const keyFigures = document.querySelectorAll('.block-key_figures');
     keyFigures.forEach((dom) => {
         new KeyFigures(dom);
