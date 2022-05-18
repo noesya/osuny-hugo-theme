@@ -107,7 +107,17 @@ programs:
   _team: Team
   _content: Content
   _results: Results
+  ects_credits: ECTS credits
+  diploma: Diploma
+  duration: Duration
+  level: Level
   posts: News
+  toc:
+    admission: Admission
+    essential: Essential
+    pedagogy: Pedagogy
+    presentation: Presentation
+    results: Results
 volumes:
   abstract: Abstract
   article:

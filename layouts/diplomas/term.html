@@ -1,0 +1,8 @@
+{{ define "main" }}
+  {{ partial "diplomas/hero-single.html" . }}
+
+  <div class="container">
+    {{ partial "programs/programs.html" .Pages }}
+    {{ partial "commons/pagination.html" . }}
+  </div>
+{{ end }}
