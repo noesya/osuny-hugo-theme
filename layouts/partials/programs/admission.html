@@ -1,0 +1,40 @@
+<section id="admission">
+  <div class="container">
+    <div class="content">
+      <div>
+        <h2>{{ i18n "programs.toc.admission" }}</h2>
+      </div>
+      <div>
+        {{- if partial "GetTextFromHTML" .Params.prerequisites -}}
+          <h3>{{ i18n "programs._prerequisites" }}</h3>
+          {{- partial "PrepareHTML" .Params.prerequisites -}}
+        {{- end -}}
+
+        {{- if partial "GetTextFromHTML" .Params.pricing -}}
+          <h3>{{ i18n "programs._pricing" }}</h3>
+          {{- partial "PrepareHTML" .Params.pricing -}}
+        {{- end -}}
+
+        {{- if partial "GetTextFromHTML" .Params.accessibility -}}
+          <h3>{{ i18n "programs._accessibility" }}</h3>
+          {{- partial "PrepareHTML" .Params.accessibility -}}
+        {{- end -}}
+
+        {{- if partial "GetTextFromHTML" .Params.registration -}}
+          <h3>{{ i18n "programs._registration" }}</h3>
+          {{- partial "PrepareHTML" .Params.registration -}}
+        {{- end -}}
+
+        {{- if partial "GetTextFromHTML" .Params.other -}}
+          <h3>{{ i18n "programs._other" }}</h3>
+          {{- partial "PrepareHTML" .Params.other -}}
+        {{- end -}}
+
+        {{- if partial "GetTextFromHTML" .Params.contacts -}}
+          <h3>{{ i18n "programs._contacts" }}</h3>
+          {{- partial "PrepareHTML" .Params.contacts -}}
+        {{- end -}}
+      </div>
+    </div>
+  </div>
+</section>
