@@ -1,0 +1,11 @@
+<a href="{{ .Permalink }}" class="page" title="{{ i18n "commons.more_aria" (partial "PrepareHTML" .Title) }}">
+  <div>
+    <p class="title">
+      {{ partial "PrepareHTML" .Title }}
+    </p>
+    {{- if .Params.description_short -}}
+      <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
+    {{- end -}}
+    <p>{{ i18n "commons.more" }}</p>
+  </div>
+</a>
