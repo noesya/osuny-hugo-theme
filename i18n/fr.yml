@@ -111,6 +111,7 @@ programs:
   diploma: Diplôme
   duration: Durée
   level: Niveau
+  no_program: Aucune formation
   posts: Actualités
   toc:
     admission: Admission

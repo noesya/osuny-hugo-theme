@@ -111,6 +111,7 @@ programs:
   diploma: Diploma
   duration: Duration
   level: Level
+  no_program: No program
   posts: News
   toc:
     admission: Admission
