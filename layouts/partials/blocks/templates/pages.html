@@ -2,6 +2,7 @@
 {{- $title := .title -}}
 {{- $layout_class := "block-pages--list" -}}
 {{- with .data -}}
+  {{- $layout := .layout -}}
 
   {{- $show_main_page := false -}}
   {{- $show_main_description := .show_main_description -}}
@@ -16,7 +17,7 @@
     {{- $show_images = . -}}
   {{- end -}}
 
-  {{- if .layout -}}
+  {{- if $layout -}}
     {{- $layout_class = printf "block-pages--%s" .layout -}}
   {{- end -}}
 
@@ -65,9 +66,15 @@
 
                 {{ .Scratch.Set "show_image" $show_images }}
                 {{ .Scratch.Set "show_description" $show_descriptions }}
+                {{- if eq $layout "cards" -}}
+                  {{ .Scratch.Set "show_more" true }}
+                {{- end -}}
                 {{ partial "pages/page.html" . }}
                 {{ .Scratch.Delete "show_image" }}
                 {{ .Scratch.Delete "show_description" }}
+                {{- if eq $layout "cards" -}}
+                  {{ .Scratch.Delete "show_more" }}
+                {{- end -}}
 
               </div>
             {{ end }}

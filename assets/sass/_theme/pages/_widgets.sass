@@ -13,13 +13,25 @@
 
     .title
         @extend .card-title
-        margin-bottom: .5rem
+        margin-bottom: 0
         a
             @extend .link
             @extend .link-more
             @extend .stretched-link
             font-size: px2rem(22)
             line-height: px2rem(30)
+
+        & + p
+            margin-top: .5rem
+
+        & ~ .more
+            margin-top: auto
+    .more
+        @extend .small
+        text-decoration-line: underline
+        text-decoration-thickness: 1px
+        text-underline-offset: 3px
+
 
 // grid
 .pages
