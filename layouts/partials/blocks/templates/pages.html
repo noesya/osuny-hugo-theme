@@ -1,18 +1,23 @@
 {{- $position := .position -}}
 {{- $title := .title -}}
+{{- $layout_class := "block-pages--list" -}}
 {{- with .data -}}
 
   {{- $show_main_page := false -}}
   {{- $show_main_description := .show_main_description -}}
   {{- $show_descriptions := .show_descriptions -}}
   {{- $show_images := .show_images -}}
-  
+
   {{/* LEGACY */}}
   {{- with .show_description -}}
     {{- $show_descriptions = . -}}
   {{- end -}}
   {{- with .show_image -}}
     {{- $show_images = . -}}
+  {{- end -}}
+
+  {{- if .layout -}}
+    {{- $layout_class = printf "block-pages--%s" .layout -}}
   {{- end -}}
 
   {{- $page_class := "" -}}
@@ -29,7 +34,7 @@
     {{ end }}
   {{ end -}}
 
-  <section class="block-pages {{ $page_class }}" id="block-{{ $position }}">
+  <section class="block-pages {{ $layout_class }} {{ $page_class }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
 
@@ -41,16 +46,11 @@
 
         {{- with $page -}}
 
-          <div class="main-page page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
-            <div>
-              <p class="title">
-                <a href="{{ .Permalink }}">{{ partial "PrepareHTML" $title }}</a>
-              </p>
-              {{ if and .Params.description_short $show_main_description -}}
-                <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
-              {{- end }}
-            </div>
-          </div>
+          {{ .Scratch.Set "class" "main-page" }}
+          {{ .Scratch.Set "show_description" $show_main_description }}
+          {{ partial "pages/page.html" . }}
+          {{ .Scratch.Delete "class" }}
+          {{ .Scratch.Delete "show_description" }}
 
         {{- end -}}
 
@@ -62,31 +62,13 @@
             {{- end -}}
             {{ with $page }}
               <div>
-                <div class="page{{ if .Params.bodyclass }} page-{{ .Params.bodyclass }}{{ end }}">
-                  <div>
-                    <p class="title">
-                      <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
-                    </p>
-                    {{ if and .Params.description_short $show_descriptions -}}
-                      <p>{{- partial "GetTruncateContent" .Params.description_short -}}</p>
-                    {{- end }}
-                  </div>
-                  {{ if $show_images -}}
-                    <div class="media">
-                      {{- if .Params.image -}}
-                        {{- partial "commons/image.html"
-                              (dict
-                                "image"    .Params.image
-                                "mobile"   "351x291"
-                                "tablet"   "334x167"
-                                "desktop"  "634x317"
-                              ) -}}
-                      {{- else -}}
-                        {{- partial "commons/image-default.html" -}}
-                      {{- end -}}
-                    </div>
-                  {{- end }}
-                </div>
+
+                {{ .Scratch.Set "show_image" $show_images }}
+                {{ .Scratch.Set "show_description" $show_descriptions }}
+                {{ partial "pages/page.html" . }}
+                {{ .Scratch.Delete "show_image" }}
+                {{ .Scratch.Delete "show_description" }}
+
               </div>
             {{ end }}
           {{ end -}}

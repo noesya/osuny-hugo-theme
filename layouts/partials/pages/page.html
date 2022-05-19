@@ -1,12 +1,40 @@
-<article class="page">
+{{- $class := "page" -}}
+{{- $custom_class := "" -}}
+
+{{- if .Params.bodyclass -}}
+  {{ $custom_class = printf "%s page-%s" $class .Params.bodyclass }}
+{{- end -}}
+
+{{- if .Scratch.Get "class" -}}
+  {{ $custom_class = .Scratch.Get "class" }}
+  {{ $class = printf "%s %s" $class $custom_class }}
+{{- end -}}
+<article class="{{ $class }}">
   <div>
     <p class="title">
       <a href="{{ .Permalink }}">
-        {{ partial "PrepareHTML" .Title }}
+        {{- partial "PrepareHTML" .Title -}}
       </a>
     </p>
-    {{ if .Params.description_short }}
-      <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
+    {{ if .Scratch.Get "show_description" }}
+      {{ if .Params.description_short }}
+        <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
+      {{ end }}
     {{ end }}
   </div>
+  {{ if .Scratch.Get "show_image" }}
+    <div class="media">
+      {{- if .Params.image -}}
+        {{- partial "commons/image.html"
+              (dict
+                "image"    .Params.image
+                "mobile"   "351x291"
+                "tablet"   "334x167"
+                "desktop"  "634x317"
+              ) -}}
+      {{- else -}}
+        {{- partial "commons/image-default.html" -}}
+      {{- end -}}
+    </div>
+  {{- end }}
 </article>
