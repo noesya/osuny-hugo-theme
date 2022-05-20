@@ -16,14 +16,14 @@
         {{- partial "PrepareHTML" .Title -}}
       </a>
     </p>
-    {{ if .Scratch.Get "show_description" }}
-      {{ if .Params.description_short }}
-        <p>{{- partial "PrepareHTML" .Params.description_short -}}</p>
-      {{ end }}
-    {{ end }}
-    {{ if .Scratch.Get "show_more" }}
+    {{- if .Scratch.Get "show_description" }}
+      {{- if .Params.description_short }}
+        <p>{{ partial "PrepareHTML" .Params.description_short }}</p>
+      {{ end -}}
+    {{ end -}}
+    {{- if .Scratch.Get "show_more" }}
       <p class="more">{{- i18n "commons.more" -}}</p>
-    {{ end }}
+    {{ end -}}
   </div>
   {{ if .Scratch.Get "show_image" }}
     <div class="media">

@@ -47,11 +47,11 @@
 
         {{- with $page -}}
 
-          {{ .Scratch.Set "class" "main-page" }}
-          {{ .Scratch.Set "show_description" $show_main_description }}
-          {{ partial "pages/page.html" . }}
-          {{ .Scratch.Delete "class" }}
-          {{ .Scratch.Delete "show_description" }}
+          {{- .Scratch.Set "class" "main-page" -}}
+          {{- .Scratch.Set "show_description" $show_main_description -}}
+          {{- partial "pages/page.html" . -}}
+          {{- .Scratch.Delete "class" -}}
+          {{- .Scratch.Delete "show_description" -}}
 
         {{- end -}}
 
@@ -64,16 +64,16 @@
             {{ with $page }}
               <div>
 
-                {{ .Scratch.Set "show_image" $show_images }}
-                {{ .Scratch.Set "show_description" $show_descriptions }}
+                {{- .Scratch.Set "show_image" $show_images -}}
+                {{- .Scratch.Set "show_description" $show_descriptions -}}
                 {{- if eq $layout "cards" -}}
-                  {{ .Scratch.Set "show_more" true }}
+                  {{- .Scratch.Set "show_more" true -}}
                 {{- end -}}
-                {{ partial "pages/page.html" . }}
-                {{ .Scratch.Delete "show_image" }}
-                {{ .Scratch.Delete "show_description" }}
+                {{- partial "pages/page.html" . -}}
+                {{- .Scratch.Delete "show_image" -}}
+                {{- .Scratch.Delete "show_description" -}}
                 {{- if eq $layout "cards" -}}
-                  {{ .Scratch.Delete "show_more" }}
+                  {{- .Scratch.Delete "show_more" -}}
                 {{- end -}}
 
               </div>
