@@ -1,31 +1,18 @@
 {{- with . -}}
-  <table>
-    <caption>{{ i18n "programs.toc.essential" }}</caption>
-    <tbody>
-      <tr>
-        <th>{{ i18n "programs.diploma" }}</th>
-        <td>
-            <a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a>
-        </td>
-      </tr>
-      {{- if .Params.level -}}
-      <tr>
-        <th>{{ i18n "programs.level" }}</th>
-        <td>{{ partial "PrepareHTML" .Params.level }}</td>
-      </tr>
-      {{- end -}}
-      {{- if .Params.duration -}}
-      <tr>
-        <th>{{ i18n "programs.duration" }}</th>
-        <td>{{ partial "PrepareHTML" .Params.duration }}</td>
-      </tr>
-      {{- end -}}
-      {{- if .Params.ects -}}
-      <tr>
-        <th>{{ i18n "programs.ects_credits" }}</th>
-        <td>{{ .Params.ects }}</td>
-      </tr>
-      {{- end -}}
-    </tbody>
-  </table>
+  <dl>
+    <dt>{{ i18n "programs.diploma" }}</dt>
+    <dd><a href="{{ .Permalink }}">{{ partial "PrepareHTML" .Title }}</a></dd>
+    {{- if .Params.level -}}
+      <dt>{{ i18n "programs.level" }}</dt>
+      <dd>{{ partial "PrepareHTML" .Params.level }}</dd>
+    {{- end -}}
+    {{- if .Params.duration -}}
+      <dt>{{ i18n "programs.duration" }}</dt>
+      <dd>{{ partial "PrepareHTML" .Params.duration }}</dd>
+    {{- end -}}
+    {{- if .Params.ects -}}
+      <dt>{{ i18n "programs.ects_credits" }}</dt>
+      <dd>{{ partial "PrepareHTML" .Params.ects }}</dd>
+    {{- end -}}
+  </dl>
 {{- end -}}
