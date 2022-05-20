@@ -4,20 +4,19 @@
     {{- $descriptions := .descriptions -}}
     {{- range .teachers -}}
       {{- $slug := . -}}
-      {{ with site.GetPage "persons" }}
-        {{ with .GetPage $slug -}}
-          <tr>
-            <th>
-              <a href="{{ .Permalink }}">
-                {{- partial "PrepareHTML" .Title -}}
-              </a>
-            </th>
-            <td>
-              {{- partial "PrepareHTML" (index $descriptions $slug) -}}
-            </td>
-          </tr>
-        {{- end }}
-      {{ end }}
+      {{- $person := site.GetPage (printf "/persons/%s" $slug) -}}
+      {{- with $person -}}
+        <tr>
+          <th>
+            <a href="{{ .Permalink }}">
+              {{- partial "PrepareHTML" .Title -}}
+            </a>
+          </th>
+          <td>
+            {{- partial "PrepareHTML" (index $descriptions $slug) -}}
+          </td>
+        </tr>
+      {{- end -}}
     {{- end -}}
   </tbody>
 </table>
