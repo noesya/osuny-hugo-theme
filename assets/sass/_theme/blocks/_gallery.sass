@@ -1,15 +1,13 @@
 .block-gallery
     .gallery
+        --bs-gutter-y: 2rem
         @extend .row
         > *
             @extend .col-md-6
             @extend .col-lg-4
 
-            // aside + div &
-            //     @extend .col-md-6
-            //     @extend .col-lg-4
-
     figure
+        margin-bottom: 0
         > a,
         > picture
             @extend .figure-img
@@ -25,4 +23,8 @@
             width: 100%
 
         figcaption
-            @extend .small
+            &,
+            p
+                @extend .small
+            p
+                margin-bottom: 0
