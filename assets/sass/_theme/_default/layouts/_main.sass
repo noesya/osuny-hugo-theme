@@ -7,6 +7,8 @@ main
         @if $enable-header-sticky
             html:not(.is-scrolling-down) &
                 scroll-margin-top: $header-height
+                @include media-breakpoint-up(md)
+                    scroll-margin-top: $header-height-md
 
     [itemprop='articleBody']
         overflow-wrap: break-word

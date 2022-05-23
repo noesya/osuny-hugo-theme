@@ -8,6 +8,8 @@ header[role="banner"]
         html.is-scrolling-down &
             &:not(:hover)
                 top: -$header-height
+                @include media-breakpoint-up(md)
+                    top: -$header-height-md
         &.is-sticky
             position: sticky
 
