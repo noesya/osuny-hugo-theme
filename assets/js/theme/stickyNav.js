@@ -1,6 +1,8 @@
 const events = ['scroll', 'touchmove'];
 let previousY = 0,
     y = 0,
+    classSticky = 'is-sticky',
+    classScrollingDown = 'is-scrolling-down',
     header = document.querySelector('header[role="banner"]');
 
 events.forEach((event) => {
@@ -8,15 +10,15 @@ events.forEach((event) => {
         y = window.scrollY;
 
         if (y > header.offsetHeight) {
-            header.classList.add('is-sticky');
+            header.classList.add(classSticky);
         } else {
-            header.classList.remove('is-sticky');
+            header.classList.remove(classSticky);
         }
 
         if (y > previousY) {
-            document.documentElement.classList.add('is-scrolling-down');
+            document.documentElement.classList.add(classScrollingDown);
         } else {
-            document.documentElement.classList.remove('is-scrolling-down');
+            document.documentElement.classList.remove(classScrollingDown);
         }
 
         previousY = y;
