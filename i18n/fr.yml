@@ -65,6 +65,8 @@ cookie_banner:
   refuse: Refuser
   text: Ce site utilise des cookies pour améliorer l’expérience de navigation et fournir des fonctionnalités supplémentaires.
   title: Bandeau cookie
+diplomas:
+  type: Type de diplôme
 page_not_found: 404 page non trouvée
 pages:
   details: En détail

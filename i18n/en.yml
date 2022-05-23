@@ -65,6 +65,8 @@ cookie_banner:
   refuse: Refuse
   text: This site uses cookies to improve the browsing experience and provide additional functionality.
   title: Cookie banner
+diplomas:
+  type: Type de diplôme
 page_not_found: 404 page not found
 pages:
   details: Details

@@ -21,7 +21,8 @@ article.diploma
             font-size: px2rem(18)
             line-height: 1.5
 
-.diplomas
+// list
+ol.diplomas
     list-style: none
     margin: 0
     padding: 0
@@ -32,3 +33,14 @@ article.diploma
         position: relative
     a
         @extend .stretched-link
+
+// select
+.diplomas-select
+    text-align: right
+    button
+        @extend .btn
+        @extend .dropdown-toggle
+    .dropdown-menu
+        // @extend .dropdown-menu-right
+        a
+            @extend .dropdown-item
