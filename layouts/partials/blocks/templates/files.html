@@ -19,7 +19,7 @@
                   {{ $title = $file.filename }}
                 {{ end -}}
                 {{ if $file }}
-                  <a href="{{ $file.url }}" download>{{ $title }} ({{ partial "GetHumanSize" $file.size }})</a>
+                  <a href="{{ $file.url }}" download target="_blank">{{ $title }} ({{ partial "GetHumanSize" $file.size }})</a>
                 {{ end }}
               </li>
             {{ end -}}
