@@ -1,3 +1,9 @@
 .sticky
     position: sticky
     top: $grid-gutter-width
+    @if $enable-header-sticky
+        transition: top $header-transition
+        html:not(.is-scrolling-down) &
+            top: calc(#{$header-height} + #{$grid-gutter-width})
+            @include media-breakpoint-up(md)
+                top: calc(#{$header-height-md} + #{$grid-gutter-width})

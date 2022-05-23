@@ -1,4 +1,17 @@
 header[role="banner"]
+    @if $enable-header-sticky
+        background-color: $menu-background-color
+        position: static
+        top: 0
+        transition: top $header-transition
+        z-index: $header-zindex
+        html.is-scrolling-down &
+            &:not(:hover)
+                top: -$header-height
+                @include media-breakpoint-up(md)
+                    top: -$header-height-md
+        &.is-sticky
+            position: sticky
 
     nav[role="navigation"]
         @extend .navbar-expand-lg
