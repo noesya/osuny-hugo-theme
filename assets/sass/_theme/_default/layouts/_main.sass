@@ -5,7 +5,8 @@ main
     section,
     h2
         @if $enable-header-sticky
-            scroll-margin-top: $header-height
+            html:not(.is-scrolling-down) &
+                scroll-margin-top: $header-height
 
     [itemprop='articleBody']
         overflow-wrap: break-word
