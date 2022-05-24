@@ -23,8 +23,12 @@
             width: 100%
 
         figcaption
-            &,
-            p
-                @extend .small
+            position: relative
+            @include media-breakpoint-up(md)
+                align-items: baseline
+                display: flex
+                justify-content: space-between
             p
                 margin-bottom: 0
+        .credit
+            @extend .small

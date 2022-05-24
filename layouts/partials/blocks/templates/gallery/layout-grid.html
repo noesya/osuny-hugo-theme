@@ -10,7 +10,7 @@
         {{- $default := "1280x2560" -}}
         <figure>
           <a class="glightbox"
-            data-glightbox="type: image;"
+            data-glightbox="type: image;{{ if .credit }}description: {{ partial "PrepareHTML" .credit }}{{ end }}"
             href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
             {{ partial "commons/image.html"
               (dict
@@ -24,9 +24,6 @@
           <figcaption>
             {{ if .text }}
               <p>{{ partial "PrepareHTML" .text }}</p>
-            {{ end }}
-            {{ if .credit }}
-              <p>{{ partial "PrepareHTML" .credit }}</p>
             {{ end }}
           </figcaption>
         </figure>
