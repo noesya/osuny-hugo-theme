@@ -35,6 +35,7 @@ commons:
   language: Language
   link:
     blank: extern link
+    blank_aria: « {{ .Title }} » - extern link
   menu:
     label: Toggle navigation
     legal: Legals menu
