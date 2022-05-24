@@ -1,0 +1,33 @@
+.block-pages
+
+    &--cards
+        background-color: $light
+        padding-bottom: $grid-gutter-width
+        padding-top: $grid-gutter-width
+        .pages
+            --bs-gutter-y: #{$grid-gutter-width}
+            > *
+                @extend .col-lg-4
+            .page
+                aspect-ratio: 0.887
+                background-color: $card-bg
+                transition: background .3s, color .3s
+                > div:first-child
+                    display: flex
+                    flex-direction: column
+                .title
+                    a
+                        text-decoration: none
+                    + p:not(.more)
+                        margin-bottom: 1rem
+                .more
+                    text-decoration-color: $body-color
+                &:hover
+                    background-color: $primary
+                    &,
+                    a,
+                    .more
+                        color: white
+                        text-decoration-color: white
+                > div:first-of-type
+                    padding: $card-spacer-y $card-spacer-x
