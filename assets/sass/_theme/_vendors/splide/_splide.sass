@@ -4,13 +4,16 @@
         background: transparent
         border: 0
     &__arrow
+        @extend .icon
         position: absolute
         top: 50%
+        svg
+            display: none
         &--prev
+            @extend .icon-arrow-left
             right: 100%
-            svg
-                transform: scale(-1, 1)
         &--next
+            @extend .icon-arrow-right
             left: 100%
     &__pagination
         display: flex
