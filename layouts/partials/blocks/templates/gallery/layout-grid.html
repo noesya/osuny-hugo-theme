@@ -1,4 +1,4 @@
-<div class="gallery">
+<div class="gallery" role="group">
   {{ range .images }}
     {{ if .id }}
       {{- $image := partial "GetMedia" .id -}}
