@@ -15,3 +15,12 @@
 @mixin in-page-without-aside
     main > .blocks &
         @content
+
+
+// responsive menu
+
+@mixin menu-dropdown
+    @extend .collapse
+
+@mixin menu-offcanvas
+    @extend .offcanvas

@@ -5,13 +5,16 @@
       {{ partial "header/logo.html" }}
       {{ if isset site.Data.menus "primary"}}
         {{ partial "header/button.html" }}
+        
         <div class="menu" id="navigation">
+          <div>
           {{ partial "commons/menu.html"
                 (dict
                   "items" site.Data.menus.primary
                   "dropdown" true
                   "level" 1
                 )}}
+          </div>
         </div>
       {{ end }}
     </div>
