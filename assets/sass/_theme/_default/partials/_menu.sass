@@ -57,6 +57,13 @@
                 @extend .dropdown-item
                 @include media-breakpoint-down(lg)
                     white-space: normal
+            @include media-breakpoint-down(lg)
+                li
+                    a:active,
+                    a:focus,
+                    a:hover
+                        background-color: transparent
+                        color: inherit
 
     .nav-level-2
         & > li
