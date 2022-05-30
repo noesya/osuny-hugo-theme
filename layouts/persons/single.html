@@ -53,54 +53,15 @@
     </article>
 
     {{ if $programsForTeacher }}
-      <section>
-        <div class="top">
-          <h2>{{ i18n "persons.programs" }}</h2>
-        </div>
-        <table class="table-resume">
-          <caption>{{ i18n "persons.programs" }}</caption>
-          <tbody>
-            {{ range $programsForTeacher }}
-            <tr>
-              <th><p>{{ safeHTML (index .Params.teachers_description $slug) }}</p></th>
-              <td><a href="{{ .Permalink }}" class="link link-more">{{ safeHTML .Title }}</a></td>
-            </tr>
-            {{ end }}
-          </tbody>
-        </table>
-      </section>
+      {{ partial "persons/programs.html" (dict "programs" $programsForTeacher "slug" $slug) }}
     {{ end }}
 
     {{ if $author.Pages }}
-      <section>
-        <div class="top">
-          <h2>{{ i18n "persons.posts" }}</h2>
-          <a href="actualites/" class="link">{{ i18n "posts.see_all" }}</a>
-        </div>
-        <div class="posts">
-          {{ range first 3 $author.Pages }}
-            <div>
-              {{ partial "posts/post.html" . }}
-            </div>
-          {{ end }}
-        </div>
-      </section>
+      {{ partial "persons/posts.html" $author }}
     {{ end }}
 
     {{ if $articlesForResearcher }}
-      <section>
-        <div class="top">
-          <h2>{{ i18n "persons.publications" }}</h2>
-          <a href="publications/" class="link">{{ i18n "persons.publications" }}</a>
-        </div>
-        <div class="articles">
-          {{ range first 3 $articlesForResearcher }}
-            <div>
-              {{ partial "articles/article.html" . }}
-            </div>
-          {{ end }}
-        </div>
-      </section>
+      {{ partial "persons/articles.html" (dict "articles" $articlesForResearcher "slug" $slug) }}
     {{ end }}
 
   </div>
