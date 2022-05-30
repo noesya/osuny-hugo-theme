@@ -5,18 +5,28 @@
       {{ partial "header/logo.html" }}
       {{ if isset site.Data.menus "primary"}}
         {{ partial "header/button.html" }}
-        
-        <div class="menu" id="navigation">
-          <div>
-          {{ partial "commons/menu.html"
-                (dict
-                  "items" site.Data.menus.primary
-                  "dropdown" true
-                  "level" 1
-                )}}
-          </div>
+        <div class="menu" role="presentation">
+        {{ partial "commons/menu.html"
+              (dict
+                "items" site.Data.menus.primary
+                "dropdown" true
+                "level" 1
+              )}}
         </div>
       {{ end }}
+    </div>
+    <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" data-bs-scroll="true" id="navigation">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">{{ site.Title }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#navigation" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+      {{ partial "commons/menu.html"
+            (dict
+              "items" site.Data.menus.primary
+              "level" 1
+            )}}
+      </div>
     </div>
   </nav>
 </header>
