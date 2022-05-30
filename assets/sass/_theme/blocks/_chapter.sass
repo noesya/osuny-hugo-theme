@@ -6,6 +6,12 @@
     .notes
         @extend .small
         margin-top: $grid-gutter-width
+    picture
+        display: block
+        margin-top: $grid-gutter-width
+    img
+        @extend .img-fluid
+
 
     @include media-breakpoint-up(md)
         @include in-page-without-aside
@@ -14,3 +20,8 @@
                 > *
                     @include make-col-ready()
                     @include make-col(8)
+            &--with-image
+                .block-content
+                    align-items: center
+                    > *
+                        @include make-col(6)
