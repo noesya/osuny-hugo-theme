@@ -75,7 +75,7 @@
       <section>
         <div class="top">
           <h2>{{ i18n "persons.posts" }}</h2>
-          <a href="actualites/" class="link">{{ i18n "posts.see_all" }}</a>
+          <a href="{{$author.Permalink}}" class="link">{{ i18n "posts.see_all" }}</a>
         </div>
         <div class="posts">
           {{ range first 3 $author.Pages }}
