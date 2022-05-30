@@ -1,3 +1,4 @@
+{{ $slug := .slug }}
 <section>
   <div class="top">
     <h2>{{ i18n "persons.programs" }}</h2>
@@ -7,7 +8,7 @@
     <tbody>
       {{ range .programs }}
       <tr>
-        <th>{{ safeHTML (index .Params.teachers_description .slug) }}</th>
+        <th>{{ safeHTML (index .Params.teachers_description $slug) }}</th>
         <td><a href="{{ .Permalink }}" class="link link-more">{{ safeHTML .Title }}</a></td>
       </tr>
       {{ end }}
