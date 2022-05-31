@@ -1,15 +1,19 @@
 .menu
-    @extend .collapse
-    @extend .navbar-collapse
+    @extend .offcanvas-lg
+    @extend .offcanvas-end
+    // @extend .navbar-collapse
     flex-grow: initial
     @include media-breakpoint-up(lg)
         margin-right: -$navbar-nav-link-padding-x
     @include media-breakpoint-down(lg)
         background: $menu-background-color
-        flex-basis: 100vw
-        margin-left: calc(#{$grid-gutter-width} / -2)
-        margin-right: calc(#{$grid-gutter-width} / -2)
-        padding-top: calc(#{$grid-gutter-width} / 2)
+        color: $menu-color
+        .dropdown-menu
+            background-color: transparent
+            // display: block
+            // padding-bottom: $spacer
+            // padding-top: $spacer
+            // position: static
     ul
         list-style: none
         margin: 0
@@ -20,13 +24,14 @@
         span
             @extend .nav-link
 
-    > ul
-        @extend .navbar-nav
-        @include media-breakpoint-down(lg)
-            li
-                a,
-                span
-                    padding: px2rem(5) calc(#{$grid-gutter-width} / 2)
+    > div
+        > ul
+            @extend .navbar-nav
+            @include media-breakpoint-down(lg)
+                li
+                    a,
+                    span
+                        padding: px2rem(5) calc(#{$grid-gutter-width} / 2)
 
     .nav-level-1
         & > li
@@ -41,6 +46,8 @@
             > span
                 @extend .dropdown-toggle
                 @include media-breakpoint-down(lg)
+                    // &::after
+                    //     content: none
                     align-items: center
                     display: flex
                     justify-content: space-between
