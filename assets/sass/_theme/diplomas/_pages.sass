@@ -4,6 +4,9 @@
             display: block
             position: relative
             a:first-child
+                align-items: center
+                display: flex
+                justify-content: space-between
                 &::before
                     content: ''
                     inset: 0
@@ -14,14 +17,5 @@
                         left: 0
                         right: 0
                         top: 0
-                &::after
-                    @include icon
-                    content: map-get($icons, 'arrow-right')
-                    font-size: px2rem(12)
-                    position: absolute
-                    right: 0
-                    top: 50%
-                    transform: translateY(-50%)
-
         a + a
             display: none

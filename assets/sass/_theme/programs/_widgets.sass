@@ -57,3 +57,9 @@ ol.programs
         padding-top: $spacer
         @include media-breakpoint-down(lg)
             flex-direction: column
+        a:first-of-type
+            &::after
+                @include icon
+                content: map-get($icons, "arrow-right")
+                font-size: px2rem(12)
+                margin-left: px2rem(10)
