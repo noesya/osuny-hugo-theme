@@ -1,18 +1,19 @@
 {{ $url := .url }}
 {{ $identifier := false }}
 {{ $title := partial "PrepareHTML" .title }}
+{{ $position := .position }}
 
-{{ $vimeo := (dict 
+{{ $vimeo := (dict
     "name" "vimeo"
     "urls" (slice "vimeo.com")
 ) }}
 
-{{ $youtube := (dict 
+{{ $youtube := (dict
   "name" "youtube"
   "urls" (slice "youtube.com" "youtu.be")
 ) }}
 
-{{ $dailymotion := (dict 
+{{ $dailymotion := (dict
   "name" "dailymotion"
   "urls" (slice "dailymotion.com" "dai.ly")
 ) }}
@@ -45,9 +46,10 @@
 
       {{ if $identifier }}
         {{ $partial := printf  "blocks/templates/video/%s.html" $provider.name }}
-        {{ partial $partial (dict 
-          "id" $identifier 
+        {{ partial $partial (dict
+          "id" $identifier
           "title" $title
+          "position" $position
           )}}
       {{ end }}
     {{ end }}
