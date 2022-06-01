@@ -13,7 +13,7 @@
   <body class="{{ $body_class }}" {{ partial "ScrollSpy" . }}>
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
-    <main id="main" role="main" tabindex="-1">
+    <main{{ if .Params.blocks }} class="page-with-blocks"{{ end }} id="main" role="main" tabindex="-1">
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "footer/footer.html" . -}}
