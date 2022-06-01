@@ -59,6 +59,7 @@ commons:
   pdf_with_size: PDF ({{ .Size }})
   read: Lire
   read_online: Lire en ligne
+  share: Partager
   toc: Table des matières
 cookie_banner:
   accept: Accepter
