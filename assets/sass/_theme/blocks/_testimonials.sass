@@ -1,4 +1,12 @@
 .block-testimonials
+
+    @include in-page-without-aside
+        .block-content
+            @extend .row
+        .testimonials
+            @extend .col-md-8
+
+
     blockquote
         @extend .blockquote
         padding-top: calc(#{$blockquote-font-size} * 2)

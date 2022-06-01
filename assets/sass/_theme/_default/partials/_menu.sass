@@ -9,7 +9,10 @@
         flex-basis: 100vw
         margin-left: calc(#{$grid-gutter-width} / -2)
         margin-right: calc(#{$grid-gutter-width} / -2)
-        padding-top: calc(#{$grid-gutter-width} / 2)
+        margin-top: calc(#{$grid-gutter-width} / 2)
+        // padding-top: calc(#{$grid-gutter-width} / 2)
+        max-height: 70vh
+        overflow: auto
     ul
         list-style: none
         margin: 0
@@ -54,6 +57,13 @@
                 @extend .dropdown-item
                 @include media-breakpoint-down(lg)
                     white-space: normal
+            @include media-breakpoint-down(lg)
+                li
+                    a:active,
+                    a:focus,
+                    a:hover
+                        background-color: transparent
+                        color: inherit
 
     .nav-level-2
         & > li

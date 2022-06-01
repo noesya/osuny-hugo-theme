@@ -1,7 +1,12 @@
 {{- $position := .position -}}
 {{- $title := .title -}}
+{{- $layout_class := "block-gallery--grid" -}}
 {{- with .data -}}
-  <section class="block-gallery" id="block-{{ $position }}">
+  {{- $layout := .layout -}}
+  {{- if $layout -}}
+    {{- $layout_class = printf "block-gallery--%s" .layout -}}
+  {{- end -}}
+  <section class="block-gallery {{ $layout_class }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
         {{- if $title }}
@@ -9,37 +14,13 @@
             <h2>{{ partial "PrepareHTML" $title }}</h2>
           </div>
         {{ end -}}
-        <div class="gallery">
-          {{ range .images }}
-            {{ if .file }}
-              {{- $image := partial "GetMedia" .file -}}
-              {{- if $image -}}
-                {{- $url := $image.url -}}
-                {{- if site.Params.keycdn -}}
-                  {{- $url = $image.direct_url -}}
-                {{- end -}}
-                {{- $default := "1280x2560" -}}
-                <figure>
-                  <a class="glightbox"
-                    data-glightbox="type: image;"
-                    href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
-                    {{ partial "commons/image.html"
-                      (dict
-                        "image"    .file
-                        "alt"      .alt
-                        "mobile"   "164"
-                        "tablet"   "336"
-                        "desktop"  "416"
-                      )}}
-                  </a>
-                  {{ if .text -}}
-                    <figcaption>{{ partial "PrepareHTML" .text }}</figcaption>
-                  {{- end }}
-                </figure>
-              {{- end -}}
-            {{ end }}
-          {{ end }}
-        </div>
+
+        {{- if eq .layout "carousel" -}}
+          {{ partial "blocks/templates/gallery/layout-carousel" . }}
+        {{- else -}}
+          {{ partial "blocks/templates/gallery/layout-grid" . }}
+        {{- end -}}
+
       </div>
     </div>
   </section>

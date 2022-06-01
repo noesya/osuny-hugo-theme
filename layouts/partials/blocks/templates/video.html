@@ -9,11 +9,12 @@
             <h2>{{ partial "PrepareHTML" $title }}</h2>
           </div>
         {{ end -}}
-        
+
         {{ if .url }}
           {{ partial "blocks/templates/video/GetIframe" ( dict
               "url" .url
               "title" $title
+              "position" $position
             )}}
         {{ end }}
 

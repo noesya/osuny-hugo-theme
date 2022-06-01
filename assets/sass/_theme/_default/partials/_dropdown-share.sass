@@ -1,0 +1,18 @@
+.dropdown-share
+    @extend .dropdown
+    > button
+        @extend .btn
+        @extend .btn-lg
+        @extend .btn-outline-light
+        &::after
+            @include icon
+            content: map-get($icons, "social")
+            margin-left: px2rem(10)
+    .dropdown-menu
+        padding: 0
+        .share
+            li
+                margin: 0
+        a
+            @extend .dropdown-item
+            color: $body-color
