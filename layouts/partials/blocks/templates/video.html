@@ -4,23 +4,27 @@
   <section class="block-video" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        {{ if $title -}}
-          <div class="top">
-            <h2>{{ partial "PrepareHTML" $title }}</h2>
-          </div>
-        {{ end -}}
+        <div>
+          {{ if $title -}}
+            <div class="top">
+              <h2>{{ partial "PrepareHTML" $title }}</h2>
+            </div>
+          {{ end -}}
 
-        {{ if .url }}
-          {{ partial "blocks/templates/video/GetIframe" ( dict
-              "url" .url
-              "title" $title
-            )}}
-        {{ end }}
+          {{ if .url }}
+            <div class="video">
+              {{ partial "blocks/templates/video/GetIframe" ( dict
+                  "url" .url
+                  "title" $title
+                )}}
+            </div>
+          {{ end }}
 
-        {{ partial "commons/transcription" ( dict
-          "transcription" .transcription
-          "position" $position
-        ) }}
+          {{ partial "commons/transcription" ( dict
+            "transcription" .transcription
+            "position" $position
+          ) }}
+        </div>
       </div>
     </div>
   </section>

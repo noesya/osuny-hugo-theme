@@ -1,7 +1,23 @@
 .block-video
     iframe
         aspect-ratio: 16/9
+        display: block
         width: 100%
+
+    @supports not (aspect-ratio: 16/9)
+        .video
+            position: relative
+            &::before
+                content: ''
+                display: block
+                padding-top: 56.25%
+            iframe
+                bottom: 0
+                height: 100%
+                left: 0
+                position: absolute
+                top: 0
+                width: 100%
 
     @include media-breakpoint-up(md)
         @include in-page-without-aside
