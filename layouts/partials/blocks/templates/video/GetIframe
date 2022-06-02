@@ -1,7 +1,6 @@
 {{ $url := .url }}
 {{ $identifier := false }}
 {{ $title := partial "PrepareHTML" .title }}
-{{ $position := .position }}
 
 {{ $vimeo := (dict
     "name" "vimeo"
@@ -49,7 +48,6 @@
         {{ partial $partial (dict
           "id" $identifier
           "title" $title
-          "position" $position
           )}}
       {{ end }}
     {{ end }}
