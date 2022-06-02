@@ -13,7 +13,11 @@
         <div>
           {{ partial "posts/chapo.html" . }}
           {{ partial "posts/image.html" .Params.image }}
-          {{ partial "posts/body.html" . }}
+          {{- if .Params.blocks }}
+            {{ partial "blocks/list.html" .Params.blocks }}
+          {{ else }}
+            {{ partial "posts/body.html" . }}
+          {{ end }}
           {{ partial "posts/prevnext.html" . }}
         </div>
       </div>
