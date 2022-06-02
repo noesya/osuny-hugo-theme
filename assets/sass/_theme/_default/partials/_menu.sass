@@ -7,6 +7,7 @@
     @include media-breakpoint-down(lg)
         background: $menu-background-color
         flex-basis: 100vw
+        // height: calc(100vh - #{$header-height})
         margin-left: calc(#{$grid-gutter-width} / -2)
         margin-right: calc(#{$grid-gutter-width} / -2)
         margin-top: calc(#{$grid-gutter-width} / 2)
@@ -55,6 +56,8 @@
             li a,
             li span
                 @extend .dropdown-item
+                &:focus
+                    background-color: transparent
                 @include media-breakpoint-down(lg)
                     white-space: normal
             @include media-breakpoint-down(lg)
