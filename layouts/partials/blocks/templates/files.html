@@ -20,7 +20,8 @@
                     {{ $title = $file.filename }}
                   {{ end -}}
                   {{- $size := partial "GetHumanSize" $file.size -}}
-                  {{- $title_with_size := printf "%s (%s)" $title $size -}}
+                  {{- $extention := partial "GetExtensionFile" $file.name -}}
+                  {{- $title_with_size := printf "%s (%s - %s)" $title $extention $size -}}
                   {{- $url := $file.url -}}
                   {{- if site.Params.keycdn -}}
                     {{- $url = $file.direct_url -}}
