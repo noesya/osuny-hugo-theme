@@ -8,19 +8,20 @@
     {{ if .Summary }}<meta itemprop="description" content="{{ partial "PrepareHTML" .Summary }}">{{ end }}
 
     <div class="container">
-      <div class="content">
+      {{- if .Params.blocks }}
         {{ partial "posts/aside.html" . }}
-        <div>
-          {{ partial "posts/chapo.html" . }}
-          {{ partial "posts/image.html" .Params.image }}
-          {{- if .Params.blocks }}
-            {{ partial "blocks/list.html" .Params.blocks }}
-          {{ else }}
+        {{ partial "blocks/list.html" .Params.blocks }}
+      {{ else }}
+        <div class="content">
+          {{ partial "posts/aside.html" . }}
+          <div>
+            {{ partial "posts/chapo.html" . }}
+            {{ partial "posts/image.html" .Params.image }}
             {{ partial "posts/body.html" . }}
-          {{ end }}
-          {{ partial "posts/prevnext.html" . }}
+            {{ partial "posts/prevnext.html" . }}
+          </div>
         </div>
-      </div>
+      {{ end -}}
     </div>
 
   </article>

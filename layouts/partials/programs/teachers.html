@@ -7,7 +7,7 @@
       {{- $person := site.GetPage (printf "/persons/%s" $slug) -}}
       {{- with $person -}}
         <tr>
-          <th>
+          <th scope="row">
             <a href="{{ .Permalink }}">
               {{- partial "PrepareHTML" .Title -}}
             </a>
