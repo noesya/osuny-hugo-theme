@@ -64,6 +64,7 @@
                 @extend .icon
                 @extend .icon-arrow-left
                 &::before
+                    font-size: px2rem(12)
                     margin-right: px2rem(5)
         .next
             padding-right: 0
@@ -72,4 +73,5 @@
                 &::after
                     @include icon
                     content: map-get($icons, "arrow-right")
+                    font-size: px2rem(12)
                     margin-left: px2rem(5)
