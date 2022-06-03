@@ -8,11 +8,13 @@
     {{ if .Params.description_short }}<meta itemprop="abstract" content="{{ partial "PrepareHTML" .Params.description_short }}">{{ end }}
     {{ if .Summary }}<meta itemprop="description" content="{{ partial "PrepareHTML" .Summary }}">{{ end }}
 
-    <div>
-      {{- if .Params.blocks }}
+    {{- if .Params.blocks }}
+      <div>
         {{ partial "posts/aside.html" . }}
         {{ partial "blocks/list.html" .Params.blocks }}
-      {{ else }}
+      </div>
+    {{ else }}
+      <div class="container">
         <div class="content">
           {{ partial "posts/aside.html" . }}
           <div>
@@ -22,8 +24,8 @@
             {{ partial "posts/prevnext.html" . }}
           </div>
         </div>
-      {{ end -}}
-    </div>
+      </div>
+    {{ end -}}
 
   </article>
 {{ end }}
