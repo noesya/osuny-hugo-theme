@@ -11,6 +11,13 @@
     {{- if .Params.blocks }}
       <div>
         {{ partial "posts/aside.html" . }}
+        <div>
+          <div class="container">
+            <div class="block-content">
+              {{ partial "posts/image.html" .Params.image }}
+            </div>
+          </div>
+        </div>
         {{ partial "blocks/list.html" .Params.blocks }}
       </div>
     {{ else }}
