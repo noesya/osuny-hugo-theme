@@ -1,3 +1,5 @@
+// Ugly: need to clean by alexis :)
+
 const events = ['scroll', 'touchmove'];
 let previousY = 0,
     y = 0,
@@ -12,11 +14,13 @@ let previousY = 0,
 
 
 dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener('hidden.bs.dropdown', function (e) {
+        if (!header.querySelector('[aria-expanded="true"]')) {
+            document.documentElement.classList.remove(classMenuOpen);
+        };
+    });
     dropdown.addEventListener('show.bs.dropdown', function () {
         document.documentElement.classList.add(classMenuOpen);
-    });
-    dropdown.addEventListener('hide.bs.dropdown', function () {
-        document.documentElement.classList.remove(classMenuOpen);
     });
 });
 
@@ -41,7 +45,6 @@ events.forEach((event) => {
             document.documentElement.classList.add(classScrollingDown);
             document.documentElement.classList.remove(classMenuOpen);
 
-            // Ugly: need to clean by alexis :)
             for (var i = 0; i < dropdowns.length; i++) {
                 dropdowns[i].classList.remove("show");
                 dropdowns[i].setAttribute("aria-expanded", false);
