@@ -10,9 +10,11 @@
                 "desktop"  "856x410"
                 "itemprop" true
               )}}
-        {{ if partial "GetTextFromHTML" .credit }}
-          <figcaption>{{ partial "PrepareHTML" .credit }}</figcaption>
-        {{ end }}
+        {{- if isset . "credit" -}}
+          {{ if partial "GetTextFromHTML" .credit }}
+            <figcaption>{{ partial "PrepareHTML" .credit }}</figcaption>
+          {{ end }}
+        {{- end -}}
       </figure>
     </div>
   </section>

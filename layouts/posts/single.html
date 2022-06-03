@@ -5,23 +5,34 @@
     <meta itemprop="headline" content="{{ partial "PrepareHTML" .Title }}">
     <meta itemprop="url" content="{{ .Permalink }}">
     {{ if .Date }}<meta itemprop="datePublished" content="{{ .Date.Format "2006-01-02T15:04" }}">{{ end }}
+    {{ if .Params.description_short }}<meta itemprop="abstract" content="{{ partial "PrepareHTML" .Params.description_short }}">{{ end }}
     {{ if .Summary }}<meta itemprop="description" content="{{ partial "PrepareHTML" .Summary }}">{{ end }}
 
-    <div class="container">
-      <div class="content">
+    {{- if .Params.blocks }}
+      <div>
         {{ partial "posts/aside.html" . }}
         <div>
-          {{ partial "posts/chapo.html" . }}
-          {{ partial "posts/image.html" .Params.image }}
-          {{- if .Params.blocks }}
-            {{ partial "blocks/list.html" .Params.blocks }}
-          {{ else }}
+          <div class="container">
+            <div class="block-content">
+              {{ partial "posts/image.html" .Params.image }}
+            </div>
+          </div>
+        </div>
+        {{ partial "blocks/list.html" .Params.blocks }}
+      </div>
+    {{ else }}
+      <div class="container">
+        <div class="content">
+          {{ partial "posts/aside.html" . }}
+          <div>
+            {{ partial "posts/chapo.html" . }}
+            {{ partial "posts/image.html" .Params.image }}
             {{ partial "posts/body.html" . }}
-          {{ end }}
-          {{ partial "posts/prevnext.html" . }}
+            {{ partial "posts/prevnext.html" . }}
+          </div>
         </div>
       </div>
-    </div>
+    {{ end -}}
 
   </article>
 {{ end }}
