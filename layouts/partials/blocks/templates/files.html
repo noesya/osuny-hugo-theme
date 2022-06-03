@@ -17,7 +17,7 @@
                 <li>
                   {{- $title := .title -}}
                   {{- if (not $title) }}
-                    {{ $title = $file.filename }}
+                    {{ $title = $file.name }}
                   {{ end -}}
                   {{- $size := partial "GetHumanSize" $file.size -}}
                   {{- $extention := partial "GetExtensionFile" $file.name -}}
@@ -27,7 +27,7 @@
                     {{- $url = $file.direct_url -}}
                   {{- end -}}
                   {{ if $file }}
-                    <a href="{{ $url }}" download target="_blank" title="{{ i18n "commons.link.blank_aria" (dict "Title" $title_with_size) }}">{{ $title_with_size }}</a>
+                    <a href="{{ $url }}" download="{{ partial "PrepareHTML" $file.name }}" target="_blank" title="{{ i18n "commons.link.blank_aria" (dict "Title" $title_with_size) }}">{{ $title_with_size }}</a>
                   {{ end }}
                 </li>
               {{ end -}}
