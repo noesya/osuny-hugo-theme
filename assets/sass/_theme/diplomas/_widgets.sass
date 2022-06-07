@@ -33,7 +33,24 @@ ul.diplomas
         padding-top: 1rem
         position: relative
     a
-        @extend .stretched-link
+        align-items: center
+        display: flex
+        justify-content: space-between
+        &::before
+            content: ''
+            inset: 0
+            position: absolute
+            // polyfill for inset
+            @supports not (inset: 0)
+                bottom: 0
+                left: 0
+                right: 0
+                top: 0
+        &::after
+            @include icon
+            content: map-get($icons, "arrow-right")
+            font-size: px2rem(12)
+            margin-left: px2rem(10)
 
 // select
 .diplomas-select

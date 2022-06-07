@@ -35,7 +35,7 @@
                     content: none
 
 // grid
-.programs:not(ol)
+.programs:not(ol):not(ul)
     --bs-gutter-y: 3rem
     @extend .row
     > *
@@ -47,7 +47,8 @@
         @extend .my-5
 
 // list
-ol.programs
+ol.programs,
+ul.programs
     list-style: none
     margin-bottom: 0
     padding-left: 0
