@@ -1,10 +1,9 @@
-<section class="programs">
-  {{ if not . }}
-    <p>{{ i18n "programs.no_program" }}</p>
-  {{ end }}
-  {{ range sort . ".Params.position" -}}
-    <div>
-      {{- partial "programs/program.html" . -}}
-    </div>
-  {{- end }}
-</section>
+{{ if . }}
+  <section class="programs">
+    {{ range sort . ".Params.position" -}}
+      <div>
+        {{- partial "programs/program.html" . -}}
+      </div>
+    {{- end }}
+  </section>
+{{- end }}
