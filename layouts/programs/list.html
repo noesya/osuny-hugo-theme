@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ partial "programs/hero.html" . }}
 
-  {{ if .Params.level }}
+  {{ if or (eq .Params.diplomas "") (.Params.diplomas) }}
     {{ partial "programs/show.html" . }}
   {{ else }}
     {{ partial "programs/index.html" . }}
