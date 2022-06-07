@@ -2,6 +2,7 @@
     main > div
         position: relative
         > aside
+            @extend .container
             margin-bottom: map-get($spacers, 5)
             pointer-events: none
             @include media-breakpoint-up(md)
@@ -9,6 +10,7 @@
                 margin-bottom: 0
                 position: absolute
                 width: 100%
+                // content
                 ~ *
                     .container
                         > *
@@ -18,14 +20,12 @@
                                 margin-left: col(4)
                             &:is(picture)
                                 display: block
+            // aside
             > div
-                @extend .container
+                @extend .row
                 @extend .sticky
-                padding: 0
                 > *
                     @extend .col-md-3
-                    padding-left: #{$grid-gutter-width / 2}
-                    padding-right: #{$grid-gutter-width / 2}
                     pointer-events: auto
         [itemprop="articleBody"]
             margin-bottom: map-get($spacers, 5)
