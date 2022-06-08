@@ -3,23 +3,22 @@
 
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
 
-  <div class="content-blocks">
-    {{ partial "pages/aside.html"
-        (dict
-            "category" $category
-            "context" .
-        )
-    }}
-
-    {{- if .Params.blocks }}
+  {{- if .Params.blocks }}
+    <div class="content-blocks">
+      {{ partial "pages/aside.html"
+          (dict
+              "category" $category
+              "context" .
+          )
+      }}
       {{ partial "blocks/list.html" .Params.blocks }}
-    {{ else }}
-      {{ partial "pages/image.html" .Params.image }}
-      {{/* LEGACY */}}{{ partial "pages/body.html" .Content }}
-      {{/* LEGACY */}}{{ partial "pages/body.html" .Params.legacy_text }}
-      {{ partial "pages/children.html" .Params.children }}
-      {{/* LEGACY */}}{{ partial "posts/related.html" $category }}
-    {{ end }}
-  </div>
+    </div>
+  {{ else }}
+    {{ partial "pages/image.html" .Params.image }}
+    {{/* LEGACY */}}{{ partial "pages/body.html" .Content }}
+    {{/* LEGACY */}}{{ partial "pages/body.html" .Params.legacy_text }}
+    {{ partial "pages/children.html" .Params.children }}
+    {{/* LEGACY */}}{{ partial "posts/related.html" $category }}
+  {{ end }}
 
 {{ end }}
