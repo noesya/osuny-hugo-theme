@@ -1,31 +1,4 @@
 .pages__section
     main > div
-        position: relative
-        > aside
-            @extend .container
-            margin-bottom: map-get($spacers, 5)
-            pointer-events: none
-            @include media-breakpoint-up(md)
-                height: 100%
-                margin-bottom: 0
-                position: absolute
-                width: 100%
-                // content
-                ~ *
-                    .container
-                        > *
-                            &:not(.call_to_action)
-                                padding-left: col(4)
-                            &.call_to_action
-                                margin-left: col(4)
-                            &:is(picture)
-                                display: block
-            // aside
-            > div
-                @extend .row
-                @extend .sticky
-                > *
-                    @extend .col-md-3
-                    pointer-events: auto
         [itemprop="articleBody"]
             margin-bottom: map-get($spacers, 5)

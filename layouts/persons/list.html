@@ -1,13 +1,13 @@
 {{ define "main" }}
 
-{{- $is_organigram_present := false -}}
-{{ range .Params.blocks }}
-  {{- if eq .template "organization_chart" -}}
-    {{- $is_organigram_present = true -}}
+  {{- $is_organigram_present := false -}}
+  {{ range .Params.blocks }}
+    {{- if eq .template "organization_chart" -}}
+      {{- $is_organigram_present = true -}}
+    {{ end }}
   {{ end }}
-{{ end }}
 
-{{ partial "persons/hero.html" . }}
+  {{ partial "persons/hero.html" . }}
 
   <div class="container">
     {{ if (partial "GetTextFromHTML" .Params.description_short) }}
@@ -25,4 +25,5 @@
   {{ if .Params.blocks }}
     {{ partial "blocks/list.html" .Params.blocks }}
   {{ end }}
+
 {{ end }}

@@ -20,3 +20,36 @@
                 margin-bottom: 0
             @include media-breakpoint-up(lg)
                 @include make-col-offset(1)
+
+.content-blocks
+    position: relative
+    // aside
+    > aside
+        @extend .container
+        padding-bottom: 4rem
+        padding-top: 4rem
+        pointer-events: none
+        @include media-breakpoint-up(md)
+            height: 100%
+            left: 50%
+            margin-bottom: 0
+            position: absolute
+            transform: translateX(-50%)
+            width: 100%
+        > div
+            @extend .row
+            @extend .sticky
+            > *
+                @extend .col-md-3
+                pointer-events: auto
+    // content
+    @include media-breakpoint-up(md)
+        > aside ~ *
+            .container
+                > *
+                    &:not(.call_to_action)
+                        padding-left: col(4)
+                    &.call_to_action
+                        margin-left: col(4)
+                    &:is(picture)
+                        display: block

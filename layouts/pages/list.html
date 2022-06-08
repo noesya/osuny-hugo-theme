@@ -3,7 +3,7 @@
 
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
 
-  <div>
+  <div class="content-blocks">
     {{ partial "pages/aside.html"
         (dict
             "category" $category
