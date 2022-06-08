@@ -20,7 +20,7 @@
             {{ partial "PrepareHTML" .text }}
           </div>
           {{ end -}}
-          {{ if .notes }}
+          {{ if (partial "GetTextFromHTML" .notes) }}
             <div class="notes">
               {{ partial "PrepareHTML" .notes }}
             </div>
