@@ -10,7 +10,7 @@
   {{ $body_class := printf "%s__%s" .Type .Kind }}
   {{ $pageclass := partial "GetBodyclass" . }}
   {{ $body_class = printf "%s %s" $body_class $pageclass }}
-  <body class="{{ $body_class }}" {{ partial "ScrollSpy" . }}>
+  <body class="{{ $body_class }}">
     {{- partial "header/accessibility.html" -}}
     {{- partial "header/header.html" -}}
     <main{{ if .Params.blocks }} class="page-with-blocks"{{ end }} id="main" role="main" tabindex="-1">
