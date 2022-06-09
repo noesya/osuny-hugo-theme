@@ -7,7 +7,10 @@
         button
             @extend .btn
             @extend .btn-sm
+            @extend .dropdown-toggle
             margin-right: - $btn-padding-x-sm
+            &[aria-expanded="true"]::after
+                transform: rotate(180deg)
             &:hover
                 text-decoration: underline
     p:last-child
