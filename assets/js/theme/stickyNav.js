@@ -6,8 +6,19 @@ let previousY = 0,
     classMenuOpen = 'is-menu-open',
     header = document.querySelector('header[role="banner"]'),
     offset = header.offsetHeight,
-    scrollMarginTop = '--scroll-margin-top',
+    dropdowns = header.querySelectorAll('[data-bs-toggle="dropdown"]'),
     menu = header.querySelector('.menu');
+
+dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener('hidden.bs.dropdown', () => {
+        if (!header.querySelector('[aria-expanded="true"]')) {
+            document.documentElement.classList.remove(classMenuOpen);
+        }
+    });
+    dropdown.addEventListener('show.bs.dropdown', () => {
+        document.documentElement.classList.add(classMenuOpen);
+    });
+});
 
 menu.addEventListener('show.bs.collapse', () => {
     document.documentElement.classList.add(classMenuOpen);
