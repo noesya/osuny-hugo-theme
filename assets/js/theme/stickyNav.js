@@ -1,33 +1,36 @@
-// Ugly: need to clean by alexis :)
-
 const events = ['scroll', 'touchmove'];
 let previousY = 0,
     y = 0,
+    i = 0,
     classSticky = 'is-sticky',
     classScrollingDown = 'is-scrolling-down',
     classMenuOpen = 'is-menu-open',
     header = document.querySelector('header[role="banner"]'),
     offset = header.offsetHeight,
     menu = header.querySelector('.menu'),
-    dropdowns = header.querySelectorAll('[data-bs-toggle="dropdown"]')
-    dropdownsMenu = header.querySelectorAll('.dropdown-menu');
+    isMenusOpened = false,
+    dropdowns = header.querySelectorAll('[data-bs-toggle="dropdown"]'),
+    dropdownsMenu = header.querySelectorAll('.dropdown-menu'),
+    closeMenus;
 
+// dropdowns.forEach((dropdown) => {
+//     dropdown.addEventListener('hidden.bs.dropdown', () => {
+//         if (!header.querySelector('[aria-expanded="true"]')) {
+//             document.documentElement.classList.remove(classMenuOpen);
+//         }
+//     });
+//     dropdown.addEventListener('show.bs.dropdown', () => {
+//         document.documentElement.classList.add(classMenuOpen);
+//         isMenusOpened = true;
+//     });
+// });
 
-dropdowns.forEach((dropdown) => {
-    dropdown.addEventListener('hidden.bs.dropdown', function (e) {
-        if (!header.querySelector('[aria-expanded="true"]')) {
-            document.documentElement.classList.remove(classMenuOpen);
-        };
-    });
-    dropdown.addEventListener('show.bs.dropdown', function () {
-        document.documentElement.classList.add(classMenuOpen);
-    });
-});
-
-menu.addEventListener('show.bs.collapse', function () {
+menu.addEventListener('show.bs.collapse', () => {
     document.documentElement.classList.add(classMenuOpen);
+    isMenusOpened = true;
 });
-menu.addEventListener('hide.bs.collapse', function () {
+
+menu.addEventListener('hide.bs.collapse', () => {
     document.documentElement.classList.remove(classMenuOpen);
 });
 
@@ -43,16 +46,9 @@ events.forEach((event) => {
 
         if (y > previousY) {
             document.documentElement.classList.add(classScrollingDown);
-            document.documentElement.classList.remove(classMenuOpen);
-
-            for (var i = 0; i < dropdowns.length; i++) {
-                dropdowns[i].classList.remove("show");
-                dropdowns[i].setAttribute("aria-expanded", false);
-            }
-            for (var i = 0; i < dropdownsMenu.length; i++) {
-                dropdownsMenu[i].classList.remove("show");
-            }
-
+            // closeMenus();
+            // menu.collapse('hide');
+            
         } else {
             document.documentElement.classList.remove(classScrollingDown);
         }
@@ -60,3 +56,22 @@ events.forEach((event) => {
         previousY = y;
     });
 });
+
+closeMenus = function () {
+    if (!isMenusOpened) {
+        return;
+    }
+
+    document.documentElement.classList.remove(classMenuOpen);
+
+    for (i = 0; i < dropdowns.length; i += 1) {
+        dropdowns[i].classList.remove('show');
+        dropdowns[i].setAttribute('aria-expanded', false);
+    }
+
+    for (i = 0; i < dropdownsMenu.length; i += 1) {
+        dropdownsMenu[i].classList.remove('show');
+    }
+
+    isMenusOpened = false;
+};

@@ -5,7 +5,7 @@ header[role="banner"]
         top: 0
         transition: top $header-transition
         z-index: $header-zindex
-        html.is-scrolling-down &
+        html.is-scrolling-down:not(.is-menu-open) &
             &:not(:hover)
                 top: -$header-height
                 @include media-breakpoint-up(md)
