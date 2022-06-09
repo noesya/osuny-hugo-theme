@@ -7,6 +7,6 @@ window.addEventListener('load', () => {
 if (document.querySelector('#nav-toc')) {
     new ScrollSpy(document.body, {
         target: '#nav-toc',
-        offset: 5
+        offset: 300
     });
 }
