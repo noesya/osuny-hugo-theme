@@ -9,25 +9,19 @@
 {{- end -}}
 
 {{- if .context.Pages -}}
-  {{- if $has_blocks -}}
-    {{- $show_aside = false -}}
-  {{- else -}}
+  {{- if eq $has_blocks false -}}
     {{- $show_aside = true -}}
   {{- end -}}
 {{- end -}}
 
 {{- if .context.Content -}}
-  {{- if $has_blocks -}}
-    {{- $show_aside = false -}}
-  {{- else -}}
+  {{- if eq $has_blocks false -}}
     {{- $show_aside = true -}}
   {{- end -}}
 {{- end -}}
 
 {{- if .category -}}
-  {{- if $has_blocks -}}
-    {{- $show_aside = false -}}
-  {{- else -}}
+  {{- if eq $has_blocks false -}}
     {{- $show_aside = true -}}
   {{- end -}}
 {{- end -}}
