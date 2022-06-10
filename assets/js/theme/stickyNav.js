@@ -38,7 +38,7 @@ events.forEach((event) => {
             header.classList.remove(classSticky);
         }
 
-        if (y > previousY) {
+        if (y > previousY && y > offset) {
             document.documentElement.classList.add(classScrollingDown);
             // document.documentElement.style.setProperty(scrollMarginTop, '100px');
         } else {
