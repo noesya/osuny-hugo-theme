@@ -40,9 +40,6 @@
         margin-left: -$pagination-padding-x
         margin-right: -$pagination-padding-x
         margin-top: map-get($spacers, 5)
-        @include media-breakpoint-down(md)
-            flex-direction: column
-
         li
             flex: 1
 
@@ -75,3 +72,33 @@
                     content: map-get($icons, "arrow-right")
                     font-size: px2rem(12)
                     margin-left: px2rem(5)
+
+        @include media-breakpoint-down(md)
+            flex-direction: column-reverse
+            margin-left: 0
+            margin-right: 0
+            .previous, .next
+                align-items: center
+                border-top: 1px solid $primary
+                display: flex
+                justify-content: space-between
+                padding: 20px 0
+                text-align: left
+                a
+                    padding-left: 0
+                    padding-right: 40px
+                span
+                    &::after, &::before
+                        display: none !important
+                &::after
+                    @include icon
+                    font-size: px2rem(12)
+                    opacity: 0.5
+            .previous
+                border-bottom: 1px solid $primary
+                &::after
+                    content: map-get($icons, "arrow-left")
+            .next
+                &::after
+                    content: map-get($icons, "arrow-right")
+                    

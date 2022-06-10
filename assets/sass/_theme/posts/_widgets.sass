@@ -39,6 +39,9 @@
     li
         display: inline-block
         vertical-align: middle
-        &:not(:first-child)
-            &::before
-                content: ', '
+        &::after
+            content: ', '
+            margin-left: -3px
+        &:last-child
+            &::after
+                content: none
