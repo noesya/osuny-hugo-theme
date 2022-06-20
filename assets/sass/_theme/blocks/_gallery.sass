@@ -57,14 +57,17 @@
                         height: 100%
                         max-height: 45vh
                         min-height: 400px
+                    @media (min-height: 800px)
+                        height: 680px
+                        max-height: 100%
                 p
-                    @media (min-width: 800px)
+                    @media (min-height: 800px)
                         font-size: px2rem(16)
             &__arrows
                 margin-left: -13px
                 order: 2
                 padding-top: $grid-gutter-width
-                @media (min-width: 800px)
+                @media (min-height: 800px)
                     padding-top: px2rem(40)
             &__arrow
                 &--prev,
