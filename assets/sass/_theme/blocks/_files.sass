@@ -1,0 +1,31 @@
+.block-files
+    ul
+        @extend .row
+        list-style: none
+        margin-bottom: 0
+        padding-left: 0
+    a
+        @extend .icon
+        @extend .icon-download
+        align-items: center
+        display: flex
+        text-decoration: none
+        &::before
+            align-items: center
+            border: $border-width solid $border-color
+            display: flex
+            flex-shrink: 0
+            height: px2rem(60)
+            justify-content: center
+            margin-right: px2rem(15)
+            width: px2rem(60)
+        &::after
+            content: none
+        span span
+            @extend .small
+    @include in-page-with-aside
+        li
+            @extend .col-md-6
+    @include in-page-without-aside
+        li
+            @extend .col-md-4
