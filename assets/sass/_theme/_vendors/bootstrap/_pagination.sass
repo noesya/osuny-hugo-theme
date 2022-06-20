@@ -77,28 +77,28 @@
             flex-direction: column-reverse
             margin-left: 0
             margin-right: 0
-            .previous, .next
+            li.previous,
+            li.next
                 align-items: center
-                border-top: 1px solid $primary
+                border-top: 1px solid $gray-500
                 display: flex
                 justify-content: space-between
-                padding: 20px 0
+                padding: px2rem(20) 0
                 text-align: left
                 a
                     padding-left: 0
-                    padding-right: 40px
+                    padding-right: px2rem(40)
                 span
                     &::after, &::before
-                        display: none !important
+                        display: none
                 &::after
                     @include icon
                     font-size: px2rem(12)
                     opacity: 0.5
-            .previous
-                border-bottom: 1px solid $primary
+            li.previous
+                border-bottom: 1px solid $gray-500
                 &::after
                     content: map-get($icons, "arrow-left")
-            .next
+            li.next
                 &::after
                     content: map-get($icons, "arrow-right")
-                    
