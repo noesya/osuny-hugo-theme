@@ -3,12 +3,14 @@
   {{ partial "commons/list-content.html" . }}
 
   <div class="container">
-    {{ partial "posts/posts.html" . }}
-    {{ partial "commons/pagination.html" . }}
+    {{ partial "posts/chapo.html" .Params.description_short }}
   </div>
-
   {{ if .Params.blocks }}
     {{ partial "blocks/list.html" .Params.blocks }}
   {{ end }}
+  <div class="container">
+    {{ partial "posts/posts.html" . }}
+    {{ partial "commons/pagination.html" . }}
+  </div>
 
 {{ end }}

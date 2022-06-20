@@ -25,7 +25,7 @@
         <div class="content">
           {{ partial "posts/aside.html" . }}
           <div>
-            {{ partial "posts/chapo.html" . }}
+            {{ partial "posts/chapo.html" .Params.description_short }}
             {{ partial "posts/image.html" .Params.image }}
             {{ partial "posts/body.html" . }}
             {{ partial "posts/prevnext.html" . }}

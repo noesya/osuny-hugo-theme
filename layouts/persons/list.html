@@ -10,12 +10,7 @@
   {{ partial "persons/hero.html" . }}
 
   <div class="container">
-    {{ if (partial "GetTextFromHTML" .Params.description_short) }}
-      <div class="lead">
-        <p>{{ partial "PrepareHTML" .Params.description_short }}</p>
-      </div>
-    {{ end }}
-
+    {{ partial "persons/chapo.html" .Params.description_short }}
     {{- if not $is_organigram_present -}}
       {{ partial "persons/taxonomies.html" . }}
       {{ partial "persons/list.html" . }}
