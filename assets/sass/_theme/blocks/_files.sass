@@ -1,5 +1,6 @@
 .block-files
     ul
+        --bs-gutter-y: 1.5rem
         @extend .row
         list-style: none
         margin-bottom: 0
@@ -18,9 +19,13 @@
             height: px2rem(60)
             justify-content: center
             margin-right: px2rem(15)
+            transition: background .3s ease
             width: px2rem(60)
         &::after
             content: none
+        &:hover
+            &::before
+                background-color: $border-color
         span span
             @extend .small
     @include in-page-with-aside
