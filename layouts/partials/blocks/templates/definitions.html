@@ -10,9 +10,9 @@
           </div>
         {{ end -}}
         {{- range .elements }}
-          <details>
-            <summary>{{ .title }}</summary>
-            <p>{{ .description }}</p>
+          <details itemscope itemtype="https://schema.org/DefinedTerm">
+            <summary itemprop="name">{{ .title }}</summary>
+            <p itemprop="description">{{ .description }}</p>
           </details>
         {{ end -}}
       </div>
