@@ -1,14 +1,19 @@
 .block-definitions
     details
-        border-bottom: 1px solid $border-color
-        transition:  0.5s
         &:not([open]):hover
-            border-bottom-color: black
+            &::after
+                border-bottom-color: black
             summary::after
                 transform: translateY(5px)
         summary, p
             font-size: px2rem(20)
             line-height: px2rem(30)
+        &::after
+            content: ''
+            border-bottom: 1px solid $border-color
+            display: block
+            transition: border-color 0.5s
+
     summary
         padding-bottom: px2rem(15)
         padding-top: px2rem(20)
@@ -35,3 +40,8 @@
                 transform: translateY(-5px)
 
     
+    @include in-page-without-aside
+        .definitions
+            @extend .row
+            details
+                @extend .col-md-6
