@@ -15,6 +15,7 @@
     {{- partial "header/header.html" -}}
     <main{{ if .Params.blocks }} class="page-with-blocks"{{ end }} id="main" role="main" tabindex="-1">
       {{- block "main" . }}{{- end }}
+      {{- partial "hooks/before-main-end" . -}}
     </main>
     {{- partial "footer/footer.html" . -}}
     {{- partial "footer/cookie-banner.html" . -}}
