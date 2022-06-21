@@ -9,12 +9,12 @@
             <h2>{{ partial "PrepareHTML" $title }}</h2>
           </div>
         {{ end -}}
-        <dl>
-          {{- range .elements }}
-            <dt>{{ .title }}</dt>
-            <dd>{{ .text }}</dd>
-          {{ end -}}
-        </dl>
+        {{- range .elements }}
+          <details>
+            <summary>{{ .title }}</summary>
+            <p>{{ .description }}</p>
+          </details>
+        {{ end -}}
       </div>
     </div>
   </section>

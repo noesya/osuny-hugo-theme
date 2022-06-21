@@ -1,0 +1,25 @@
+.block-definitions
+    details
+        border-bottom: 1px solid $border-color
+        summary, p
+            font-size: px2rem(20)
+            line-height: px2rem(30)
+    summary
+        padding-bottom: px2rem(15)
+        padding-top: px2rem(20)
+        position: relative
+        &::after
+            @include icon
+            content: map-get($icons, "caret")
+            font-size: px2rem(5)
+            line-height: px2rem(22)
+            position: absolute
+            right: 0
+            text-decoration: none
+        &::marker
+            content: none
+    summary::-webkit-details-marker 
+        display: none
+
+details > summary::-webkit-details-marker
+  display: none
