@@ -10,7 +10,7 @@
           </div>
         {{- end }}
         <div class="persons">
-          {{- range . -}}
+          {{- range .persons -}}
             {{ $person := site.GetPage (printf "/persons/%s" .slug) }}
             <div>
               {{- if (partial "GetTextFromHTML" .role) }}
