@@ -438,3 +438,4 @@ Syntaxe de transformation type Shopify (à revoir)
 - `https://demo.osuny.org/media/media-id/mon_image_500x.webp`
 - `https://demo.osuny.org/media/media-id/mon_image_500x500.webp`
 - `https://demo.osuny.org/media/media-id/mon_image_500x500_crop_center.webp`
+
