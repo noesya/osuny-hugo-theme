@@ -17,7 +17,7 @@
                   <p><strong>{{ partial "PrepareHTML" .title }}</strong></p>
                 {{- end }}
                 {{ if .text -}}
-                  <p>{{ partial "PrepareHTML" .text }}</p>
+                  <p>{{ partial "PrepareText" .text }}</p>
                 {{- end }}
               </div>
             {{ end -}}
