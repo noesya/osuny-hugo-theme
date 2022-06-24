@@ -1,4 +1,10 @@
 .block-gallery
+    .top
+        .description
+            @extend .col-md-7
+            @include media-breakpoint-down(md)
+                margin-top: 2rem
+
     .gallery
         --bs-gutter-y: 2rem
         @extend .row

@@ -12,6 +12,11 @@
         {{- if $title }}
           <div class="top">
             <h2>{{ partial "PrepareHTML" $title }}</h2>
+            {{- if .description }}
+              <div class="description">
+                {{ partial "PrepareHTML"  .description }}
+              </div>
+            {{ end -}}
           </div>
         {{ end -}}
 
