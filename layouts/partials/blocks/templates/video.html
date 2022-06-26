@@ -15,7 +15,7 @@
             <div class="video">
               {{ partial "blocks/templates/video/GetIframe" ( dict
                   "url" .url
-                  "title" $title
+                  "title" .video_title
                 )}}
             </div>
           {{ end }}
