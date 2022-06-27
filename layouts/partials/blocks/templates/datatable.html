@@ -11,6 +11,9 @@
         {{ end -}}
         <div class="table-responsive">
           <table class="table">
+            {{- if .caption }}
+              <caption>{{ partial "PrepareHTML" .caption }}</caption>
+            {{ end -}}
             <thead>
               <tr>
                 {{ range .columns }}

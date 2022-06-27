@@ -9,9 +9,11 @@
   <section class="block-gallery{{ if $title }} block-with-title{{ end }} {{ $layout_class }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        {{- if $title }}
+        {{- if (or $title .description) }}
           <div class="top">
-            <h2>{{ partial "PrepareHTML" $title }}</h2>
+            {{- if $title }}
+              <h2>{{ partial "PrepareHTML" $title }}</h2>
+            {{ end -}}
             {{- if .description }}
               <div class="description">
                 {{ partial "PrepareHTML"  .description }}

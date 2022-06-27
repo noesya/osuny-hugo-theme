@@ -9,6 +9,11 @@
             <h2>{{ partial "PrepareHTML" $title }}</h2>
           </div>
         {{ end -}}
+        {{- if .description }}
+          <div class="description">
+            {{ partial "PrepareHTML"  .description }}
+          </div>
+        {{ end -}}
         <ul>
           {{- range .files }}
             {{ if ne .id "" }}
