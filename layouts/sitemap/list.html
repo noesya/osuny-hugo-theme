@@ -30,7 +30,7 @@
             <h3 id="{{ $permalink }}">
               <a href="{{ $permalink }}">{{ safeHTML .Title }}</a>
             </h3>
-            <ul class="list-unstyled">
+            <ul>
               {{ range where .Site.Pages "Section" .Type }}
                 {{ if ne $permalink .Permalink }}
                   <li><a href="{{ .Permalink }}">{{ safeHTML .Title }}</a></li>

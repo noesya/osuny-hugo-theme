@@ -2,3 +2,9 @@
     aside
         > div
             @extend .sticky
+        & + div
+            ul
+                @extend .list-unstyled
+                margin-bottom: 3rem
+                @include media-breakpoint-up(md)
+                    margin-bottom: px2rem(120)
