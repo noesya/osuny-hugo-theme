@@ -4,11 +4,18 @@
   <section class="block-partners{{ if $title }} block-with-title{{ end }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
-        {{- if $title }}
+        {{ if (or $title .description) -}}
           <div class="top">
-            <h2>{{ partial "PrepareHTML" $title }}</h2>
+            {{- if $title }}
+              <h2>{{ partial "PrepareHTML" $title }}</h2>
+            {{ end -}}
+            {{- if .description }}
+              <div class="description">
+                {{ partial "PrepareHTML"  .description }}
+              </div>
+            {{ end -}}
           </div>
-        {{ end -}}
+        {{- end }}
 
         <div class="organizations">
           {{- range .partners }}
