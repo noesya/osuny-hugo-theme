@@ -3,8 +3,21 @@
         > div
             @extend .sticky
         & + div
+            h3
+                scroll-margin-top: calc(#{$header-height} + #{$toc-height})
+                html.is-scrolling-down:not(.is-menu-open) &
+                    scroll-margin-top: $toc-height
             ul
                 @extend .list-unstyled
                 margin-bottom: 3rem
                 @include media-breakpoint-up(md)
                     margin-bottom: px2rem(120)
+        ol
+            > li
+                &:not(:last-child)
+                    margin-bottom: 0
+                > a
+                    @extend .tabtitle
+                    color: $gray-500
+                .active
+                    color: $site-color
