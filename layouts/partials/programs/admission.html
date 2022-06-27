@@ -6,33 +6,45 @@
       </div>
       <div>
         {{- if partial "GetTextFromHTML" .Params.prerequisites -}}
-          <h3>{{ i18n "programs._prerequisites" }}</h3>
-          {{- partial "PrepareHTML" .Params.prerequisites -}}
+          <div class="subpart">
+            <h3>{{ i18n "programs._prerequisites" }}</h3>
+            {{- partial "PrepareHTML" .Params.prerequisites -}}
+          </div>
         {{- end -}}
 
         {{- if partial "GetTextFromHTML" .Params.pricing -}}
-          <h3>{{ i18n "programs._pricing" }}</h3>
-          {{- partial "PrepareHTML" .Params.pricing -}}
+          <div class="subpart">
+            <h3>{{ i18n "programs._pricing" }}</h3>
+            {{- partial "PrepareHTML" .Params.pricing -}}
+          </div>
         {{- end -}}
 
         {{- if partial "GetTextFromHTML" .Params.accessibility -}}
-          <h3>{{ i18n "programs._accessibility" }}</h3>
-          {{- partial "PrepareHTML" .Params.accessibility -}}
+          <div class="subpart">
+            <h3>{{ i18n "programs._accessibility" }}</h3>
+            {{- partial "PrepareHTML" .Params.accessibility -}}
+          </div>
         {{- end -}}
 
         {{- if partial "GetTextFromHTML" .Params.registration -}}
-          <h3>{{ i18n "programs._registration" }}</h3>
-          {{- partial "PrepareHTML" .Params.registration -}}
+          <div class="subpart">
+            <h3>{{ i18n "programs._registration" }}</h3>
+            {{- partial "PrepareHTML" .Params.registration -}}
+          </div>
         {{- end -}}
 
         {{- if partial "GetTextFromHTML" .Params.other -}}
-          <h3>{{ i18n "programs._other" }}</h3>
-          {{- partial "PrepareHTML" .Params.other -}}
+          <div class="subpart">
+            <h3>{{ i18n "programs._other" }}</h3>
+            {{- partial "PrepareHTML" .Params.other -}}
+          </div>
         {{- end -}}
 
         {{- if partial "GetTextFromHTML" .Params.contacts -}}
-          <h3>{{ i18n "programs._contacts" }}</h3>
-          {{- partial "PrepareHTML" .Params.contacts -}}
+          <div class="subpart">
+            <h3>{{ i18n "programs._contacts" }}</h3>
+            {{- partial "PrepareHTML" .Params.contacts -}}
+          </div>
         {{- end -}}
       </div>
     </div>
