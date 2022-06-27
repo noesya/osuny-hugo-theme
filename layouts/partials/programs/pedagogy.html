@@ -5,7 +5,9 @@
         <h2>{{ i18n "programs.toc.pedagogy" }}</h2>
       </div>
       <div>
-        {{- partial "PrepareHTML" .Params.content -}}
+        <div class="subpart">
+          {{- partial "PrepareHTML" .Params.content -}}
+        </div>
 
         {{- if partial "GetTextFromHTML" .Params.pedagogy -}}
           <div class="subpart">
