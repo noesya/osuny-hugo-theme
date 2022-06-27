@@ -6,6 +6,7 @@
           <h2>{{ i18n "programs.toc.presentation" }}</h2>
         </div>
         <div>
+          {{- partial "programs/image.html" .Params.image -}}
           {{- partial "PrepareHTML" .Params.objectives -}}
         </div>
       </div>
