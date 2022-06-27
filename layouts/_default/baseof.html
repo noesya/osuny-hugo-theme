@@ -6,6 +6,7 @@
     {{ partial "head/css.html" }}
     {{ partial "head/seo.html" . }}
     {{ partial "head/rss.html" . }}
+    {{ partial "head/script.html" . }}
   </head>
   {{ $body_class := printf "%s__%s" .Type .Kind }}
   {{ $pageclass := partial "GetBodyclass" . }}
