@@ -1,7 +1,7 @@
 {{- $position := .position -}}
 {{- $title := .title -}}
 {{- with .data -}}
-  <section class="block-datatable" id="block-{{ $position }}">
+  <section class="block-datatable{{ if $title }} block-with-title{{ end }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
         {{- if $title }}
@@ -34,5 +34,3 @@
     </div>
   </section>
 {{- end -}}
-
-

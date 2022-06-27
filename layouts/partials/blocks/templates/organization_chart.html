@@ -2,7 +2,7 @@
 {{- $title := .title -}}
 {{- with .data -}}
   {{- $with_link := .with_link -}}
-<section class="block-organization_chart" id="block-{{ $position }}">
+<section class="block-organization_chart{{ if $title }} block-with-title{{ end }}" id="block-{{ $position }}">
   <div class="container">
     <div class="block-content">
         {{ if $title -}}

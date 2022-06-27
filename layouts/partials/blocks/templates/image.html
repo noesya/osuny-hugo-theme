@@ -2,7 +2,7 @@
 {{- $title := .title -}}
 {{- with .data -}}
   {{- $buttons := and .button.text .button_secondary.text -}}
-  <section class="block-image" id="block-{{ $position }}">
+  <section class="block-image{{ if $title }} block-with-title{{ end }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
           <div>

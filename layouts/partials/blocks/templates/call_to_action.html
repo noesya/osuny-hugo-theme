@@ -2,7 +2,7 @@
 {{- $title := .title -}}
 {{- with .data -}}
   {{- $buttons := and .button.text .button_secondary.text -}}
-  <section class="block-call_to_action" id="block-{{ $position }}">
+  <section class="block-call_to_action{{ if $title }} block-with-title{{ end }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
         <div class="call_to_action call_to_action--with{{ if not .image }}out{{ end }}-image">

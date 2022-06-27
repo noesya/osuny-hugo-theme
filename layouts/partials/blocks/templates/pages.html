@@ -35,7 +35,7 @@
     {{ end }}
   {{ end -}}
 
-  <section class="block-pages {{ $layout_class }} {{ $page_class }}" id="block-{{ $position }}">
+  <section class="block-pages{{ if $title }} block-with-title{{ end }} {{ $layout_class }} {{ $page_class }}" id="block-{{ $position }}">
     <div class="container">
       <div class="block-content">
 
