@@ -18,17 +18,27 @@ class KeyFigures {
     }
 
     init () {
+        let target = 0;
         this.figures = this.dom.querySelectorAll('strong');
         this.targets = [];
         this.values = [];
         this.figures.forEach((figure) => {
+            target = parseFloat(figure.innerHTML, 10);
             this.values.push(0);
-            this.targets.push(parseFloat(figure.innerHTML, 10));
+            this.targets.push(target);
             figure.style.minWidth = figure.offsetWidth + 'px';
+            // Show format value if reduced motion
+            if (isReducedMotionPrefered()) {
+                figure.innerText = this.formatValue(target);
+            }
         });
-        this.intersectionObserver = new IntersectionObserver(this.observe.bind(this));
-        this.intersectionObserver.POLL_INTERVAL = 100;
-        this.intersectionObserver.observe(this.dom);
+
+        // Show format value if reduced motion
+        if (!isReducedMotionPrefered()) {
+            this.intersectionObserver = new IntersectionObserver(this.observe.bind(this));
+            this.intersectionObserver.POLL_INTERVAL = 100;
+            this.intersectionObserver.observe(this.dom);
+        }
     }
 
     observe (entries) {
@@ -49,7 +59,7 @@ class KeyFigures {
         this.time = Math.min(new Date().getTime() - this.start, OPTIONS.DURATION);
         this.figures.forEach((figure, index) => {
             this.values[index] = this.getValues(this.time, 0, this.targets[index], OPTIONS.DURATION);
-            figure.innerHTML = this.values[index];
+            figure.innerHTML = this.formatValue(parseFloat(this.values[index], 10));
         });
 
         if (this.time < OPTIONS.DURATION) {
@@ -68,6 +78,10 @@ class KeyFigures {
         return value.toFixed(decimalsLength);
     }
 
+    formatValue (value, separator = " ") {
+        return value.toLocaleString('en').replace(',', separator);
+    }
+
     static easeInOutQuart (t, b, c, d) {
         if ((t /= d / 2) < 1) {
             return c / 2 * t * t * t * t + b;
@@ -82,11 +96,6 @@ class KeyFigures {
 }
 
 window.addEventListener('load', () => {
-    // Handle reduced motion user's preference
-    if (isReducedMotionPrefered()) {
-        return;
-    }
-
     const keyFigures = document.querySelectorAll('.block-key_figures');
     keyFigures.forEach((dom) => {
         new KeyFigures(dom);
