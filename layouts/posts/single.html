@@ -19,6 +19,13 @@
           </div>
         </div>
         {{ partial "blocks/list.html" .Params.blocks }}
+        <div class="blocks blocks-pagination">
+          <div class="container">
+            <div class="block-content">
+              {{ partial "posts/prevnext.html" . }}
+            </div>
+          </div>
+        </div>
       </div>
     {{ else }}
       <div class="container">
