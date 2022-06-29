@@ -30,10 +30,17 @@
 .block-timeline--horizontal
     --min-title-height: 0px
     background-color: $primary
-    color: white
+    color: $white
+    margin-bottom: 8rem
     overflow: hidden
     padding-bottom: $grid-gutter-width
     padding-top: $grid-gutter-width
+    @include media-breakpoint-down(md)
+        margin-bottom: 3rem
+    &:first-of-type
+        margin-top: 4rem
+        @include media-breakpoint-down(md)
+            margin-top: 1rem
     &::before
         display: none
     .timeline-arrows
@@ -42,7 +49,7 @@
             -webkit-appearance: button
             background: none
             border: none
-            color: white
+            color: $white
             cursor: pointer
             font-size: 1rem
             padding: calc(#{$grid-gutter-width}*.5)
@@ -74,14 +81,14 @@
         .title
             min-height: var(--min-title-height)
         .line
-            background: white
+            background: $white
             height: 1px
             margin-bottom: $paragraph-margin-bottom
             opacity: 1
             overflow: visible
             width: calc(100% + #{$grid-gutter-width})
             &::before
-                background: white
+                background: $white
                 border-radius: 50%
                 content: ''
                 display: block

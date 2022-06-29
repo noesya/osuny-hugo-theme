@@ -93,11 +93,11 @@ class BlockTimeline {
 
         // this.block.style.touchAction = 'pan-y';
 
-        this.block.addEventListener('pointerstart', (event) => {
+        this.block.addEventListener('touchstart', (event) => {
             startX = event.changedTouches[0].screenX;
         });
 
-        this.block.addEventListener('pointerend', (event) => {
+        this.block.addEventListener('touchend', (event) => {
             endX = event.changedTouches[0].screenX;
 
             if (startX > endX + threshold) {
