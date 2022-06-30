@@ -31,7 +31,7 @@ class BlockTimeline {
             });
         }
 
-        this.handleSwip();
+        this.handlePointers();
     }
 
     goTo (_index) {
@@ -60,7 +60,6 @@ class BlockTimeline {
         let maxTitleHeight = 0;
 
         this.block.style = '';
-        this.content.style = '';
 
         this.itemWidth = this.items[0].offsetWidth;
 
@@ -72,41 +71,33 @@ class BlockTimeline {
         this.update();
     }
 
-    getAbsoluteOffset (_element) {
-        let top = 0,
-            left = 0,
-            element = _element;
-
-        do {
-            top += element.offsetTop || 0;
-            left += element.offsetLeft || 0;
-            element = element.offsetParent;
-        } while (element);
-
-        return { top: top, left: left };
-    }
-
-    handleSwip () {
-        let startX,
+    handlePointers () {
+        let endEvents = ['pointerup', 'pointercancel'],
+            startX,
             endX,
             threshold = 30;
 
-        // this.block.style.touchAction = 'pan-y';
+        this.content.style.touchAction = "none";
 
-        this.block.addEventListener('touchstart', (event) => {
-            startX = event.changedTouches[0].screenX;
+        this.content.addEventListener('pointerdown', (event) => {
+            startX = event.clientX;
+            this.content.classList.add('is-grabbing');
         });
 
-        this.block.addEventListener('touchend', (event) => {
-            endX = event.changedTouches[0].screenX;
+        this.content.addEventListener('pointermove', (event) => {
+            endX = event.clientX;
+        });
 
-            if (startX > endX + threshold) {
-                // Swipe left
-                this.goTo(this.index+1);
-            } else if (startX < endX - threshold) {
-                // Swipe right
-                this.goTo(this.index-1);
-            }
+        endEvents.forEach(event => {
+            this.content.addEventListener(event, () => {
+                if (startX > endX + threshold) {
+                    this.goTo(this.index+1);
+                } else if (startX < endX - threshold) {
+                    this.goTo(this.index-1);
+                }
+
+                this.content.classList.remove('is-grabbing');
+            });
         });
     }
 }
