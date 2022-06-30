@@ -8,6 +8,7 @@ class BlockTimeline {
         this.items = this.list.querySelectorAll('.event');
         this.previous = this.block.querySelector('.previous');
         this.next = this.block.querySelector('.next');
+        this.isManipulated = false;
 
         this.index = 0;
 
@@ -18,20 +19,89 @@ class BlockTimeline {
 
     listen () {
         window.addEventListener('resize', this.resize.bind(this));
+
         this.items.forEach((item, i) => {
-            item.addEventListener('click', this.goTo.bind(this, i));
+            item.addEventListener('click', this.onClickItem.bind(this, i));
         });
 
         if (this.previous && this.next) {
-            this.previous.addEventListener('click', () => {
-                this.goTo(this.index-1);
-            });
-            this.next.addEventListener('click', () => {
-                this.goTo(this.index+1);
-            });
+            this.handleArrows();
         }
 
         this.handlePointers();
+    }
+
+    resize () {
+        let maxTitleHeight = 0;
+
+        this.block.style = '';
+
+        this.itemWidth = this.items[0].offsetWidth;
+
+        this.items.forEach((item) => {
+            maxTitleHeight = Math.max(item.querySelector('.title').offsetHeight, maxTitleHeight);
+        });
+
+        this.block.style.setProperty('--min-title-height', maxTitleHeight + 'px');
+        this.update();
+    }
+
+    onClickItem(i) {
+        if (!this.isManipulated) {
+            this.goTo(i);
+        }
+    }
+
+    handleArrows () {
+        this.previous.addEventListener('click', () => {
+            this.goTo(this.index-1);
+        });
+        this.next.addEventListener('click', () => {
+            this.goTo(this.index+1);
+        });
+    }
+
+    handlePointers () {
+        let endEvents = ['pointerup'],
+            startX,
+            endX,
+            threshold = 30,
+            isPointerDown = false;
+
+        this.content.style.touchAction = "none";
+
+        this.content.addEventListener('pointerdown', (event) => {
+            this.content.classList.add('is-grabbing');
+            startX = event.clientX;
+            isPointerDown = true;
+        });
+
+        this.content.addEventListener('pointermove', (event) => {
+            this.isManipulated = isPointerDown;
+            endX = event.clientX;
+        });
+
+        endEvents.forEach(event => {
+            this.content.addEventListener(event, (event) => {
+                isPointerDown = false;
+                this.onManipulationEnd(startX, endX, threshold);
+            });
+        });
+    }
+
+    onManipulationEnd(start, end, threshold) {
+        if (start > end + threshold) {
+            this.goTo(this.index+1);
+        } else if (start < end - threshold) {
+            this.goTo(this.index-1);
+        }
+
+        this.content.classList.remove('is-grabbing');
+
+        // Add delay to avoid conflict with item clicked
+        setTimeout(() => {
+            this.isManipulated = false;
+        }, 100)
     }
 
     goTo (_index) {
@@ -56,50 +126,6 @@ class BlockTimeline {
         }
     }
 
-    resize () {
-        let maxTitleHeight = 0;
-
-        this.block.style = '';
-
-        this.itemWidth = this.items[0].offsetWidth;
-
-        this.items.forEach((item) => {
-            maxTitleHeight = Math.max(item.querySelector('.title').offsetHeight, maxTitleHeight);
-        });
-
-        this.block.style.setProperty('--min-title-height', maxTitleHeight + 'px');
-        this.update();
-    }
-
-    handlePointers () {
-        let endEvents = ['pointerup', 'pointercancel'],
-            startX,
-            endX,
-            threshold = 30;
-
-        this.content.style.touchAction = "none";
-
-        this.content.addEventListener('pointerdown', (event) => {
-            startX = event.clientX;
-            this.content.classList.add('is-grabbing');
-        });
-
-        this.content.addEventListener('pointermove', (event) => {
-            endX = event.clientX;
-        });
-
-        endEvents.forEach(event => {
-            this.content.addEventListener(event, () => {
-                if (startX > endX + threshold) {
-                    this.goTo(this.index+1);
-                } else if (startX < endX - threshold) {
-                    this.goTo(this.index-1);
-                }
-
-                this.content.classList.remove('is-grabbing');
-            });
-        });
-    }
 }
 
 timelines.forEach((timeline) => {
