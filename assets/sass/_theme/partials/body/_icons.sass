@@ -43,3 +43,28 @@ $icons: map-merge($icons, ("twitter": "\e90d"))
     speak: never
     text-transform: none
     vertical-align: middle
+
+// load font
+@font-face
+    font-display: block
+    font-family: 'Icon'
+    font-style: normal
+    font-weight: 400
+    src: url('../fonts/icons/icomoon.woff') format("woff")
+
+// set icon classes
+.icon,
+[class^="icon-"],
+[class*=" icon-"]
+    &::before
+        @include icon
+
+@each $name, $glyph in $icons
+    .icon-#{$name}
+        &::before
+            content: $glyph
+    .btn-#{$name}
+        @extend .icon
+        &::before
+            content: $glyph
+            margin-right: px2rem(5)
