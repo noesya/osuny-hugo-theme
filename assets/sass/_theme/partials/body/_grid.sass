@@ -1,17 +1,3 @@
-@mixin in-page-with-aside
-    aside ~ .blocks &
-        @content
-
-@mixin in-page-without-aside
-    main > .blocks &,
-    main > article > .blocks &
-        @content
-
-@function col($nb, $base: 12)
-    $nb: $nb/$base * 12
-    $nbCol: calc( (100% + #{$grid-gutter-width}) / 12 * #{$nb} )
-    @return #{$nbCol}
-
 .grid
     column-count: 1
     column-gap: $grid-gutter-width
