@@ -1,5 +1,4 @@
 .block-timeline--vertical
-
     .events
         padding-left: $grid-gutter-width
         position: relative
@@ -29,8 +28,8 @@
 
 .block-timeline--horizontal
     --min-title-height: 0px
-    background-color: $primary
-    color: $white
+    background: $block-timeline-horizontal-background
+    color: $block-timeline-horizontal-color
     margin-bottom: 8rem
     overflow: hidden
     padding-bottom: $grid-gutter-width
@@ -87,14 +86,14 @@
         .title
             min-height: var(--min-title-height)
         .line
-            background: $white
+            background: $block-timeline-horizontal-color
             height: 1px
             margin-bottom: $paragraph-margin-bottom
             opacity: 1
             overflow: visible
             width: calc(100% + #{$grid-gutter-width})
             &::before
-                background: $white
+                background: $block-timeline-horizontal-color
                 border-radius: 50%
                 content: ''
                 display: block
