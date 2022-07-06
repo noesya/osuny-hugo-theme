@@ -18,9 +18,10 @@
         <div class="testimonials">
 
           {{- if $is_carousel }}
-          <div class="splide" data-splide='{"arrows":false,"autoplay":true,"autoHeight":true}'>
-            <div class="splide__track">
-              <div class="splide__list">
+          <div class="splide" data-splide='{"arrows":false,"autoplay":true,"pauseOnHover":false,"pauseOnFocus":false,"type":"loop","autoHeight":true}'>
+            <div class="splide__slider">
+              <div class="splide__track">
+                <div class="splide__list">
           {{ end -}}
 
           {{ range .testimonials }}
@@ -56,12 +57,14 @@
           {{ end }}
 
           {{- if $is_carousel }}
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="splide__autoplay">
-            <button class="splide__play"></button>
-            <button class="splide__pause"></button>
+            <div class="splide__autoplay is-active">
+              <button class="splide__play"></button>
+              <button class="splide__pause"></button>
+            </div>
           </div>
           {{ end -}}
 

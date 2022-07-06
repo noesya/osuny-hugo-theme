@@ -17,6 +17,17 @@ Splide.defaults = {
     var splides = document.getElementsByClassName('splide'),
         i = 0;
     for (i = 0; i < splides.length; i+=1) {
-        new Splide(splides[i]).mount();
+        var splide = new Splide(splides[i]).mount(),
+            toggleButton = splide.root.querySelector('.splide__autoplay');
+
+        if (toggleButton) {
+            splide.on( 'autoplay:play', function () {
+                toggleButton.classList.add('is-active');
+            } );
+
+            splide.on( 'autoplay:pause', function () {
+                toggleButton.classList.remove('is-active');
+            } );
+        }
     }
 }());
