@@ -12,6 +12,12 @@
                 aspect-ratio: 0.887
                 background-color: $block-pages-card-page-background
                 transition: background .3s, color .3s
+                &,
+                a
+                    color: $block-pages-card-page-color
+                .more
+                    @include link
+                    text-decoration-color: $block-pages-card-page-color
                 > div:first-child
                     display: flex
                     flex-direction: column
@@ -20,14 +26,12 @@
                         text-decoration: none
                     + p:not(.more)
                         margin-bottom: 1rem
-                .more
-                    text-decoration-color: $body-color
                 &:hover
                     background-color: $block-pages-card-page-background-hover
                     &,
-                    a,
+                    a
+                        color: $block-pages-card-page-color-hover
                     .more
-                        color: white
-                        text-decoration-color: white
+                        text-decoration-color: $block-pages-card-page-color-hover
                 > div:first-of-type
                     padding: $card-spacer-y $card-spacer-x
