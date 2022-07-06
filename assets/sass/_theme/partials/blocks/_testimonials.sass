@@ -6,7 +6,6 @@
         .testimonials
             @extend .col-md-8
 
-
     blockquote
         @extend .blockquote
         padding-top: calc(#{$blockquote-font-size} * 2)
@@ -16,15 +15,18 @@
             line-height: 1
             position: absolute
             transform: translate(-15%, -50%)
+
     figure
         font-size: px2rem(16)
         margin-bottom: 0
+
     figcaption
         align-items: center
         display: flex
         .avatar
             flex-shrink: 0
             margin-right: $grid-gutter-width
+
     .avatar
         max-width: 96px
         @include media-breakpoint-up(lg)
