@@ -13,18 +13,14 @@
         {{- $title := or $page.Params.breadcrumb_title $page.Title -}}
         {{- $active := eq $page.RelPermalink $permalink }}
       <li class="breadcrumb-item{{ if $active }} active{{ end }}"{{ if $active }} aria-current="page"{{ end }} itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        {{ if $active -}}
-          <span itemprop="item">
-        {{ else -}}
+        {{ if not $active -}}
           <a href="{{ $page.Permalink}}" itemprop="item">
         {{- end -}}
           <span itemprop="name">{{ htmlUnescape $title }}</span>
-          <meta itemprop="position" content="{{ $index }}">
-        {{- if $active }}
-          </span>
-        {{ else -}}
+        {{- if not $active }}
           </a>
         {{ end -}}
+        <meta itemprop="position" content="{{ $index }}">
       </li>
       {{- end -}}
     {{- end }}

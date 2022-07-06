@@ -1,89 +1,72 @@
+@import "utils"
+@import "default_config"
+
 /*! purgecss start ignore */
-// Abstracts
-@import "_default/abstracts/functions"
-@import "_default/abstracts/mixins"
-@import "_default/abstracts/icons"
 
-// Configuration
-@import "_default/configuration/theme"
-/*! purgecss end ignore */
-
-// Libraries
 @import "bootstrap/scss/bootstrap.scss"
 @import "glightbox/dist/css/glightbox"
 @import "@splidejs/splide/dist/css/splide-core.min"
 
-/*! purgecss start ignore */
-// Base
-@import "_default/base/defaults"
-@import "_default/base/fonts"
-@import "_default/base/fonts-icons"
-@import "_default/base/typography"
-
-// Layouts
-@import "_default/layouts/content"
-@import "_default/layouts/footer"
-@import "_default/layouts/grid"
-@import "_default/layouts/header"
-@import "_default/layouts/main"
-
-// Bootstrap overrides
 @import "_vendors/bootstrap/blockquote"
 @import "_vendors/bootstrap/breadcrumb"
 @import "_vendors/bootstrap/btn"
 @import "_vendors/bootstrap/card"
 @import "_vendors/bootstrap/dropdown"
-@import "_vendors/bootstrap/offcanvas"
-@import "_vendors/bootstrap/pagination"
 @import "_vendors/bootstrap/modal"
 @import "_vendors/bootstrap/nav"
+@import "_vendors/bootstrap/offcanvas"
+@import "_vendors/bootstrap/pagination"
 @import "_vendors/bootstrap/row"
 @import "_vendors/bootstrap/table"
-
-// Vendors overides
 @import "_vendors/glightbox/glightbox"
 @import "_vendors/splide/splide"
 
-// Partials
-@import "_default/partials/avatar"
-@import "_default/partials/contacts-list"
-@import "_default/partials/dropdown-share"
-@import "_default/partials/gdpr"
-@import "_default/partials/featured-image"
-@import "_default/partials/footer-nav-expand"
-@import "_default/partials/hero"
-@import "_default/partials/icons"
-@import "_default/partials/link"
-@import "_default/partials/menu"
-@import "_default/partials/menu-expand"
-@import "_default/partials/nav-accessibility"
-@import "_default/partials/related"
-@import "_default/partials/share"
-@import "_default/partials/sticky"
-@import "_default/partials/toc"
-@import "_default/partials/top"
-@import "_default/partials/transcription"
+@import "partials/a11y/nav-accessibility"
+@import "partials/a11y/transcription"
+@import "partials/body/content"
+@import "partials/body/featured-image"
+@import "partials/body/global"
+@import "partials/body/grid"
+@import "partials/body/icons"
+@import "partials/body/link"
+@import "partials/body/main"
+@import "partials/body/top"
+@import "partials/body/typography"
+@import "partials/footer/footer-nav-expand"
+@import "partials/footer/footer"
+@import "partials/footer/gdpr"
+@import "partials/header/header"
+@import "partials/header/hero"
+@import "partials/nav/menu-expand"
+@import "partials/nav/menu"
+@import "partials/nav/sticky"
+@import "partials/nav/toc"
+@import "partials/persons/avatar"
+@import "partials/persons/contacts-list"
+@import "partials/posts/related"
+@import "partials/share/dropdown-share"
+@import "partials/share/share"
 
-// Blocks
-@import "blocks/blocks"
-@import "blocks/call_to_action"
-@import "blocks/chapter"
-@import "blocks/datatable"
-@import "blocks/definitions"
-@import "blocks/embed"
-@import "blocks/files"
-@import "blocks/gallery"
-@import "blocks/key_figures"
-@import "blocks/image"
-@import "blocks/organization_chart"
-@import "blocks/pages"
-@import "blocks/partners"
-@import "blocks/posts"
-@import "blocks/testimonials"
-@import "blocks/timeline"
-@import "blocks/video"
+@import "partials/blocks/blocks"
+@import "partials/blocks/call_to_action"
+@import "partials/blocks/chapter"
+@import "partials/blocks/datatable"
+@import "partials/blocks/definitions"
+@import "partials/blocks/embed"
+@import "partials/blocks/files"
+@import "partials/blocks/gallery"
+@import "partials/blocks/image"
+@import "partials/blocks/key_figures"
+@import "partials/blocks/organization_chart"
+@import "partials/blocks/pages"
+@import "partials/blocks/partners"
+@import "partials/blocks/posts"
+@import "partials/blocks/testimonials"
+@import "partials/blocks/timeline"
+@import "partials/blocks/video"
 
-// Contents
+@import "home/pages"
+
 @import "administrators/pages"
 @import "administrators/widgets"
 
@@ -98,8 +81,6 @@
 
 @import "diplomas/pages"
 @import "diplomas/widgets"
-
-@import "home/pages"
 
 @import "organizations/pages"
 @import "organizations/widgets"
@@ -126,4 +107,5 @@
 
 @import "volumes/pages"
 @import "volumes/widgets"
+
 /*! purgecss end ignore */
