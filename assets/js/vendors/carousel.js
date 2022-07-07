@@ -18,11 +18,21 @@ Splide.defaults = {
         i = 0;
     for (i = 0; i < splides.length; i+=1) {
         var splide = new Splide(splides[i]).mount(),
-            toggleButton = splide.root.querySelector('.splide__autoplay');
+            toggleButton = splide.root.querySelector('.splide__autoplay'),
+            stepButtons = splide.root.querySelectorAll('.splide__pagination button');
 
         if (toggleButton) {
+            stepButtons.forEach((stepButton) => {
+                stepButton.innerHTML = "<i></i>";
+            });
+
             splide.on( 'autoplay:play', function () {
                 toggleButton.classList.add('is-active');
+            } );
+
+            splide.on( 'autoplay:playing', function ( rate ) {
+                var activeStepButton = splide.root.querySelector('.splide__pagination .is-active i');
+                activeStepButton.style.width = rate * 100 + "%"
             } );
 
             splide.on( 'autoplay:pause', function () {

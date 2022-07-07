@@ -35,3 +35,45 @@
             max-width: 166px
         @include media-breakpoint-up(xxl)
             max-width: 192px
+
+    .splide
+        display: flex
+        flex-direction: column-reverse
+        &__autoplay
+            bottom: auto
+            top: 0
+            button
+                font-size: px2rem(12)
+                line-height: 1
+                &::after
+                    border: $border-width solid $border-color
+                    border-radius: 50%
+                    content: ''
+                    height: 42px
+                    left: 50%
+                    position: absolute
+                    top: 50%
+                    transform: translate(-50%, -50%)
+                    width: 42px
+        &__pagination
+            justify-content: unset
+            margin-right: 55px
+            li
+                flex: 1
+                margin-right: 10px
+            button
+                position: relative
+                width: 100%
+                &::before
+                    background-color: $border-color
+                    border-radius: 0
+                    height: 1px
+                    width: 100%
+                i
+                    background-color: $primary
+                    height: 1px
+                    left: 0
+                    top: 50%
+                    position: absolute
+                    width: 0
+                
