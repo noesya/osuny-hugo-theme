@@ -17,11 +17,11 @@
             {{- $url = $image.direct_url -}}
           {{- end -}}
 
-          {{- $lightbox_sizes := "1280x2560" -}}
-          <a class="glightbox"
-            data-glightbox="type: image;"
-            href="{{ partial "GetImageUrl" (dict "url" $url "size" $lightbox_sizes ) }}">
-            <figure>
+          {{- $lightbox_sizes := "2048x3640" -}}
+          <figure>
+            <a class="glightbox"
+              data-glightbox="type: image;"
+              href="{{ partial "GetImageUrl" (dict "url" $url "size" $lightbox_sizes ) }}">
               {{ partial "commons/image.html"
                 (dict
                   "image"    .
@@ -30,16 +30,16 @@
                   "tablet"   "768x1360"
                   "desktop"  "1024x1820"
                 )}}
-                <figcaption>
-                  {{- if $title }}
-                    <p>{{ partial "PrepareHTML" $title }}</p>
-                  {{ end -}}
-                  {{- if partial "PrepareHTML" .credit }}
-                    <p><small>{{ partial "PrepareHTML" .credit }}</small></p>
-                  {{ end -}}
-                </figcaption>
-            </figure>
-          </a>
+            </a>
+            <figcaption>
+              {{- if $title }}
+                <p>{{ partial "PrepareHTML" $title }}</p>
+              {{ end -}}
+              {{- if partial "PrepareHTML" .credit }}
+                <p><small>{{ partial "PrepareHTML" .credit }}</small></p>
+              {{ end -}}
+            </figcaption>
+          </figure>
         {{- end -}}
 
       </div>
