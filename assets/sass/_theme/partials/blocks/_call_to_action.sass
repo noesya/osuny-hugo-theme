@@ -30,8 +30,11 @@
             > div
                 background-color: $block-call-to-action-background
                 padding: $grid-gutter-width
-                padding-top: calc(#{$grid-gutter-width} + 50px)
                 width: 100%
+            &--with-image
+                > div
+                    padding-top: calc(#{$grid-gutter-width} + 50px)
+
             @include media-breakpoint-up(md)
                 picture
                     padding-left: col(1, 8)
