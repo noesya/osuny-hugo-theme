@@ -67,16 +67,17 @@
             button
                 position: relative
                 width: 100%
-                &::before
-                    background-color: $border-color
-                    border-radius: 0
-                    height: 1px
-                    width: 100%
+                &::before,
                 i
-                    background-color: $primary
                     height: 1px
                     left: 0
                     top: 50%
                     position: absolute
-                    transform: translateY(-100%)
+
+                &::before
+                    background-color: $border-color
+                    border-radius: 0
+                    width: 100%
+                i
+                    background-color: $primary
                     width: 0
