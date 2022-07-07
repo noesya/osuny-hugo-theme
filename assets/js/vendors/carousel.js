@@ -13,31 +13,42 @@ Splide.defaults = {
     }
 };
 
-(function () {
-    var splides = document.getElementsByClassName('splide'),
-        i = 0;
-    for (i = 0; i < splides.length; i+=1) {
-        var splide = new Splide(splides[i]).mount(),
+class Carousel {
+    constructor (element) {
+        this.element = element;
+        this.init();
+    }
+
+    init () {
+        var splide = new Splide(this.element).mount(),
             toggleButton = splide.root.querySelector('.splide__autoplay'),
             stepButtons = splide.root.querySelectorAll('.splide__pagination button');
 
         if (toggleButton) {
             stepButtons.forEach((stepButton) => {
-                stepButton.innerHTML = "<i></i>";
+                stepButton.innerHTML = '<i></i>';
             });
 
-            splide.on( 'autoplay:play', function () {
+            splide.on('autoplay:play', function () {
                 toggleButton.classList.add('is-active');
-            } );
+            });
 
-            splide.on( 'autoplay:playing', function ( rate ) {
+            splide.on('autoplay:playing', function ( rate ) {
                 var activeStepButton = splide.root.querySelector('.splide__pagination .is-active i');
-                activeStepButton.style.width = rate * 100 + "%"
-            } );
+                activeStepButton.style.width = rate * 100 + '%';
+            });
 
-            splide.on( 'autoplay:pause', function () {
+            splide.on('autoplay:pause', function () {
                 toggleButton.classList.remove('is-active');
-            } );
+            });
         }
+    }
+}
+
+(function () {
+    var splides = document.getElementsByClassName('splide'),
+        i = 0;
+    for (i = 0; i < splides.length; i+=1) {
+        new Carousel(splides[i]);
     }
 }());
