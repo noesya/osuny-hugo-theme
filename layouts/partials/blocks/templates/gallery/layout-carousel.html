@@ -13,15 +13,16 @@
     {{ if .file }}
       {{- $image := partial "GetMedia" .file -}}
       {{- if $image -}}
+        {{/*  TODO: refactor  */}}
         {{- $url := $image.url -}}
         {{- if site.Params.keycdn -}}
           {{- $url = $image.direct_url -}}
         {{- end -}}
-        {{- $default := "1280x2560" -}}
+        {{- $lightbox_sizes := "1280x2560" -}}
         <figure{{ if $is_carousel }} class="splide__slide"{{ end }}>
           <a class="glightbox"
             data-glightbox="type: image;"
-            href="{{ partial "GetImageUrl" (dict "url" $url "size" $default ) }}">
+            href="{{ partial "GetImageUrl" (dict "url" $url "size" $lightbox_sizes ) }}">
             {{ partial "commons/image.html"
               (dict
                 "image"    .id
