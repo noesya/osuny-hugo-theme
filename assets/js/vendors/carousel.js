@@ -33,7 +33,7 @@ class Carousel {
                 toggleButton.classList.add('is-active');
             });
 
-            splide.on('autoplay:playing', function ( rate ) {
+            splide.on('autoplay:playing', function (rate) {
                 var activeStepButton = splide.root.querySelector('.splide__pagination .is-active i');
                 activeStepButton.style.width = rate * 100 + '%';
             });
