@@ -25,8 +25,9 @@
           {{ end -}}
 
           {{ range .testimonials }}
+            {{ $is_long := gt (len .text) 150 }}
             <figure{{ if $is_carousel }} class="splide__slide"{{ end }}>
-              <blockquote>
+              <blockquote {{- if $is_long }} class="is-long" {{- end }}>
                 <p>{{- partial "PrepareHTML" .text -}}</p>
               </blockquote>
               {{ if or .photo .author .job -}}
