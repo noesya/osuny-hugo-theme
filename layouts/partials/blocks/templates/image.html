@@ -11,10 +11,12 @@
         </div>
         {{/*  TODO: refactor  */}}
         {{- with .image -}}
-          {{- $url := .url -}}
+          {{- $image := partial "GetMedia" .file -}}
+          {{- $url := $image.url -}}
           {{- if site.Params.keycdn -}}
-            {{- $url = .direct_url -}}
+            {{- $url = $image.direct_url -}}
           {{- end -}}
+
           {{- $lightbox_sizes := "1280x2560" -}}
           <a class="glightbox"
             data-glightbox="type: image;"
