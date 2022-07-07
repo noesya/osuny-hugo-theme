@@ -27,7 +27,7 @@
           {{ range .testimonials }}
             <figure{{ if $is_carousel }} class="splide__slide"{{ end }}>
               <blockquote>
-                {{- partial "PrepareHTML" .text -}}
+                <p>{{- partial "PrepareHTML" .text -}}</p>
               </blockquote>
               {{ if or .photo .author .job -}}
               <figcaption>
