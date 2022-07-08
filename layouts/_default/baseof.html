@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ partial "head/css.html" }}
     {{ partial "head/seo.html" . }}
+    {{ partial "head/favicons.html" . }}
     {{ partial "head/rss.html" . }}
     {{ partial "head/script.html" . }}
+    {{ partial "head/extras.html" . }}
   </head>
   {{ $body_class := printf "%s__%s" .Type .Kind }}
   {{ $pageclass := partial "GetBodyclass" . }}

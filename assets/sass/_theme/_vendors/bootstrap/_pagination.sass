@@ -79,26 +79,27 @@
             margin-right: 0
             li.previous,
             li.next
-                align-items: center
                 border-top: 1px solid $gray-500
-                display: flex
-                justify-content: space-between
-                padding: px2rem(20) 0
                 text-align: left
                 a
-                    padding-left: 0
-                    padding-right: px2rem(40)
+                    padding: px2rem(20) px2rem(40) px2rem(20) 0
+                    &::after
+                        @include icon
+                        font-size: px2rem(12)
+                        opacity: 0.5
+                        position: absolute
+                        right: 0
+                        top: 50%
+                        transform: translateY(-50%)
                 span
-                    &::after, &::before
-                        display: none
-                &::after
-                    @include icon
-                    font-size: px2rem(12)
-                    opacity: 0.5
+                    &::after,
+                    &::before
+                        content: none
+
             li.previous
                 border-bottom: 1px solid $gray-500
-                &::after
+                a::after
                     content: map-get($icons, "arrow-left")
             li.next
-                &::after
+                a::after
                     content: map-get($icons, "arrow-right")
