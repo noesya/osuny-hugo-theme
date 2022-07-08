@@ -5,10 +5,12 @@
         &:first-child
             padding-left: 0
     th
-        font-size: px2rem(22)
         white-space: nowrap
-    td
-        font-size: px2rem(20)
     caption:first-child
         & + thead, & + tbody
             border-top: 0 !important
+    @include media-breakpoint-up(xl)
+        th
+            font-size: px2rem(22)
+        td
+            font-size: px2rem(20)

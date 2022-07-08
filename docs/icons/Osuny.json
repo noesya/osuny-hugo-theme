@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Osuny",
     "lastOpened": 0,
-    "created": 1656323381988
+    "created": 1657188755372
   },
   "iconSets": [
     {
@@ -48,7 +48,7 @@
           "tempChar": ""
         },
         {
-          "order": 20,
+          "order": 30,
           "id": 5,
           "name": "pause",
           "prevSize": 32,
@@ -56,7 +56,7 @@
           "tempChar": ""
         },
         {
-          "order": 19,
+          "order": 32,
           "id": 6,
           "name": "play",
           "prevSize": 32,
@@ -277,34 +277,36 @@
         {
           "id": 5,
           "paths": [
-            "M213.333 0h-213.333v1024h213.333v-1024zM682.667 0h-213.333v1024h213.333v-1024z"
+            "M708.923 1024v-1024l78.769 0v1024h-78.769z",
+            "M-0 1024l0-1024 78.769 0-0 1024h-78.769z"
           ],
-          "width": 683,
+          "width": 784,
           "attrs": [
+            {},
             {}
           ],
-          "isMulticolor": false,
-          "isMulticolor2": false,
           "tags": [
             "pause"
           ],
-          "grid": 0
+          "grid": 0,
+          "isMulticolor": false,
+          "isMulticolor2": false
         },
         {
           "id": 6,
           "paths": [
-            "M682.667 512l-682.667 512 0-1024 682.667 512z"
+            "M14.4 0.002l819.2 532.477-819.2 491.521v-1024zM85.987 131.912v765.653l612.519-367.515-612.519-398.139z"
           ],
-          "width": 683,
+          "width": 848,
           "attrs": [
             {}
           ],
-          "isMulticolor": false,
-          "isMulticolor2": false,
           "tags": [
             "play"
           ],
-          "grid": 0
+          "grid": 0,
+          "isMulticolor": false,
+          "isMulticolor2": false
         },
         {
           "id": 7,
@@ -548,7 +550,6 @@
       "invisible": false
     }
   ],
-  "uid": -1,
   "preferences": {
     "showGlyphs": true,
     "showCodes": true,
@@ -558,7 +559,9 @@
     "fontPref": {
       "prefix": "icon-",
       "metadata": {
-        "fontFamily": "icomoon"
+        "fontFamily": "icomoon",
+        "majorVersion": 1,
+        "minorVersion": 0
       },
       "metrics": {
         "emSize": 1024,
@@ -574,6 +577,9 @@
       "color": 0,
       "bgColor": 16777215
     },
-    "historySize": 50
-  }
+    "historySize": 50,
+    "gridSize": 16,
+    "showLiga": false
+  },
+  "uid": -1
 }
