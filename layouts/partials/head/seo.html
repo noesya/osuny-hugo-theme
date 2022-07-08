@@ -53,7 +53,7 @@
 <!-- Facebook Meta Tags -->
 <meta property="og:title" content="{{ $seoTitle }}">
 <meta property="og:description" content="{{ $seoDescription }}">
-{{- with $seoImage }}
+{{- with $ogImage }}
 <meta property="og:image" content="{{ . }}">
 {{ end -}}
 <meta property="og:url" content="{{ $seoUrl }}">
@@ -62,7 +62,7 @@
 <!-- Twitter Meta Tags -->
 <meta name="twitter:title" content="{{ $seoTitle }}">
 <meta name="twitter:description" content="{{ $seoDescription }}">
-{{- with $seoImage }}
+{{- with $twitterImage }}
 <meta name="twitter:image" content="{{ . }}">
 {{ end -}}
 <meta name="twitter:card" content="summary_large_image">
