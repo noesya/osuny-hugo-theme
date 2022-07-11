@@ -1,5 +1,9 @@
 .block-pages
-
+    .main-page
+        .title
+            a::before
+                content: none
+                    
     &--cards
         background-color: $block-pages-card-background
         padding-bottom: $grid-gutter-width
@@ -24,6 +28,8 @@
                 .title
                     a
                         text-decoration: none
+                        &::before
+                            content: none
                     + p:not(.more)
                         margin-bottom: 1rem
                 &:hover
@@ -35,3 +41,4 @@
                         text-decoration-color: $block-pages-card-page-color-hover
                 > div:first-of-type
                     padding: $card-spacer-y $card-spacer-x
+    
