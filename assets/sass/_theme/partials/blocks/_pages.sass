@@ -1,8 +1,40 @@
 .block-pages
     .main-page
+        @include media-breakpoint-up(lg)
+            > div:first-child
+                padding-right: $grid-gutter-width
         .title
             a::before
                 content: none
+
+    &--list
+        .block-content
+            @include media-breakpoint-up(lg)
+                align-items: flex-start
+                display: flex
+                > *
+                    flex: 1
+        .pages
+            --bs-gutter-y: 0
+            @include media-breakpoint-up(lg)
+                margin-top: 4.5rem
+            > *
+                margin-top: px2rem(10)
+                width: 100%
+
+            .page
+                .title
+                    a
+                        font-size: px2rem(18)
+                        text-decoration-color: transparent
+                        @include hover-translate-icon(before, 3)
+                        &:hover
+                            text-decoration-color: black
+        .page
+            > div
+                padding: 0
+
+
                     
     &--cards
         background-color: $block-pages-card-background

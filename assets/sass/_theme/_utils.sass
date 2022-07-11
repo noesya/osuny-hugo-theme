@@ -41,3 +41,11 @@
     &:hover
         text-decoration-color: rgba($link-color, 1)
         text-decoration-thickness: 1px
+
+@mixin hover-translate-icon($pseudo: after, $distance: 10)
+    &::#{$pseudo}
+        transition: transform 0.55s $arrow-ease-transition
+        transform: translateX(0)
+    &:hover
+        &::#{$pseudo}
+            transform: translateX(#{px2rem($distance)})
