@@ -1,0 +1,58 @@
+{{- $position := .position -}}
+{{- $title := .title -}}
+{{- $class := "block-contact" -}}
+{{- with .data -}}
+  <section class="{{ $class }}{{ if $title }} block-with-title{{ end }}" id="block-{{ $position }}">
+    <div class="container">
+      <div class="block-content">
+        {{ if $title -}}
+          <div class="top">
+            <h2>{{ partial "PrepareHTML" $title }}</h2>
+          </div>
+        {{ end -}}
+        <address>
+          <p>
+          {{ if .name }}
+            <b>{{ .name }}</b><br>
+          {{ end }}
+          {{ range .phone_numbers }}
+            <a href="tel:{{ . }}">{{ . }}</a><br>
+          {{ end }}
+          {{ range .emails }}
+            <a href="mailto:{{ . }}">{{ . }}</a><br>
+          {{ end }}
+          {{ partial "PrepareHTML" .address }}
+          </p>
+        </address>
+
+        {{ if .timetable}}
+        <ul>
+            {{ range .timetable }}
+            <li>
+              <span>{{ .title }}</span>
+              <span>
+                {{- if .time_slot_morning.from }}
+                  <time datetime="{{ .time_slot_morning.from }}">{{ .time_slot_morning.from }}</time>
+                {{ end -}}
+                {{- if .time_slot_morning.to }}
+                  <time datetime="{{ .time_slot_morning.to }}">{{ .time_slot_morning.to }}</time>
+                {{ end -}}
+              </span>
+              <span>
+                {{- if .time_slot_afternoon.from }}
+                  <time datetime="{{ .time_slot_afternoon.from }}">{{ .time_slot_afternoon.from }}</time>
+                {{ end -}}
+                {{- if .time_slot_afternoon.to }}
+                  <time datetime="{{ .time_slot_afternoon.to }}">{{ .time_slot_afternoon.to }}</time>
+                {{ end -}}
+              </span>
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+
+
+    </div>
+  </section>
+{{- end -}}
