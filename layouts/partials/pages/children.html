@@ -8,9 +8,11 @@
         {{ range . }}
           <div>
             {{ $page := partial "GetPageByUrl" . }}
-            {{ $page.Scratch.Set "show_description" true }}
-            {{ partial "pages/page.html" $page }}
-            {{ $page.Scratch.Delete "show_description" }}
+            {{ with $page }}
+              {{ .Scratch.Set "show_description" true }}
+              {{ partial "pages/page.html" . }}
+              {{ .Scratch.Delete "show_description" }}
+            {{ end }}
           </div>
         {{ end }}
       </div>

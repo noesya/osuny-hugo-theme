@@ -1,7 +1,7 @@
 .hero
     align-items: flex-end
-    background-color: $primary
-    color: $white
+    background-color: $hero-background-color
+    color: $hero-color
     display: flex
     margin-bottom: 3rem
     min-height: $hero-height
@@ -43,10 +43,10 @@
             width: calc(100% + #{$grid-gutter-width})
 
     a
-        color: $white
-        text-decoration-color: rgba($white, .3)
+        color: $hero-color
+        text-decoration-color: rgba($hero-color, .3)
         &:hover
-            text-decoration-color: $white
+            text-decoration-color: $hero-color
 
     .title-avatar
         @include make-row()

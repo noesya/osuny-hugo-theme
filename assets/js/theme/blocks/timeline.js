@@ -68,7 +68,7 @@ class BlockTimeline {
             threshold = 30,
             isPointerDown = false;
 
-        this.content.style.touchAction = "none";
+        this.content.style.touchAction = 'pan-y';
 
         this.content.addEventListener('pointerdown', (event) => {
             this.content.classList.add('is-grabbing');
