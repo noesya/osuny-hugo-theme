@@ -1,4 +1,9 @@
 .menu
+    a,
+    a:hover,
+    a:focus,
+    a:active
+        color: $header-color
     @extend .collapse
     @extend .navbar-collapse
     flex-grow: initial
@@ -23,6 +28,10 @@
         a,
         span
             @extend .nav-link
+            color: $header-color
+        a:hover, 
+        a:focus
+            color: $header-hover-color
 
     > ul
         @extend .navbar-nav
@@ -41,6 +50,8 @@
                 line-height: px2rem(26)
         & > .has-children
             @extend .dropdown
+            .dropdown-menu
+                background-color: $primary
             > a,
             > span
                 @extend .dropdown-toggle
@@ -56,8 +67,11 @@
             li a,
             li span
                 @extend .dropdown-item
-                &:focus
+                color: $header-color
+                &:focus, 
+                &:hover
                     background-color: transparent
+                    color: $header-hover-color
                 @include media-breakpoint-down(lg)
                     white-space: normal
             @include media-breakpoint-down(lg)

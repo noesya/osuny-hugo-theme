@@ -1,7 +1,16 @@
 footer[role="contentinfo"]
-    background-color: $light
+    background-color: $footer-background
     padding-bottom: calc(#{$grid-gutter-width} * 2.5)
     padding-top: calc(#{$grid-gutter-width} * 2.5)
+
+    &,
+    a
+        color: $footer-color
+
+    a
+        text-decoration-color: rgba($footer-color, .3)
+        &:hover
+            text-decoration-color: $footer-color
 
     address
         font-size: px2rem(14)
@@ -66,12 +75,16 @@ footer[role="contentinfo"]
         a,
         span
             @extend .nav-link
-            color: $link-color
+            color: $footer-color
             display: inline-block
             font-size: px2rem(14)
             line-height: 1.4
         a
             @include link
+            text-decoration-color: rgba($footer-color, .3)
+            &:hover
+                color: $footer-color
+                text-decoration-color: $footer-color
 
     @include media-breakpoint-up(md)
         .nav-legal,

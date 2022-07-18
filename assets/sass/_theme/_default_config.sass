@@ -25,6 +25,8 @@ $icons: map-merge($icons, ("twitter": "\e90d"))
 // Bootstrap
 $primary: #000000 !default
 $secondary: #666666 !default
+$black: #000000 !default
+$light: #f8f9fa !default
 
 $border-radius: 0 !default
 $border-radius-sm: 0 !default
@@ -42,6 +44,8 @@ $pagination-disabled-bg: transparent !default
 // header banner
 $enable-header-sticky: false !default
 $header-background-color: white !default
+$header-color: black !default
+$header-hover-color: $header-color !default
 $header-height: 60px !default
 $header-height-md: 70px !default
 $header-transition: 0.4s !default
@@ -52,8 +56,14 @@ $menu-background-color: white !default
 
 // hero
 $breadcrumb-link-color: white !default
+$hero-background-color: $primary !default
+$hero-color: white !default
 $hero-height: 375px !default
 $hero-height-md: 450px !default
+
+// footer
+$footer-background: $light !default
+$footer-color: $black !default
 
 // block call to action
 $block-call-to-action-background: $primary !default
@@ -78,3 +88,7 @@ $table-border-color: rgba(0, 0, 0, 0.5) !default
 
 // toc
 $toc-height: 78px !default
+
+// pages list
+$arrow-ease-transition: cubic-bezier(0, 0.65, 0.4, 1.2)
+$arrow-ease-transition-2: cubic-bezier(0, 0.65, 0.4, 1)
