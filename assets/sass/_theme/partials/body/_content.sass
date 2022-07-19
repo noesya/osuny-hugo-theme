@@ -24,24 +24,24 @@
 .content-blocks
     position: relative
     // aside
-    > aside
-        @extend .container
-        // padding-top: 4rem
-        pointer-events: none
-        @include media-breakpoint-up(md)
-            height: 100%
-            left: 50%
-            // margin-bottom: 0
-            // padding-bottom: 4rem
-            position: absolute
-            transform: translateX(-50%)
-            width: 100%
-        > div
-            @extend .row
-            @extend .sticky
-            > *
-                @extend .col-md-3
-                pointer-events: auto
+    // > aside
+    //     @extend .container
+    //     // padding-top: 4rem
+    //     pointer-events: none
+    //     @include media-breakpoint-up(md)
+    //         height: 100%
+    //         left: 50%
+    //         // margin-bottom: 0
+    //         // padding-bottom: 4rem
+    //         position: absolute
+    //         transform: translateX(-50%)
+    //         width: 100%
+    //     > div
+    //         @extend .row
+    //         @extend .sticky
+    //         > *
+    //             @extend .col-md-3
+    //             pointer-events: auto
     // content
     @include media-breakpoint-up(md)
         > aside ~ *
