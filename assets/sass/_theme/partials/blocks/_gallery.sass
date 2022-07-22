@@ -1,9 +1,11 @@
 .block-gallery
     .top
         .description
-            @extend .col-md-7
             @include media-breakpoint-down(md)
                 margin-top: 2rem
+            @include in-page-with-aside
+                p
+                    width: 100%
 
     .gallery
         --bs-gutter-y: 2rem
@@ -43,6 +45,9 @@
             @extend .small
 
     &--carousel
+        .top
+            .description
+                @extend .col-md-7
         .container
             padding-right: 0
         .splide
