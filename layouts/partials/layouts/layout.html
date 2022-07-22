@@ -1,0 +1,10 @@
+{{ $layout_type := partial "GetCurrentLayout" }} 
+{{ .Scratch.Set "layout_type" $layout_type }}
+
+{{ if eq $layout_type "asided" }}
+    {{ partial "layouts/asided-page.html" . }}
+{{ else if eq $layout_type "full" }}
+    {{ partial "layouts/full-page.html" . }}
+{{ else if eq $layout_type "program" }}
+    {{ partial "layouts/program.html" . }}
+{{ end }}

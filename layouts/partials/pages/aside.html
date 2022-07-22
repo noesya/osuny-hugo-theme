@@ -1,5 +1,57 @@
-<aside>
-  <div>
-    {{- partial "pages/toc.html" . -}}
-  </div>
-</aside>
+{{- $show_aside := false -}}
+
+{{- $has_blocks := false -}}
+{{- range .Params.blocks -}}
+  {{- $has_blocks = true -}}
+  {{- if .title -}}
+    {{- $show_aside = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if .Pages -}}
+  {{- if eq $has_blocks false -}}
+    {{- $show_aside = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if .Content -}}
+  {{- if eq $has_blocks false -}}
+    {{- $show_aside = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $show_aside }}
+<nav class="toc" id="nav-toc" aria-label="{{ i18n "commons.toc" }}">
+  <ol>
+
+    {{- if .Params.blocks -}}
+
+      {{- partial "blocks/toc.html" .Params.blocks -}}
+
+    {{- else -}}
+
+      {{/* TODO: Delete it */}}
+      {{ $h2s := partial "H2Extract" .Content }}
+      {{- if and (not $h2s) (partial "GetTextFromHTML" .Content) }}
+        <li>
+          <a class="nav-link" href="#page-informations">{{ i18n "pages.informations" }}</a>
+        </li>
+      {{ end -}}
+
+      {{- range $index, $h2 := $h2s }}
+        <li>
+          <a class="nav-link" href="#page-h2-{{$index}}">{{ plainify $h2 }}</a>
+        </li>
+      {{ end -}}
+
+      {{- if .Pages }}
+        <li>
+          <a class="nav-link" href="#page-children">{{ i18n "pages.details" }}</a>
+        </li>
+      {{ end -}}
+
+    {{- end -}}
+
+  </ol>
+</nav>
+{{ end -}}

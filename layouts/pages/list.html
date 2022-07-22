@@ -1,24 +1,4 @@
 {{ define "main" }}
   {{ partial "pages/hero.html" . }}
-
-  {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
-
-  {{- if .Params.blocks }}
-    <div class="content-blocks">
-      {{ partial "pages/aside.html"
-          (dict
-              "category" $category
-              "context" .
-          )
-      }}
-      {{ partial "blocks/list.html" .Params.blocks }}
-    </div>
-  {{ else }}
-    {{ partial "pages/image.html" .Params.image }}
-    {{/* LEGACY */}}{{ partial "pages/body.html" .Content }}
-    {{/* LEGACY */}}{{ partial "pages/body.html" .Params.legacy_text }}
-    {{ partial "pages/children.html" .Params.children }}
-    {{/* LEGACY */}}{{ partial "posts/related.html" $category }}
-  {{ end }}
-
+  {{ partial "layouts/layout.html" . }}
 {{ end }}

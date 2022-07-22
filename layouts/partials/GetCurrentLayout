@@ -1,0 +1,11 @@
+{{ $has_aside := false }}
+{{ $is_full := false }}
+{{ $layout_type := "full" }}
+
+{{ if $has_aside }}
+    {{ $layout_type = "asided" }}
+{{ else if $is_full }}
+    {{ $layout_type = "full" }}
+{{ end }}
+
+{{ return printf $layout_type }}

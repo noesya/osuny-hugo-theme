@@ -1,0 +1,12 @@
+<div class="content-blocks">
+    <aside>
+        <div>
+            {{ $aside_partial := printf "%s/aside.html" "pages" }}
+            {{ partial $aside_partial . }}
+        </div>
+    </aside>
+    <div class="blocks">
+        {{ $content_partial := printf "%s/content.html" "pages" }}
+        {{ partial $content_partial . }}
+    </div>
+</div>
