@@ -49,13 +49,3 @@
     &:hover
         &::#{$pseudo}
             transform: translateX(#{px2rem($distance)})
-
-@mixin sticky($top-md: calc(#{$header-height-md} + #{$grid-gutter-width}), $top-sm: calc(#{$header-height} + #{$grid-gutter-width}))
-    position: sticky
-    top: $grid-gutter-width
-    @if $enable-header-sticky
-        transition: top $header-transition
-        html:not(.is-scrolling-down) &
-            top: $top-sm
-            @include media-breakpoint-up(md)
-                top: $top-md
