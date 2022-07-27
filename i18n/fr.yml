@@ -115,6 +115,7 @@ programs:
   _team: Équipe
   _content: Contenus de la formation
   _results: Indicateurs de résultats
+  apply: Candidater
   capacity: Capacité d’accueil
   diploma: Diplôme
   duration: Durée

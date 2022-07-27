@@ -115,6 +115,7 @@ programs:
   _team: Team
   _content: Content
   _results: Results
+  apply: Apply
   capacity: Capacity
   diploma: Diploma
   duration: Duration

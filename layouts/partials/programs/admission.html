@@ -24,6 +24,9 @@
           <div class="subpart">
             <h3>{{ i18n "programs._registration" }}</h3>
             {{- partial "PrepareHTML" .Params.registration -}}
+            {{- if partial "GetTextFromHTML" .Params.registration_url -}}
+              <p><a href="{{- partial "PrepareHTML" .Params.registration_url -}}" class="registration">{{ i18n "programs.apply" }}</a></p>
+            {{- end -}}
           </div>
         {{- end -}}
 
