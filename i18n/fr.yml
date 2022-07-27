@@ -120,6 +120,7 @@ programs:
   duration: Durée
   ects_credits: Crédits ECTS
   level: Niveau
+  mention: Mention
   no_program: Aucune formation
   posts: Actualités
   toc:

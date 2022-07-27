@@ -120,6 +120,7 @@ programs:
   duration: Duration
   ects_credits: ECTS credits
   level: Level
+  mention: Mention
   no_program: No program
   posts: News
   toc:
