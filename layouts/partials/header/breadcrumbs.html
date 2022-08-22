@@ -44,7 +44,7 @@
           class="breadcrumb-item"
         {{- end -}}>
       {{- if .active -}}
-        {{- $title -}}
+        {{- partial "PrepareHTML" $title -}}
       {{- else -}}
         <a href="{{ .page.Permalink }}">{{- $title -}}</a>
       {{- end -}}
