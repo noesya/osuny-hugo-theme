@@ -1,9 +1,9 @@
 <!-- CSS -->
 {{- $cssOpts := (dict
-      "targetPath" "assets/css/main.css"
-      "enableSourceMap" true
-      "includePaths" (slice "node_modules")
-    ) -}}
+  "targetPath" "assets/css/main.css"
+  "enableSourceMap" true
+  "includePaths" (slice "node_modules")
+) -}}
 
 {{- $styles := resources.Get "sass/main.sass" | toCSS $cssOpts -}}
 {{ if hugo.IsProduction }}

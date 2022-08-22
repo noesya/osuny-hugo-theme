@@ -1,3 +1,4 @@
+{{- if or (partial "GetTextFromHTML" .Params.content) (partial "GetTextFromHTML" .Params.pedagogy) (partial "GetTextFromHTML" .Params.evaluation) (.Params.teachers) -}}
 <section id="pedagogy">
   <div class="container">
     <div class="content">
@@ -42,3 +43,4 @@
     </div>
   </div>
 </section>
+{{- end -}}

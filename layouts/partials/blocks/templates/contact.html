@@ -10,43 +10,81 @@
             <h2>{{ partial "PrepareHTML" $title }}</h2>
           </div>
         {{ end -}}
-        <address>
+        <address  itemscope itemtype="https://schema.org/Organization">
           <p>
           {{ if .name }}
-            <b>{{ .name }}</b><br>
+            <b itemprop="name">{{ .name }}</b><br>
           {{ end }}
           {{ range .phone_numbers }}
-            <a href="tel:{{ . }}">{{ . }}</a><br>
+            <a itemprop="telephone" href="tel:{{ . }}">{{ . }}</a><br>
           {{ end }}
           {{ range .emails }}
-            <a href="mailto:{{ . }}">{{ . }}</a><br>
+            <a itemprop="email" href="mailto:{{ . }}">{{ . }}</a><br>
           {{ end }}
-          {{ partial "PrepareHTML" .address }}
           </p>
+
+          {{ with .address }}
+            {{ if or .street .locality .postal_code .country }}
+              <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                {{ if .street }}
+                <span itemprop="streetAddress">
+                  {{ partial "PrepareHTML" .street }},
+                </span>
+                {{ end }}
+                {{ if .locality }}
+                <span itemprop="addressLocality">
+                  {{ partial "PrepareHTML" .locality }}
+                </span>
+                {{ end }}
+                {{ if .postal_code }}
+                <span itemprop="postalCode">
+                  {{ partial "PrepareHTML" .postal_code }}
+                </span>
+                {{ end }}
+              </div>
+            {{ end }}
+          {{ end }}
         </address>
 
         {{ if .timetable}}
         <ul>
             {{ range .timetable }}
-            <li>
-              <span>{{ .title }}</span>
-              <span>
-                {{- if .time_slot_morning.from }}
-                  <time datetime="{{ .time_slot_morning.from }}">{{ .time_slot_morning.from }}</time>
-                {{ end -}}
-                {{- if .time_slot_morning.to }}
-                  <time datetime="{{ .time_slot_morning.to }}">{{ .time_slot_morning.to }}</time>
-                {{ end -}}
-              </span>
-              <span>
-                {{- if .time_slot_afternoon.from }}
-                  <time datetime="{{ .time_slot_afternoon.from }}">{{ .time_slot_afternoon.from }}</time>
-                {{ end -}}
-                {{- if .time_slot_afternoon.to }}
-                  <time datetime="{{ .time_slot_afternoon.to }}">{{ .time_slot_afternoon.to }}</time>
-                {{ end -}}
-              </span>
-            </li>
+              {{ if or
+                .time_slot_morning.from
+                .time_slot_morning.to
+                .time_slot_afternoon.from
+                .time_slot_afternoon.to
+              }}
+                <li>
+                  <span>{{ .title }}</span>
+                  {{ if or
+                    .time_slot_morning.from
+                    .time_slot_morning.to
+                  }}
+                  <span>
+                    {{- if .time_slot_morning.from }}
+                      <time datetime="{{ .time_slot_morning.from }}">{{ .time_slot_morning.from }}</time>
+                    {{ end -}}
+                    {{- if .time_slot_morning.to }}
+                      <time datetime="{{ .time_slot_morning.to }}">{{ .time_slot_morning.to }}</time>
+                    {{ end -}}
+                  </span>
+                  {{ end }}
+                  {{ if or
+                    .time_slot_afternoon.from
+                    .time_slot_afternoon.to
+                  }}
+                  <span>
+                    {{- if .time_slot_afternoon.from }}
+                      <time datetime="{{ .time_slot_afternoon.from }}">{{ .time_slot_afternoon.from }}</time>
+                    {{ end -}}
+                    {{- if .time_slot_afternoon.to }}
+                      <time datetime="{{ .time_slot_afternoon.to }}">{{ .time_slot_afternoon.to }}</time>
+                    {{ end -}}
+                  </span>
+                  {{ end -}}
+                </li>
+              {{ end }}
             {{ end }}
         </ul>
         {{ end }}

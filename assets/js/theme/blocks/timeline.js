@@ -89,7 +89,7 @@ class BlockTimeline {
         });
     }
 
-    onManipulationEnd(start, end, threshold) {
+    onManipulationEnd (start, end, threshold) {
         if (start > end + threshold) {
             this.goTo(this.index+1);
         } else if (start < end - threshold) {
@@ -101,7 +101,7 @@ class BlockTimeline {
         // Add delay to avoid conflict with item clicked
         setTimeout(() => {
             this.isManipulated = false;
-        }, 100)
+        }, 100);
     }
 
     goTo (_index) {

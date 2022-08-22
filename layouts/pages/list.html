@@ -2,8 +2,14 @@
   {{ partial "pages/hero.html" . }}
 
   {{- $category := site.GetPage (printf "/categories%s" .Params.category) -}}
-
   {{- if .Params.blocks }}
+    {{ $need_aside := false }}
+    {{ range .Params.blocks }}
+      {{ if .title }}
+        {{ $need_aside = true }}
+      {{ end }}
+    {{ end }}
+
     <div class="content-blocks">
       {{ partial "pages/aside.html"
           (dict
