@@ -1,6 +1,7 @@
 {{- $position := .position -}}
 {{- $title := .title -}}
 {{- with .data -}}
+  {{- $text := .text -}}
   {{- $buttons := and .button.text .button_secondary.text -}}
   <section class="block-image{{ if $title }} block-with-title{{ end }}" id="block-{{ $position }}">
     <div class="container">
@@ -35,8 +36,11 @@
               {{- if $title }}
                 <p>{{ partial "PrepareHTML" $title }}</p>
               {{ end -}}
-              {{- if partial "PrepareHTML" .credit }}
-                <p><small>{{ partial "PrepareHTML" .credit }}</small></p>
+              {{- if partial "GetTextFromHTML" $text }}
+                <p>{{ partial "PrepareHTML" $text }}</p>
+              {{ end -}}
+              {{- if partial "GetTextFromHTML" .credit }}
+                <small>{{ partial "PrepareHTML" .credit }}</small>
               {{ end -}}
             </figcaption>
           </figure>
