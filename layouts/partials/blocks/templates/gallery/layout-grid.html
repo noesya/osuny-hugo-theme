@@ -22,11 +22,11 @@
                 "desktop"  "416"
               )}}
           </a>
-          <figcaption>
-            {{ if .text }}
+          {{ if partial "GetTextFromHTML" .text }}
+            <figcaption>
               <p>{{ partial "PrepareHTML" .text }}</p>
-            {{ end }}
-          </figcaption>
+            </figcaption>
+          {{ end }}
         </figure>
       {{- end -}}
     {{ end }}
