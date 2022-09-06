@@ -24,25 +24,11 @@
           </p>
 
           {{ with .address }}
-            {{ if or .street .locality .postal_code .country }}
-              <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                {{ if .street }}
-                <span itemprop="streetAddress">
-                  {{ partial "PrepareHTML" .street }},
-                </span>
-                {{ end }}
-                {{ if .locality }}
-                <span itemprop="addressLocality">
-                  {{ partial "PrepareHTML" .locality }}
-                </span>
-                {{ end }}
-                {{ if .postal_code }}
-                <span itemprop="postalCode">
-                  {{ partial "PrepareHTML" .postal_code }}
-                </span>
-                {{ end }}
-              </div>
-            {{ end }}
+            <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+              <span>
+                {{ partial "PrepareHTML" . }}
+              </span>
+            </div>
           {{ end }}
         </address>
 
