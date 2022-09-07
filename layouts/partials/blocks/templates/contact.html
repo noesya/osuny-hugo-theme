@@ -19,17 +19,26 @@
             <a itemprop="telephone" href="tel:{{ . }}">{{ . }}</a><br>
           {{ end }}
           {{ range .emails }}
-            <a itemprop="email" href="mailto:{{ . }}">{{ . }}</a><br>
+            <a itemprop="email" href="mailto:{{ . }}" target="_blank" rel="noopener">{{ . }}</a><br>
+          {{ end }}
+          {{ with .address }}
+            {{ if or .address .city .zipcode .country }}
+              <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                {{ if .address }}
+                  <span itemprop="streetAddress">{{ partial "PrepareHTML" .address }}</span><br>
+                {{ end }}
+                {{ if .zipcode }}<span itemprop="postalCode">{{ .zipcode }}</span>{{ end }}
+                {{ if .city }}
+                  <span itemprop="addressLocality">
+                    {{ .city }}
+                    {{ .country }}
+                  </span>
+                {{ end }}
+              </span>
+            {{ end }}
           {{ end }}
           </p>
 
-          {{ with .address }}
-            <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-              <span>
-                {{ partial "PrepareHTML" . }}
-              </span>
-            </div>
-          {{ end }}
         </address>
 
         {{ if .timetable}}
