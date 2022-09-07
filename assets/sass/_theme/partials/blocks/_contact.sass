@@ -13,11 +13,12 @@
     ul
         padding-left: 0
         li
-            border-bottom: $table-border-width solid $table-border-color
             display: flex
             flex-wrap: wrap
             padding-bottom: calc(#{$line-height-base/2}rem + 1px)
             padding-top: calc(#{$line-height-base/2}rem + 1px)
+            + li
+                border-top: $table-border-width solid $table-border-color
             &:first-child
                 padding-top: 0
             @include media-breakpoint-down(md)
