@@ -43,7 +43,15 @@
         .pages
             --bs-gutter-y: #{$grid-gutter-width}
             > *
-                @extend .col-lg-4
+                width: 100%
+                &:nth-child(even)::after
+                    display: none
+                @include media-breakpoint-up(xl)
+                    width: 50%
+                @include media-breakpoint-down(xl)
+                    &::after
+                        display: none
+                    
             .page
                 aspect-ratio: 0.887
                 background-color: $block-pages-card-page-background
